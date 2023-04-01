@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
 
-font-size : 8px;
-width: 50%;
+font-size: 6px;
+width:20%;
 
 
+  
+
+
+`;
+
+export const images = styled.div`
 
 
 `;

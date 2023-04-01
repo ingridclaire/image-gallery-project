@@ -16,7 +16,7 @@ function App() {
         <Directory />
         
        
-          Learn React
+         
         
       </header>
       </div>

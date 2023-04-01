@@ -1,6 +1,6 @@
 
 
-import { Body }  from './images-styles';
+import { Body, img, images }  from './images-styles';
 
 const Images1 = ({category}) => {
 
@@ -11,8 +11,8 @@ const Images1 = ({category}) => {
 
             <Body>
             <h2>{name}</h2>
-            <div class = "images">
-            <img src={imageUrl} alt={`${name}`} />
+            <div className = "images">
+                <img src={imageUrl} alt={`${name}`} width={ 60} />
             </div>
                 
             </Body>

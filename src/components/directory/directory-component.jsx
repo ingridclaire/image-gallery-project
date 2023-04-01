@@ -8,7 +8,7 @@ const categories = [
     {
       id: 1,
       name: 'Al',
-      imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
       route: 'shop/hats',
     },
     {
@@ -45,16 +45,18 @@ const Directory = () => {
         
         
         
-            
+      <div>
+        <h2>Photographers</h2>
         <DirectoryContainer>
             
-            <h1>Photographers</h1>
+            
             {categories.map((category) => (
               <Images1 key = {category.id} category={category} />
             ))}
             
             
-            </DirectoryContainer>
+        </DirectoryContainer>
+        </div>
         
             
             
