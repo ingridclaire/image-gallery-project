@@ -10,9 +10,9 @@ const Home = () => {
         
         
         <div>
-            
-            
-        <h1>Home</h1>
+        <h4>Home</h4>    
+        <Directory/>
+        
        
             
             

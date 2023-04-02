@@ -46,7 +46,7 @@ const Directory = () => {
         
         
       <div>
-        <h2>Photographers</h2>
+        
         <DirectoryContainer>
             
             

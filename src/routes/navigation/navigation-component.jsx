@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
-
+import {NavigationContainer, butto} from "./navigation-styles"
 const Navigation = () => {
 
     
     return (
 
-        
+      <NavigationContainer>
         
         
       <div>
-        <h2>Photographers Navigation</h2>
+        <h2>Photography Show</h2>
+        <button >Dropdown Menu</button>
         <Outlet/>
             
             
@@ -19,6 +20,7 @@ const Navigation = () => {
         </div>
         
             
+        </NavigationContainer>
             
 
     );
