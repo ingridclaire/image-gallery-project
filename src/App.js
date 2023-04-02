@@ -8,6 +8,7 @@ import Image from './components/images/images-component'
 import PHOTO_DATA from './photo-data';
 import Navigation from './routes/navigation/navigation-component';
 import Home from './routes/home/home-component';
+import Shop from './routes/shop/shop-component';
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
           
           
           <Route path='/' element={<Navigation />}>
-          <Route index element={<Home />} />
+            <Route index element={<Home />} />
+            <Route path='shop/*' element={<Shop />} />
           </Route>
           
       </Routes>

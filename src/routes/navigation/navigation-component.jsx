@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import {NavigationContainer, butto} from "./navigation-styles"
+import {NavigationContainer, button} from "./navigation-styles"
 const Navigation = () => {
 
     
