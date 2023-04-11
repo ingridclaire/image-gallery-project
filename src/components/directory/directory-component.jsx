@@ -9,7 +9,7 @@ const categories = [
       id: 1,
       name: 'Al',
       imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-      route: 'shop/hats',
+      route: 'category/hats',
     },
     {
       id: 2,

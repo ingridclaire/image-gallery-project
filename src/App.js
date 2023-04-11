@@ -9,6 +9,7 @@ import PHOTO_DATA from './photo-data';
 import Navigation from './routes/navigation/navigation-component';
 import Home from './routes/home/home-component';
 import Shop from './routes/shop/shop-component';
+import Category from './routes/category/category-component';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/' element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path='shop/*' element={<Shop />} />
+            <Route path='category/*' element={<Category />} />
           </Route>
           
       </Routes>
