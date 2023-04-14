@@ -35,7 +35,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
-alert("in code");
+//alert("in code");
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
@@ -51,7 +51,7 @@ export const signInWithGoogleRedirect = () =>
 export const db = getFirestore();
 export const getCategoriesAndDocuments = async () => {
 
-  alert("does it get here?");
+  //alert("does it get here?");
     const collectionRef = collection(db, 'categories');
     const q = query(collectionRef);
   

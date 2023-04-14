@@ -1,8 +1,15 @@
 import { Outlet } from "react-router-dom";
-import {NavigationContainer, button} from "./navigation-styles"
+import { NavigationContainer, button, DropDown } from "./navigation-styles"
+import { useState } from 'react';
 const Navigation = () => {
 
-    
+  function func() {
+      let button = document.getElem
+  }
+
+
+  const [showPanel, setShowPanel] = useState(false);
+  
     return (
 
       <NavigationContainer>
@@ -10,7 +17,10 @@ const Navigation = () => {
         
       <div>
         <h2>Photography Show</h2>
-        <button >Dropdown Menu</button>
+          <button className="buttonShow" onClick={() => { setShowPanel((showPanel) => !showPanel) }}>Show Panel</button>
+          
+            {showPanel && <DropDown/>}
+            
         <Outlet/>
             
             
