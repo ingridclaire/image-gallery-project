@@ -10,14 +10,16 @@ const Category = () => {
    
         const { category } = useParams();
         const { categoriesMap } = useContext(CategoriesContext);
-        const [products, setProducts] = useState(categoriesMap['jackets']);
-
-    
+  const [products, setProducts] = useState(categoriesMap[category]);
+   
+  console.log("category :", category);
+  
     return (
 
         
-        
-        
+    
+    
+ 
         <div>
         <h4>Category</h4>    
     
