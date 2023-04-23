@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-
-
 export const DropDown = styled.div`
+
 .drop{
-  background-color:blue;
+    background-color:blue;
 }
 
 
@@ -24,29 +23,6 @@ overflow-y:scroll;
 
 
 
-
+  
 
 }`
-
-export const PhotoContainer = styled.div`
-
-
-
-  
-  
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 10px;
-  row-gap: 50px;
-  
-  
-  
-
-
-`;
-
-
-export const Panel = styled.div`
-
-
-`;

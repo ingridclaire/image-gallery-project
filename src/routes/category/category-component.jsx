@@ -30,7 +30,8 @@ const Category = () => {
         {products &&
           products.map((product) => (
              
-              <PhotoImages key={product.id} category={product} />
+            <PhotoImages key={product.id} category={product} />
+           
              
           ))}
                     

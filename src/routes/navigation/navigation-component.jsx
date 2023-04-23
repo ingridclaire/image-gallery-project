@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { NavigationContainer, button, DropDown } from "./navigation-styles"
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 const Navigation = () => {
 
   function func() {
@@ -15,7 +16,7 @@ const Navigation = () => {
       <NavigationContainer>
         
         
-      <div>
+      <div className= "photo">
         <h2>Photography Show</h2>
           <button className="buttonShow" onClick={() => { setShowPanel((showPanel) => !showPanel) }}>Show Panel</button>
           
@@ -23,7 +24,10 @@ const Navigation = () => {
             
         <Outlet/>
             
-            
+        {createPortal(
+        <p>testing portal.</p>,
+        document.body
+        )}
             
             
         
