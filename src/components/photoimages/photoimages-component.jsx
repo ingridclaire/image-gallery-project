@@ -8,9 +8,9 @@ import { createPortal } from 'react-dom'
 
 
 
+//react onclick event in functional coomponent
 
-
-const PhotoImages1 = ({category}) => {
+const PhotoImages1 = ({ category }) => {
   console.log("!", category);
   const { id, imageUrl, name} = category;
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ const PhotoImages1 = ({category}) => {
         <div>
       <div id='drop'>
 
-      hhh
+          hhh{id}
       
         
         </div>
@@ -47,9 +47,14 @@ const PhotoImages1 = ({category}) => {
           <img src={imageUrl} alt={``} width={90} />
           
         </div>
-          <button onClick = "">{name}</button>
+          
         
-          <Panel category={category} >abc</Panel>
+        
+          <Panel key = {category.id} category={category} >
+
+           
+            
+          </Panel>
         
         
         </div>
