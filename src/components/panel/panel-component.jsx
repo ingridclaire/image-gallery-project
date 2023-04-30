@@ -124,6 +124,11 @@ function Panel({ category } ) {
             <h1>{name}</h1>
 
             
+             
+            <Images1 key={category.id} category={category} />
+           
+             
+        
       
       
         
