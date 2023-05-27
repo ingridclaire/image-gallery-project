@@ -32,13 +32,20 @@ export const PanelProvider = ({ children }) => {
 
   
   
-    const value = { panelArray, setpanelArray };
+  const addItemToCart = (productToAdd) => {
+    
+    //setpanelArray(...panelArray, productToAdd);
+    setpanelArray(addCartItem(productToAdd));
+
+
+
+  };
+
+
+    const value = { panelArray, setpanelArray, addItemToCart};
   
   
-    const addItemToCart = (productToAdd) => {
-      setpanelArray(addCartItem(productToAdd));
-    };
-  
+    
   return (
     <PanelContext.Provider value={value}>
       {children}
