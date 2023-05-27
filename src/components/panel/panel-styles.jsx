@@ -19,6 +19,7 @@ position: absolute;
 z-index: 2;
 border-radius: 1rem;
 overflow-y:scroll;
+overflow-x:scroll;
 
 
 

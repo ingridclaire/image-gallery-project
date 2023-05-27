@@ -3,6 +3,11 @@ import { createContext, useState, useEffect } from 'react';
 
 //
 //
+//const [cartItems, setCartItems] = useState([]);
+
+const addCartItem = (cartItems, productToAdd) => {
+    return;
+};
 
 let Object1 = function(a,b){
     
@@ -48,3 +53,5 @@ export const CartContextProvider = ({ children }) => {
     
 
 };
+
+

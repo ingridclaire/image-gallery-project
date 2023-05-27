@@ -1,3 +1,5 @@
+
+
 import { createPortal } from 'react-dom'
 import { DropDown } from "./panel-styles"
 import Images1 from '../images/images-component'; 
@@ -5,6 +7,20 @@ import { CategoriesContext } from '../../contexts/categories-context';
 import { useContext, useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import PhotoImages from '../../components/photoimages/photoimages-component'
+import { CartContext } from '../../contexts/cart-context';
+import { PanelContext } from '../../contexts/panel-context';
+
+const addCartItem = (cartItems, productToAdd) => {
+  return;
+};
+
+const UpdateObject = () => {
+  alert("1");
+  
+  //const [panelArray, setpanelArray] = useState([]);
+  //setpanelArray('https://i.ibb.co/ypkgK0X/blue-beanie.png');
+  
+}
 
 const PHOTO_DATA = [
   {
@@ -71,37 +87,55 @@ const PHOTO_DATA = [
 
 function Panel({ category } ) {
 
-  const { id, imageUrl, name} = category;
-  console.log({imageUrl});
-  const [object, setObject] = useState({
+  console.log("4", category);
+
+
+
+  const { panelArray, setpanelArray,  } = useContext(PanelContext);
+  //let imageUrl = 'https://i.ibb.co/QdJwgmp/brown-cowboy.png'; 
+
+
+
+  const [addItemToCart] = useState([]);
   
-
-  });
-
-  function updateObject(){
-    
-    let link = 'https://i.ibb.co/X2VJP2W/blue-snapback.png';
-    
-    setObject(() => {
-      console.log("2. : ", category); 
-      console.log("6 ", link);
-      
-      
-      //return { ...previousState, id: 1, name: "blue", imageUrl: 'https://i.ibb.co/X2VJP2W/blue-snapback.png'  }
-      
-});
-  }
-  
-  //console.log("6 ",previousState.imageUrl);
-
   useEffect(() => {
+    //alert("3");
+    //setpanelArray(imageUrl);
   
-  }, [object, setObject]);
+  }, []);
+
+  //const {panelArray} = useContext(PanelContext);
   
-  //console.log("4. ", { imageUrl });
+  console.log("panel: ", panelArray);
+
+  
+  //const { id, imageUrl1, name} = category;
+  //console.log("$$",{category});
+  //const { imageUrl } = panelArray;
+  
+  //const [object, setObject] = useState({
+  //console.log("2. : ", category); 
+
+  //});
+
+  //function updateObject(category){
+    
+  //  let link = 'https://i.ibb.co/X2VJP2W/blue-snapback.png';
+    
+
+  //}
+  
+  
+
+  //useEffect(() => {
+ // 
+ // }, [object, setObject]);
+  
+ 
 
   return (
 
+    
     <div>
       <div>
 
@@ -117,15 +151,18 @@ function Panel({ category } ) {
            
             a
            
-            <img src={imageUrl} alt={``} width={90} />
+            
+            <img src={panelArray} alt={``} width={90} />
         
             
             
-            <h1>{name}</h1>
+            <h1></h1>
+
+            <h1></h1>
 
             
              
-            <Images1 key={category.id} category={category} />
+            
            
              
         
@@ -136,7 +173,7 @@ function Panel({ category } ) {
           </div>
         </DropDown>
       
-        <button type="button" onClick = {updateObject}>Button</button>
+        <button type="button" onClick = {UpdateObject}>Button</button>
       
           
           
@@ -145,19 +182,35 @@ function Panel({ category } ) {
           
       </div>
       
+      
         
         
     </div>
     
     
-
-
-
-      
-      
-
     
-  );
-};
+  )
+  
+}
+    
+
+
+
+
+
+      
+function updateObject() {
+  
+  let a = "a";
+  alert("here");
+  //setCartItems(a);
+}
+    
+  
+
+ // const addItemToCart = (productToAdd) => {
+ //   setCartItems(addCartItem(cartItems, productToAdd));
+ // };
+
 
 export default Panel;

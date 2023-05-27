@@ -43,18 +43,17 @@ const PhotoImages1 = ({ category }) => {
         <div>
           jj
         <h2>{name}</h2>
-            <div className = "images">
+          <div className="images">
+            
+
+            re
           <img src={imageUrl} alt={``} width={90} />
           
         </div>
           
         
         
-          <Panel key = {category.id} category={category} >
-
-           
-            
-          </Panel>
+          
         
         
         </div>

@@ -2,11 +2,12 @@
 import { useParams } from 'react-router-dom';
 import { CategoriesContext } from '../../contexts/categories-context';
 import { CategoryContainer } from './category-styles';
-import PhotoImages from '../../components/photoimages/photoimages-component'
+import PhotoImages1 from '../../components/photoimages/photoimages-component'
+import Panel from '../../components/panel/panel-component'
 
-const Category = () => {
+const Category = ({}) => {
 
-
+   // log.console("cat", {category});
    
   let { category } = useParams();
   category = "hats";
@@ -98,7 +99,10 @@ const Category = () => {
         {products &&
           products.map((product) => (
              
-            <PhotoImages key={product.id} category={product} />
+              <div>
+              <PhotoImages1 key={product.id} category={product} />
+                  <Panel key={product.name} category={product} />
+                  </div>
            
              
           ))}
