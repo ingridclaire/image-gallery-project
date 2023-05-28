@@ -43,7 +43,7 @@ function Panel({ category }) {
   
   const { cartItems, productToAdd, panelArray,addItemToCart  } = useContext(PanelContext);
 
-  const { id, imageUrl, name } = category;
+  const { id, imageUrl1, name } = category;
 
   const { imageUrl2 } = panelArray;
 
@@ -74,14 +74,15 @@ function Panel({ category }) {
 
   //const {panelArray} = useContext(PanelContext);
   
-  console.log("url: ", imageUrl);
+  console.log("url: ", imageUrl2);
   console.log("panel: ", panelArray);
 
   
   //const { id, imageUrl, name} = category;
   //console.log("$$",{category});
-  //const { imageUrl } = panelArray;
+  const { imageUrl } = panelArray;
   
+  //alert(imageUrl);
   //const [object, setObject] = useState({
   //console.log("2. : ", category); 
 
@@ -121,7 +122,7 @@ function Panel({ category }) {
             
            
             
-            <img src={imageUrl} alt={``} width={90} />
+            <img src={imageUrl1} alt={``} width={90} />
         
             
             
