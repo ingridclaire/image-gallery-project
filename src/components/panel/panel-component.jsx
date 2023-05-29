@@ -38,6 +38,7 @@ function UpdateObject() {
 function Panel({ category }) {
 
   
+//alert("panel");
   
 //make this right in  panel-context line 45 and 7
   const { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
@@ -45,24 +46,39 @@ function Panel({ category }) {
  
 //map category value to see if ?PANELARRAY/OR CATEGORY? equals the buttons' value, ?IF SO SET PANELARRAY  WHICH WILL CALL STATE?
 
-
+  let imageUrl = "";
 
   const addProductToCart = (value) => {
-    console.log("v: ", value);
+    
+    console.log("v:", value);
+
+    const newState = [...panelArray, 'hello'];
+      
+      setpanelArray(newState);
+
+    console.log("p", panelArray);
+    
+    imageUrl = "https://i.ibb.co/1f2nWMM/wolf-cap.png";
   }
   
   
+  
+
 
   
 
-  const { id, imageUrl, name } = category;
+  //const { id, imageUrl, name } = category;
 
   const { imageUrl2 } = panelArray;
 
 
   
   
+    //const newState = [...panelArray, 'hello'];
+      
+    //  setpanelArray(newState);
 
+    //  console.log("p", panelArray);
    
 
   
@@ -72,9 +88,17 @@ function Panel({ category }) {
   
   
   useEffect(() => {
+
+    //const addItemToCart = (productToAdd) => {
+    
+      
+    alert("use effect called");
+    //imageUrl("");
+      
+    //};
     
   
-  }, []);
+  }, [panelArray]);
 
   //const {panelArray} = useContext(PanelContext);
   
@@ -89,55 +113,56 @@ function Panel({ category }) {
   return (
 
     
-    <div>
       <div>
 
+      <div>
         hhha
-        
-        
-      
-        <DropDown id="id1" >
+
+
+
+        <DropDown id="id1">
           <div className="images">
-      
-      
-            
-           
-            
-           
-            
+
+
+
+
+
+
+
             <img src={imageUrl} alt={``} width={90} />
-        
-            
-            
-            <h1></h1>
+
+
+
+            <h1>1</h1>
 
             <h1></h1>
 
-            
-             
-            
-           
-             
-        
-      
-      
-        
-          
+
+
+
+
+
+
+
+
+
+
           </div>
         </DropDown>
-      
-        <button type="button" onClick={addProductToCart({imageUrl})}>Button</button>
-      
-          
-          
-          
-       
-          
+
+
+        <button onClick={() => addProductToCart({imageUrl})}>Button</button>
+
+
+
+
+
       </div>
-      
-      
-        
-        
+
+
+
+
+
     </div>
     
     

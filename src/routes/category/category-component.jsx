@@ -11,12 +11,17 @@ const Category = ({}) => {
    
   let { category } = useParams();
   category = "hats";
-        const { categoriesMap } = useContext(CategoriesContext);
+  const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
    
   console.log("category :", category);
 
 
+    useEffect(() => {
+
+        <Panel />
+
+    },[]);
 
   /*
   categoriesMap[category] = 
@@ -100,7 +105,7 @@ const Category = ({}) => {
           products.map((product) => (
              
               <div>
-              <PhotoImages1 key={product.id} category={product} />
+              <PhotoImages1 key={product.id} category={product} />github
                   <Panel key={product.name} category={product} />
                   </div>
            
