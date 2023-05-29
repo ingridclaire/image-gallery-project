@@ -34,11 +34,11 @@ export const PanelProvider = ({ children }) => {
   
   const addItemToCart = (productToAdd) => {
     
-    //setpanelArray(...panelArray, productToAdd);
-    setpanelArray(addCartItem(productToAdd));
-
-
-
+    const newState = [...panelArray, 'hello'];
+    
+    //setpanelArray(newState);
+    
+    
   };
 
 

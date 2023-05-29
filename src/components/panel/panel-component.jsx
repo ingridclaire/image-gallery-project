@@ -25,50 +25,54 @@ function UpdateObject() {
 
   
 }
-//const UpdateObject = () => addCartItem();
-  //alert("1");
-  //console.log("1: ", {imageUrl});
-  //const [panelArray, setpanelArray] = useState([]);
-  //setpanelArray('https://i.ibb.co/ypkgK0X/blue-beanie.png');
-  
-//}
+
+//search button, calls function
+//want to do this with context
+
+//for category derefernce
+//Cookie cut each one with a button
 
 
 
-
-
+//ONLY CALLED ONCE MAYBE FROM PHOTOIMAGE - context? ; call each time - category
 function Panel({ category }) {
 
-  //const  addItemToCart = useContext(PanelContext);
   
-  const { cartItems, productToAdd, panelArray,addItemToCart  } = useContext(PanelContext);
+  
+//make this right in  panel-context line 45 and 7
+  const { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
+  
+ 
+//map category value to see if ?PANELARRAY/OR CATEGORY? equals the buttons' value, ?IF SO SET PANELARRAY  WHICH WILL CALL STATE?
 
-  const { id, imageUrl1, name } = category;
+
+
+  const addProductToCart = (value) => {
+    console.log("v: ", value);
+  }
+  
+  
+
+  
+
+  const { id, imageUrl, name } = category;
 
   const { imageUrl2 } = panelArray;
 
-  const addProductToCart = () => addItemToCart({imageUrl}); 
+
+  
+  
+
+   
 
   
 
 
   
-  //console.log("4", category);
   
-
-
-
-  
-  //let imageUrl = 'https://i.ibb.co/QdJwgmp/brown-cowboy.png';
-
-  
-  //console.log("pA: ", panelArray);
-
-  //const [addItemToCart] = useState([]);
   
   useEffect(() => {
-    //alert("3");
-    //setpanelArray(imageUrl);
+    
   
   }, []);
 
@@ -76,30 +80,9 @@ function Panel({ category }) {
   
   console.log("url: ", imageUrl2);
   console.log("panel: ", panelArray);
+  console.log("cat: ", category);
 
   
-  //const { id, imageUrl, name} = category;
-  //console.log("$$",{category});
-  const { imageUrl } = panelArray;
-  
-  //alert(imageUrl);
-  //const [object, setObject] = useState({
-  //console.log("2. : ", category); 
-
-  //});
-
-  //function updateObject(category){
-    
-  //  let link = 'https://i.ibb.co/X2VJP2W/blue-snapback.png';
-    
-
-  //}
-  
-  
-
-  //useEffect(() => {
- // 
- // }, [object, setObject]);
   
  
 
@@ -122,7 +105,7 @@ function Panel({ category }) {
             
            
             
-            <img src={imageUrl1} alt={``} width={90} />
+            <img src={imageUrl} alt={``} width={90} />
         
             
             
@@ -143,7 +126,7 @@ function Panel({ category }) {
           </div>
         </DropDown>
       
-        <button type="button" onClick = {addProductToCart}>Button</button>
+        <button type="button" onClick={addProductToCart({imageUrl})}>Button</button>
       
           
           
@@ -166,7 +149,7 @@ function Panel({ category }) {
 }
     
 
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (panelArray, productToAdd) => {
   console.log(productToAdd);
   return(productToAdd);
 };
