@@ -26,7 +26,7 @@ function UpdateObject() {
   
 }
 
-//search button, calls function
+//search button, call function
 //want to do this with context
 
 //for category derefernce
