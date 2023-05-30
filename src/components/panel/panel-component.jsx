@@ -18,7 +18,7 @@ import { PanelContext } from '../../contexts/panel-context';
 
 
 
-
+//<button onClick={this.addProductToCart} value={imageUrl}>Button2</button>
 
 
 function UpdateObject() { 
@@ -38,27 +38,40 @@ function UpdateObject() {
 function Panel({ category }) {
 
   
-//alert("panel");
+
   
-//make this right in  panel-context line 45 and 7
-  const { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
+
+  let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
   
  
-//map category value to see if ?PANELARRAY/OR CATEGORY? equals the buttons' value, ?IF SO SET PANELARRAY  WHICH WILL CALL STATE?
 
-  let imageUrl = "";
 
-  const addProductToCart = (value) => {
+
+  //dereference first write using category as prop, then chnage it to usecontext
+
+  //Each call using category is an instance that can have a button pressed
+  //if button ia pressed than currwnt category is the one chosen
+  //change category prop to context
+
+
+  const imageUrl = { category };
+  
+  console.log("i", category);
+  console.log(category.imageUrl);
+  //let value = category.imageUrl;
+  const addProductToCart = () => {
     
-    console.log("v:", value);
+    console.log("v:", category.imageUrl);
 
-    const newState = [...panelArray, 'hello'];
+    alert("v",  category.imageUrl );
+    const newState = [...panelArray,  category.imageUrl ];
       
       setpanelArray(newState);
 
-    console.log("p", panelArray);
+    console.log("p ", panelArray);
+    console.log("a ", addProductToCart);
     
-    imageUrl = "https://i.ibb.co/1f2nWMM/wolf-cap.png";
+    //imageUrl = "https://i.ibb.co/1f2nWMM/wolf-cap.png";
   }
   
   
@@ -67,42 +80,22 @@ function Panel({ category }) {
 
   
 
-  //const { id, imageUrl, name } = category;
-
-  const { imageUrl2 } = panelArray;
-
-
   
-  
-    //const newState = [...panelArray, 'hello'];
-      
-    //  setpanelArray(newState);
-
-    //  console.log("p", panelArray);
-   
-
-  
-
+ console.log("URL: ", imageUrl);
 
   
   
   
   useEffect(() => {
 
-    //const addItemToCart = (productToAdd) => {
     
-      
-    alert("use effect called");
-    //imageUrl("");
-      
-    //};
     
   
   }, [panelArray]);
 
-  //const {panelArray} = useContext(PanelContext);
   
-  console.log("url: ", imageUrl2);
+  
+  console.log("url: ", imageUrl);
   console.log("panel: ", panelArray);
   console.log("cat: ", category);
 
@@ -150,8 +143,11 @@ function Panel({ category }) {
           </div>
         </DropDown>
 
+        
 
-        <button onClick={() => addProductToCart({imageUrl})}>Button</button>
+        <button onClick={() => addProductToCart()}>Button</button>
+        
+        
 
 
 
