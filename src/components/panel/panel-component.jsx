@@ -62,7 +62,7 @@ function Panel({  category}) {
 
   
 
-  const imageUrl = { category };
+ // const imageUrl = { category };
   
   console.log("i", category);
   console.log(category.imageUrl);
@@ -75,8 +75,43 @@ function Panel({  category}) {
   let forceUpdate = useForceUpdate(); 
 
 
+  let { imageUrl } = categoriesMap["hats"][imageCount];
+  
+
+  //console.log("img", categoriesMap["hats"][imageCount]);
 
 
+
+  //uses context
+  const addProductToCart = (category) => {
+    
+    console.log("v:", category.imageUrl);
+    //let image = category.imageUrl;
+    
+    const image = categoriesMap['hats'][imageCount].imageUrl;
+
+    const updated = [...panelArray, image];
+
+    
+      setpanelArray(previous => [...previous, image]) 
+    console.log("p ", panelArray);
+    
+    
+    //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
+    
+    filteredarray[imageCount] = image;
+    imageCount++;
+    console.log("fa: ", filteredarray);
+    
+    
+  }
+  
+
+/*
+
+  //uses props
+  let {imageUrl} = categoriesMap["hats"];
+  console.log("img", categoriesMap["hats"][0]);
 
 
   const addProductToCart = (category) => {
@@ -100,7 +135,7 @@ function Panel({  category}) {
     
   }
   
-  
+  */
   
 
 
