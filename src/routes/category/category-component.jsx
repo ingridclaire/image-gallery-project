@@ -19,7 +19,7 @@ const Category = ({}) => {
 
     useEffect(() => {
 
-        <Panel />
+        //<Panel key={category.id} category={category} />
 
     },[]);
 
@@ -105,8 +105,8 @@ const Category = ({}) => {
           products.map((product) => (
              
               <div>
-              <PhotoImages1 key={product.id} category={product} />github
-                  <Panel key={product.name} category={product} />
+              <PhotoImages1 key={product.id} category={product} />
+                  <Panel key={product.id} category={product} />
                   </div>
            
              
