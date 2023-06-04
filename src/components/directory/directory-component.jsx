@@ -1,3 +1,4 @@
+import { Link, UseParams } from 'react-router-dom';
 import React from 'react';
 import categories1 from '../../photo-data';
 import Images1 from '../images/images-component'; 
@@ -50,8 +51,10 @@ const Directory = () => {
         <DirectoryContainer>
             
             
-            {categories.map((category) => (
-              <Images1 key = {category.id} category={category} />
+          {categories.map((category) => (
+              <Link to= '/category/womens'>
+              <Images1 key={category.id} category={category} />
+              </Link>
             ))}
             
             
