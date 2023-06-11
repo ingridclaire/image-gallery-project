@@ -78,7 +78,7 @@ function Panel({  category, id}) {
   let forceUpdate = useForceUpdate(); 
 
 
-  let { imageUrl } = categoriesMap[string1][imageCount];
+  let { imageUrl } = category;
   
 
   //console.log("img", categoriesMap["hats"][imageCount]);
@@ -91,18 +91,18 @@ function Panel({  category, id}) {
     console.log("v:", category.imageUrl);
     //let image = category.imageUrl;
     
-    const image = categoriesMap[string1][imageCount].imageUrl;
+    //const image = categoriesMap[string1][imageCount].imageUrl;
 
-    const updated = [...panelArray, image];
+    const updated = [...panelArray, imageUrl];
 
     
-      setpanelArray(previous => [...previous, image]) 
+      setpanelArray(previous => [...previous, imageUrl]) 
     console.log("p ", panelArray);
     
     
     //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
     
-    filteredarray[imageCount] = image;
+    filteredarray[imageCount] = imageUrl;
     imageCount++;
     console.log("fa: ", filteredarray);
     
