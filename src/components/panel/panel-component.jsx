@@ -35,24 +35,27 @@ let filteredarray = [null];
 
 let imageCount = 0;
 
+//  id name imageUrl price
+function Panel({  category, id}) {
 
-function Panel({  category}) {
 
+  //console.log("id: ", { id });
+  //let string1 =  "hats" ;
 
-  
+  let string1 = "hats";
 
   let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray} = useContext(PanelContext);
 ;
   const { categoriesMap } = useContext(CategoriesContext);
-  const [products, setProducts] = useState(categoriesMap['hats']);
+  const [products, setProducts] = useState(categoriesMap[string1]);
 
   
-
+  
   
   
   const { change, setChange } = useState;
 
-
+  
 
   //dereference first write using category as prop, then chnage it to usecontext
 
@@ -64,8 +67,8 @@ function Panel({  category}) {
 
  // const imageUrl = { category };
   
-  console.log("i", category);
-  console.log(category.imageUrl);
+  //console.log("i", category);
+  //console.log(category.imageUrl);
 
 
 
@@ -75,7 +78,7 @@ function Panel({  category}) {
   let forceUpdate = useForceUpdate(); 
 
 
-  let { imageUrl } = categoriesMap["hats"][imageCount];
+  let { imageUrl } = categoriesMap[string1][imageCount];
   
 
   //console.log("img", categoriesMap["hats"][imageCount]);
@@ -88,7 +91,7 @@ function Panel({  category}) {
     console.log("v:", category.imageUrl);
     //let image = category.imageUrl;
     
-    const image = categoriesMap['hats'][imageCount].imageUrl;
+    const image = categoriesMap[string1][imageCount].imageUrl;
 
     const updated = [...panelArray, image];
 
@@ -107,35 +110,7 @@ function Panel({  category}) {
   }
   
 
-/*
 
-  //uses props
-  let {imageUrl} = categoriesMap["hats"];
-  console.log("img", categoriesMap["hats"][0]);
-
-
-  const addProductToCart = (category) => {
-    
-    console.log("v:", category.imageUrl);
-    let image = category.imageUrl;
-    
-    const updated = [...panelArray, image];
-
-    
-      setpanelArray(previous => [...previous, image]) 
-    console.log("p ", panelArray);
-    
-    
-    //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
-    
-    filteredarray[imageCount] = image;
-    imageCount++;
-    console.log("fa: ", filteredarray);
-    
-    
-  }
-  
-  */
   
 
 

@@ -16,7 +16,7 @@ const Category = ({}) => {
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
    
-  console.log("category :", category);
+  console.log("category :", categoriesMap.title);
 
 
     useEffect(() => {
@@ -90,6 +90,8 @@ const Category = ({}) => {
     },
   ];
   */
+    //alert(categoriesMap[0])
+    console.log("catego: ", categoriesMap);
     return (
 
         
