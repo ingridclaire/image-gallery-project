@@ -52,9 +52,11 @@ const Directory = () => {
             
             
           {categories.map((category) => (
-              <Link to= '/category/womens'>
+              
+              
+              
               <Images1 key={category.id} category={category} />
-              </Link>
+              
             ))}
             
             

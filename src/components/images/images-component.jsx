@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 import { Body, img, images ,DirectoryItemContainer }  from './images-styles';
 
@@ -17,9 +17,13 @@ const Images1 = ({category}) => {
         
         <DirectoryItemContainer onClick={onNavigateHandler}>
              <Body>
-            <h2></h2>
-            <div className = "images">
-                <img src={imageUrl} alt={``} width={ 60} />
+                <h2>ab</h2>
+               
+                    <div className="images">
+
+                    <Link to= '/category/womens'>     
+                        <img src={imageUrl} alt={``} width={60} />
+                    </Link>
             </div>
                 
             </Body>
