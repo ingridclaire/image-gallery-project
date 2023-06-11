@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import { NavigationContainer, button, DropDown } from "./navigation-styles"
+import { Outlet, Link } from "react-router-dom";
+import { NavigationContainer, button, DropDown, NavLink } from "./navigation-styles"
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 const Navigation = () => {
@@ -20,6 +20,9 @@ const Navigation = () => {
         <h2>Photography Show</h2>
           <button className="buttonShow" onClick={() => { setShowPanel((showPanel) => !showPanel) }}>Show Panel</button>
           
+          <div class = "visited">
+            <NavLink to="/" linkStyle={{ color: 'yellow' }} >Home Page</NavLink>
+          </div>
             {showPanel && <DropDown/>}
             
         <Outlet/>

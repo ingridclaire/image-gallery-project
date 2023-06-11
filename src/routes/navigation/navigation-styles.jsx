@@ -1,4 +1,41 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+
+
+export const NavLink = styled(Link)`
+
+
+
+
+font-size: .4rem;
+
+color:gray;
+cursor: pointer;
+
+&link{
+
+  color gray;
+  
+}
+&:visited{
+  color:blue;
+}
+
+&:hover{
+  color: red;
+}
+
+&:active{
+  color:yellow;
+}
+
+
+
+
+
+`;
+
 
 export const NavigationContainer = styled.div`
 
@@ -7,16 +44,51 @@ export const NavigationContainer = styled.div`
 font-size:10px;
   
   button{
-    font-size:.3rem;
+    font-size:.4rem;
     
+  }
+
+  
+
   }
 
   
 
 `;
 
-export const DropDown = styled.div`
 
+
+/*
+export const TheLink = styled.link`
+
+
+
+
+color: yellowLink jav;
+  font-size: .5rem;
+  color:black;
+  background-color:red;
+  
+  &:visited{
+    color:yellow;
+  }
+
+  &:hover{
+    color: white;
+  }
+
+  &.active {color:purple;}
+
+
+  .redirect{
+  
+    color:yellow;
+  }
+
+
+`;
+*/
+export const DropDown = styled.div`
 
 
 
@@ -40,3 +112,6 @@ overflow-y:scroll;
   
 
 }`
+
+
+
