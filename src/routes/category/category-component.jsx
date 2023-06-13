@@ -11,12 +11,18 @@ const Category = ({}) => {
    
   let { category } = useParams();
   
-    //console.log("ca: ",category);  
+    console.log("ca: ", { category });  
   //category = "hats";
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
    
   console.log("category :", categoriesMap.title);
+
+
+    //const searchTerm = "hats";
+    //const categoriesMapWithHat = categoriesMap.find(category => category.title.includes(searchTerm));
+    //const title = categoriesMapWithHat.title;
+    //alert("title: ", title);
 
 
     useEffect(() => {
@@ -109,8 +115,8 @@ const Category = ({}) => {
           products.map((product) => (
              
               <div>
-              <PhotoImages1 key={product.id} category={product} />
-                  <Panel key={product.id} category={product} />
+              <PhotoImages1 key={product.name} category={product} />
+                  <Panel key={product.imageUrl} category={product} />
                   </div>
            
              

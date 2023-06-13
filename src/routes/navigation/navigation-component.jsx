@@ -20,8 +20,8 @@ const Navigation = () => {
         <h2>Photography Show</h2>
           <button className="buttonShow" onClick={() => { setShowPanel((showPanel) => !showPanel) }}>Show Panel</button>
           
-          <div class = "visited">
-            <NavLink to="/" linkStyle={{ color: 'yellow' }} >Home Page</NavLink>
+          <div className = "visited">
+            <NavLink to="/"  >Home Page</NavLink>
           </div>
             {showPanel && <DropDown/>}
             

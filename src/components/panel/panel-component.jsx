@@ -34,12 +34,13 @@ let filteredarray = [null];
 
 
 let imageCount = 0;
+let show = null;
 
 //  id name imageUrl price
-function Panel({  category, id}) {
+function Panel({  category}) {
 
 
-  //console.log("id: ", { id });
+  console.log("category2: ", { category });
   //let string1 =  "hats" ;
 
   let string1 = "hats";
@@ -51,9 +52,9 @@ function Panel({  category, id}) {
 
   
   
+  console.log("a: ", category);
   
   
-  const { change, setChange } = useState;
 
   
 
@@ -78,17 +79,55 @@ function Panel({  category, id}) {
   let forceUpdate = useForceUpdate(); 
 
 
-  let { imageUrl } = category;
-  
+  let { imageUrl, price, name, id } = category;
+  let index1 = 0;
 
   //console.log("img", categoriesMap["hats"][imageCount]);
 
 
+  const [change, setChange] = useState(0);
+  
 
+  //https://codesandbox.io/s/bitter-meadow-rl8vx?file=/src/App.js:0-1002
+  const deleteComponent = (category) =>{
+
+    
+
+    alert("id1: ", imageUrl);
+
+   // let { a }  = category.id 
+
+    console.log("xx: ", id);
+
+  
+    alert("id2: ",id );
+
+    
+
+    filteredarray[0] = "";
+   // map
+
+   // {
+   //   filteredarray &&
+   //   filteredarray.map((product) => (
+   //     filteredarray[0] = ""
+  //))}
+
+    
+    filteredarray[0] = null;
+    //filteredarray[imageCount] = imageUrl;
+    setChange(change+1);
+    
+    //imageCount++;
+  };
+  
+  
+  
   //uses context
   const addProductToCart = (category) => {
     
     console.log("v:", category.imageUrl);
+    alert("z: ", imageUrl);
     //let image = category.imageUrl;
     
     //const image = categoriesMap[string1][imageCount].imageUrl;
@@ -124,15 +163,13 @@ function Panel({  category, id}) {
   
   useEffect(() => {
 
+    show = true;
     
-    console.log("xx: ", panelArray);
-    
-      
  
-    forceUpdate();
+    //forceUpdate();
     
   
-  }, [panelArray]);
+  }, [filteredarray]);
 
   
   
@@ -150,9 +187,11 @@ function Panel({  category, id}) {
 
   
   
+  
+  
   return (
 
-    
+   
       <div>
 
       <div>
@@ -174,13 +213,22 @@ changing props to
 
             
 
-            <h1>1</h1>
+            <h1>{category.id}</h1>
       
             {filteredarray &&
-          filteredarray.map((product) => (
+              filteredarray.map((product) => (
+            
+
              
-              <div>
-              <Image key={product} imageUrl = {product} />
+              <div>how 
+              <Image key={product} imageUrl={product} />
+              
+              
+
+              
+              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(category)}>Delete Component</button>}
+              
+
                   
                   </div>
            
@@ -220,6 +268,7 @@ changing props to
         
 
         <button onClick={() => addProductToCart(category)}>Button</button>
+        <button onClick={() => deleteComponent(category)}>Button- delete</button>
         
         
 

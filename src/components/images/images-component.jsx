@@ -21,9 +21,9 @@ const Images1 = ({category}) => {
                
                     <div className="images">
 
-                    <Link to= '/category/womens'>     
+                         
                         <img src={imageUrl} alt={``} width={60} />
-                    </Link>
+                    
             </div>
                 
             </Body>
