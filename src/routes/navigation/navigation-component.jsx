@@ -17,7 +17,7 @@ const Navigation = () => {
         
         
       <div className= "photo">
-        <h2>Photography Show</h2>
+        <h2>Veiw these Photographs:</h2>
           <button className="buttonShow" onClick={() => { setShowPanel((showPanel) => !showPanel) }}>Show Panel</button>
           
           <div className = "visited">
@@ -27,12 +27,7 @@ const Navigation = () => {
             
         <Outlet/>
             
-        {createPortal(
-        <p>testing portal.</p>,
-        document.body
-        )}
-            
-            
+        
         
         </div>
         

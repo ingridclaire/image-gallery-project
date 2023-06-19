@@ -113,53 +113,16 @@ function Panel({  category}) {
 
 
     console.log("iU:  ", filteredarray);
-    //alert("id2: ",id );
-
     
-
-    //filteredarray[id] = "";
-    // map
-
-    //id equal, remove form array
-
-
-    //removed brown brim, id 1 
-    //filtered 2 is in array
-    //const filteredarray1 = filteredarray.filter(filteredarray => filteredarray.id !== 2); 
-    
-    
-    //none
-    //const filteredarray1 = filteredarray.filter(filteredarray => filteredarray.id == 2);
 
     console.log("imageUrl!:  ", imageUrl);
     
     //beanie 
     //remove one match
   filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
-    //let filteredarray2 = filteredarray1.filter(v => v);
-    //console.log("id", id)
-    //let filterd = (filteredarray.filter((filt) => filt.id === id ))
-
-    //for (let i = 0; i < filteredarray1.length; i++)
-    {
-      //filteredarray[i] = filteredarray1[i]
-      }
-
-
+    
     console.log("fA: ", filteredarray);
-    //console.log("filter: ", filterd);
-
-
-   // {   //   filteredarray &&
-   //   filteredarray.map((product) => (
-   //     filteredarray[0] = ""
-  //))}
-
     
-    //filteredarray[0] = null;
-    
-    
-    //filteredarray[imageCount] = imageUrl;
     setChange(change+1);
     
     //imageCount++;
@@ -192,17 +155,6 @@ function Panel({  category}) {
     
   }
   
-
-
-  
-
-
-  
-
-  
- console.log("URL: ", imageUrl);
-
-  
   
   
   useEffect(() => {
@@ -215,23 +167,7 @@ function Panel({  category}) {
   
   }, [filteredarray]);
 
-  
-  
-  console.log("url: ", imageUrl);
-  console.log("panel: ", panelArray);
-  console.log("cat: ", category);
-
-  console.log("*: ", category.imageUrl);
-  
-  //{panelArray.filter(person => person.includes(category.imageUrl)).map((person) => (
-  //  <Image imageUrl={person} />
-  //
-  //  ))}
  
-
-  
-  
-  
   
   return (
 
@@ -239,9 +175,7 @@ function Panel({  category}) {
       <div>
 
       <div>
-        hhha
-
-changing props to 
+        
 
         
         <DropDown id="id1">
@@ -253,18 +187,18 @@ changing props to
 
 
 
-            aaa{count++}  times clicked
+          {count++}
 
             
 
-            <h1>{category.id}</h1>
+           
       
             {filteredarray &&
               filteredarray.map((product) => (
             
 
              
-              <div>how 
+              <div>
               <Image key={product} imageUrl={product} />
               
               
@@ -312,7 +246,7 @@ changing props to
         
 
         <button onClick={() => addProductToCart(category)}>Button</button>
-        <button onClick={() => deleteComponent(category)}>Button- delete</button>
+       
         
         
 

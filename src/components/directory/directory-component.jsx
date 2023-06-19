@@ -9,19 +9,19 @@ const categories = [
     {
       id: 1,
       name: 'Al',
-      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
       route: 'category/hats',
     },
     {
       id: 2,
       name: 'Debbie',
-      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+      imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
       route: 'category/jackets',
     },
     {
       id: 3,
       name: 'Joe',
-      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
       route: 'category/sneakers',
     },
     {

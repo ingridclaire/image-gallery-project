@@ -10,7 +10,7 @@ const Home = () => {
         
         
         <div>
-        <h4>Home</h4>    
+        
         <Directory/>
         
        

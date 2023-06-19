@@ -8,7 +8,7 @@ const Image = ({ imageUrl }) => {
         <div>
         
         <img src={imageUrl} alt={``} width={90} />
-        testreact co
+        
             
             </div>
     );

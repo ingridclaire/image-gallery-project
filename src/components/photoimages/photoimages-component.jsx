@@ -11,26 +11,18 @@ import { createPortal } from 'react-dom'
 //react onclick event in functional coomponent
 
 const PhotoImages1 = ({ category }) => {
-  console.log("!", category);
-  const { id, imageUrl, name} = category;
+  
+  const { id, imageUrl, name, price} = category;
     const navigate = useNavigate();
 
-    
-  
-  //const onNavigateHandler = () => navigate(route);
-
-    //alert(imageUrl);
-    
-  //const Portal = usePortal(document.querySelector(".photo"));
-  //************************************ */
-  //<DropDown id="id1" >test11</DropDown> on line 35
+   
   
     return (
         
         <div>
       <div id='drop'>
 
-          hhh{id}
+          {id}
       
         
         </div>
@@ -41,12 +33,13 @@ const PhotoImages1 = ({ category }) => {
 
         
         <div>
-          jj
-        <h2>{name}</h2>
+          
+          <h2>{name}</h2>
+          <h3>${price}.00</h3>
           <div className="images">
             
 
-            re
+            
           <img src={imageUrl} alt={``} width={90} />
           
         </div>
