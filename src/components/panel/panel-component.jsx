@@ -1,5 +1,3 @@
-
-
 import { createPortal } from 'react-dom'
 import { DropDown } from "./panel-styles"
 
@@ -89,32 +87,78 @@ function Panel({  category}) {
   
 
   //https://codesandbox.io/s/bitter-meadow-rl8vx?file=/src/App.js:0-1002
-  const deleteComponent = (category) =>{
+  const deleteComponent = (product) => {
+
+    console.log("** ", product)
+
+    //alert("id1: ", imageUrl);
+
+    // let { a }  = category.id 
 
     
 
-    alert("id1: ", imageUrl);
+    for (let i = 0; i < 2; i++)
+    {
+      console.log("1z ",filteredarray[1]);
+      console.log("2z ", id);
+      console.log("3z ", imageUrl);
 
-   // let { a }  = category.id 
+      if (filteredarray[0].id === i)
+      {
+        alert("jackpot!");
+        }
+        
 
-    console.log("xx: ", id);
+    }
 
-  
-    alert("id2: ",id );
+
+    console.log("iU:  ", filteredarray);
+    //alert("id2: ",id );
 
     
 
-    filteredarray[0] = "";
-   // map
+    //filteredarray[id] = "";
+    // map
 
-   // {
-   //   filteredarray &&
+    //id equal, remove form array
+
+
+    //removed brown brim, id 1 
+    //filtered 2 is in array
+    //const filteredarray1 = filteredarray.filter(filteredarray => filteredarray.id !== 2); 
+    
+    
+    //none
+    //const filteredarray1 = filteredarray.filter(filteredarray => filteredarray.id == 2);
+
+    console.log("imageUrl!:  ", imageUrl);
+    
+    //beanie 
+    //remove one match
+  filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
+    //let filteredarray2 = filteredarray1.filter(v => v);
+    //console.log("id", id)
+    //let filterd = (filteredarray.filter((filt) => filt.id === id ))
+
+    //for (let i = 0; i < filteredarray1.length; i++)
+    {
+      //filteredarray[i] = filteredarray1[i]
+      }
+
+
+    console.log("fA: ", filteredarray);
+    //console.log("filter: ", filterd);
+
+
+   // {   //   filteredarray &&
    //   filteredarray.map((product) => (
    //     filteredarray[0] = ""
   //))}
 
     
-    filteredarray[0] = null;
+    //filteredarray[0] = null;
+    
+    
     //filteredarray[imageCount] = imageUrl;
     setChange(change+1);
     
@@ -127,7 +171,7 @@ function Panel({  category}) {
   const addProductToCart = (category) => {
     
     console.log("v:", category.imageUrl);
-    alert("z: ", imageUrl);
+    //alert("z: ", imageUrl);
     //let image = category.imageUrl;
     
     //const image = categoriesMap[string1][imageCount].imageUrl;
@@ -226,7 +270,7 @@ changing props to
               
 
               
-              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(category)}>Delete Component</button>}
+              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product)}>Delete Component</button>}
               
 
                   
