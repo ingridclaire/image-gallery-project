@@ -13,6 +13,8 @@ width:7rem;
 height: 7rem;
 background-color:grey;
 display: flex;
+justify-content:center;
+
 right:0px;
 top:0px;
 position: absolute;

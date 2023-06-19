@@ -4,6 +4,8 @@
 const Image = ({ imageUrl }) => {
 
     
+    console.log("1: ", imageUrl);
+
     return (
         <div>
         

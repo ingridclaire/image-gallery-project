@@ -7,12 +7,11 @@ import Panel from '../../components/panel/panel-component'
 
 const Category = ({}) => {
 
-   // log.console("cat", {category});
+   
    
   let { category } = useParams();
   
-    console.log("ca: ", { category });  
-  //category = "hats";
+    
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
    

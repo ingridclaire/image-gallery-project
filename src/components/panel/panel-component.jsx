@@ -199,7 +199,7 @@ function Panel({  category}) {
 
              
               <div>
-              <Image key={product} imageUrl={product} />
+              <Image key={product} category={imageUrl} />
               
               
 
