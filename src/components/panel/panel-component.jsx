@@ -24,6 +24,7 @@ function useForceUpdate() {
   return () => setValue(!value);
 }
 
+
 //search button, call function
 //for category derefernce
 //Cookie cut each one with a button
