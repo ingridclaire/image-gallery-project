@@ -17,7 +17,7 @@ const Images1 = ({category}) => {
         
         <DirectoryItemContainer onClick={onNavigateHandler}>
              <Body>
-                
+                <h2>ab</h2>
                
                     <div className="images">
 

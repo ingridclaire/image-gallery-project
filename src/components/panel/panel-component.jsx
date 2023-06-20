@@ -9,6 +9,7 @@ import { CartContext } from '../../contexts/cart-context';
 import { PanelContext } from '../../contexts/panel-context';
 import PhotoImages1 from '../../components/photoimages/photoimages-component'
 import Image from '../../components/image/image-component'; 
+import {body} from '../../components/image/image-styles';
 
 let count = false;
 

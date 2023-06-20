@@ -11,15 +11,18 @@ font-size:10px;
 
 width:7rem;
 height: 7rem;
-background-color:grey;
+background-color:#F8F0e3;
 display: flex;
-right:0px;
-top:0px;
+justify-content:center;
+
+right:12px;
+top:12px;
 position: absolute;
 z-index: 2;
-border-radius: 1rem;
+
 overflow-y:scroll;
 overflow-x:scroll;
+
 
 
 
