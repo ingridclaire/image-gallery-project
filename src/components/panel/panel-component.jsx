@@ -199,6 +199,11 @@ function Panel({  category}) {
 
   useEffect(() => {
 
+
+    setTodos((prevState) => ({ ...prevState, value1: false }))
+    setTodos((prevState) => ({ ...prevState, value2: false }))
+    setTodos((prevState) => ({ ...prevState, value3: false }))
+    setTodos((prevState) => ({ ...prevState, value4: false }))
    
 
 
@@ -249,10 +254,10 @@ function Panel({  category}) {
       //alert("called");
   function getStars(event) {
 
-    setTodos((prevState) => ({ ...prevState, value1: "new1" }))
-    setTodos((prevState) => ({ ...prevState, value2: "new2" }))
-    setTodos((prevState) => ({ ...prevState, value3: "new3" }))
+   
 
+
+    console.log("td2: ", todos.value1);
    
   
     //handleAdd()
@@ -261,108 +266,81 @@ function Panel({  category}) {
     //this.setHolder(hold => ({ arrayvar: [...hold.arrayvar, "true"] }))
 
     //checked = true;
-    //let id = event.target.id;
-    
-    //let isChecked = event.target.checked;
+    let id = event.target.id;
+    console.log("5: ", id);
+    let isChecked = event.target.checked;
 
     //setHolder('d');
 
+    //if (id == 0) {
+    if (id === '0') {
+      if (todos.value1 == false) {
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        amtStars = amtStars + 1;
+      }
+    
+      else {
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        amtStars = amtStars - 1;
+      }
+    
+    }
+
+    if (id === '1') {
+      if (todos.value2 == false) {
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        amtStars = amtStars + 1;
+      }
+    
+      else {
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        amtStars = amtStars - 1;
+      }
+    
+    }
+
+
+    if (id === '2') {
+      if (todos.value3 == false) {
+        setTodos((prevState) => ({ ...prevState, value3: true }))
+        amtStars = amtStars + 1;
+      }
+    
+      else {
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        amtStars = amtStars - 1;
+      }
+    
+    }
+
+    if (id === '3') {
+      if (todos.value4 == false) {
+        setTodos((prevState) => ({ ...prevState, value4: true }))
+        amtStars = amtStars + 1;
+      }
+    
+      else {
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        amtStars = amtStars - 1;
+      }
+    
+    }
+
     
 
 
-    
 
-    //setHold(hold => [...hold, "foo"])
-    //
-    //setHolder(pervious => [...pervious, "foo"])
 
-    //const newState = [...hold, 'hello'];
-    
-    //setHold([...hold , "foo"]); 
-    //console.log("ho: ", holder);
+    console.log("v1: ", todos.value1);
+
 
     
-    //console.log("co: ", isChecked);
-    //console.log("id: ", id);
-    //amtStars = 0;
-    //for (let i = 0; i < 4; i++){
-      //if (holdsStars[i] === true) {
-       
-        //console.log("hs: ", holdsStars);
 
-       
-      //  amtStars = amtStars + 1;
-      //}
     
-      //console.log("h: ", holder);
   
   }
 
     
-    //amtStars = 2;
-    //alert("a");
-    
-
-    //set checked true to a value
-
-    //data[isChecked] = isChecked;
-  
-
-    //is true
-    //console.log("is: ",isChecked);
-
-    
-
-    //if (isChecked == true) {
-    //  setData([isChecked], true); 
-    //}
-
-    //if (isChecked == true) {
-  
-    //setData([{ id: 0, checked: true }]); 
-    //console.log("dataq ", data);
-
-    
-
-    //console.log("array: ", array1);
-   
-    //setChecked(!check);
-
-
-
-
-    //setData((data) => [...data,
-    //{
-    //  id: 5,
-    //  checked: true,
-    //},
-    //]);
-    
-    
-      
-    
-    
-    
-    //setData([{ id: 6, checked: 'true' }])
-    // const theString = [{id: 5, isChecked: 'C'}]
-
-    //console.log("data: ", data);
-    
-
-    //console.log("data: ", theString);
-
-
-    
-   // console.log("data: ",  data);
-   
-      
-
-    //this.setState({
-    //  data: this.state.data.map(el => (el.id === id ? Object.assign({}, el, { amtStars }) : el))
-    //});
-    
-  //}
-  ////////
   
   
   return (
