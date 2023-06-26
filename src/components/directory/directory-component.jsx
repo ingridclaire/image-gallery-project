@@ -4,6 +4,9 @@ import categories1 from '../../photo-data';
 import Images1 from '../images/images-component'; 
 import { DirectoryContainer } from '../directory/directory-styles';
 
+import { useContext, useState, useEffect } from 'react';
+import { checkActionCode } from 'firebase/auth';
+
 
 const categories = [
     {
@@ -38,18 +41,52 @@ const categories = [
     },
   ];
 
+
+  
+let checkedComponent = "react multiple";
+  
 const Directory = () => {
 
+  
+    
+      
+    
+    
+    
+    
+  
+
+    /*
+    if (e.target.checked && !this.state.radioButton) {
+      this.setState({
+        radioButton: true,
+      })
+    } else if (e.target.checked && this.state.radioButton) {
+      this.setState({
+        radioButton: false,
+      })
+    }
+  }
+  */
+    
+
+
+  let count = 0;
+
+    
     
     return (
 
-        
+    
         
         
       <div>
         
+        
         <DirectoryContainer>
             
+        
+          
             
           {categories.map((category) => (
               
