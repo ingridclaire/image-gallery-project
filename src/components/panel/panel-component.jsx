@@ -236,7 +236,7 @@ function Panel({  category}) {
   
 
     console.log("td1: ", todos);
-    
+    console.log("td2: ", todos.value1);
   
 
   
@@ -249,9 +249,11 @@ function Panel({  category}) {
       //alert("called");
   function getStars(event) {
 
-    setTodos((prevState) => ({ ...prevState, 1: "new1" }))
-    setTodos((prevState) => ({ ...prevState, 2: "new2" }))
-    setTodos((prevState) => ({ ...prevState, 3: "new3" }))
+    setTodos((prevState) => ({ ...prevState, value1: "new1" }))
+    setTodos((prevState) => ({ ...prevState, value2: "new2" }))
+    setTodos((prevState) => ({ ...prevState, value3: "new3" }))
+
+   
   
     //handleAdd()
     //setstate handleAdd('b')
