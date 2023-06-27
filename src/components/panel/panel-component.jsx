@@ -20,11 +20,11 @@ let amtStars = 0;
 function useForceUpdate() { 
 
   //alert("useforce");
-  const [value, setValue] = useState(false)
+  //const [value, setValue] = useState(false)
 
   
 
-  return () => setValue(!value);
+  //return () => setValue(!value);
 }
 
 
@@ -40,7 +40,7 @@ let imageCount = 0;
 let show = null;
 
 //  id name imageUrl price
-function Panel({  category}) {
+function Panel({ category }) {
 
 
   console.log("category2: ", { category });
@@ -48,8 +48,8 @@ function Panel({  category}) {
 
   let string1 = "hats";
 
-  let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray} = useContext(PanelContext);
-;
+  let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
+  ;
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[string1]);
   const [holder, setHolder] = useState('a')
@@ -71,7 +71,7 @@ function Panel({  category}) {
 
   
 
- // const imageUrl = { category };
+  // const imageUrl = { category };
   
   //console.log("i", category);
   //console.log(category.imageUrl);
@@ -81,7 +81,7 @@ function Panel({  category}) {
   //let value = category.imageUrl;
   
   
-  let forceUpdate = useForceUpdate(); 
+  let forceUpdate = useForceUpdate();
 
 
   let { imageUrl, price, name, id } = category;
@@ -104,16 +104,14 @@ function Panel({  category}) {
 
     
 
-    for (let i = 0; i < 2; i++)
-    {
-      console.log("1z ",filteredarray[1]);
+    for (let i = 0; i < 2; i++) {
+      console.log("1z ", filteredarray[1]);
       console.log("2z ", id);
       console.log("3z ", imageUrl);
 
-      if (filteredarray[0].id === i)
-      {
+      if (filteredarray[0].id === i) {
         alert("jackpot!");
-        }
+      }
         
 
     }
@@ -126,11 +124,13 @@ function Panel({  category}) {
     
     //beanie 
     //remove one match
-  filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
+    filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
     
     console.log("fA: ", filteredarray);
     
-    setChange(change+1);
+  console.log("prod: ", product )  
+    
+    setChange(change + 1);
     
     //imageCount++;
   };
@@ -140,75 +140,71 @@ function Panel({  category}) {
   //uses context
   const addProductToCart = (category) => {
     
-    //console.log("h: ", hold);
 
-    console.log("v:", category.imageUrl);
+
+    const newState = [...panelArray, 'hello'];
+    
+    setpanelArray(newState);
+
+
+    
+    const uid = 1;
+
+
+    //let obj = {
+    //  id: "1",
+    //  imageUrl: "imageUrl"
+    //}
+
+    //setpanelArray([...panelArray, obj]);
+
+    
+    //const newState = setpanelArray [...panelArray, obj; 
+
+
+    console.log("pA: ", panelArray);
+    
+    //setpanelArray(newState);
+      
+      
+    
+    //console.log("x: ", newState);
+
+
+    
+
+    console.log("v:", category);
     //alert("z: ", imageUrl);
     //let image = category.imageUrl;
     
     //const image = categoriesMap[string1][imageCount].imageUrl;
 
-    const updated = [...panelArray, imageUrl];
+    ////const updated = [...panelArray, imageUrl];
 
     
-      setpanelArray(previous => [...previous, imageUrl]) 
+    //setpanelArray(previous => [...previous, imageUrl])
     console.log("p ", panelArray);
     
     
     //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
     
+    //check for duplicate, if found remove original 
+    // category id with 
     filteredarray[imageCount] = imageUrl;
     imageCount++;
+
+
+
     console.log("fa: ", filteredarray);
     
     
-  }
+  };
 
 
-  const [data , setData] = useState([
-    {
-      id: 0,
-      checked: false,
-      
-    },
-    {
-      id: 1,
-      checked: false,
-    },
-
-    {
-      id: 2,
-      checked: false,
-    },
-
-    {
-      id: 3,
-      checked: false,
-    },
-
-    {
-      id: 4,
-      checked: false,
-    }
-
-
-
-  ]);
   
   
 
-  useEffect(() => {
-
-
-    setTodos((prevState) => ({ ...prevState, value1: false }))
-    setTodos((prevState) => ({ ...prevState, value2: false }))
-    setTodos((prevState) => ({ ...prevState, value3: false }))
-    setTodos((prevState) => ({ ...prevState, value4: false }))
-   
-
-
-  }, [])
-
+  
   useEffect(() => {
 
     show = true;
@@ -233,12 +229,36 @@ function Panel({  category}) {
  
   const [stars, setStars] = useState([])
 
-  const [check, setChecked] = useState([])
+  //const [checked, setChecked] = useState([])
   
-  const [todos, setTodos] = useState({});
+  const [todos, setTodos] = useState(true,true,true,true);
   //setStars();
   
   
+
+  useEffect(() => {
+
+    
+
+  }, [todos])
+
+
+  
+  
+
+  useEffect(() => {
+
+
+    setTodos((prevState) => ({ ...prevState, value1: false }))
+    setTodos((prevState) => ({ ...prevState, value2: false }))
+    setTodos((prevState) => ({ ...prevState, value3: false }))
+  setTodos((prevState) => ({ ...prevState, value4: false }))
+  
+   
+
+
+  }, [])
+
 
     console.log("td1: ", todos);
     console.log("td2: ", todos.value1);
@@ -247,16 +267,20 @@ function Panel({  category}) {
   
   
   
-  let checked = false;
+  //let checked = true;
   
   
  
+  
       //alert("called");
   function getStars(event) {
 
    
+    //let myArray = [test, test2];
+    //myArray[1].married = true;
 
 
+    //setChecked(false);
     console.log("td2: ", todos.value1);
    
   
@@ -265,7 +289,7 @@ function Panel({  category}) {
     
     //this.setHolder(hold => ({ arrayvar: [...hold.arrayvar, "true"] }))
 
-    //checked = true;
+    
     let id = event.target.id;
     console.log("5: ", id);
     let isChecked = event.target.checked;
@@ -277,11 +301,14 @@ function Panel({  category}) {
       if (todos.value1 == false) {
         setTodos((prevState) => ({ ...prevState, value1: true }))
         amtStars = amtStars + 1;
+        //alert("here1");
+        
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value1: false }))
         amtStars = amtStars - 1;
+        //alert("here2");
       }
     
     }
@@ -327,19 +354,21 @@ function Panel({  category}) {
     }
 
     
+    alert("made it!");
+
+    setValue(!value);
+    
 
 
-
-
-    console.log("v1: ", todos.value1);
+    //console.log("v1: ", todos.value1);
 
 
     
-
-    
+ 
   
   }
 
+ 
     
   
   
@@ -352,7 +381,11 @@ function Panel({  category}) {
         
 
         
-      
+      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={(event) => getStars(event)} />}
+                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={(event) => getStars(event)} />}
+                    {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onClick={(event) => getStars(event)} />}
+        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => getStars(event)} />}
+        
         
         <DropDown id="id1">
           <div className="images">
@@ -372,11 +405,12 @@ function Panel({  category}) {
           
             
 
-           
+          
       
             {filteredarray &&
               filteredarray.map((product) => (
             
+                
 
              
               <div>
@@ -384,12 +418,10 @@ function Panel({  category}) {
                   <Stars key={product} amtStars={amtStars} />
               
                   
+                  
                   <div>
               
-                    {show && <input id="0" checked={checked} type="checkbox" name="1" onClick={getStars} />}
-                    {show && <input id="1" checked={checked} type="checkbox" name="2" onClick={(event) => getStars(event)} />}
-                    {show && <input id="2" checked={checked} type="checkbox" name="3" onClick={(event) => getStars(event)} />}
-                    {show && <input id="3" checked={checked} type="checkbox" name="4" onClick={(event) => getStars(event)} />}
+                    
                     {show && <p>this is a test </p>}{amtStars}
                     
 

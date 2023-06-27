@@ -4,10 +4,12 @@ const addCartItem = (productToAdd) => {
   return [productToAdd];
 };
   
+
+// setpanelArray: () => { [{ id: '', imagereac: ''}] },//
 export const PanelContext = createContext({
   panelArray: [],
   addItemToCart: () => { },
-  setpanelArray: () => { },
+  setpanelArray: () => {},
 
 });
 
