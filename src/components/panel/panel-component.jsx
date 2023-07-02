@@ -142,10 +142,37 @@ function Panel({ category }) {
     
 
 
+    ////////////////////
+
+
+    console.log("cat: ", category);
+
+    console.log("v1:", panelArray);
+   // const handleDelete = ({ id }) => ( setpanelArray)(todos.filter((todo) => panelArray.id === category.id) )
+    //const handleDelete = ({ id }) =>
+    //this.todos = this.todos.filter((panelArray) => panelArray.id !== category.id)
+   // const hd = ({ id }) => { setTodos(todos => todos.filter((panelArray) => panelArray.id !== category.id)) };
+    
+    //const filtered = panelArray.filter(panel => { return panelArray.id === 1;})
+
+    console.log("v2:", panelArray);
+   // console.log("z: ", handleDelete);
+
+    ///////////////////////
+
+    
     let obj = {
-        id: "1",
-        imageUrl: "imageUrl",
-      }
+        id: category.id,
+      imageUrl: category.imageUrl,
+      
+    }
+    
+
+    
+    
+
+
+    console.log("p : ", category);
 
 
     panelArray = [...panelArray, obj];
@@ -153,50 +180,25 @@ function Panel({ category }) {
     setpanelArray(panelArray);
 
 
-    console.log("pA: ", panelArray);
-    
-    const uid = 1;
 
-
-    //let obj = {
-    //  id: "1",
-    //  imageUrl: "imageUrl"
-    //}
-
-    //setpanelArray([...panelArray, obj]);
-
-    
-    //const newState = setpanelArray [...panelArray, obj; 
-
-
+    //Before filter that will remove any duplicates
+    console.log("1: ", panelArray);
     
     
-    //setpanelArray(newState);
-      
-      
+
+    console.log("test", test);
+    panelArray = panelArray.filter(panel => { return ((panel.id) != category.id)})
     
-    //console.log("x: ", newState);
+
+    console.log("2: ", panelArray);
+    
+    /////////////////////////
 
 
     
 
     console.log("v:", category);
-    //alert("z: ", imageUrl);
-    //let image = category.imageUrl;
     
-    //const image = categoriesMap[string1][imageCount].imageUrl;
-
-    ////const updated = [...panelArray, imageUrl];
-
-    
-    //setpanelArray(previous => [...previous, imageUrl])
-    console.log("p ", panelArray);
-    
-    
-    //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
-    
-    //check for duplicate, if found remove original 
-    // category id with 
     filteredarray[imageCount] = imageUrl;
     imageCount++;
 
