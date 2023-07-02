@@ -142,11 +142,18 @@ function Panel({ category }) {
     
 
 
-    const newState = [...panelArray, 'hello'];
+    let obj = {
+        id: "1",
+        imageUrl: "imageUrl",
+      }
+
+
+    panelArray = [...panelArray, obj];
     
-    setpanelArray(newState);
+    setpanelArray(panelArray);
 
 
+    console.log("pA: ", panelArray);
     
     const uid = 1;
 
@@ -162,7 +169,7 @@ function Panel({ category }) {
     //const newState = setpanelArray [...panelArray, obj; 
 
 
-    console.log("pA: ", panelArray);
+    
     
     //setpanelArray(newState);
       
