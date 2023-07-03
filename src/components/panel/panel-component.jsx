@@ -182,15 +182,16 @@ function Panel({ category }) {
 
 
     //Before filter that will remove any duplicates
-    console.log("1: ", panelArray);
+    console.log("1#: ", panelArray);
     
     
 
-    console.log("test", test);
-    panelArray = panelArray.filter(panel => { return ((panel.id) != category.id)})
+    //console.log("test", test);
+    panelArray = panelArray.filter(panel => { return ((panel.id) != 1)})
     
+    //panelArray = [null];
 
-    console.log("2: ", panelArray);
+    console.log("#2: ", panelArray);
     
     /////////////////////////
 
@@ -205,6 +206,10 @@ function Panel({ category }) {
 
 
     console.log("fa: ", filteredarray);
+
+
+    //panelArray= [null];
+    setValue(!value);
     
     
   };
@@ -397,6 +402,7 @@ function Panel({ category }) {
         
         
         <DropDown id="id1">
+          
           <div className="images">
 
 
@@ -416,15 +422,15 @@ function Panel({ category }) {
 
           
       
-            {filteredarray &&
-              filteredarray.map((product) => (
+            {panelArray &&
+              panelArray.map((product) => (
             
                 
 
              
               <div>
-                  <Image key={product} imageUrl={product} />
-                  <Stars key={product} amtStars={amtStars} />
+                  <Image key={product.id} imageUrl={product.imageUrl} />
+                  <Stars key={product.name} amtStars={amtStars} />
               
                   
                   
@@ -449,7 +455,9 @@ function Panel({ category }) {
                   
                   </div>
            
-             
+            
+                
+                
           ))}
             
 
@@ -480,11 +488,15 @@ function Panel({ category }) {
 
 
           </div>
+
+
+          
+
         </DropDown>
 
         
-
-        <button onClick={() => addProductToCart(category)}>Button</button>
+<button onClick={() => addProductToCart(category)}>Button</button>
+        
        
         
         
