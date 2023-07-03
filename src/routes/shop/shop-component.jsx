@@ -13,6 +13,7 @@ import { CategoriesContext } from '../../contexts/categories-context';
 
 
 
+
 let products2 = [
     {
         title: 'Hats',
@@ -81,14 +82,25 @@ const Shop = () => {
     
     return (
 
-
         
+       
         <Fragment>
             {
+
+
+                
+
+                
+                
+                
                 Object.keys(products2).map((title) => (
                 <Fragment key={title}>
                     <h2>{title}</h2>
-                    <PhotoContainer>
+                        <PhotoContainer>
+                            
+                        <div>
+                                
+            </div>
                         {products2[title].map((category) => (
                             <PhotoImages key={category.id} category={category} />
                         ))}

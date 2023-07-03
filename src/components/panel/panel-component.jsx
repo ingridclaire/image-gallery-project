@@ -11,7 +11,7 @@ import PhotoImages1 from '../../components/photoimages/photoimages-component'
 import Image from '../../components/image/image-component'; 
 import { body } from '../../components/image/image-styles';
 //import { Stars } from '../stars/stars-styles';
-import Stars from '../../components/stars/stars.component'
+import { Stars } from '../../components/stars/stars.component'
 
 let count = false;
 let amtStars = 0;
@@ -98,6 +98,14 @@ function Panel({ category }) {
 
     console.log("** ", product)
 
+
+   
+
+    
+
+
+
+
     //alert("id1: ", imageUrl);
 
     // let { a }  = category.id 
@@ -140,6 +148,7 @@ function Panel({ category }) {
   //uses context
   const addProductToCart = (category) => {
     
+    setStars(8);
 
 
 
@@ -243,7 +252,7 @@ function Panel({ category }) {
   const [value, setValue] = useState(false)
 
  
-  const [stars, setStars] = useState([])
+  const [stars, setStars] = useState(0)
 
   //const [checked, setChecked] = useState([])
   
@@ -291,6 +300,8 @@ function Panel({ category }) {
       //alert("called");
   function getStars(event) {
 
+    
+    
    
     //let myArray = [test, test2];
     //myArray[1].married = true;
@@ -318,12 +329,14 @@ function Panel({ category }) {
         setTodos((prevState) => ({ ...prevState, value1: true }))
         amtStars = amtStars + 1;
         //alert("here1");
+        setStars(amtStars);
         
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value1: false }))
         amtStars = amtStars - 1;
+        setStars(amtStars);
         //alert("here2");
       }
     
@@ -333,11 +346,13 @@ function Panel({ category }) {
       if (todos.value2 == false) {
         setTodos((prevState) => ({ ...prevState, value2: true }))
         amtStars = amtStars + 1;
+        setStars(amtStars);
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value2: false }))
         amtStars = amtStars - 1;
+        setStars(amtStars);
       }
     
     }
@@ -347,11 +362,13 @@ function Panel({ category }) {
       if (todos.value3 == false) {
         setTodos((prevState) => ({ ...prevState, value3: true }))
         amtStars = amtStars + 1;
+        setStars(amtStars);
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value3: false }))
         amtStars = amtStars - 1;
+        setStars(amtStars);
       }
     
     }
@@ -360,17 +377,19 @@ function Panel({ category }) {
       if (todos.value4 == false) {
         setTodos((prevState) => ({ ...prevState, value4: true }))
         amtStars = amtStars + 1;
+        setStars(amtStars);
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value4: false }))
         amtStars = amtStars - 1;
+        setStars(amtStars);
       }
     
     }
 
     
-    alert("made it!");
+    //alert("made it!");
 
     setValue(!value);
     
@@ -380,7 +399,7 @@ function Panel({ category }) {
 
 
     
- 
+    setStars(amtStars);
   
   }
 
@@ -418,7 +437,7 @@ function Panel({ category }) {
 
           {count++}
 
-          
+          {stars}
             
 
           
@@ -431,7 +450,7 @@ function Panel({ category }) {
              
               <div>
                   <Image key={product} imageUrl={product} />
-                  <Stars key={product} amtStars={amtStars} />
+                  
               
                   
                   

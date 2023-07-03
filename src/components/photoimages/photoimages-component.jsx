@@ -4,7 +4,8 @@ import  Panel  from "../panel/panel-component";
 
 import { createPortalcreate } from 'react-dom';
 import { usePortal } from "react-dom";
-import { createPortal } from 'react-dom'
+import { createPortal } from 'react-dom';
+import  Stars from "../stars/stars.component"
 
 
 
@@ -17,18 +18,20 @@ const PhotoImages1 = ({ category }) => {
 
    
   
+  
     return (
         
         <div>
       <div id='drop'>
 
+      
           {id}
       
         
         </div>
         
         
-      
+        <Stars></Stars>
         
 
         
@@ -38,7 +41,8 @@ const PhotoImages1 = ({ category }) => {
           <h3>${price}.00</h3>
           <div className="images">
             
-
+         
+        
             
           <img src={imageUrl} alt={``} width={90} />
           
