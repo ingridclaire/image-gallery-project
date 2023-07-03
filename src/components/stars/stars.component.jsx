@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 
 
 let amtStars = 0;
+
+
 const Stars = () => {
     
 

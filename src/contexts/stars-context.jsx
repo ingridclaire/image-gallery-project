@@ -1,19 +1,20 @@
 import { createContext, useState, useEffect } from 'react';
 
-export const CategoriesContext = createContext({
-    amtStars: {},
+export const AmtProviderContext = createContext({
+    fourStars:  0,
+    setFourStars: () => null,
 });
   
 
-export const CategoriesProvider = ({ children }) => {
-    const [stars, setStars] = useState({});
+export const AmtProvider = ({ children }) => {
+    const [fourStars, setFourStars] = useState(0);
   
     
-    const value = { stars };
+    const value = { fourStars, setFourStars };
     return (
-        <CategoriesContext.Provider value={value}>
+        <AmtProviderContext.Provider value={value}>
             {children}
-        </CategoriesContext.Provider>
+        </AmtProviderContext.Provider>
     );
     
 };
