@@ -1,0 +1,77 @@
+
+  //uses context
+  const addProductToCart = (category) => {
+    
+
+
+    ////////////////////
+
+
+    console.log("cat: ", category);
+
+    console.log("v1:", panelArray);
+   // const handleDelete = ({ id }) => ( setpanelArray)(todos.filter((todo) => panelArray.id === category.id) )
+    //const handleDelete = ({ id }) =>
+    //this.todos = this.todos.filter((panelArray) => panelArray.id !== category.id)
+   // const hd = ({ id }) => { setTodos(todos => todos.filter((panelArray) => panelArray.id !== category.id)) };
+    
+    //const filtered = panelArray.filter(panel => { return panelArray.id === 1;})
+
+    console.log("v2:", panelArray);
+   // console.log("z: ", handleDelete);
+
+    ///////////////////////
+
+    
+    let obj = {
+        id: category.id,
+      imageUrl: category.imageUrl,
+      
+    }
+    
+
+    
+    
+
+
+    console.log("p : ", category);
+
+
+    panelArray = [...panelArray, obj];
+    
+    setpanelArray(panelArray);
+
+
+
+    //Before filter that will remove any duplicates
+    console.log("1#: ", panelArray);
+    
+    
+
+    //console.log("test", test);
+    panelArray = panelArray.filter(panel => { return ((panel.id) != 1)})
+    
+    //panelArray = [null];
+
+    console.log("#2: ", panelArray);
+    
+    /////////////////////////
+
+
+    
+
+    console.log("v:", category);
+    
+    filteredarray[imageCount] = imageUrl;
+    imageCount++;
+
+
+
+    console.log("fa: ", filteredarray);
+
+
+    //panelArray= [null];
+    setValue(!value);
+    
+    
+  };

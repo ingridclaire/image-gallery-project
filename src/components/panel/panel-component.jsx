@@ -142,6 +142,15 @@ function Panel({ category }) {
     
 
 
+
+
+    ////////////////
+
+    
+
+
+
+    ///////////////
     let obj = {
         id: "1",
         imageUrl: "imageUrl",
