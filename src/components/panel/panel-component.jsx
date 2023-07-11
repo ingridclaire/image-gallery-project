@@ -1,3 +1,4 @@
+
 import { createPortal } from 'react-dom'
 import { DropDown } from "./panel-styles"
 
@@ -11,7 +12,9 @@ import PhotoImages1 from '../../components/photoimages/photoimages-component'
 import Image from '../../components/image/image-component'; 
 import { body } from '../../components/image/image-styles';
 //import { Stars } from '../stars/stars-styles';
-import { Stars } from '../../components/stars/stars.component'
+
+import {StarContext}  from '../../contexts/stars-context';
+
 
 let count = false;
 let amtStars = 0;
@@ -23,7 +26,6 @@ function useForceUpdate() {
   //const [value, setValue] = useState(false)
 
   
-
   //return () => setValue(!value);
 }
 
@@ -39,8 +41,23 @@ let filteredarray = [null];
 let imageCount = 0;
 let show = null;
 
+
+const Photo =  photo => {
+
+  const { stars1  }  = useContext(StarContext)
+      
+
+  
+  alert("here: ", stars1);
+
+
+  console.log("here!: ", stars1);
+}
+
+
+
 //  id name imageUrl price
-function Panel({ category }) {
+function Panel({ category }){
 
 
   console.log("category2: ", { category });
@@ -86,6 +103,14 @@ function Panel({ category }) {
 
   let { imageUrl, price, name, id } = category;
   let index1 = 0;
+
+
+
+  
+
+  
+  
+  //const [fourStars, setFourStars] = useState({"a"})
 
   //console.log("img", categoriesMap["hats"][imageCount]);
 
@@ -148,15 +173,16 @@ function Panel({ category }) {
   //uses context
   const addProductToCart = (category) => {
     
-    setStars(8);
+    //setStars(8);
 
 
-
+   
 
     ////////////////
 
+    //amtStars = 5;
     
-
+    //alert(fourStars);
 
 
     ///////////////
@@ -228,7 +254,6 @@ function Panel({ category }) {
 
   
   
-
   
   useEffect(() => {
 
@@ -252,7 +277,7 @@ function Panel({ category }) {
   const [value, setValue] = useState(false)
 
  
-  const [stars, setStars] = useState(0)
+  //const [stars, setStars] = useState(0)
 
   //const [checked, setChecked] = useState([])
   
@@ -297,51 +322,94 @@ function Panel({ category }) {
   
  
   
-      //alert("called");
-  function getStars(event) {
-
-    
-    
-   
-    //let myArray = [test, test2];
-    //myArray[1].married = true;
-
-
-    //setChecked(false);
-    console.log("td2: ", todos.value1);
-   
+  //const {fourStars} = useContext(AmtProviderContext)
   
-    //handleAdd()
-    //setstate handleAdd('b')
+  
+  //const fourStars = useContext(AmtProviderContext);
+  
+      //alert("called");
+  
+  
     
-    //this.setHolder(hold => ({ arrayvar: [...hold.arrayvar, "true"] }))
+  
+  function GetStars(event) {
+
 
     
-    let id = event.target.id;
-    console.log("5: ", id);
-    let isChecked = event.target.checked;
-
-    //setHolder('d');
-
-    //if (id == 0) {
-    if (id === '0') {
-      if (todos.value1 == false) {
-        setTodos((prevState) => ({ ...prevState, value1: true }))
-        amtStars = amtStars + 1;
-        //alert("here1");
-        setStars(amtStars);
+    const { stars1 }  = useContext(StarContext)
+    //const fourStars = useContext(AmtProviderContext);
         
-      }
-    
-      else {
-        setTodos((prevState) => ({ ...prevState, value1: false }))
-        amtStars = amtStars - 1;
-        setStars(amtStars);
-        //alert("here2");
-      }
-    
-    }
+    //alert("fs: ", stars);
 
+    return (
+      <div></div>
+          
+        )
+  
+
+        //alert("test: ", fourStars);
+        
+        /*
+        
+        //setFourStars( 7 );
+        alert("test: ",fourStars);
+        amtStars = {};
+        
+        setFourStars({ a: 11 });
+
+        console.log("FS: ", fourStars);
+        //alert("getstars");
+        
+    
+        
+        console.log("td2: ", todos.value1);
+       
+        
+        let id = event.target.id;
+        console.log("5: ", id);
+        let isChecked = event.target.checked;
+    
+        let storedID = 0;
+    
+        
+        
+    //fourStars {x,x,x,x} :  {3}  , {2}, {4}
+        let amtOfStars = fourStars.map((c, i) => {
+          if (i == id) {
+            storedID = i;
+            return c + 1;
+          } else {
+            return c;
+          }
+        
+        });
+    
+    
+        if (storedID == 1) {
+          if (todos.value1 == false) {
+    
+    
+    
+            setTodos((prevState) => ({ ...prevState, value1: true }))
+            //amtStars = amtStars + 1;
+           
+            //setFourStars[0](fourStars + 1)
+    
+            //setStars(amtStars);
+            alert("here1!!");
+            
+          }
+        
+          else {
+            setTodos((prevState) => ({ ...prevState, value1: false }))
+            //amtStars = amtStars - 1;
+            //setStars(amtStars);
+            
+            setFourStars[0](fourStars - 1)
+            alert("here2!!");
+          }
+        
+        }
     if (id === '1') {
       if (todos.value2 == false) {
         setTodos((prevState) => ({ ...prevState, value2: true }))
@@ -403,9 +471,9 @@ function Panel({ category }) {
   
   }
 
- 
+ */
     
-  
+}
   
   return (
     
@@ -416,10 +484,10 @@ function Panel({ category }) {
         
 
         
-      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={(event) => getStars(event)} />}
-                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={(event) => getStars(event)} />}
-                    {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onClick={(event) => getStars(event)} />}
-        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => getStars(event)} />}
+      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={() => Photo()} />}
+                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={() => Photo()} />}
+                    {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onClick={(event) => GetStars(event)} />}
+        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => GetStars(event)} />}
         
         
         <DropDown id="id1">
@@ -437,7 +505,7 @@ function Panel({ category }) {
 
           {count++}
 
-          {stars}
+          
             
 
           
@@ -496,7 +564,7 @@ function Panel({ category }) {
 <div>
               
 
-</div>
+</div>udemy  
 
 
 
@@ -511,6 +579,8 @@ function Panel({ category }) {
         
 
         <button onClick={() => addProductToCart(category)}>Button</button>
+
+        
        
         
         

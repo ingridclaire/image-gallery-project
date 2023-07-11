@@ -1,20 +1,22 @@
 import { body } from '../../components/stars/stars-styles';
 import { createContext, useContext, useState, useEffect, Fragment, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
+import {AmtProviderContext } from '../../contexts/stars-context';
 
 
-
-
+/*
 let amtStars = 0;
 
 
 const Stars = () => {
-    
+   
+  const { fourStars, setFourStars } = useContext(AmtProviderContext);
+  
+  //[fourStars, setFourStars] = useState(false, false, false, false);
 
+  let [todos, setTodos] = useState(false, false, false, false);
 
-  const [todos, setTodos] = useState(false, false, false, false);
-
-const [value, setValue] = useState(false)
+  const [value, setValue] = useState(false)
 
  
   const [stars, setStars] = useState(0)
@@ -23,43 +25,56 @@ const [value, setValue] = useState(false)
   function getStars(event) {
 
     
+    amtStars = {};
     
-   
-    //let myArray = [test, test2];
-    //myArray[1].married = true;
+    alert("getstars");
+    
 
-
-    //setChecked(false);
+    
     console.log("td2: ", todos.value1);
    
-  
-    //handleAdd()
-    //setstate handleAdd('b')
-    
-    //this.setHolder(hold => ({ arrayvar: [...hold.arrayvar, "true"] }))
-
     
     let id = event.target.id;
     console.log("5: ", id);
     let isChecked = event.target.checked;
 
-    //setHolder('d');
+    let storedID = 0;
 
-    //if (id == 0) {
-    if (id === '0') {
+    
+//fourStars {x,x,x,x} :  {3}  , {2}, {4}
+    let amtOfStars = fourStars.map((c, i) => {
+      if (i == id) {
+        storedID = i;
+        return c + 1;
+      } else {
+        return c;
+      }
+    
+    });
+
+
+    if (storedID == 1) {
       if (todos.value1 == false) {
+
+
+
         setTodos((prevState) => ({ ...prevState, value1: true }))
-        amtStars = amtStars + 1;
-        //alert("here1");
-        setStars(amtStars);
+        //amtStars = amtStars + 1;
+       
+        setFourStars[0](fourStars + 1)
+
+        //setStars(amtStars);
+        alert("here1!!");
         
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value1: false }))
-        amtStars = amtStars - 1;
-        setStars(amtStars);
-        alert("here2");
+        //amtStars = amtStars - 1;
+        //setStars(amtStars);
+        
+        setFourStars[0](fourStars - 1)
+        alert("here2!!");
       }
     
     }
@@ -111,15 +126,8 @@ const [value, setValue] = useState(false)
     }
 
     
-    //alert("made it!");
 
     setValue(!value);
-    
-
-
-    //console.log("v1: ", todos.value1);
-
-
     
     setStars(amtStars);
   
@@ -153,7 +161,7 @@ const [value, setValue] = useState(false)
       <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => getStars(event)} />
         
 
-        <p>testing{amtStars}</p>
+        <p>testing-{amtStars}</p>
         
         </div>
     )
@@ -163,3 +171,5 @@ const [value, setValue] = useState(false)
 }
 
 export default Stars
+
+*/

@@ -5,12 +5,12 @@ import  Panel  from "../panel/panel-component";
 import { createPortalcreate } from 'react-dom';
 import { usePortal } from "react-dom";
 import { createPortal } from 'react-dom';
-import  Stars from "../stars/stars.component"
+//import  Stars from "../stars/stars.component"
 
 
 
 //react onclick event in functional coomponent
-
+// on line 33 :  <Stars></Stars>
 const PhotoImages1 = ({ category }) => {
   
   const { id, imageUrl, name, price} = category;
@@ -31,7 +31,7 @@ const PhotoImages1 = ({ category }) => {
         </div>
         
         
-        <Stars></Stars>
+        
         
 
         

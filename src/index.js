@@ -7,23 +7,27 @@ import { BrowserRouter } from 'react-router-dom';
 import { CategoriesProvider } from './contexts/categories-context';
 import { CartContextProvider } from './contexts/cart-context';
 import { PanelProvider } from './contexts/panel-context';
-import { AmtProvider } from './contexts/stars-context';
+import { StarProvider } from './contexts/stars-context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    
     <BrowserRouter>
-      <AmtProvider>
+    
+    <StarProvider>
             <PanelProvider>
         <CategoriesProvider>
           <CartContextProvider>
             <App />
           </CartContextProvider>
         </CategoriesProvider>
-      </PanelProvider>
-      </AmtProvider>
-    </BrowserRouter>
+        </PanelProvider>
+        
+        </StarProvider>
+      </BrowserRouter>
+      
   </React.StrictMode>
 );
 

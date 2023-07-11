@@ -1,20 +1,24 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 
-export const AmtProviderContext = createContext({
-    fourStars:  0,
-    setFourStars: () => null,
+
+export const StarContext = createContext({
+    setStars: () => null,
+    stars1: null,
 });
-  
+    
 
-export const AmtProvider = ({ children }) => {
-    const [fourStars, setFourStars] = useState(0);
-  
+
+
+export function StarProvider({ children }) {
+    const [stars1, setStars] = useState(10);
+
+
     
-    const value = { fourStars, setFourStars };
+    const value = {stars1, setStars}
     return (
-        <AmtProviderContext.Provider value={value}>
-            {children}
-        </AmtProviderContext.Provider>
+        <StarContext.Provider value={ stars1 }>
+        {children}
+        </StarContext.Provider>
     );
-    
-};
+}
+
