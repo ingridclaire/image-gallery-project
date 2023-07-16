@@ -369,16 +369,17 @@ function Panel({ category }) {
         alert("1");
         //amtStars = amtStars + 1;
         obj = [{
+          userID:1,
           imageID: 1,
-          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-          star1: 1
+          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+          star1: 1,
           
         }]
     
     
-      filteredarrayArray = [...filteredarray, obj];
+      filteredarray = [...filteredarray, obj];
       
-      setpanelArray(filteredarra);
+      //setpanelArray(filteredarray);
       console.log("PaArray: ", filteredarray)
         
       }
@@ -393,14 +394,15 @@ function Panel({ category }) {
 
           userID: 1,
           imageID: id,
-          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
           star1: 1,
         }]
     
     
-      panelArray = [...panelArray, obj];
+      filteredarray = [...filteredarray, obj];
       
-      setpanelArray(panelArray);
+        //setpanelArray(filteredarray);
+        console.log("PaArray: ", filteredarray)
        
       }
 
@@ -574,13 +576,13 @@ if (id === '3') {
           
       
             {filteredarray &&
-              filteredarray?.map((product, index) => (
+              filteredarray.map((product1) => (
             
                 
 
              
               <div>
-                  <Image key={product} imageUrl={product.imageUrl} />
+                  <Image key={product1.userID} imageUrl={product1.imageUrl} />
                   
               
                   
@@ -588,7 +590,7 @@ if (id === '3') {
                   <div>
               
                     
-                    {show && <p>this is on panel </p>}{(true) ? obj.star1 : obj.star1}
+                    {show && <p>this is on panel </p>}{product1.userID}
                     
 
 
@@ -600,7 +602,7 @@ if (id === '3') {
             
 
               
-              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product)}>Delete Component</button>}
+              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product1)}>Delete Component</button>}
               
 
                   
