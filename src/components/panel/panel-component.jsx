@@ -181,10 +181,10 @@ function Panel({ category }) {
 
 
     ///////////////
-    //filteredarray = {
-    //  id: "1",
-    //  imageUrl: "imageUrl",
-    //}
+    let obj = {
+      id: "1",
+      imageUrl: "imageUrl",
+    }
 
 
     panelArray = [...panelArray, obj];
@@ -289,7 +289,7 @@ function Panel({ category }) {
 
     
 
-  }, [])
+  }, [todos])
 
 
   
@@ -332,15 +332,6 @@ function Panel({ category }) {
   let obj = {}
   const [fourStars, setFourStars] = useState(0)
   
-
-  filteredarray  = [{
-
-    userID: 0,
-    imageID: id,
-    imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
-    star1: 1,
-  }]
-
   function GetStars(event) {
 
     
@@ -357,7 +348,7 @@ function Panel({ category }) {
 
     ///////
 
-    //alert(":: ", todos.value1)
+    alert(":: ", todos.value1)
     if (storedID == 0) {
       if (todos.value1 == false) {
 
@@ -366,27 +357,25 @@ function Panel({ category }) {
         setTodos((prevState) => ({ ...prevState, value1: true }))
         
         
-        alert("1");
         //amtStars = amtStars + 1;
-        obj = [{
-          userID:1,
+        filteredarray = [{
           imageID: 1,
-          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-          star1: 1,
+          imageUrl: category.imageUrl,
+          star1: 1
           
         }]
     
     
-      filteredarray = [...filteredarray, obj];
+      panelArray = [...panelArray, obj];
       
-      //setpanelArray(filteredarray);
-      console.log("PaArray: ", filteredarray)
+      setpanelArray(panelArray);
+      console.log("PaArray: ", panelArray)
         
       }
     
       else {
         setTodos((prevState) => ({ ...prevState, value1: false }))
-        alert("2");
+        
         
         //setFourStars[0](fourStars - 1)
         //amtStars = amtStars - 1;
@@ -394,15 +383,14 @@ function Panel({ category }) {
 
           userID: 1,
           imageID: id,
-          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+          imageUrl: category.imageUrl,
           star1: 1,
         }]
     
     
-      filteredarray = [...filteredarray, obj];
+      panelArray = [...panelArray, obj];
       
-        //setpanelArray(filteredarray);
-        console.log("PaArray: ", filteredarray)
+      setpanelArray(panelArray);
        
       }
 
@@ -576,13 +564,13 @@ if (id === '3') {
           
       
             {filteredarray &&
-              filteredarray.map((product1) => (
+              filteredarray.map((product, index) => (
             
                 
 
              
               <div>
-                  <Image key={product1.userID} imageUrl={product1.imageUrl} />
+                  <Image key={product} imageUrl={product} />
                   
               
                   
@@ -590,7 +578,7 @@ if (id === '3') {
                   <div>
               
                     
-                    {show && <p>this is on panel </p>}{product1.userID}
+                    {show && <p>this is on panel </p>}{(true) ? obj.star1 : obj.star1}
                     
 
 
@@ -602,7 +590,7 @@ if (id === '3') {
             
 
               
-              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product1)}>Delete Component</button>}
+              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product)}>Delete Component</button>}
               
 
                   
