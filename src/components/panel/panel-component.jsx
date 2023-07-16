@@ -42,23 +42,14 @@ let imageCount = 0;
 let show = null;
 
 
-const Photo =  photo => {
 
-  const { stars1  }  = useContext(StarContext)
-      
-
-  
-  alert("here: ", stars1);
-
-
-  console.log("here!: ", stars1);
-}
 
 
 
 //  id name imageUrl price
-function Panel({ category }){
+function Panel({ category }) {
 
+  const { stars1, setStars } = useContext(StarContext)
 
   console.log("category2: ", { category });
   //let string1 =  "hats" ;
@@ -77,6 +68,18 @@ function Panel({ category }){
   console.log("a: ", category);
   
   
+  const Photo = () => {
+    setStars(99)
+
+    
+        
+  
+    
+    alert("here: ", stars1);
+  
+  
+    console.log("here!: ", stars1);
+  }
 
   
 
@@ -137,17 +140,7 @@ function Panel({ category }){
 
     
 
-    for (let i = 0; i < 2; i++) {
-      console.log("1z ", filteredarray[1]);
-      console.log("2z ", id);
-      console.log("3z ", imageUrl);
-
-      if (filteredarray[0].id === i) {
-        alert("jackpot!");
-      }
-        
-
-    }
+    
 
 
     console.log("iU:  ", filteredarray);
@@ -155,13 +148,15 @@ function Panel({ category }){
 
     console.log("imageUrl!:  ", imageUrl);
     
-    //beanie 
+    //beanie
     //remove one match
-    filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
+    
+
+    //filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
     
     console.log("fA: ", filteredarray);
     
-  console.log("prod: ", product )  
+    console.log("prod: ", product)
     
     setChange(change + 1);
     
@@ -186,10 +181,10 @@ function Panel({ category }){
 
 
     ///////////////
-    let obj = {
-        id: "1",
-        imageUrl: "imageUrl",
-      }
+    //filteredarray = {
+    //  id: "1",
+    //  imageUrl: "imageUrl",
+    //}
 
 
     panelArray = [...panelArray, obj];
@@ -241,8 +236,12 @@ function Panel({ category }){
     
     //check for duplicate, if found remove original 
     // category id with 
-    filteredarray[imageCount] = imageUrl;
-    imageCount++;
+    
+    
+    
+    
+    //filteredarray[imageCount] = imageUrl;
+    //imageCount++;
 
 
 
@@ -281,7 +280,7 @@ function Panel({ category }){
 
   //const [checked, setChecked] = useState([])
   
-  const [todos, setTodos] = useState(true,true,true,true);
+  const [todos, setTodos] = useState(true, true, true, true);
   //setStars();
   
   
@@ -290,7 +289,7 @@ function Panel({ category }){
 
     
 
-  }, [todos])
+  }, [])
 
 
   
@@ -302,7 +301,7 @@ function Panel({ category }){
     setTodos((prevState) => ({ ...prevState, value1: false }))
     setTodos((prevState) => ({ ...prevState, value2: false }))
     setTodos((prevState) => ({ ...prevState, value3: false }))
-  setTodos((prevState) => ({ ...prevState, value4: false }))
+    setTodos((prevState) => ({ ...prevState, value4: false }))
   
    
 
@@ -310,8 +309,8 @@ function Panel({ category }){
   }, [])
 
 
-    console.log("td1: ", todos);
-    console.log("td2: ", todos.value1);
+  console.log("td1: ", todos);
+  console.log("td2: ", todos.value1);
   
 
   
@@ -327,24 +326,159 @@ function Panel({ category }){
   
   //const fourStars = useContext(AmtProviderContext);
   
-      //alert("called");
+  //alert("called");
   
   
-    
+  let obj = {}
+  const [fourStars, setFourStars] = useState(0)
   
+
+  filteredarray  = [{
+
+    userID: 0,
+    imageID: id,
+    imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
+    star1: 1,
+  }]
+
   function GetStars(event) {
 
+    
+
+
+    //filteredarray[imageCount] = imageUrl;
+    imageCount++;
+
+
+
+    let storedID = event.target.id;
+    //console.log("5: ", id);
+    let isChecked = event.target.checked;
+
+    ///////
+
+    //alert(":: ", todos.value1)
+    if (storedID == 0) {
+      if (todos.value1 == false) {
+
+
+
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        
+        
+        alert("1");
+        //amtStars = amtStars + 1;
+        obj = [{
+          imageID: 1,
+          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+          star1: 1
+          
+        }]
+    
+    
+      filteredarrayArray = [...filteredarray, obj];
+      
+      setpanelArray(filteredarra);
+      console.log("PaArray: ", filteredarray)
+        
+      }
+    
+      else {
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        alert("2");
+        
+        //setFourStars[0](fourStars - 1)
+        //amtStars = amtStars - 1;
+        filteredarray  = [{
+
+          userID: 1,
+          imageID: id,
+          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
+          star1: 1,
+        }]
+    
+    
+      panelArray = [...panelArray, obj];
+      
+      setpanelArray(panelArray);
+       
+      }
+
+
+
+
 
     
-    const { stars1 }  = useContext(StarContext)
+    }
+    if (storedID === 1) {
+  
+      alert("ishere");
+  if (todos.value2 == false) {
+    setTodos((prevState) => ({ ...prevState, value2: true }))
+    amtStars = amtStars + 1;
+    setStars(amtStars);
+  }
+
+  else {
+    setTodos((prevState) => ({ ...prevState, value2: false }))
+    amtStars = amtStars - 1;
+    setStars(amtStars);
+  }
+
+}
+
+
+if (id === '2') {
+  if (todos.value3 == false) {
+    setTodos((prevState) => ({ ...prevState, value3: true }))
+    amtStars = amtStars + 1;
+    setStars(amtStars);
+  }
+
+  else {
+    setTodos((prevState) => ({ ...prevState, value3: false }))
+    amtStars = amtStars - 1;
+    setStars(amtStars);
+  }
+
+}
+
+if (id === '3') {
+  if (todos.value4 == false) {
+    setTodos((prevState) => ({ ...prevState, value4: true }))
+    amtStars = amtStars + 1;
+    setStars(amtStars);
+  }
+
+  else {
+    setTodos((prevState) => ({ ...prevState, value4: false }))
+    amtStars = amtStars - 1;
+    setStars(amtStars);
+  }
+
+}
+
+
+
+    //////
+    
+   
+
+
+    console.log("pA: ", panelArray);
+    
+
+
+
+    //const { stars1 }  = useContext(StarContext)
     //const fourStars = useContext(AmtProviderContext);
         
     //alert("fs: ", stars);
 
-    return (
-      <div></div>
-          
-        )
+    //return (
+    //  <div></div>
+    //      
+    //    )
   
 
         //alert("test: ", fourStars);
@@ -385,77 +519,6 @@ function Panel({ category }){
         });
     
     
-        if (storedID == 1) {
-          if (todos.value1 == false) {
-    
-    
-    
-            setTodos((prevState) => ({ ...prevState, value1: true }))
-            //amtStars = amtStars + 1;
-           
-            //setFourStars[0](fourStars + 1)
-    
-            //setStars(amtStars);
-            alert("here1!!");
-            
-          }
-        
-          else {
-            setTodos((prevState) => ({ ...prevState, value1: false }))
-            //amtStars = amtStars - 1;
-            //setStars(amtStars);
-            
-            setFourStars[0](fourStars - 1)
-            alert("here2!!");
-          }
-        
-        }
-    if (id === '1') {
-      if (todos.value2 == false) {
-        setTodos((prevState) => ({ ...prevState, value2: true }))
-        amtStars = amtStars + 1;
-        setStars(amtStars);
-      }
-    
-      else {
-        setTodos((prevState) => ({ ...prevState, value2: false }))
-        amtStars = amtStars - 1;
-        setStars(amtStars);
-      }
-    
-    }
-
-
-    if (id === '2') {
-      if (todos.value3 == false) {
-        setTodos((prevState) => ({ ...prevState, value3: true }))
-        amtStars = amtStars + 1;
-        setStars(amtStars);
-      }
-    
-      else {
-        setTodos((prevState) => ({ ...prevState, value3: false }))
-        amtStars = amtStars - 1;
-        setStars(amtStars);
-      }
-    
-    }
-
-    if (id === '3') {
-      if (todos.value4 == false) {
-        setTodos((prevState) => ({ ...prevState, value4: true }))
-        amtStars = amtStars + 1;
-        setStars(amtStars);
-      }
-    
-      else {
-        setTodos((prevState) => ({ ...prevState, value4: false }))
-        amtStars = amtStars - 1;
-        setStars(amtStars);
-      }
-    
-    }
-
     
     //alert("made it!");
 
@@ -483,9 +546,9 @@ function Panel({ category }){
       <div>
         
 
-        
-      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={() => Photo()} />}
-                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={() => Photo()} />}
+        <div>stars: {stars1}</div>
+      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={(event) => GetStars(event)} />}
+                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={(event) => GetStars(event)} />}
                     {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onClick={(event) => GetStars(event)} />}
         {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => GetStars(event)} />}
         
@@ -511,13 +574,13 @@ function Panel({ category }){
           
       
             {filteredarray &&
-              filteredarray.map((product) => (
+              filteredarray?.map((product, index) => (
             
                 
 
              
               <div>
-                  <Image key={product} imageUrl={product} />
+                  <Image key={product} imageUrl={product.imageUrl} />
                   
               
                   
@@ -525,7 +588,7 @@ function Panel({ category }){
                   <div>
               
                     
-                    {show && <p>this is a test </p>}{amtStars}
+                    {show && <p>this is on panel </p>}{(true) ? obj.star1 : obj.star1}
                     
 
 

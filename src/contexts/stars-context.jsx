@@ -16,7 +16,7 @@ export function StarProvider({ children }) {
     
     const value = {stars1, setStars}
     return (
-        <StarContext.Provider value={ stars1 }>
+        <StarContext.Provider value={{ stars1, setStars }}>
         {children}
         </StarContext.Provider>
     );

@@ -11,7 +11,7 @@ const Image = ({ imageUrl }) => {
 
 
         <div>
-        
+        image1
         <img src={imageUrl} alt={``} width={90} />
         
             
