@@ -16,6 +16,13 @@ import { body } from '../../components/image/image-styles';
 import {StarContext}  from '../../contexts/stars-context';
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//LOOK AT ONLY USING CHECK BOX, LOOK AT RETURN POSITIONED, LOOK AT ERROR ABOUT ONCNAAGEHANDLER
+//FIX KEY PROBLEMS TOO
+////////////////////////////////////////////////////////////////////////////////////
+
+
 let count = false;
 let amtStars = 0;
 
@@ -537,6 +544,8 @@ if (id === '3') {
   }
 
  */
+
+  setValue(!value);
     
 }
   
@@ -576,14 +585,16 @@ if (id === '3') {
           
       
             {filteredarray &&
-              filteredarray.map((product1) => (
+              filteredarray.map((product1, index) => (
             
                 
 
              
-              <div>
-                  <Image key={product1.userID} imageUrl={product1.imageUrl} />
+                <div>
                   
+                  <div key={index}>
+                  <Image imageUrl={product1.imageUrl} />
+                  </div>
               
                   
                   
