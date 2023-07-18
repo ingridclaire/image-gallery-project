@@ -42,12 +42,32 @@ function useForceUpdate() {
 //Cookie cut each one with a button
 
 
-let filteredarray = [null];
+
+
+
+
 
 
 let imageCount = 0;
 let show = null;
 
+
+
+let filteredarray  = [{
+
+  userID: 0,
+  imageID: 9,
+  imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
+  star1: 1,
+},
+  
+  {userID: 5,
+    imageID: 5,
+    imageUrl: "htps://i.ibb.co/bLB646Z/red-beanie.png",
+    star1: 1,}
+
+
+]
 
 
 
@@ -56,7 +76,7 @@ let show = null;
 //  id name imageUrl price
 function Panel({ category }) {
 
-  const { stars1, setStars } = useContext(StarContext)
+  
 
   console.log("category2: ", { category });
   //let string1 =  "hats" ;
@@ -72,7 +92,30 @@ function Panel({ category }) {
 
   
   
-  console.log("a: ", category);
+
+
+  
+
+
+  
+
+/*
+  let obj = [{
+    userID:1,
+    imageID: 1,
+    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    star1: 1,
+    
+  }]
+
+
+  filteredarray = [...filteredarray, obj];
+  
+  */
+
+  
+  
+  console.log("a: ", filteredarray);
   
   
   const Photo = () => {
@@ -82,10 +125,10 @@ function Panel({ category }) {
         
   
     
-    alert("here: ", stars1);
+    //alert("here: ", stars1);
   
   
-    console.log("here!: ", stars1);
+    //console.log("here!: ", stars1);
   }
 
   
@@ -194,7 +237,7 @@ function Panel({ category }) {
     //}
 
 
-    panelArray = [...panelArray, obj];
+    //panelArray = [...panelArray, obj];
     
     setpanelArray(panelArray);
 
@@ -336,21 +379,64 @@ function Panel({ category }) {
   //alert("called");
   
   
-  let obj = {}
+  
   const [fourStars, setFourStars] = useState(0)
   
 
-  filteredarray  = [{
+  
+  
 
+
+  const [setStars, stars] = useState([{
     userID: 0,
-    imageID: id,
-    imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
-    star1: 1,
-  }]
+    imageID: 0,
+    imageUrl: "",
+    star1: 5,}
+  ]);
+  
+  
+
 
   function GetStars(event) {
 
+    let obj = [{
+      userID:2,
+      imageID: 2,
+      imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+      star1: 1,
+      
+    }]
+
+
+    //function addStart() {
+  
+      
+    const addUser = [
     
+      ...stars,
+      {
+        userID: 1,
+        imageID: 1,
+        imageUrl: "",
+        star1: 4,
+      }
+  
+    ];
+    
+    
+    setStars(addUser);
+    
+    
+
+
+    //}
+
+
+
+
+
+
+/*
 
 
     //filteredarray[imageCount] = imageUrl;
@@ -364,6 +450,12 @@ function Panel({ category }) {
 
     ///////
 
+
+
+
+
+
+
     //alert(":: ", todos.value1)
     if (storedID == 0) {
       if (todos.value1 == false) {
@@ -375,16 +467,10 @@ function Panel({ category }) {
         
         alert("1");
         //amtStars = amtStars + 1;
-        obj = [{
-          userID:1,
-          imageID: 1,
-          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-          star1: 1,
-          
-        }]
+        
     
     
-      filteredarray = [...filteredarray, obj];
+        filteredarray = [ ...filteredarray, obj ];
       
       //setpanelArray(filteredarray);
       console.log("PaArray: ", filteredarray)
@@ -397,16 +483,18 @@ function Panel({ category }) {
         
         //setFourStars[0](fourStars - 1)
         //amtStars = amtStars - 1;
-        filteredarray  = [{
-
-          userID: 1,
-          imageID: id,
-          imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-          star1: 1,
-        }]
+        
+        
+        //filteredarray = [{
+//
+  //        userID: 1,
+    //      imageID: id,
+      //    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+        //  star1: 1,
+        //}]
     
     
-      filteredarray = [...filteredarray, obj];
+        filteredarray = [{ ...filteredarray, obj }];
       
         //setpanelArray(filteredarray);
         console.log("PaArray: ", filteredarray)
@@ -469,7 +557,7 @@ if (id === '3') {
 
 
 
-    //////
+    *//////
     
    
 
@@ -478,74 +566,10 @@ if (id === '3') {
     
 
 
-
-    //const { stars1 }  = useContext(StarContext)
-    //const fourStars = useContext(AmtProviderContext);
-        
-    //alert("fs: ", stars);
-
-    //return (
-    //  <div></div>
-    //      
-    //    )
-  
-
-        //alert("test: ", fourStars);
-        
-        /*
-        
-        //setFourStars( 7 );
-        alert("test: ",fourStars);
-        amtStars = {};
-        
-        setFourStars({ a: 11 });
-
-        console.log("FS: ", fourStars);
-        //alert("getstars");
-        
-    
-        
-        console.log("td2: ", todos.value1);
-       
-        
-        let id = event.target.id;
-        console.log("5: ", id);
-        let isChecked = event.target.checked;
-    
-        let storedID = 0;
-    
-        
-        
-    //fourStars {x,x,x,x} :  {3}  , {2}, {4}
-        let amtOfStars = fourStars.map((c, i) => {
-          if (i == id) {
-            storedID = i;
-            return c + 1;
-          } else {
-            return c;
-          }
-        
-        });
-    
-    
-    
-    //alert("made it!");
-
     setValue(!value);
+    panelArray = [...panelArray, obj];
     
-
-
-    //console.log("v1: ", todos.value1);
-
-
-    
-    setStars(amtStars);
-  
-  }
-
- */
-
-  setValue(!value);
+    setpanelArray(panelArray);
     
 }
   
@@ -557,11 +581,11 @@ if (id === '3') {
       <div>
         
 
-        <div>stars: {stars1}</div>
-      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onClick={(event) => GetStars(event)} />}
-                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onClick={(event) => GetStars(event)} />}
-                    {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onClick={(event) => GetStars(event)} />}
-        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onClick={(event) => GetStars(event)} />}
+       
+      {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(event)} />}
+                    {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onChange={(event) => GetStars(event)} />}
+                    {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onChange={(event) => GetStars(event)} />}
+        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onChange={(event) => GetStars(event)} />}
         
         
         <DropDown id="id1">
@@ -577,23 +601,37 @@ if (id === '3') {
 
 
 
-          {count++}
+            {count++}
+            {count++}50
 
+            testing
+            <p>testing</p>{stars.userID}
+          
+            {stars.userID}
           
             
 
           
+            
       
-            {filteredarray &&
-              filteredarray.map((product1, index) => (
-            
-                
-
+            {
+              filteredarray.map((person) => (
+                <div key={person.userID}>
+                <p> test test{person.userID} </p> 
+             </div>
              
-                <div>
+              
+                
+                
+                
+                
+                
+                /*
+             
+                <div key={product1.imageUrl}>
                   
-                  <div key={index}>
-                  <Image imageUrl={product1.imageUrl} />
+                  <div key={product1.imageUrl}>
+                  <Image key = {product1.imageUrl} imageUrl={product1.imageUrl} />
                   </div>
               
                   
@@ -607,7 +645,8 @@ if (id === '3') {
 
 
 
-             </div>
+                  </div>
+                  
             
             
             
@@ -619,8 +658,13 @@ if (id === '3') {
                   
                   </div>
            
-             
-          ))}
+             */
+          
+              
+              
+              
+              
+              ))}
             
 
             <div>

@@ -40,8 +40,9 @@ const Category = ({}) => {
       <CategoryContainer>
         {products &&
           products.map((product) => (
-             
-              <div>
+            
+            <div  key={product.name}>
+              
               <PhotoImages1 key={product.name} category={product} />
                   <Panel key={product.imageUrl} category={product} />
                   </div>

@@ -92,7 +92,7 @@ const Directory = () => {
               
               
               
-              <Images1 key={category.id} category={category} />
+              <Images1 key={category.name} category={category} />
               
             ))}
             
