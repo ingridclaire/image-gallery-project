@@ -387,11 +387,11 @@ function Panel({ category }) {
   
 
 
-  const [setStars, stars] = useState([{
+  const [stars, setStars] = useState([{
     userID: 0,
     imageID: 0,
     imageUrl: "",
-    star1: 5,}
+    star1: 5}
   ]);
   
   
@@ -410,22 +410,26 @@ function Panel({ category }) {
 
     //function addStart() {
   
-      
+    
     const addUser = [
     
       ...stars,
       {
+        
+        
         userID: 1,
         imageID: 1,
         imageUrl: "",
-        star1: 4,
+        star1: 4
       }
   
     ];
     
-    
+
     setStars(addUser);
     
+    
+    console.log("ss: ", stars );
     
 
 
@@ -552,7 +556,8 @@ if (id === '3') {
     amtStars = amtStars - 1;
     setStars(amtStars);
   }
-
+set 
++
 }
 
 
@@ -605,9 +610,9 @@ if (id === '3') {
             {count++}50
 
             testing
-            <p>testing</p>{stars.userID}
+            <p>testing..</p>
           
-            {stars.userID}
+           
           
             
 
@@ -615,7 +620,7 @@ if (id === '3') {
             
       
             {
-              filteredarray.map((person) => (
+              stars.map((person) => (
                 <div key={person.userID}>
                 <p> test test{person.userID} </p> 
              </div>
@@ -662,10 +667,19 @@ if (id === '3') {
           
               
               
-              
-              
-              ))}
             
+                
+                
+                
+              
+              ))
+            
+            
+            }
+            
+
+
+
 
             <div>
           
