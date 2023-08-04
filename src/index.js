@@ -16,7 +16,7 @@ root.render(
     
     <BrowserRouter>
     
-    <StarProvider>
+    <ExampleProvider>
             <PanelProvider>
         <CategoriesProvider>
           <CartContextProvider>
@@ -25,7 +25,8 @@ root.render(
         </CategoriesProvider>
         </PanelProvider>
         
-        </StarProvider>
+      </ExampleProvider>
+      
       </BrowserRouter>
       
   </React.StrictMode>

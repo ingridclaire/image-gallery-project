@@ -20,6 +20,8 @@ import {StarContext}  from '../../contexts/stars-context';
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //LOOK AT ONLY USING CHECK BOX, LOOK AT RETURN POSITIONED, LOOK AT ERROR ABOUT ONCNAAGEHANDLER
 //FIX KEY PROBLEMS TOO
+//https://react.dev/learn/updating-arrays-in-state
+//https://www.bing.com/search?q=setting+state+for+an+object+of+an+array+functional&qs=n&form=QBRE&sp=-1&ghc=1&lq=0&pq=setting+state+for+an+object+of+an+array+functional&sc=1-50&sk=&cvid=17DFDA001F66409CAE81248076ACDB80&ghsh=0&ghacc=0&ghpl=
 ////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -84,11 +86,14 @@ function Panel({ category }) {
   let string1 = "hats";
 
   let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
-  ;
+
+  let { stars1, setStars } = useContext(StarContext);
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[string1]);
   const [holder, setHolder] = useState('a')
   
+
+  //const { items } = useContext(ExampleContext)
 
   
   
@@ -119,7 +124,7 @@ function Panel({ category }) {
   
   
   const Photo = () => {
-    setStars(99)
+    //setStars(99)
 
     
         
@@ -387,34 +392,59 @@ function Panel({ category }) {
   
 
 
-  const [stars, setStars] = useState([{
-    userID: 0,
-    imageID: 0,
-    imageUrl: "",
-    star1: 5}
-  ]);
+  //const [stars, setStars] = useState([{
+  //  userID: 0,
+  //  imageID: 0,
+  //  imageUrl: "",
+  //  star1: 5}
+  //]);
+
+  
+  let obj = [{
+    userID:'5',
+    imageID:'5',
+    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    star1: '1',
+    
+  }]
+
   
   
+  
+  //let [stars, setStars] = useState(obj)
 
 
+
+  //let data = [{name: ""}];
+  let data = [{}];
+//filteredarray = [{ ...filteredarray, obj }];
   function GetStars(event) {
 
-    let obj = [{
-      userID:2,
-      imageID: 2,
-      imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-      star1: 1,
+    //let obj1 = [{
+    //  userID:'3',
+    //  imageID: '4',
+    //  imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    //  star1: '1',
       
-    }]
+    //}]
+
+    data =[{name:"test1"},{name:"test2"}];
+
+    alert("here");
+    
+    
+    
+    //const data =[{"name":"test1"},{"name":"test2"}];
 
 
     //function addStart() {
   
+    /*
+    stars = [
     
-    const addUser = [
-    
-      ...stars,
       {
+      ...stars,
+      
         
         
         userID: 1,
@@ -424,15 +454,18 @@ function Panel({ category }) {
       }
   
     ];
-    
+    */
 
-    setStars(addUser);
+    stars1 = [ ...stars1, 4 ]
+    setStars(stars1)
+    console.log("ss: ", stars1 );
     
+    panelArray = [...panelArray, obj];
     
-    console.log("ss: ", stars );
-    
+setpanelArray(panelArray);
 
 
+    console.log("panelarray: ", panelArray);
     //}
 
 
@@ -578,7 +611,15 @@ set
     
 }
   
+
+  const listItems = data.map((d) => <li key={d.userID}>{d.name}</li>);
+
+  console.log("li: ", listItems);
+  
+  const { items } = useContext(ExampleContext)
+
   return (
+    
     
    
       <div>
@@ -610,20 +651,29 @@ set
             {count++}50
 
             testing
-            <p>testing..</p>
+            <p>testing..</p>{stars1}
           
-           
+            {listItems}
           
             
 
           
+           
             
       
-            {
-              stars.map((person) => (
-                <div key={person.userID}>
-                <p> test test{person.userID} </p> 
-             </div>
+            
+            
+
+            
+
+
+              
+        {items.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+
+              
+               
              
               
                 
@@ -631,7 +681,7 @@ set
                 
                 
                 
-                /*
+                
              
                 <div key={product1.imageUrl}>
                   
@@ -663,7 +713,7 @@ set
                   
                   </div>
            
-             */
+             
           
               
               
@@ -672,10 +722,10 @@ set
                 
                 
               
-              ))
+             
             
             
-            }
+            
             
 
 
