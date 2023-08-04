@@ -683,35 +683,7 @@ set
                 
                 
              
-                <div key={product1.imageUrl}>
-                  
-                  <div key={product1.imageUrl}>
-                  <Image key = {product1.imageUrl} imageUrl={product1.imageUrl} />
-                  </div>
-              
-                  
-                  
-                  <div>
-              
-                    
-                    {show && <p>this is on panel </p>}{product1.userID}
-                    
-
-
-
-
-                  </div>
-                  
-            
-            
-            
-
-              
-              {show && <button className="buttonDelete" onClick={() =>  deleteComponent(product1)}>Delete Component</button>}
-              
-
-                  
-                  </div>
+                
            
              
           
