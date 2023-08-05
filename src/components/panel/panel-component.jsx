@@ -17,12 +17,10 @@ import {ExampleContext}  from '../../contexts/stars-context';
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//LOOK AT ONLY USING CHECK BOX, LOOK AT RETURN POSITIONED, LOOK AT ERROR ABOUT ONCNAAGEHANDLER
-//FIX KEY PROBLEMS TOO
-//https://react.dev/learn/updating-arrays-in-state
-//https://www.bing.com/search?q=setting+state+for+an+object+of+an+array+functional&qs=n&form=QBRE&sp=-1&ghc=1&lq=0&pq=setting+state+for+an+object+of+an+array+functional&sc=1-50&sk=&cvid=17DFDA001F66409CAE81248076ACDB80&ghsh=0&ghacc=0&ghpl=
-////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///  8/5/23 :  What seems to be the panel data to display is on github, try and get this working
+///            Panel usecontext all set for general programming when function called from buttons :  function GetStars(event) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 let count = false;
@@ -421,6 +419,15 @@ function Panel({ category }) {
 
 
 
+  const updateMyArray = (newName) => {
+    setItems(
+      items.map((item) =>
+        item.id === item.id ? { ...item, name: "newName" } : item
+      )
+    );
+  };
+
+
   //let data = [{name: ""}];
   let data = [{}];
 //filteredarray = [{ ...filteredarray, obj }];
@@ -432,15 +439,34 @@ function Panel({ category }) {
     //  imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     //  star1: '1',
       
+      
     //}]
+    {
+    const newStars = items.filter((contact) => contact.id !== 1);
+    setItems(newStars);
+  };
 
-    let obj= [{id:3 , name:"item99",}]
 
-    setItems(...items, { obj })
-    data =[{name:"test1"},{name:"test2"}];
+    let x = 9;
+    let v = "item1"
+    let data1 = [{ id: {x} , name:"item99",}]
 
     
     
+
+    setItems((items) => [...items, { id: 1, name: v }])
+    //setItems((items) => [...items, { id: x, name: v }])
+
+
+    
+
+    
+
+    
+
+    
+    //updateMyArray("newName")
+
     
     
     //const data =[{"name":"test1"},{"name":"test2"}];
