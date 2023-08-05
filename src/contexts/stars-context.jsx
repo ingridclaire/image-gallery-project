@@ -44,4 +44,4 @@ const ExampleProvider = ({ children }) => {
 
 
 
-export { ExampleContext, ExampleProvider, Example }
+export { ExampleContext, ExampleProvider }

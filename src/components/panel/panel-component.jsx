@@ -13,7 +13,7 @@ import Image from '../../components/image/image-component';
 import { body } from '../../components/image/image-styles';
 //import { Stars } from '../stars/stars-styles';
 
-import {StarContext}  from '../../contexts/stars-context';
+import {ExampleContext}  from '../../contexts/stars-context';
 
 
 
@@ -87,10 +87,12 @@ function Panel({ category }) {
 
   let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
 
-  let { stars1, setStars } = useContext(StarContext);
+  //let { stars1, setStars } = useContext(StarContext);
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[string1]);
   const [holder, setHolder] = useState('a')
+
+  let { items, setItems} = useContext(ExampleContext)
   
 
   //const { items } = useContext(ExampleContext)
@@ -336,6 +338,10 @@ function Panel({ category }) {
   //const [checked, setChecked] = useState([])
   
   const [todos, setTodos] = useState(true, true, true, true);
+
+  
+
+  
   //setStars();
   
   
@@ -428,9 +434,12 @@ function Panel({ category }) {
       
     //}]
 
+    let obj= [{id:3 , name:"item99",}]
+
+    setItems(...items, { obj })
     data =[{name:"test1"},{name:"test2"}];
 
-    alert("here");
+    
     
     
     
@@ -456,9 +465,9 @@ function Panel({ category }) {
     ];
     */
 
-    stars1 = [ ...stars1, 4 ]
-    setStars(stars1)
-    console.log("ss: ", stars1 );
+ //   stars1 = [ ...stars1, 4 ]
+ //   setStars(stars1)
+ //   console.log("ss: ", stars1 );
     
     panelArray = [...panelArray, obj];
     
@@ -616,11 +625,21 @@ set
 
   console.log("li: ", listItems);
   
-  const { items } = useContext(ExampleContext)
+  
 
+  
   return (
     
     
+    
+    /////////////////////////////
+            
+    //!!!!!CONTENT WAS HERE  - 688 ... after {listItems}  !!!!!! PROBABLY FOR PANEL DISPLAY - couldnt comment out!
+
+
+    /////////////////////////////
+     
+      
    
       <div>
 
@@ -651,7 +670,7 @@ set
             {count++}50
 
             testing
-            <p>testing..</p>{stars1}
+            <p>testing..</p>
           
             {listItems}
           
@@ -681,8 +700,7 @@ set
                 
                 
                 
-                
-             
+            
                 
            
              
