@@ -93,68 +93,14 @@ function Panel({ category }) {
   let { items, setItems} = useContext(ExampleContext)
   
 
-  //const { items } = useContext(ExampleContext)
-
-  
-  
-
-
-  
-
-
-  
-
-/*
-  let obj = [{
-    userID:1,
-    imageID: 1,
-    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    star1: 1,
-    
-  }]
-
-
-  filteredarray = [...filteredarray, obj];
-  
-  */
-
-  
   
   console.log("a: ", filteredarray);
   
   
   const Photo = () => {
-    //setStars(99)
-
     
-        
-  
-    
-    //alert("here: ", stars1);
-  
-  
-    //console.log("here!: ", stars1);
   }
 
-  
-
-  //dereference first write using category as prop, then chnage it to usecontext
-
-  //Each call using category is an instance that can have a button pressed
-  //if button ia pressed than currwnt category is the one chosen
-  //change category prop to context see category-componentwhat size font for mo
-
-  
-
-  // const imageUrl = { category };
-  
-  //console.log("i", category);
-  //console.log(category.imageUrl);
-
-
-
-  //let value = category.imageUrl;
-  
   
   let forceUpdate = useForceUpdate();
 
@@ -167,11 +113,7 @@ function Panel({ category }) {
   
 
   
-  
-  //const [fourStars, setFourStars] = useState({"a"})
-
-  //console.log("img", categoriesMap["hats"][imageCount]);
-
+ 
 
   const [change, setChange] = useState(0);
   
@@ -188,11 +130,6 @@ function Panel({ category }) {
 
 
 
-
-    //alert("id1: ", imageUrl);
-
-    // let { a }  = category.id 
-
     
 
     
@@ -203,11 +140,6 @@ function Panel({ category }) {
 
     console.log("imageUrl!:  ", imageUrl);
     
-    //beanie
-    //remove one match
-    
-
-    //filteredarray = filteredarray.filter(filteredarray => filteredarray !== product);
     
     console.log("fA: ", filteredarray);
     
@@ -215,7 +147,7 @@ function Panel({ category }) {
     
     setChange(change + 1);
     
-    //imageCount++;
+    
   };
   
   
@@ -223,26 +155,10 @@ function Panel({ category }) {
   //uses context
   const addProductToCart = (category) => {
     
-    //setStars(8);
-
-
-   
-
-    ////////////////
-
-    //amtStars = 5;
     
-    //alert(fourStars);
 
 
-    ///////////////
-    //filteredarray = {
-    //  id: "1",
-    //  imageUrl: "imageUrl",
-    //}
-
-
-    //panelArray = [...panelArray, obj];
+    
     
     setpanelArray(panelArray);
 
@@ -252,54 +168,12 @@ function Panel({ category }) {
     const uid = 1;
 
 
-    //let obj = {
-    //  id: "1",
-    //  imageUrl: "imageUrl"
-    //}
-
-    //setpanelArray([...panelArray, obj]);
-
-    
-    //const newState = setpanelArray [...panelArray, obj; 
-
-
-    
-    
-    //setpanelArray(newState);
-      
-      
-    
-    //console.log("x: ", newState);
-
-
     
 
     console.log("v:", category);
-    //alert("z: ", imageUrl);
-    //let image = category.imageUrl;
     
-    //const image = categoriesMap[string1][imageCount].imageUrl;
-
-    ////const updated = [...panelArray, imageUrl];
-
-    
-    //setpanelArray(previous => [...previous, imageUrl])
     console.log("p ", panelArray);
     
-    
-    //filteredarray = panelArray.filter(x => categoriesMap['hats'].indexOf(x) < 0);
-    
-    //check for duplicate, if found remove original 
-    // category id with 
-    
-    
-    
-    
-    //filteredarray[imageCount] = imageUrl;
-    //imageCount++;
-
-
-
     console.log("fa: ", filteredarray);
     
     
@@ -313,10 +187,6 @@ function Panel({ category }) {
 
     show = true;
     
-    //const [holder, setHolder] = useState([array1])
-    
-
-    //forceUpdate();
     
   
   }, [filteredarray]);
@@ -330,18 +200,9 @@ function Panel({ category }) {
 
   const [value, setValue] = useState(false)
 
- 
-  //const [stars, setStars] = useState(0)
-
-  //const [checked, setChecked] = useState([])
   
   const [todos, setTodos] = useState(true, true, true, true);
 
-  
-
-  
-  //setStars();
-  
   
 
   useEffect(() => {
@@ -375,17 +236,6 @@ function Panel({ category }) {
   
   
   
-  //let checked = true;
-  
-  
- 
-  
-  //const {fourStars} = useContext(AmtProviderContext)
-  
-  
-  //const fourStars = useContext(AmtProviderContext);
-  
-  //alert("called");
   
   
   
@@ -395,13 +245,6 @@ function Panel({ category }) {
   
   
 
-
-  //const [stars, setStars] = useState([{
-  //  userID: 0,
-  //  imageID: 0,
-  //  imageUrl: "",
-  //  star1: 5}
-  //]);
 
   
   let obj = [{
@@ -430,17 +273,10 @@ function Panel({ category }) {
 
   //let data = [{name: ""}];
   let data = [{}];
-//filteredarray = [{ ...filteredarray, obj }];
+
   function GetStars(event) {
 
-    //let obj1 = [{
-    //  userID:'3',
-    //  imageID: '4',
-    //  imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-    //  star1: '1',
-      
-      
-    //}]
+    
     {
     const newStars = items.filter((contact) => contact.id !== 1);
     setItems(newStars);
@@ -455,45 +291,14 @@ function Panel({ category }) {
     
 
     setItems((items) => [...items, { id: 1, name: v }])
-    //setItems((items) => [...items, { id: x, name: v }])
-
+    
+    
 
     
 
     
 
     
-
-    
-    //updateMyArray("newName")
-
-    
-    
-    //const data =[{"name":"test1"},{"name":"test2"}];
-
-
-    //function addStart() {
-  
-    /*
-    stars = [
-    
-      {
-      ...stars,
-      
-        
-        
-        userID: 1,
-        imageID: 1,
-        imageUrl: "",
-        star1: 4
-      }
-  
-    ];
-    */
-
- //   stars1 = [ ...stars1, 4 ]
- //   setStars(stars1)
- //   console.log("ss: ", stars1 );
     
     panelArray = [...panelArray, obj];
     
@@ -501,26 +306,7 @@ setpanelArray(panelArray);
 
 
     console.log("panelarray: ", panelArray);
-    //}
-
-
-
-
-
-
-/*
-
-
-    //filteredarray[imageCount] = imageUrl;
-    imageCount++;
-
-
-
-    let storedID = event.target.id;
-    //console.log("5: ", id);
-    let isChecked = event.target.checked;
-
-    ///////
+   
 
 
 
@@ -528,109 +314,6 @@ setpanelArray(panelArray);
 
 
 
-    //alert(":: ", todos.value1)
-    if (storedID == 0) {
-      if (todos.value1 == false) {
-
-
-
-        setTodos((prevState) => ({ ...prevState, value1: true }))
-        
-        
-        alert("1");
-        //amtStars = amtStars + 1;
-        
-    
-    
-        filteredarray = [ ...filteredarray, obj ];
-      
-      //setpanelArray(filteredarray);
-      console.log("PaArray: ", filteredarray)
-        
-      }
-    
-      else {
-        setTodos((prevState) => ({ ...prevState, value1: false }))
-        alert("2");
-        
-        //setFourStars[0](fourStars - 1)
-        //amtStars = amtStars - 1;
-        
-        
-        //filteredarray = [{
-//
-  //        userID: 1,
-    //      imageID: id,
-      //    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-        //  star1: 1,
-        //}]
-    
-    
-        filteredarray = [{ ...filteredarray, obj }];
-      
-        //setpanelArray(filteredarray);
-        console.log("PaArray: ", filteredarray)
-       
-      }
-
-
-
-
-
-    
-    }
-    if (storedID === 1) {
-  
-      alert("ishere");
-  if (todos.value2 == false) {
-    setTodos((prevState) => ({ ...prevState, value2: true }))
-    amtStars = amtStars + 1;
-    setStars(amtStars);
-  }
-
-  else {
-    setTodos((prevState) => ({ ...prevState, value2: false }))
-    amtStars = amtStars - 1;
-    setStars(amtStars);
-  }
-
-}
-
-
-if (id === '2') {
-  if (todos.value3 == false) {
-    setTodos((prevState) => ({ ...prevState, value3: true }))
-    amtStars = amtStars + 1;
-    setStars(amtStars);
-  }
-
-  else {
-    setTodos((prevState) => ({ ...prevState, value3: false }))
-    amtStars = amtStars - 1;
-    setStars(amtStars);
-  }
-
-}
-
-if (id === '3') {
-  if (todos.value4 == false) {
-    setTodos((prevState) => ({ ...prevState, value4: true }))
-    amtStars = amtStars + 1;
-    setStars(amtStars);
-  }
-
-  else {
-    setTodos((prevState) => ({ ...prevState, value4: false }))
-    amtStars = amtStars - 1;
-    setStars(amtStars);
-  }
-set 
-+
-}
-
-
-
-    *//////
     
    
 
@@ -813,13 +496,6 @@ const addCartItem = (panelArray, productToAdd) => {
 
 
       
-
-    
-  
-
- // const addItemToCart = (productToAdd) => {
- //   setCartItems(addCartItem(cartItems, productToAdd));
- // };
 
 
 export default Panel;
