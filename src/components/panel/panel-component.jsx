@@ -369,7 +369,7 @@ function Panel({ category }) {
 
 
   console.log("td1: ", todos);
-  console.log("td2: ", todos.value1);
+  console.log("td2: ", todos.value1); 
   
 
   
