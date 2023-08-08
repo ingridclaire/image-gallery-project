@@ -1,23 +1,14 @@
-import { Body }  from './image-styles';
-
-
+import { Body } from './image-styles';
 
 const Image = ({ imageUrl }) => {
 
-    
     return (
-
         <Body>
-
-
-        <div>
-        image1
-        <img src={imageUrl} alt={``} width={90} />
-        
-            
+            <div>
+                image1
+                <img src={imageUrl} alt={``} width={90} />
             </div>
-            </Body>
+        </Body>
     );
 };
-
 export default Image;

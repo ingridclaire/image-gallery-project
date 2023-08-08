@@ -1,17 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Images1 from '../../components/images/images-component';
-
-
-
 import PhotoImages from '../../components/photoimages/photoimages-component';
 import { PhotoContainer } from "./shop-styles";
-
 import { product1 } from '../../photo-data';
 import { Fragment } from 'react';
 import { useContext } from 'react';
 import { CategoriesContext } from '../../contexts/categories-context';
-
-
 
 
 let products2 = [
@@ -76,96 +70,25 @@ let products2 = [
     },
 ];
 
-
 const Shop = () => {
 
-    
     return (
-
-        
-       
         <Fragment>
             {
-
-
-                
-
-                
-                
-                
                 Object.keys(products2).map((title) => (
-                <Fragment key={title}>
-                    <h2>{title}</h2>
+                    <Fragment key={title}>
+                        <h2>{title}</h2>
                         <PhotoContainer>
-                            
-                        <div>
-                                
-            </div>
-                        {products2[title].map((category) => (
-                            <PhotoImages key={category.id} category={category} />
-                        ))}
-                
-                    </PhotoContainer >
-                </Fragment>
-            ))}
+                            <div>
+                            </div>
+                            {products2[title].map((category) => (
+                                <PhotoImages key={category.id} category={category} />
+                            ))}
+                        </PhotoContainer >
+                    </Fragment>
+                ))}
         </Fragment>
     );
 };
-        
-            
-        
-        
-        
-
-        
-
-
-    /*  <div>
-        
-      
-      
-      {products2.map((item, index) => (
-      <div key = {index}>
-    
-    {item.items.map((c, i) => (
-        <div key={i}>  
-        
-
-            <PhotoContainer>
-                <div>
-                    <PhotoImages category={c} />
-                    </div>
-            </PhotoContainer>
-
-        
-           </div>
-    ))}
-  </div>
-))}
-                
-        
-      
-      
-    </div>
-
-*/
-
-
-
-
-        
-        
-            
-            
-            
-            
-        
-            
-        
-            
-       
-            
-
-
 
 export default Shop;
