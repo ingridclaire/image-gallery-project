@@ -161,17 +161,14 @@ function Panel({ category }) {
     <div>
       <div>
 
-        {items.map((item, i) =>
-      <li className='list-group-item' key={i} data-id={item.id}>{item.name}
-     
         
-        { show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(evemt)} />}
+        
+        { show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(event)} />}
         {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onChange={(event) => GetStars(event)} />}
         {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onChange={(event) => GetStars(event)} />}
         {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onChange={(event) => GetStars(event)} />}
 
-            </li>
-        )}
+            
 
 
 
