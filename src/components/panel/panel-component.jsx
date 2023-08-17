@@ -42,10 +42,12 @@ let filteredarray = [{
 
 
 //  id name imageUrl price
-function Panel({ category }) {
+function Panel({ category, starID }) {
   console.log("category2: ", { category });
   //let string1 =  "hats" ;
   let string1 = "hats";
+
+  
 
   let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
   //let { stars1, setStars } = useContext(StarContext);
@@ -138,7 +140,7 @@ function Panel({ category }) {
     
     //console.log("name: ", name);
     //let x = 9;
-    let v = "item1"
+    let v = "itemz"
     //let data1 = [{ id: { x }, name: "item99", }]
     setItems((items) => [...items, { id: id, name: v }])
     //panelArray = [...panelArray, obj];
@@ -150,9 +152,15 @@ function Panel({ category }) {
     //setpanelArray(panelArray);
   }
 
+//items is stars
+  console.log("numberOfStars", starID);
+  //const newStars = items.filter((contact) => contact.id !== Number(starID));
+  //setItems(newStars);
+  //setItems((items) => [...items, { starId: id, name: v }])
 
-  const listItems = data.map((d) => <li key={d.userID}>{d.name}</li>);
-  console.log("li: ", listItems);
+
+  //const listItems = data.map((d) => <li key={d.userID}>{d.name}</li>);
+  //console.log("li: ", listItems);
 
   return (
     /////////////////////////////
@@ -172,21 +180,7 @@ function Panel({ category }) {
 
 
 
-        <DropDown id="id1">
-          <div className="images">
-            {count++}
-            {count++}50
-            testing
-            <p>testing..</p>
-            {listItems}
-
-            {items.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-
-
-          </div>
-        </DropDown>
+       
 
         <button onClick={() => addProductToCart(category)}>Button</button>
       </div>
