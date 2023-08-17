@@ -59,7 +59,7 @@ function Panel({ category }) {
 
   const Photo = () => {
   }
-  let forceUpdate = useForceUpdate();
+  //let forceUpdate = useForceUpdate();
   let { imageUrl, price, name, id } = category;
   let index1 = 0;
   const [change, setChange] = useState(0);
@@ -125,24 +125,29 @@ function Panel({ category }) {
 
 
   let data = [{}];
-  function GetStars(event) {
+  function GetStars(test) {
     {
-      const newStars = items.filter((contact) => contact.id !== 1);
+      alert(test);
+      //let id = event.target.name;
+      const newStars = items.filter((contact) => contact.id !== Number(id));
       setItems(newStars);
     };
 
+    
 
-    let x = 9;
+    
+    //console.log("name: ", name);
+    //let x = 9;
     let v = "item1"
-    let data1 = [{ id: { x }, name: "item99", }]
-    setItems((items) => [...items, { id: 1, name: v }])
-    panelArray = [...panelArray, obj];
-    setpanelArray(panelArray);
-    console.log("panelarray: ", panelArray);
-    console.log("pA: ", panelArray);
-    setValue(!value);
-    panelArray = [...panelArray, obj];
-    setpanelArray(panelArray);
+    //let data1 = [{ id: { x }, name: "item99", }]
+    setItems((items) => [...items, { id: id, name: v }])
+    //panelArray = [...panelArray, obj];
+    //setpanelArray(panelArray);
+    //console.log("panelarray: ", panelArray);
+    //console.log("pA: ", panelArray);
+    //setValue(!value);
+    //panelArray = [...panelArray, obj];
+    //setpanelArray(panelArray);
   }
 
 
@@ -155,10 +160,20 @@ function Panel({ category }) {
     /////////////////////////////
     <div>
       <div>
-        {show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(event)} />}
+
+        {items.map((item, i) =>
+      <li className='list-group-item' key={i} data-id={item.id}>{item.name}
+     
+        
+        { show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(evemt)} />}
         {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onChange={(event) => GetStars(event)} />}
         {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onChange={(event) => GetStars(event)} />}
         {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onChange={(event) => GetStars(event)} />}
+
+            </li>
+        )}
+
+
 
         <DropDown id="id1">
           <div className="images">
