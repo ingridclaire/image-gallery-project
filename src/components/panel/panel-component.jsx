@@ -17,10 +17,7 @@ import { ExampleContext } from '../../contexts/stars-context';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let count = false;
 let amtStars = 0;
-/*{show && <input id="1" checked={checked} type="checkbox" name="1" onClick={(event) => getStars(event)} />} */
 
-//search button, call function
-//for category derefernce
 //Cookie cut each one with a button
 
 let imageCount = 0;
@@ -43,8 +40,24 @@ let filteredarray = [{
 
 //  id name imageUrl price
 function Panel({ category }) {
+
+  const [checkedValues, setCheckedValues] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem('checkedValues', JSON.stringify(checkedValues));
+  }, [checkedValues]);
+
+  useEffect(() => {
+    const savedValues = JSON.parse(localStorage.getItem('checkedValues'));
+    if (savedValues) {
+      setCheckedValues(savedValues);
+    }
+  }, []);
+
+
+
   console.log("category2: ", { category });
-  //let string1 =  "hats" ;
+  
   let string1 = "hats";
 
   let { cartItems, productToAdd, panelArray, addItemToCart, setpanelArray } = useContext(PanelContext);
@@ -57,9 +70,12 @@ function Panel({ category }) {
   console.log("a: ", filteredarray);
 
 
+  
+
+
   const Photo = () => {
   }
-  //let forceUpdate = useForceUpdate();
+  
   let { imageUrl, price, name, id } = category;
   let index1 = 0;
   const [change, setChange] = useState(0);
@@ -76,7 +92,7 @@ function Panel({ category }) {
   };
 
 
-  //uses context
+  
   const addProductToCart = (category) => {
     setpanelArray(panelArray);
     console.log("pA: ", panelArray);
@@ -102,6 +118,8 @@ function Panel({ category }) {
     setTodos((prevState) => ({ ...prevState, value4: false }))
   }, [])
 
+  
+
   console.log("td1: ", todos);
   console.log("td2: ", todos.value1);
   const [fourStars, setFourStars] = useState(0)
@@ -121,39 +139,185 @@ function Panel({ category }) {
       )
     );
   };
-  //let data = [{name: ""}];
+  
 
 
   let data = [{}];
-  function GetStars(test) {
+  
+  let starFlag = true;
+  //https://github.com/Josheir/image-gallery-project/blob/checkboxComponent/src/components/panel/panel-component.jsx
+  function GetStars(event, category, test1) {
+    
+  
+    let id1 = event.target.id;
+    console.log("5: ", id);
+    let isChecked = event.target.checked;
+    let star = 0;
+    if (id1 === '0') {
+      star = 1;
+      if (todos.value1 == false) {
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+
+        amtStars = "1 Star";
+        //alert("here1");
+        
+      }
+    
+      else if (todos.value2 == true) {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        
+        //alert("here2");
+      }
+    
+
+      else {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+      
+        //alert("here2");
+      }
+    }
+
+  
+    if (id1 === '1') {
+      star = 2
+      if (todos.value2 == false) {
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        amtStars = "2 Stars";
+        //alert("here1");
+        
+      }
+    
+      else if (todos.value3 == true) {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+       
+        //alert("here2");
+      }
+
+      else {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+       
+        //alert("here2");
+      }
+
+
+
+
+    }
+  
+    if (id1 === '2') {
+      star = 3
+      if (todos.value3 == false) {
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        setTodos((prevState) => ({ ...prevState, value3: true }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        amtStars = "3 Stars";
+        //alert("here1");
+        
+      }
+    
+      else if (todos.value4 == true) {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        setTodos((prevState) => ({ ...prevState, value3: true }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        
+        //alert("here2");
+      }
+        
+      else {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        
+        //alert("here2");
+      }
+        
+    }
+  
+  
+    if (id1 === '3') {
+      star = 4
+      if (todos.value4 == false) {
+        setTodos((prevState) => ({ ...prevState, value1: true }))
+        setTodos((prevState) => ({ ...prevState, value2: true }))
+        setTodos((prevState) => ({ ...prevState, value3: true }))
+        setTodos((prevState) => ({ ...prevState, value4: true }))
+        amtStars = "4 Stars";
+        //alert("here1");
+        
+      }
+    
+      else {
+        starFlag = false;
+        setTodos((prevState) => ({ ...prevState, value1: false }))
+        setTodos((prevState) => ({ ...prevState, value2: false }))
+        setTodos((prevState) => ({ ...prevState, value3: false }))
+        setTodos((prevState) => ({ ...prevState, value4: false }))
+        
+        //alert("here2");
+      }
+    }
+
+  
+    
+  
+  
+  
+  
+  
+  
     {
-      alert(test);
-      //let id = event.target.name;
+      
+      
       const newStars = items.filter((contact) => contact.id !== Number(id));
       setItems(newStars);
+      
     };
 
     
 
     
-    //console.log("name: ", name);
-    //let x = 9;
-    let v = "item1"
-    //let data1 = [{ id: { x }, name: "item99", }]
-    setItems((items) => [...items, { id: id, name: v }])
-    //panelArray = [...panelArray, obj];
-    //setpanelArray(panelArray);
-    //console.log("panelarray: ", panelArray);
-    //console.log("pA: ", panelArray);
-    //setValue(!value);
-    //panelArray = [...panelArray, obj];
-    //setpanelArray(panelArray);
+    
+    let v = test1
+    if (starFlag == true) {
+      //let data1 = [{ id: { x }, name: "item99", }]
+      setItems((items) => [...items, { star3: amtStars, id: category.id, name: category.name, imageCount: category.imageUrl }])
+    }
+  
+  
   }
 
 
-  const listItems = data.map((d) => <li key={d.userID}>{d.name}</li>);
-  console.log("li: ", listItems);
+  //const listItems = data.map((d) => <li key={d.userID}>{d.name}</li>);
+  //console.log("li: ", listItems);
 
+  
   return (
     /////////////////////////////
     //!!!!!CONTENT WAS HERE  - 688 ... after {listItems}  !!!!!! PROBABLY FOR PANEL DISPLAY - couldnt comment out!
@@ -163,42 +327,313 @@ function Panel({ category }) {
 
         
         
-        { show && <input id="0" checked={todos.value1} type="checkbox" name="1" onChange={(event) => GetStars(event)} />}
-        {show && <input id="1" checked={todos.value2} type="checkbox" name="2" onChange={(event) => GetStars(event)} />}
-        {show && <input id="2" checked={todos.value3} type="checkbox" name="3" onChange={(event) => GetStars(event)} />}
-        {show && <input id="3" checked={todos.value4} type="checkbox" name="4" onChange={(event) => GetStars(event)} />}
+        {show && <input id="0" checked={checkedValues.includes('option1')} type="checkbox" value="option1" name="1" onChange={(event) => handleCheck(event, category, "1 Stars")} />}
+        {show && <input id="1" checked={checkedValues.includes('option2')} type="checkbox" value="option2" name="2" onChange={(event) => handleCheck(event, category, "2 Stars")} />}
+        {show && <input id="2" checked={checkedValues.includes('option3')} type="checkbox" value="option3" name="3" onChange={(event) => handleCheck(event, category, "3 Stars")} />}
+        {show && <input id="3" checked={checkedValues.includes('option4')} type="checkbox" value="pption4" name="4" onChange={(event) => handleCheck(event, category, "4 Stars")} />}
 
             
+        
 
 
 
         <DropDown id="id1">
           <div className="images">
             {count++}
-            {count++}50
-            testing
-            <p>testing..</p>
-            {listItems}
+            
+            
 
             {items.map((item) => (
-              <li key={item.id}>{item.name}</li>
+              <p key={item.id}>{item.star3}</p>
             ))}
 
 
           </div>
         </DropDown>
 
-        <button onClick={() => addProductToCart(category)}>Button</button>
+       
       </div>
     </div>
   )
+
+  function handleCheck(event, cat, string) {
+    const { value }  = event.target;
+
+    let id1 = event.target.id;
+    console.log("5: ", id);
+    let isChecked = event.target.checked;
+    let star = 0;
+
+    
+    if (id1 === '0') {
+      star = 1;
+      if (checkedValues.includes("option1") == false) {
+        
+        setCheckedValues(checkedValues.filter((v) => v === 1));
+        setCheckedValues(["option1"]);
+        
+        //setCheckedValues([...checkedValues, value]);
+        
+        //setTodos((prevState) => ({ ...prevState, value1: true }))
+        //setTodos((prevState) => ({ ...prevState, value2: false }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+
+        amtStars = "1 Star";
+        alert("here1");
+        
+      }
+    
+      else if (checkedValues.includes("option2") === true) {
+        starFlag = false;
+        setCheckedValues(checkedValues.filter((v) => v === true));
+        setCheckedValues(["option1"]);
+        //setTodos((prevState) => ({ ...prevState, value1: true }))
+        //setTodos((prevState) => ({ ...prevState, value2: false }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+        
+        alert("here2");
+      }
+    
+
+      else {
+        starFlag = false;
+        setCheckedValues(checkedValues.filter((v) => v === 1));
+        //setTodos((prevState) => ({ ...prevState, value1: false }))
+        //setTodos((prevState) => ({ ...prevState, value2: false }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+      
+        alert("here3");
+      }
+    }
+
+    if (id1 === '1') {
+      star = 2
+      if (checkedValues.includes("option2") == false) {
+        setCheckedValues(checkedValues.filter((v) => v === 1));
+        setCheckedValues([...checkedValues, "option1", "option2"]);
+        // setCheckedValues([...checkedValues, "option2"]);
+        //setTodos((prevState) => ({ ...prevState, value1: true }))
+        //setTodos((prevState) => ({ ...prevState, value2: true }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+        amtStars = "2 Stars";
+        alert("here1a");
+        
+      }
+    
+      else if (checkedValues.includes("option3") == true) {
+        starFlag = false;
+        setCheckedValues(checkedValues.filter((v) => v === 1));
+        setCheckedValues([...checkedValues, "option1", "option2"]);
+       
+        //setTodos((prevState) => ({ ...prevState, value1: true }))
+        //setTodos((prevState) => ({ ...prevState, value2: true }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+       
+        alert("here2a");
+      }
+
+      else {
+        starFlag = false;
+        setCheckedValues(checkedValues.filter((v) => v === 1));
+        //setTodos((prevState) => ({ ...prevState, value1: false }))
+        //setTodos((prevState) => ({ ...prevState, value2: false }))
+        //setTodos((prevState) => ({ ...prevState, value3: false }))
+        //setTodos((prevState) => ({ ...prevState, value4: false }))
+       
+        alert("here3a");
+      }
+
+
+    }
+
+      if (id1 === '2') {
+        star = 3
+        if (checkedValues.includes("option3") == false) {
+          setCheckedValues(checkedValues.filter((v) => v === 1));
+          setCheckedValues([...checkedValues, "option1", "option2", "option3"]);
+          //setTodos((prevState) => ({ ...prevState, value1: true }))
+          //setTodos((prevState) => ({ ...prevState, value2: true }))
+          //setTodos((prevState) => ({ ...prevState, value3: true }))
+          //setTodos((prevState) => ({ ...prevState, value4: false }))
+          amtStars = "3 Stars";
+          alert("4a")
+          //alert("here1");
+          
+        }
+      
+        else if (checkedValues.includes("option4") === true) {
+          starFlag = false;
+          setCheckedValues(checkedValues.filter((v) => v === 1));
+          setCheckedValues(["option1", "option2", "option3"]);
+          //setTodos((prevState) => ({ ...prevState, value1: true }))
+          //setTodos((prevState) => ({ ...prevState, value2: true }))
+          //setTodos((prevState) => ({ ...prevState, value3: true }))
+          //setTodos((prevState) => ({ ...prevState, value4: false }))
+          alert("4b")
+          //alert("here2");
+        }
+          
+        else {
+          starFlag = false;
+          setCheckedValues(checkedValues.filter((v) => v === 1));
+          //setTodos((prevState) => ({ ...prevState, value1: false }))
+          //setTodos((prevState) => ({ ...prevState, value2: false }))
+          //setTodos((prevState) => ({ ...prevState, value3: false }))
+          //setTodos((prevState) => ({ ...prevState, value4: false }))
+          alert("4c")
+          //alert("here2");
+        }
+          
+      }
+    
+    
+      if (id1 === '3') {
+        star = 4
+        if (checkedValues.includes("option4") == false) {
+          setCheckedValues(checkedValues.filter((v) => v === 1));
+          setCheckedValues([...checkedValues, "option1", "option2", "option3", "option4"]);
+          //setTodos((prevState) => ({ ...prevState, value1: true }))
+          //setTodos((prevState) => ({ ...prevState, value2: true }))
+          //setTodos((prevState) => ({ ...prevState, value3: true }))
+          //setTodos((prevState) => ({ ...prevState, value4: true }))
+          amtStars = "4 Stars";
+          //alert("here1");
+          alert("5a")
+          
+        }
+      
+        else {
+          starFlag = false;
+          setCheckedValues(checkedValues.filter((v) => v === 1));
+          //setTodos((prevState) => ({ ...prevState, value1: false }))
+          //setTodos((prevState) => ({ ...prevState, value2: false }))
+          //setTodos((prevState) => ({ ...prevState, value3: false }))
+          //setTodos((prevState) => ({ ...prevState, value4: false }))
+          
+          alert("here2z");
+          alert("5b")
+        }
+
+
+
+
+
+    }
+
+
+      /*
+      //const { value } = event.target
+    console.log("val ", value);
+      if (checkedValues.includes(value) && checkedValues.includes("option2")) {
+
+        alert("options");
+        //setCheckedValues([...checkedValues, value]);
+        //setCheckedValues(checkedValues.filter((v) => v !== value));
+        setCheckedValues(checkedValues.filter((v) => v === value));
+        //setCheckedValues([...checkedValues, value]);
+        
+      } else {
+
+        
+
+        
+        alert("here");
+        //alert("here ", value);
+        setCheckedValues("test")
+        //no check, add it to array
+        console.log("1a ",checkedValues)
+        //setCheckedValues([]);
+        
+        
+        setCheckedValues([...checkedValues, value]);
+        
+        
+        
+        
+        console.log("2a ", checkedValues)
+        
+      }
+      
+    */
+      
+    }
+
+  
+  
+
+
+  const addCartItem = (panelArray, productToAdd) => {
+    console.log(productToAdd);
+    return (productToAdd);
+  };
+
+
+  /*
+  
+  import React, { useState, useEffect } from 'react';
+  
+  function CheckboxGroup() {
+    const [checkedValues, setCheckedValues] = useState([]);
+  
+    useEffect(() => {
+      localStorage.setItem('checkedValues', JSON.stringify(checkedValues));
+    }, [checkedValues]);
+  
+    useEffect(() => {
+      const savedValues = JSON.parse(localStorage.getItem('checkedValues'));
+      if (savedValues) {
+        setCheckedValues(savedValues);
+      }
+    }, []);
+  
+    function handleCheckboxChange(event) {
+      const { value } = event.target;
+      if (checkedValues.includes(value)) {
+        setCheckedValues(checkedValues.filter((v) => v !== value));
+      } else {
+        setCheckedValues([...checkedValues, value]);
+      }
+    }
+  
+    return (
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            value="option1"
+            checked={checkedValues.includes('option1')}
+            onChange={handleCheckboxChange}
+          />
+          Option 1
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="option2"
+            checked={checkedValues.includes('option2')}
+            onChange={handleCheckboxChange}
+          />
+          Option 2
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="option3"
+            checked={checkedValues.includes('option3')}
+            onChange={handleCheckboxChange}
+          />
+          Option 3
+        </label>
+      </div>
+    );
+  }
+  
+  
+  */
 }
-
-
-const addCartItem = (panelArray, productToAdd) => {
-  console.log(productToAdd);
-  return (productToAdd);
-};
-
-
 export default Panel;

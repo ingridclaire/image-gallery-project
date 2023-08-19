@@ -26,7 +26,7 @@ const Category = ({ }) => {
             products.map((product) => (
               <div key={product.name}>
                 <PhotoImages1 key={product.name} category={product} />
-                <Panel key={product.imageUrl} category={product} />
+                
               </div>
             ))}
         </CategoryContainer>

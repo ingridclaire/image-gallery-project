@@ -11,7 +11,9 @@ const PhotoImages1 = ({ category }) => {
   return (
     <div>
       <div id='drop'>
+      
         {id}
+
       </div>
       <div>
         <h2>{name}</h2>
@@ -20,6 +22,7 @@ const PhotoImages1 = ({ category }) => {
           <img src={imageUrl} alt={``} width={90} />
         </div>
       </div>
+      <Panel key={id} category={category} />
     </div>
   );
 }
