@@ -7,15 +7,20 @@ import Panel from '../../components/panel/panel-component'
 
 const Category = ({ }) => {
   let { category } = useParams();
-  console.log("ca: ", { category });
+  // console.log("ca: ", { category });
   const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
-  console.log("category1 :", categoriesMap);
+  // console.log("category1 :", categoriesMap);
 
-  useEffect(() => {
-  }, []);
+  
 
-  console.log("catego: ", categoriesMap);
+  // console.log("catego: ", categoriesMap);
+  console.log({ products });
+
+  // useEffect(() => {
+  //   console.log(`initialProducts`, categoriesMap[category]);
+  //   // setProducts(products)
+  // }, [])
 
   return (
     <div>
@@ -23,12 +28,14 @@ const Category = ({ }) => {
       <Fragment>
         <CategoryContainer>
           {products &&
-            products.map((product) => (
-              <div key={product.name}>
-                <PhotoImages1 key={product.name} category={product} />
-                
-              </div>
-            ))}
+            products.map((product) => {
+              return (
+                <div key={product.name}>
+                  <PhotoImages1 key={product.name} category={product} productID={product.id} />
+                  
+                </div>
+              )
+            })}
         </CategoryContainer>
       </Fragment>
     </div>
