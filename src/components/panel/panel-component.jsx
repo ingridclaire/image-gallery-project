@@ -77,7 +77,7 @@ function Panel({ category, productID }) {
   }, [checkedValues]);
 
 
-  // console.log("category2: ", { category });
+  /// console.log("category2: ", { category });
 
   let string1 = "hats";
 
