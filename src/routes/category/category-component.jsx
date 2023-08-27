@@ -29,9 +29,8 @@ export default function Category() {
   let { category } = useParams();
   const { categoriesMap } = useContext(CategoriesContext);
   const storedProducts = JSON.parse(localStorage.getItem(`products`));
-  const defaultProducts = createProductsWithOptions(categoriesMap["jackets"]);
+  const defaultProducts = createProductsWithOptions(categoriesMap[category]);
   const [products, setProducts] = useState(storedProducts || defaultProducts);
-  console.log(categoriesMap["jackets"])
 
   function handleCheck(option, product) {
 
