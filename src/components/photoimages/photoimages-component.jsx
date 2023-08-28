@@ -1,18 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { PhotoContainer, DropDown } from "./photoimages-styles";
-import Panel from "../panel/panel-component";
+import Panel from "../panel/panel-component-copy2";
 import { createPortalcreate } from 'react-dom';
 import { usePortal } from "react-dom";
 import { createPortal } from 'react-dom';
 
-const PhotoImages1 = ({ category ,productID }) => {
+const PhotoImages1 = ({ category, productID }) => {
   const { id, imageUrl, name, price } = category;
   const navigate = useNavigate();
 
   return (
     <div>
       <div id='drop'>
-      
+
         {id}
 
       </div>

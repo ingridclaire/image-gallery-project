@@ -88,7 +88,7 @@ export default function Category() {
                     {product.options.map((opt, optIndex) => {
                       return <input key={optIndex} id={`${product.id}-${optIndex}`} checked={opt.checked} type={`checkbox`} value={`option${optIndex}`} name={`${optIndex}`} onChange={(event) => handleCheck(opt, product)} />
                     })}
-                    {/* <Panel key={id} category={category} productID={productID} /> */}
+                    { <Panel key={id} category={category} productID={productID} /> }
                   </div>
                 </div>
               )

@@ -2,7 +2,7 @@ import { CategoriesContext } from '../../contexts/categories-context';
 import { useContext, useState, Fragment } from 'react';
 import { CategoryContainer } from './category-styles';
 import { useParams } from 'react-router-dom';
-
+import  Panel  from '../../components/panel/panel-component'
 export const getLatestStoredNotifications = () => {
   if (localStorage.getItem(`products`)) {
     let storedProducts = makeCopyOfProductsWithCustomData(JSON.parse(localStorage.getItem(`products`)));
@@ -99,9 +99,11 @@ export default function Category() {
     }
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
+    
   }
 
   return (
+                    
     <div>
       <h4>Rate an image:</h4>
       <Fragment>
@@ -132,6 +134,9 @@ export default function Category() {
                           name={newOptIndex} onChange={(event) => handleCheck(opt, product)} />
                       )
                     })}
+
+                    {/* <Panel key={id} category={product} productID={productID} /> */}
+                    { <Panel key={product.id} category={product} productID={productID} />}
                   </div>
                 </div>
               )
