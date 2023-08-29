@@ -13,6 +13,9 @@ function Panel({ category }) {
   useEffect(() => {
     setItems((items) => [...items, { id: category.id, name: category.name }])
   }, [])
+
+  const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
+  console.log("PIA: ", PanelInfoArray);
     return (
         /////////////////////////////
         //!!!!!CONTENT WAS HERE  - 688 ... after {listcategory}  !!!!!! PROBABLY FOR PANEL DISPLAY - couldnt comment out!
@@ -25,11 +28,12 @@ function Panel({ category }) {
     
     
             
-                {items.map((item) => (
+                
+                {PanelInfoArray && PanelInfoArray.map((item) => (
               
                   <div>
                   <p >{item.id}</p>
-                  <p >{item.name}</p>
+                    <p >{item.name}</p>
                   </div>
                 ))}
     

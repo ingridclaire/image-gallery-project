@@ -99,6 +99,15 @@ export default function Category() {
     }
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
+    //const PanelInfoArray = ["a", "b"];
+    const var1 = "1"
+    const var2 = "2"
+    const PanelInfoArray = []
+    //PanelInfoArray = {name: test1"
+    //PanelInfoArray[1] = "test2"
+    PanelInfoArray.push({ "id": var1 })
+    //PanelInfoArray.push({ "id": var2 })
+    localStorage.setItem(`panelInfo`, JSON.stringify(PanelInfoArray))
     
   }
 
