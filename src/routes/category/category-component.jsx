@@ -89,7 +89,7 @@ export default function Category() {
   const [products, setProducts] = useState(initialProducts);
   // And lets store the final generated array of products with everything we need back into our localstorage to sync it up
   localStorage.setItem(`products`, JSON.stringify(initialProducts));
-
+  let count = 0;
   const handleCheck = (option, product) => {
     let updatedProducts = [];
     if (getLatestStoredNotifications().length > 0) {
@@ -100,15 +100,41 @@ export default function Category() {
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
     //const PanelInfoArray = ["a", "b"];
-    const var1 = "1"
-    const var2 = "2"
+    
+    var users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    var user = {
+      id: product.id,
+      name1: product.name,
+      url: product.imageUrl,
+      price: product.price
+  };
+    
+  const users2 = users.filter((contact) => contact.id !== product.id);
+    users2.push(user);
+
+    
+    localStorage.setItem("users", JSON.stringify(users2));
+    
+
+    /*
+    let var1 = 0;
+    if (count) {
+      var1 = "1"
+    }
+    else {
+      var1 = "2";
+      count++;
+    }
+    //const var1 = "1"
+    //const var2 = "2"
     const PanelInfoArray = []
     //PanelInfoArray = {name: test1"
     //PanelInfoArray[1] = "test2"
     PanelInfoArray.push({ "id": var1 })
     //PanelInfoArray.push({ "id": var2 })
     localStorage.setItem(`panelInfo`, JSON.stringify(PanelInfoArray))
-    
+    */
   }
 
   return (

@@ -14,8 +14,9 @@ function Panel({ category }) {
     setItems((items) => [...items, { id: category.id, name: category.name }])
   }, [])
 
-  const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
-  console.log("PIA: ", PanelInfoArray);
+  //const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
+  var PanelInfoArray = JSON.parse(localStorage.getItem("users") || "[]");
+  //console.log("PIA: ", PanelInfoArray);
     return (
         /////////////////////////////
         //!!!!!CONTENT WAS HERE  - 688 ... after {listcategory}  !!!!!! PROBABLY FOR PANEL DISPLAY - couldnt comment out!
@@ -26,16 +27,21 @@ function Panel({ category }) {
               <div className="images">
                 {count++}
     
-    
+            
+            
+              
             
                 
                 {PanelInfoArray && PanelInfoArray.map((item) => (
               
                   <div>
-                  <p >{item.id}</p>
-                    <p >{item.name}</p>
+                    <p >{item.name1}</p>
+                    <img src={item.url} width="80" height="80" />
+                    <p >${item.price}.00</p>
+                    <p>----</p>
+                    
                   </div>
-                ))}
+              ))}   
     
     
               </div>
