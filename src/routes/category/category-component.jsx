@@ -21,10 +21,10 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
           ...prod,
           category: prod.category || category, // Adding the category as a backup property in our custom objects
           options: prod.options || [
-            { option: `option1`, checked: false },
-            { option: `option2`, checked: false },
-            { option: `option3`, checked: false },
-            { option: `option4`, checked: false }
+            {option: `option1`, checked: false},
+            {option: `option2`, checked: false},
+            {option: `option3`, checked: false},
+            {option: `option4`, checked: false}
           ]
         }
       })
@@ -62,12 +62,12 @@ export default function Category() {
   let { category } = useParams();
   const { categoriesMap } = useContext(CategoriesContext);
   const productsForCategoryFromDB = categoriesMap[category];
-
+  
   let storedProducts = getLatestStoredNotifications();
   // Create an array of only the IDs of products
   let storedProductIDs = [];
   if (storedProducts.length > 0) storedProductIDs = storedProducts.map(productInStoredProducts => productInStoredProducts.id);
-
+  
   // We need to take the generated products from the database and push them into a new array
   if (productsForCategoryFromDB && productsForCategoryFromDB.length > 0) {
     productsForCategoryFromDB.forEach(productForCategoryFromDB => {
@@ -80,7 +80,7 @@ export default function Category() {
       }
     })
   }
-
+  
   // We need to take the updated array and create a copy with our custom data
   // Since we added a new parameter, let's make sure we pass that in
   const initialProducts = makeCopyOfProductsWithCustomData(storedProducts, category);
@@ -127,9 +127,9 @@ export default function Category() {
                       let productOptionValue = `option${newOptIndex}`;
                       let productOptionID = `${productID}-option-${newOptIndex}`;
                       return (
-                        <input key={optIndex} id={productOptionID}
-                          checked={opt.checked} type={`checkbox`} value={productOptionValue}
-                          name={newOptIndex} onChange={(event) => handleCheck(opt, product)} />
+                        <input key={optIndex} id={productOptionID} 
+                        checked={opt.checked} type={`checkbox`} value={productOptionValue} 
+                        name={newOptIndex} onChange={(event) => handleCheck(opt, product)} />
                       )
                     })}
                   </div>
@@ -141,4 +141,3 @@ export default function Category() {
     </div>
   );
 };
-
