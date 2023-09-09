@@ -15,7 +15,7 @@ function Panel({ category }) {
   }, [])
 
   //const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
-  var PanelInfoArray = JSON.parse(localStorage.getItem("users") || "[]");
+  var PanelInfoArray = JSON.parse(localStorage.getItem("panel") || "[]");
   //console.log("PIA: ", PanelInfoArray);
     return (
         /////////////////////////////
