@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Panel from '../../components/panel/panel-component'
 import { findAllByTestId } from '@testing-library/react';
 
+var star1 = "++++"
 
 export const getLatestStoredNotifications = () => {
   if (localStorage.getItem(`products`)) {
@@ -63,6 +64,7 @@ export const setCheckedOptionForProducts = (arrayOfProducts, option, product) =>
 
 export default function Category() {
   const [items, setItems] = useState(false)
+  const [stars, setStars] = useState([])
   let { category } = useParams();
   const { categoriesMap } = useContext(CategoriesContext);
   const productsForCategoryFromDB = categoriesMap[category];
@@ -97,18 +99,20 @@ export default function Category() {
   
   const computeStars = (option, product, index, id) => {
     let PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
-
+    let amtStars = 0
     //alert(id);
     if (index === 0) {
 
-
+      console.log("++ ", PanelInfoArray[id-1].options[1].checked);
+      
       if (PanelInfoArray[id-1].options[1].checked == true) {
 
         alert("2");
         PanelInfoArray[id-1].options[0].checked = true
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
-        PanelInfoArray[id-1].options[3].checked = false
+        PanelInfoArray[id - 1].options[3].checked = false
+        amtStars = 1
 
         
     }
@@ -118,7 +122,8 @@ export default function Category() {
         PanelInfoArray[id-1].options[0].checked = false
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
-        PanelInfoArray[id-1].options[3].checked = false
+        PanelInfoArray[id - 1].options[3].checked = false
+        amtStars = 0
 
       }
      
@@ -129,7 +134,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 1
 
 
       }
@@ -145,7 +150,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = true
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 2
         
     }
     
@@ -155,7 +160,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = true
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 2
       }
       
       else {
@@ -165,7 +170,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 0
 
 
       }
@@ -180,7 +185,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = true
         PanelInfoArray[id-1].options[2].checked = true
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 3
       }
       else if (PanelInfoArray[id-1].options[2].checked == true) {
 
@@ -189,7 +194,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 0
         
       }
       else {
@@ -199,7 +204,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = true
         PanelInfoArray[id-1].options[2].checked = true
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 3
 
 
       }
@@ -215,7 +220,7 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = false
         PanelInfoArray[id-1].options[2].checked = false
         PanelInfoArray[id-1].options[3].checked = false
-
+        amtStars = 0
         
     }
     
@@ -225,13 +230,14 @@ export default function Category() {
         PanelInfoArray[id-1].options[1].checked = true
         PanelInfoArray[id-1].options[2].checked = true
         PanelInfoArray[id-1].options[3].checked = true
-
+        amtStars = 4
       }
       
       
 
     }
 
+    alert("2");
 
 
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
@@ -269,11 +275,33 @@ export default function Category() {
     }
     */
 
-    handleCheck(option, product)
+    handleCheck(option, product, amtStars)
   }
   
-  const handleCheck = (option, product) => {
+ 
+  let panelArray2 = []
+  
 
+  const handleCheck = (option, product, amtStars) => {
+
+    let amtString = ""
+    switch (amtStars) {
+      case 1:
+        amtString = "One Star"
+        break;
+      case 2:
+        amtString = "Two Stars"
+        break;
+      case 3:
+        amtString = "Three Stars"
+        break;
+      case 4:
+        amtString = "Four Stars"
+        break;
+      default:
+        amtString = "Zero Stars"
+
+    }
     
     let amtstars = 1;
     //if (option.option == "option1" && option.checked == false)
@@ -281,7 +309,7 @@ export default function Category() {
       
     //  }
     
-      let updatedProducts = [];
+    let updatedProducts = [];
     if (getLatestStoredNotifications().length > 0) {
       updatedProducts = setCheckedOptionForProducts(getLatestStoredNotifications(), option, product);
     } else {
@@ -293,34 +321,62 @@ export default function Category() {
     
     var panelArray = JSON.parse(localStorage.getItem("panel") || "[]");
 
+    
     var panel = {
-      amtstars: amtstars,
+      amtstars: amtString,
       id: product.id,
       name1: product.name,
       url: product.imageUrl,
       price: product.price
-  };
+    };
     
-  const panelArray2 = panelArray.filter((contact) => contact.id !== product.id);
+    panelArray2 = panelArray.filter((contact) => contact.id !== product.id);
     panelArray2.push(panel);
-
+    console.log({ panelArray2 })
     
     localStorage.setItem("panel", JSON.stringify(panelArray2));
+    
+    //star1 = panelArray2[0].name1;
+    console.log({ panelArray2 })
+    
+    //setStars((stars) => [...stars, { amtstars: "aa", id: "ba" }])
+    //console.log({ stars});
     //
+    
     
     
     
   }
 
+  //{ panelArray2 = panelArray2.filter((item) => item.id !== products.id) }
+  
+    
+
+  let star = "stars+"
+
+  //let x = stars.filter((item3) => item3.id === products.id) 
+  //{ stars.map(star => star.id) }
+  //console.log("xxx: ", x)
+  
   return (
                     
     <div>
       <h4>Rate an image:</h4>
       <Fragment>
         <CategoryContainer>
+
+
+          {/*panelArray2.filter(item => item.id === products.id*/}
+            
+        
+          { stars.map(star => { return (<div>{star.amtstars}</div>)}) }
+          
           {products &&
             // Use filter to keep only the products with the matching category we want
             products.filter(prod => prod.category === category).map((product) => {
+
+              
+              
               let ID = product.id;
               let productID = `product-${product.id}`;
               let productDetailsID = `${productID}-details`;
@@ -330,6 +386,9 @@ export default function Category() {
                   <div id={productDetailsID}>
                     <h2>{product.name}</h2>
                     <h3>${product.price}.00</h3>
+
+                    
+
                     <div className={`images`}>
                       <img src={product.imageUrl} alt={product.name} width={90} />
                     </div>
@@ -344,14 +403,24 @@ export default function Category() {
                           checked={opt.checked} type={`checkbox`} value={productOptionValue}
                           name={newOptIndex} onChange={(event) => computeStars(opt, product,optIndex, ID)} />
                       )
+
+                      
                     })}
 
+                    
+                    
+                   <ul >
+                      {/*panelArray2.map(product2 => { return (<li>{product2.url}</li>) })*/}
+                      </ul>
                     {/* <Panel key={id} category={product} productID={productID} /> */}
-                    { <Panel key={product.id} category={product} productID={productID} />}
+                    {<Panel stars={star1 } key={product.id} category={product} productID={productID} />}
                   </div>
                 </div>
               )
-            })}
+            })
+          
+          
+          }
         </CategoryContainer>
       </Fragment>
     </div>

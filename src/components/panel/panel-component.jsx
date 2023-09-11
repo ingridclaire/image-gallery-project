@@ -4,14 +4,14 @@ import { useEffect, useState} from 'react';
 
 let count = 0;
 
-function Panel({ category }) {
-  console.log("cl: ", category)
+function Panel( ) {
+  //console.log("cl: ", category)
   const id2 = 2;
   const [items, setItems] = useState([])
   //const { name } = Category;
   
   useEffect(() => {
-    setItems((items) => [...items, { id: category.id, name: category.name }])
+    //setItems((items) => [...items, { id: category.id, name: category.name }])
   }, [])
 
   //const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
@@ -32,16 +32,22 @@ function Panel({ category }) {
               
             
                 
-                {PanelInfoArray && PanelInfoArray.map((item) => (
+                {PanelInfoArray && PanelInfoArray.map((item, index) => (
               
                   <div>
                     <p >{item.name1}</p>
                     <img src={item.url} width="80" height="80" />
                     <p >${item.price}.00</p>
+                    <p >{item.amtstars}</p>
                     <p>----</p>
                     
+                    
                   </div>
-              ))}   
+                ))}  
+            
+            
+            
+            
     
     
               </div>
@@ -55,3 +61,4 @@ function Panel({ category }) {
 
 }
 export default Panel;
+
