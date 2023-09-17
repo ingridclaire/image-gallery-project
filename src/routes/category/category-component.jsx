@@ -97,10 +97,21 @@ export default function Category() {
   localStorage.setItem(`products`, JSON.stringify(initialProducts));
   let count = 0;
   
-  const computeStars = (option, product, index, id) => {
+  const computeStars = (option, product, index, id, indexCount ) => {
+    //alert("zz: ", id );
+    //contains the product information for PanelInfoArray - and doesnt work.
     let PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
+    console.log(PanelInfoArray, "local storage panel")
+
+
+    //get index of id with map
+
+
+    console.log(option, product, index, id, "option values")
+    console.log("indexCount:", indexCount)
     let amtStars = 0
     //alert(id);
+    //console.log(id, "wrong: ")
     if (index === 0) {
 
       console.log("++ ", PanelInfoArray[id-1].options[1].checked);
@@ -358,6 +369,7 @@ export default function Category() {
   //{ stars.map(star => star.id) }
   //console.log("xxx: ", x)
   
+  let indexCount = 0;
   return (
                     
     <div>
@@ -374,7 +386,8 @@ export default function Category() {
           {products &&
             // Use filter to keep only the products with the matching category we want
             products.filter(prod => prod.category === category).map((product) => {
-
+             
+              {indexCount = indexCount + 1}
               
               
               let ID = product.id;
@@ -387,7 +400,7 @@ export default function Category() {
                     <h2>{product.name}</h2>
                     <h3>${product.price}.00</h3>
 
-                    
+                   
 
                     <div className={`images`}>
                       <img src={product.imageUrl} alt={product.name} width={90} />
@@ -398,10 +411,14 @@ export default function Category() {
                       let newOptIndex = optIndex + 1;
                       let productOptionValue = `option${newOptIndex}`;
                       let productOptionID = `${productID}-option-${newOptIndex}`;
+                      
+                      
+                      
                       return (
+                        
                         <input key={optIndex} id={productOptionID}
                           checked={opt.checked} type={`checkbox`} value={productOptionValue}
-                          name={newOptIndex} onChange={(event) => computeStars(opt, product,optIndex, ID)} />
+                          name={newOptIndex} onChange={(event) => computeStars(opt, product,optIndex, ID, indexCount)} />
                       )
 
                       

@@ -34,7 +34,7 @@ function Panel( ) {
                 
                 {PanelInfoArray && PanelInfoArray.map((item, index) => (
               
-                  <div>
+                  <div key={index}>
                     <p >{item.name1}</p>
                     <img src={item.url} width="80" height="80" />
                     <p >${item.price}.00</p>
