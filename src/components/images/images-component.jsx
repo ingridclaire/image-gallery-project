@@ -1,5 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
-import { Body, img, images, DirectoryItemContainer } from './images-styles';
+import { Body,DirectoryItemContainer } from './images-styles';
 
 const Images1 = ({ category }) => {
     const { imageUrl, route } = category;

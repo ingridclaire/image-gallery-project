@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+/*import { Outlet } from "react-router-dom";
 import Images1 from '../../components/images/images-component';
 import PhotoImages from '../../components/photoimages/photoimages-component';
 import { PhotoContainer } from "./shop-styles";
@@ -146,3 +146,4 @@ const Shop = () => {
 };
 
 export default Shop;
+*/
