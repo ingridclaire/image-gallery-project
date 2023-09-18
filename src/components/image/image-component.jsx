@@ -1,4 +1,4 @@
-import { Body } from './image-styles';
+/*import { Body } from './image-styles';
 
 const Image = ({ imageUrl }) => {
 
@@ -12,3 +12,5 @@ const Image = ({ imageUrl }) => {
     );
 };
 export default Image;
+
+*/

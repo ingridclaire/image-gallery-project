@@ -1,7 +1,7 @@
-import { body } from '../../components/stars/stars-styles';
-import { createContext, useContext, useState, useEffect, Fragment, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
-import { AmtProviderContext } from '../../contexts/stars-context';
+//import { body } from '../../components/stars/stars-styles';
+//import { createContext, useContext, useState, useEffect, Fragment, useReducer } from 'react';
+//import { useParams } from 'react-router-dom';
+//import { AmtProviderContext } from '../../contexts/stars-context';
 /*
 let amtStars = 0;
 const Stars = () => {

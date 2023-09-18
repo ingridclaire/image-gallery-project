@@ -9,7 +9,7 @@ const Images1 = ({ category }) => {
     return (
         <DirectoryItemContainer onClick={onNavigateHandler}>
             <Body>
-                <h2>ab</h2>
+               
                 <div className="images">
                     <img src={imageUrl} alt={``} width={60} />
                 </div>
