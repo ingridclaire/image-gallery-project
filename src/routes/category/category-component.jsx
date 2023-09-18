@@ -3,7 +3,7 @@ import { useContext, useState, Fragment } from 'react';
 import { CategoryContainer } from './category-styles';
 import { useParams } from 'react-router-dom';
 import Panel from '../../components/panel/panel-component'
-import { findAllByTestId } from '@testing-library/react';
+//import { findAllByTestId } from '@testing-library/react';
 
 var star1 = "++++"
 
