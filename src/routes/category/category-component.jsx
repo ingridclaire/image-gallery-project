@@ -18,11 +18,15 @@ export const getLatestStoredNotifications = () => {
 
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
+
+  let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
+      console.log("aop: ",arrayOfProducts);
       return arrayOfProducts.map(prod => {
+        index++
         return {
-          ...prod,
+          ...prod, index,
           category: prod.category || category, // Adding the category as a backup property in our custom objects
           options: prod.options || [
             { option: `option1`, checked: false },
@@ -97,13 +101,14 @@ export default function Category() {
   localStorage.setItem(`products`, JSON.stringify(initialProducts));
   let count = 0;
   
-  const computeStars = (option, product, index, id, indexCount ) => {
+  const computeStars = (option, product, index, id2, indexCount, id ) => {
     //alert("zz: ", id );
     //contains the product information for PanelInfoArray - and doesnt work.
     let PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
     console.log(PanelInfoArray, "local storage panel")
 
-
+   // let id = product.index 
+    console.log("id99: " ,id)
     //get index of id with map
 
 
@@ -342,7 +347,10 @@ export default function Category() {
     };
     
     panelArray2 = panelArray.filter((contact) => contact.id !== product.id);
+    
+    if(amtString != "Zero Stars"){
     panelArray2.push(panel);
+    }
     console.log({ panelArray2 })
     
     localStorage.setItem("panel", JSON.stringify(panelArray2));
@@ -418,7 +426,7 @@ export default function Category() {
                         
                         <input key={optIndex} id={productOptionID}
                           checked={opt.checked} type={`checkbox`} value={productOptionValue}
-                          name={newOptIndex} onChange={(event) => computeStars(opt, product,optIndex, ID, indexCount)} />
+                          name={newOptIndex} onChange={(event) => computeStars(opt, product,optIndex, ID, indexCount, product.index)} />
                       )
 
                       
