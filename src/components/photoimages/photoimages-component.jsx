@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+/*import { useNavigate } from 'react-router-dom';
 import { PhotoContainer, DropDown } from "./photoimages-styles";
 import Panel from "../panel/panel-component-copy2";
 import { createPortalcreate } from 'react-dom';
@@ -28,3 +28,4 @@ const PhotoImages1 = ({ category, productID }) => {
   );
 }
 export default PhotoImages1;
+*/
