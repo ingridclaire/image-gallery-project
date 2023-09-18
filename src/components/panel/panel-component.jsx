@@ -1,6 +1,6 @@
-import { PanelContext } from '../../contexts/panel-context';
+//import { PanelContext } from '../../contexts/panel-context';
 import { DropDown } from "./panel-styles"
-import { useEffect, useState} from 'react';
+import { useState} from 'react';
 
 let count = 0;
 
@@ -10,9 +10,7 @@ function Panel( ) {
   const [items, setItems] = useState([])
   //const { name } = Category;
   
-  useEffect(() => {
-    //setItems((items) => [...items, { id: category.id, name: category.name }])
-  }, [])
+  
 
   //const PanelInfoArray = JSON.parse(localStorage.getItem(`panelInfo`))
   var PanelInfoArray = JSON.parse(localStorage.getItem("panel") || "[]");
