@@ -21,7 +21,7 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
-      console.log("aop: ", arrayOfProducts);
+      
       return arrayOfProducts.map((prod) => {
         index++;
         return {
@@ -112,13 +112,10 @@ export default function Category() {
   let count = 0;
   const computeStars = (option, product, index, id2, indexCount, id) => {
     let PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
-    console.log(PanelInfoArray, "local storage panel");
-    console.log("id99: ", id);
-    console.log(option, product, index, id, "option values");
-    console.log("indexCount:", indexCount);
+  
     let amtStars = 0;
     if (index === 0) {
-      console.log("++ ", PanelInfoArray[id - 1].options[1].checked);
+      
       if (PanelInfoArray[id - 1].options[1].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
@@ -222,10 +219,10 @@ export default function Category() {
     if (amtString != "Zero Stars") {
       panelArray2.push(panel);
     }
-    console.log({ panelArray2 });
+   
     localStorage.setItem("panel", JSON.stringify(panelArray2));
-    //star1 = panelArray2[0].name1;
-    console.log({ panelArray2 });
+   
+    
   };
   let star = "stars+";
   let indexCount = 0;
