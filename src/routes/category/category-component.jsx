@@ -120,100 +120,55 @@ export default function Category() {
     if (index === 0) {
       console.log("++ ", PanelInfoArray[id - 1].options[1].checked);
       if (PanelInfoArray[id - 1].options[1].checked == true) {
-        alert("2");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
-        alert("1");
-        PanelInfoArray[id - 1].options[0].checked = false;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
-        alert("3");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       }
     }
     if (index === 1) {
       if (PanelInfoArray[id - 1].options[2].checked == true) {
-        alert("2a");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = true;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else if (PanelInfoArray[id - 1].options[1].checked == false) {
-        alert("1a");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = true;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else {
-        alert("3a");
-        PanelInfoArray[id - 1].options[0].checked = false;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       }
     }
     if (index === 2) {
       if (PanelInfoArray[id - 1].options[3].checked == true) {
-        alert("1b");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = true;
-        PanelInfoArray[id - 1].options[2].checked = true;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,true,true,false,PanelInfoArray,id)
         amtStars = 3;
       } else if (PanelInfoArray[id - 1].options[2].checked == true) {
-        alert("2b");
-        PanelInfoArray[id - 1].options[0].checked = false;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
-        alert("3b");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = true;
-        PanelInfoArray[id - 1].options[2].checked = true;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(true,true,true,false,PanelInfoArray,id)
         amtStars = 3;
       }
     }
     if (index === 3) {
       if (PanelInfoArray[id - 1].options[3].checked == true) {
-        alert("2c");
-        PanelInfoArray[id - 1].options[0].checked = false;
-        PanelInfoArray[id - 1].options[1].checked = false;
-        PanelInfoArray[id - 1].options[2].checked = false;
-        PanelInfoArray[id - 1].options[3].checked = false;
+        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
-        alert("1c");
-        PanelInfoArray[id - 1].options[0].checked = true;
-        PanelInfoArray[id - 1].options[1].checked = true;
-        PanelInfoArray[id - 1].options[2].checked = true;
-        PanelInfoArray[id - 1].options[3].checked = true;
+        setCheckBoxes(true,true,true,true,PanelInfoArray,id)
         amtStars = 4;
       }
     }
-    alert("2");
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
     handleCheck(option, product, amtStars);
   };
   let panelArray2 = [];
 
-  const setCheckBoxes = (chk0, chk1, chk2,chk3) => {
+  const setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
     PanelInfoArray[id - 1].options[0].checked = chk0;
     PanelInfoArray[id - 1].options[1].checked = chk1;
     PanelInfoArray[id - 1].options[2].checked = chk2;
