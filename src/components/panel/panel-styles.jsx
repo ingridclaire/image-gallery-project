@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 export const DropDown = styled.div`
 .drop{
     background-color:blue;
@@ -15,4 +15,4 @@ position: absolute;
 z-index: 2;
 overflow-y:scroll;
 overflow-x:scroll;
-}`
+}`;

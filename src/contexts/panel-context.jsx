@@ -1,24 +1,21 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from "react";
 const addCartItem = (productToAdd) => {
   return [productToAdd];
 };
 export const PanelContext = createContext({
   panelArray: [],
-  addItemToCart: () => { },
-  setpanelArray: () => { },
+  addItemToCart: () => {},
+  setpanelArray: () => {},
 });
-let imageUrl = 'https://i.ibb.co/X2VJP2W/blue-snapback.png';
+let imageUrl = "https://i.ibb.co/X2VJP2W/blue-snapback.png";
 export const PanelProvider = ({ children }) => {
   const [panelArray, setpanelArray] = useState([]);
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
   const addItemToCart = (productToAdd) => {
-    const newState = [...panelArray, 'hello'];
+    const newState = [...panelArray, "hello"];
   };
   const value = { panelArray, setpanelArray, addItemToCart };
   return (
-    <PanelContext.Provider value={value}>
-      {children}
-    </PanelContext.Provider>
+    <PanelContext.Provider value={value}>{children}</PanelContext.Provider>
   );
 };

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 export const Body = styled.div`
   font-size: 5px;
-  width:100%;
+  width: 100%;
   height: 90px;
   padding: 0 0px;
   display: flex;
@@ -11,7 +11,6 @@ export const Body = styled.div`
   border: 1px solid black;
   background-color: white;
   opacity: 0.7;
-  margin-top:1rem;
+  margin-top: 1rem;
 `;
-export const DirectoryItemContainer = styled.div`
-`;
+export const DirectoryItemContainer = styled.div``;

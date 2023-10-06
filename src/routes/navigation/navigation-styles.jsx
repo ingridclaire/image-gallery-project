@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 export const NavLink = styled(Link)`
   font-size: .4rem;
   color:gray;
@@ -18,29 +18,11 @@ export const NavLink = styled(Link)`
   }
 `;
 export const NavigationContainer = styled.div`
-  font-size:10px;
-  button{
-    font-size:.4rem;
+  font-size: 10px;
+  button {
+    font-size: 0.4rem;
   }
 `;
-/*
-export const TheLink = styled.link`
-color: yellowLink jav;
-  font-size: .5rem;
-  color:black;
-  background-color:red;
-  &:visited{
-    color:yellow;
-  }
-  &:hover{
-    color: white;
-  }
-  &.active {color:purple;}
-  .redirect{
-    color:yellow;
-  }
-`;
-*/
 export const DropDown = styled.div`
   font-size:10px;
   width:7rem;
@@ -53,4 +35,4 @@ export const DropDown = styled.div`
   z-index: 2;
   border-radius: 1rem;
   overflow-y:scroll;
-}`
+}`;

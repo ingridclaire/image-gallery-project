@@ -1,27 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { CategoriesProvider } from './contexts/categories-context';
-import { CartContextProvider } from './contexts/cart-context';
-import { PanelProvider } from './contexts/panel-context';
-import { ExampleProvider } from './contexts/stars-context';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { CategoriesProvider } from "./contexts/categories-context";
+import { CartContextProvider } from "./contexts/cart-context";
+import { PanelProvider } from "./contexts/panel-context";
+import { ExampleProvider } from "./contexts/stars-context";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode> 
+  <React.StrictMode>
     <BrowserRouter>
-    <ExampleProvider>
-            <PanelProvider>
-        <CategoriesProvider>
-          <CartContextProvider>
-            <App />
-          </CartContextProvider>
-        </CategoriesProvider>
+      <ExampleProvider>
+        <PanelProvider>
+          <CategoriesProvider>
+            <CartContextProvider>
+              <App />
+            </CartContextProvider>
+          </CategoriesProvider>
         </PanelProvider>
       </ExampleProvider>
-      </BrowserRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function
