@@ -5,6 +5,7 @@ const Images1 = ({ category }) => {
   const { imageUrl, route } = category;
   const navigate = useNavigate();
   const onNavigateHandler = () => navigate(route);
+ 
   return (
     <DirectoryItemContainer onClick={onNavigateHandler}>
       <Body>
@@ -15,4 +16,5 @@ const Images1 = ({ category }) => {
     </DirectoryItemContainer>
   );
 };
+
 export default Images1;

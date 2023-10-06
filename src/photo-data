@@ -59,4 +59,5 @@ const PHOTO_DATA = [
     ],
   },
 ];
+
 export default PHOTO_DATA;

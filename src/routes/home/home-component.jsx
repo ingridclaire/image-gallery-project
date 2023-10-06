@@ -1,4 +1,5 @@
 import Directory from "../../components/directory/directory-component";
+
 const Home = () => {
   return (
     <div>
@@ -6,4 +7,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;

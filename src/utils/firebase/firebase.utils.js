@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+
 import {
   getAuth,
   signInWithRedirect,
@@ -9,6 +10,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+
 import {
   getFirestore,
   doc,
@@ -19,6 +21,7 @@ import {
   query,
   getDocs,
 } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0YK",
   authDomain: "crwn-clothing-db-98d4d.firebaseapp.com",
@@ -32,6 +35,7 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
+
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);

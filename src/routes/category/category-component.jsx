@@ -4,6 +4,7 @@ import { CategoryContainer } from "./category-styles";
 import { useParams } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 var star1 = "++++";
+
 export const getLatestStoredNotifications = () => {
   if (localStorage.getItem(`products`)) {
     let storedProducts = makeCopyOfProductsWithCustomData(
@@ -14,6 +15,7 @@ export const getLatestStoredNotifications = () => {
     return [];
   }
 };
+
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   let index = 0;
@@ -41,6 +43,7 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
     return arrayOfProducts;
   }
 };
+
 export const setCheckedOptionForProducts = (
   arrayOfProducts,
   option,
@@ -66,6 +69,7 @@ export const setCheckedOptionForProducts = (
     });
   }
 };
+
 export default function Category() {
   const [items, setItems] = useState(false);
   const [stars, setStars] = useState([]);
@@ -208,6 +212,14 @@ export default function Category() {
     handleCheck(option, product, amtStars);
   };
   let panelArray2 = [];
+
+  const setCheckBoxes = (chk0, chk1, chk2,chk3) => {
+    PanelInfoArray[id - 1].options[0].checked = chk0;
+    PanelInfoArray[id - 1].options[1].checked = chk1;
+    PanelInfoArray[id - 1].options[2].checked = chk2;
+    PanelInfoArray[id - 1].options[3].checked = chk3;
+
+  }
   const handleCheck = (option, product, amtStars) => {
     let amtString = "";
     switch (amtStars) {
@@ -262,6 +274,7 @@ export default function Category() {
   };
   let star = "stars+";
   let indexCount = 0;
+  
   return (
     <div>
       <h4>Rate an image:</h4>
@@ -281,6 +294,7 @@ export default function Category() {
                 let ID = product.id;
                 let productID = `product-${product.id}`;
                 let productDetailsID = `${productID}-details`;
+                
                 return (
                   <div id={productID} className={`product`} key={product.name}>
                     <div id={`drop`}>{product.id}</div>
@@ -300,6 +314,7 @@ export default function Category() {
                         let newOptIndex = optIndex + 1;
                         let productOptionValue = `option${newOptIndex}`;
                         let productOptionID = `${productID}-option-${newOptIndex}`;
+                        
                         return (
                           <input
                             key={optIndex}
