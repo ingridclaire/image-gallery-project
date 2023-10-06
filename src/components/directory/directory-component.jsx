@@ -1,11 +1,5 @@
-//import { Link, UseParams } from 'react-router-dom';
-//import React from 'react';
-//import categories1 from '../../photo-data';
 import Images1 from '../images/images-component';
 import { DirectoryContainer } from '../directory/directory-styles';
-//import { useContext, useState, useEffect } from 'react';
-//import { checkActionCode } from 'firebase/auth';
-
 const categories = [
   {
     id: 1,
@@ -39,12 +33,8 @@ const categories = [
   },
 ];
 let checkedComponent = "react multiple";
-
-
 const Directory = () => {
-
   let count = 0;
-
   return (
     <div>
       <DirectoryContainer>

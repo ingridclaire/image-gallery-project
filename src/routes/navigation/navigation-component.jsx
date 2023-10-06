@@ -1,16 +1,11 @@
 import { Outlet, Link } from "react-router-dom";
 import { NavigationContainer, DropDown, NavLink } from "./navigation-styles"
 import { useState } from 'react';
-//import { createPortal } from 'react-dom';
-
 const Navigation = () => {
-
   function func() {
     let button = document.getElem
   }
-
   const [showPanel, setShowPanel] = useState(false);
-
   return (
     <NavigationContainer>
       <div className="photo">

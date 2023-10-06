@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Body = styled.div`
   font-size: 5px;
   width:100%;
@@ -14,6 +13,5 @@ export const Body = styled.div`
   opacity: 0.7;
   margin-top:1rem;
 `;
-
 export const DirectoryItemContainer = styled.div`
 `;

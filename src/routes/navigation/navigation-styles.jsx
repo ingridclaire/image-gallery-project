@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 export const NavLink = styled(Link)`
   font-size: .4rem;
   color:gray;
@@ -18,13 +17,11 @@ export const NavLink = styled(Link)`
     color:yellow;
   }
 `;
-
 export const NavigationContainer = styled.div`
   font-size:10px;
   button{
     font-size:.4rem;
   }
-  
 `;
 /*
 export const TheLink = styled.link`
@@ -44,7 +41,6 @@ color: yellowLink jav;
   }
 `;
 */
-
 export const DropDown = styled.div`
   font-size:10px;
   width:7rem;
