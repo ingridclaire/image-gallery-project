@@ -49,6 +49,8 @@ export const setCheckedOptionForProducts = (
   option,
   product
 ) => {
+
+  return arrayOfProducts
   if (arrayOfProducts.length > 0) {
     return arrayOfProducts.map((prod) => {
       if (prod.id === product.id) {
@@ -56,7 +58,7 @@ export const setCheckedOptionForProducts = (
           ...prod,
           options: prod.options.map((opt) => {
             if (opt.option === option.option) {
-              opt.checked = opt.checked;
+              //opt.checked = opt.checked;
               return opt;
             } else {
               return opt;
@@ -191,6 +193,8 @@ export default function Category() {
         amtString = "Zero Stars";
     }
     let amtstars = 1;
+
+    
     let updatedProducts = [];
     if (getLatestStoredNotifications().length > 0) {
       updatedProducts = setCheckedOptionForProducts(
@@ -198,15 +202,24 @@ export default function Category() {
         option,
         product
       );
-    } else {
+    } 
+    /*else {
       updatedProducts = setCheckedOptionForProducts(
         initialProducts,
         option,
         product
       );
-    }
+    }*/
+
+
+    //localStorage.setItem(`products`, JSON.stringify(updatedProducts));
+    //setProducts(updatedProducts);
+
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
+
+
+
     var panelArray = JSON.parse(localStorage.getItem("panel") || "[]");
     var panel = {
       amtstars: amtString,
@@ -215,7 +228,7 @@ export default function Category() {
       url: product.imageUrl,
       price: product.price,
     };
-    panelArray2 = panelArray.filter((contact) => contact.id !== product.id);
+    panelArray2 = panelArray.filter((panel) => panel.id !== product.id);
     if (amtString != "Zero Stars") {
       panelArray2.push(panel);
     }
@@ -224,7 +237,7 @@ export default function Category() {
    
     
   };
-  let star = "stars+";
+  //let star = "stars+";
   let indexCount = 0;
   
   return (
