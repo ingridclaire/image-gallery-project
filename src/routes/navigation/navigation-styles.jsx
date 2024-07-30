@@ -32,7 +32,7 @@ export const DropDown = styled.div`
   height: 7rem;
   background-color:grey;
   display: flex;
-  right:0px;
+  right:10px;
   top:0px;
   position: absolute;
   z-index: 2;

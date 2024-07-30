@@ -1,9 +1,89 @@
 import { CategoriesContext } from "../../contexts/categories-context";
-import { useContext, useState, Fragment } from "react";
+import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
 import { useParams } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
+
+///
+
+//let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+
+const [intialProduct, setIntialProducts] = useState(initialProducts);
+const PHOTO = [
+ // {
+    //atitle: "Hats",
+   // items: [
+      {
+        id: 1,
+        name: "Brown Brim",
+        imageUrl: require ("./brown-brim.png"),
+        price: 25,
+  
+        //options: [ {checked: true,checked: true,checked: true,checked: true, }]
+        
+      },
+
+      /*
+      {
+        id: 2,
+        name: "Blue Beanie",
+        imageUrl",
+        price: 18,
+      },
+      {
+        id: 3,
+        name: "Brown Cowboy",
+        imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
+        price: 35,
+      },
+      {
+        id: 4,
+        name: "Grey Brim",
+        imageUrl: "https://i.ibb.co/RjBLWxB/grey-brim.png",
+        price: 25,
+      },
+      {
+        id: 5,
+        name: "Green Beanie",
+        imageUrl: "https://i.ibb.co/YTjW3vF/green-beanie.png",
+        price: 18,
+      },
+      {
+        id: 6,
+        name: "Palm Tree Cap",
+        imageUrl: "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
+        price: 14,
+      },
+      {
+        id: 7,
+        name: "Red Beanie",
+        imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
+        price: 18,
+      },
+      {
+        id: 8,
+        name: "Wolf Cap",
+        imageUrl: "https://i.ibb.co/1f2nWMM/wolf-cap.png",
+        price: 14,
+      },
+      {
+        id: 9,
+        name: "Blue Snapback",
+        imageUrl: "https://i.ibb.co/X2VJP2W/blue-snapback.png",
+        price: 16,
+      }
+        */
+  //0  ],
+  //},
+];
+
+
+///
+
+
 var star1 = "++++";
+
+
 
 export const getLatestStoredNotifications = () => {
   if (localStorage.getItem(`products`)) {
@@ -24,6 +104,7 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
       
       return arrayOfProducts.map((prod) => {
         index++;
+        
         return {
           ...prod,
           index,
@@ -34,6 +115,8 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
             { option: `option3`, checked: false },
             { option: `option4`, checked: false },
           ],
+
+         
         };
       });
     } else {
@@ -44,38 +127,72 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   }
 };
 
-export const setCheckedOptionForProducts = (
-  arrayOfProducts,
-  option,
-  product
-) => {
 
-  return arrayOfProducts
-  if (arrayOfProducts.length > 0) {
-    return arrayOfProducts.map((prod) => {
-      if (prod.id === product.id) {
-        return {
-          ...prod,
-          options: prod.options.map((opt) => {
-            if (opt.option === option.option) {
-              //opt.checked = opt.checked;
-              return opt;
-            } else {
-              return opt;
-            }
-          }),
-        };
-      } else {
-        return prod;
-      }
-    });
-  }
-};
 
+//let PanelInfoArray[{
+//  options:1
+//}
+//]//
+
+//let PanelInfoArray = [{ options: `option1`, checked: false }, ]
+//let PanelInfoArray = []
+//  { options: `option2`, checked: false },
+//  { options: `option3`, checked: false },
+//  { options: `option4`, checked: false },]
+
+ // PanelInfoArray[1 - 1].options[0].checked = true;
+//let PanelInfoArray = []
+//let PanelInfoArray = [0].options[0].checked = true
+//PanelInfoArray = [0].options[0].checked = true;
+let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
+  PanelInfoArray[id - 1].options[0].checked = chk0;
+  //PanelInfoArray[id - 1].options[1].checked = chk1;
+  //PanelInfoArray[id - 1].options[2].checked = chk2;
+  //PanelInfoArray[id - 1].options[3].checked = chk3;
+
+}
+
+
+
+//setCheckBoxes(false,false,false,false, PanelInfoArray, 1)//
+
+
+
+//let PanelInfoArray[0].options[0].checked = true
+let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+
+//PanelInfoArray[1 - 1].options[0].checked = true;
+//PanelInfoArray[1 - 1].options[1].checked = true;
+//PanelInfoArray[1 - 1].options[2].checked = true;
+//PanelInfoArray[1 - 1].options[3].checked = true;
+
+
+console.log("+: ", PanelInfoArray)
+
+let initialProducts = []
 export default function Category() {
-  const [items, setItems] = useState(false);
+ 
+  useEffect(() => {
+    
+      
+  //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
+  
+  }, [] )
+  
   const [stars, setStars] = useState([]);
+
+  
   let { category } = useParams();
+
+/*
+  <DirectoryContainer>
+        {PHOTO_DATA.map((category) => (
+          <Images1 key={category.name} category={category} />
+        ))}
+  </DirectoryContainer>
+*/
+
+/*
   const { categoriesMap } = useContext(CategoriesContext);
   const productsForCategoryFromDB = categoriesMap[category];
   let storedProducts = getLatestStoredNotifications();
@@ -100,25 +217,82 @@ export default function Category() {
       }
     });
   }
+
+
+  storedProducts.push(PHOTO_DATA);
+
   // We need to take the updated array and create a copy with our custom data
   // Since we added a new parameter, let's make sure we pass that in
-  const initialProducts = makeCopyOfProductsWithCustomData(
-    storedProducts,
-    category
-  );
+  
+  */
+
+  // get length of initial products
+  // call handlecheck to set all equal to false in a for loop
+  
+ 
+
+  
+ 
+
+console.log("photo1: ", initialProducts)
+
+
+initialProducts = makeCopyOfProductsWithCustomData(
+      PHOTO,
+      "hats",
+  
+    );
+
   // Now that we have the custom array with all the data we need
   // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
   const [products, setProducts] = useState(initialProducts);
-  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up
-  localStorage.setItem(`products`, JSON.stringify(initialProducts));
-  let count = 0;
-  const computeStars = (option, product, index, id2, indexCount, id) => {
-    let PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
+
+
+  console.log("set: ", products)
   
-    let amtStars = 0;
-    if (index === 0) {
+  //setProducts(products => ({
+  //  ...PHOTO_DATA
+  //}))
+  
+  console.log("photos", PHOTO)
+  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
+  localStorage.setItem(`products`, JSON.stringify(null));
+  let count = 0;
+    //const computeStars = (options1, product, index, id, event) => {
+    
+    //omputeStars(e, product.index, newOptIndex, ID)
+    const computeStars = (e, index, two, id, product) => {
+      //PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
+  
+      let checked = e.target.checked
       
-      if (PanelInfoArray[id - 1].options[1].checked == true) {
+      console.log("checked: ", checked)
+      console.log("index: ", index)
+      
+      console.log("id: ", id)
+
+      
+      
+      ////////
+      
+      //console.log("product: ", product)
+
+      if (PanelInfoArray[0].options[0].checked == true) {
+        console.log("entered")
+      }
+
+      index = index -1;
+    let amtStars = 0;
+    //options1[0].checked = true
+    if (index === 0) {
+
+      //alert("a");
+      //if (product.options[0].checked == true) {
+      //  console.log("made it here")
+      //}
+      
+      //PanelInfoArray[0].options1[0].checked = true
+      if (PanelInfoArray[0].options[0].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
@@ -129,11 +303,19 @@ export default function Category() {
         amtStars = 1;
       }
     }
+
+
+
+
+    ////////
+
+
+    /*
     if (index === 1) {
-      if (PanelInfoArray[id - 1].options[2].checked == true) {
+      if (PanelInfoArray[id - 1].options1[2].checked == true) {
         setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
-      } else if (PanelInfoArray[id - 1].options[1].checked == false) {
+      } else if (PanelInfoArray[id - 1].options1[1].checked == false) {
         setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else {
@@ -142,10 +324,10 @@ export default function Category() {
       }
     }
     if (index === 2) {
-      if (PanelInfoArray[id - 1].options[3].checked == true) {
+      if (PanelInfoArray[id - 1].options1[3].checked == true) {
         setCheckBoxes(true,true,true,false,PanelInfoArray,id)
         amtStars = 3;
-      } else if (PanelInfoArray[id - 1].options[2].checked == true) {
+      } else if (PanelInfoArray[id - 1].options1[2].checked == true) {
         setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
@@ -154,7 +336,7 @@ export default function Category() {
       }
     }
     if (index === 3) {
-      if (PanelInfoArray[id - 1].options[3].checked == true) {
+      if (PanelInfoArray[id - 1].options1[3].checked == true) {
         setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
@@ -162,19 +344,19 @@ export default function Category() {
         amtStars = 4;
       }
     }
+      */
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
-    handleCheck(option, product, amtStars);
+    handleCheck(true, product, amtStars);
+    
   };
+  
   let panelArray2 = [];
 
-  const setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
-    PanelInfoArray[id - 1].options[0].checked = chk0;
-    PanelInfoArray[id - 1].options[1].checked = chk1;
-    PanelInfoArray[id - 1].options[2].checked = chk2;
-    PanelInfoArray[id - 1].options[3].checked = chk3;
+  
 
-  }
+  
   const handleCheck = (option, product, amtStars) => {
+    
     let amtString = "";
     switch (amtStars) {
       case 1:
@@ -192,28 +374,19 @@ export default function Category() {
       default:
         amtString = "Zero Stars";
     }
+
+
+
+
     let amtstars = 1;
 
     
     let updatedProducts = [];
-    if (getLatestStoredNotifications().length > 0) {
-      updatedProducts = setCheckedOptionForProducts(
-        getLatestStoredNotifications(),
-        option,
-        product
-      );
-    } 
-    /*else {
-      updatedProducts = setCheckedOptionForProducts(
-        initialProducts,
-        option,
-        product
-      );
-    }*/
+   
 
+    updatedProducts = getLatestStoredNotifications()
 
-    //localStorage.setItem(`products`, JSON.stringify(updatedProducts));
-    //setProducts(updatedProducts);
+    
 
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
@@ -239,20 +412,32 @@ export default function Category() {
   };
   //let star = "stars+";
   let indexCount = 0;
-  
+  const [showPanel, setShowPanel] = useState(false);
   return (
     <div>
+      <br></br><br></br>
+
+        <button
+          className="buttonShow"
+          onClick={() => {
+        //
+            setShowPanel((showPanel) => !showPanel);
+          }}
+        >
+          Show Panel
+        </button>
+
       <h4>Rate an image:</h4>
       <Fragment>
         <CategoryContainer>
           {stars.map((star) => {
             return <div>{star.amtstars}</div>;
           })}
-          {products &&
+          { PHOTO &&
             // Use filter to keep only the products with the matching category we want
-            products
-              .filter((prod) => prod.category === category)
-              .map((product) => {
+            
+              //.filter((prod) => prod.category === category)
+               initialProducts.map((product) => {
                 {
                   indexCount = indexCount + 1;
                 }
@@ -261,21 +446,23 @@ export default function Category() {
                 let productDetailsID = `${productID}-details`;
                 
                 return (
-                  <div id={productID} className={`product`} key={product.name}>
+                 <div id={productID} className={`product`} key={product.name}>
                     <div id={`drop`}>{product.id}</div>
                     <div id={productDetailsID}>
                       <h2>{product.name}</h2>
                       <h3>${product.price}.00</h3>
                       <div className={`images`}>
                         <img
-                          src={product.imageUrl}
+                          type="Image"
+                          src = {require('./brown-brim.png')}
                           alt={product.name}
                           width={90}
                         />
                       </div>
                     </div>
-                    <div className="optionsContainer">
-                      {product.options.map((opt, optIndex) => {
+                     <div className="optionsContainer">
+                      
+                     {product.options.map((opt, optIndex) => {
                         let newOptIndex = optIndex + 1;
                         let productOptionValue = `option${newOptIndex}`;
                         let productOptionID = `${productID}-option-${newOptIndex}`;
@@ -288,25 +475,31 @@ export default function Category() {
                             type={`checkbox`}
                             value={productOptionValue}
                             name={newOptIndex}
-                            onChange={(event) =>
-                              computeStars(
-                                opt,
-                                product,
-                                optIndex,
-                                ID,
-                                indexCount,
-                                product.index
-                              )
+                            onChange={e => computeStars(e, product.index, newOptIndex, ID, product)
+
+                              //(options1, product, index, id)
+                              //computeStars(
+                              //  
+                              //  opt.checked,
+                              //  opt.checked,
+                              //  optIndex,
+                              //  ID
+                                //indexCount,
+                                //product.index
+                              //)
                             }
                           />
                         );
                       })}
+
+                      
                       <ul>
                         {/*panelArray2.map(product2 => { return (<li>{product2.url}</li>) })*/}
                       </ul>
                       {/* <Panel key={id} category={product} productID={productID} /> */}
                       {
-                        <Panel
+                        showPanel  && <Panel
+                        
                           stars={star1}
                           key={product.id}
                           category={product}

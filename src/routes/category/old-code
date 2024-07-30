@@ -1,0 +1,52 @@
+
+////////////////////////////////////////////
+
+export const setCheckedOptionForProducts = (
+    arrayOfProducts,
+    option,
+    product
+  ) => {
+  
+   
+    if (arrayOfProducts.length > 0) {
+      return arrayOfProducts.map((prod) => {
+        if (prod.id === product.id) {
+          return {
+            ...prod,
+            options: prod.options.map((opt) => {
+              if (opt.option === option.option) {
+                //opt.checked = opt.checked;
+                return opt;
+              } else {
+                return opt;
+              }
+            }),
+          };
+        } else {
+          return prod;
+        }
+      });
+    }
+  };
+
+
+if (getLatestStoredNotifications().length > 0) {
+      updatedProducts = setCheckedOptionForProducts(
+        getLatestStoredNotifications(),
+        option,
+        product
+      );
+    } 
+    else {
+      updatedProducts = setCheckedOptionForProducts(
+        initialProducts,
+        option,
+        product
+      );
+    }
+
+    localStorage.setItem(`products`, JSON.stringify(updatedProducts));
+    setProducts(updatedProducts);
+
+
+    //////////////////////////////////////////////

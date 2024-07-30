@@ -12,7 +12,7 @@ function Panel() {
     <div>
       <DropDown id="id1">
         <div className="images">
-          {count++}
+         
           {PanelInfoArray &&
             PanelInfoArray.map((item, index) => (
               <div key={index}>

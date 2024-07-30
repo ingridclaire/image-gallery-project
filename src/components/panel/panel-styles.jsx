@@ -10,7 +10,7 @@ height: 7rem;
 background-color:#F8F0e3;
 display: flex;
 justify-content:center;
-right:12px;
+right:2px;
 top:12px;
 position: absolute;
 z-index: 2;
