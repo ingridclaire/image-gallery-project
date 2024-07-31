@@ -8,7 +8,7 @@ import Panel from "../../components/panel/panel-component";
 
 //let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
 
-const [intialProduct, setIntialProducts] = useState(initialProducts);
+
 const PHOTO = [
  // {
     //atitle: "Hats",
@@ -78,6 +78,7 @@ const PHOTO = [
 ];
 
 
+
 ///
 
 
@@ -96,7 +97,7 @@ export const getLatestStoredNotifications = () => {
   }
 };
 
-// We add category as a secondary parameter in the function
+// We add category as a secondary parameter in the function/
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   let index = 0;
   if (arrayOfProducts) {
@@ -105,19 +106,26 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
       return arrayOfProducts.map((prod) => {
         index++;
         
-        return {
-          ...prod,
-          index,
-          category: prod.category || category, // Adding the category as a backup property in our custom objects
-          options: prod.options || [
-            { option: `option1`, checked: false },
-            { option: `option2`, checked: false },
-            { option: `option3`, checked: false },
-            { option: `option4`, checked: false },
-          ],
+      
+        //setIntialProducts(
+
+
+          
+          //...prod,
+          //index,
+          //category, // Adding the category as a backup property in our custom objects
+          //prod.options || [
+          //  { option: `option1`, checked: false },
+          //  { option: `option2`, checked: false },
+          //  { option: `option3`, checked: false },
+          //  { option: `option4`, checked: false },
+          //],
+        //)
+         //};
+        //moved here, is this okay?
+         return
 
          
-        };
       });
     } else {
       return arrayOfProducts;
@@ -169,8 +177,19 @@ let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,c
 
 console.log("+: ", PanelInfoArray)
 
+
 let initialProducts = []
 export default function Category() {
+  const [intialProduct, setIntialProducts] = useState({
+    id: 0,
+    name: "",
+    imageUrl: "",
+    price: 0,
+  
+   // options: [ {checked: true,checked: true,checked: true,checked: true, }]
+    
+  },);
+  
  
   useEffect(() => {
     
