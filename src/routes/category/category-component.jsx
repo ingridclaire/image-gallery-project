@@ -385,9 +385,6 @@ initialProducts = makeCopyOfProductsWithCustomData(
    
 
     updatedProducts = getLatestStoredNotifications()
-
-    
-
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
     setProducts(updatedProducts);
 
