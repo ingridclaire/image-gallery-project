@@ -7,13 +7,17 @@ import Panel from "../../components/panel/panel-component";
 ///
 
 //let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
-
-const [intialProduct, setIntialProducts] = useState(initialProducts);
+console.log("global")
+//const [intialProduct, setIntialProducts] = useState(initialProducts);
 const PHOTO = [
- // {
+
+  
+  // {
+
     //atitle: "Hats",
    // items: [
       {
+        
         id: 1,
         name: "Brown Brim",
         imageUrl: require ("./brown-brim.png"),
@@ -86,6 +90,7 @@ var star1 = "++++";
 
 
 export const getLatestStoredNotifications = () => {
+  console.log("get latest")
   if (localStorage.getItem(`products`)) {
     let storedProducts = makeCopyOfProductsWithCustomData(
       JSON.parse(localStorage.getItem(`products`))
@@ -98,6 +103,8 @@ export const getLatestStoredNotifications = () => {
 
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
+
+  console.log("make copy")
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
@@ -292,7 +299,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
       //}
       
       //PanelInfoArray[0].options1[0].checked = true
-      if (PanelInfoArray[0].options[0].checked == true) {
+      if (PanelInfoArray[id - 1].options[1].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
