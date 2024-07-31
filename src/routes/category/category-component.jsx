@@ -80,12 +80,13 @@ const PHOTO = [
 
 ///
 
-
+console.log("global")
 var star1 = "++++";
 
 
 
 export const getLatestStoredNotifications = () => {
+  console.log("notify")
   if (localStorage.getItem(`products`)) {
     let storedProducts = makeCopyOfProductsWithCustomData(
       JSON.parse(localStorage.getItem(`products`))
@@ -98,6 +99,7 @@ export const getLatestStoredNotifications = () => {
 
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
+  console.log("make")
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
@@ -145,7 +147,7 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
 //let PanelInfoArray = [0].options[0].checked = true
 //PanelInfoArray = [0].options[0].checked = true;
 let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
-  //PanelInfoArray[id - 1].options[0].checked = chk0;
+  PanelInfoArray[id - 1].options[0].checked = chk0;
   //PanelInfoArray[id - 1].options[1].checked = chk1;
   //PanelInfoArray[id - 1].options[2].checked = chk2;
   //PanelInfoArray[id - 1].options[3].checked = chk3;
@@ -159,7 +161,8 @@ let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
 
 
 //let PanelInfoArray[0].options[0].checked = true
-let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+//let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+let PanelInfoArray = [ { options: [ {checked: false,checked: false,checked: false,checked: false, }]}]
 
 //PanelInfoArray[1 - 1].options[0].checked = true;
 //PanelInfoArray[1 - 1].options[1].checked = true;
@@ -170,6 +173,7 @@ let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,c
 console.log("+: ", PanelInfoArray)
 
 let initialProducts = []
+let updatedProducts = [];
 export default function Category() {
  
   useEffect(() => {
@@ -237,12 +241,17 @@ export default function Category() {
 console.log("photo1: ", initialProducts)
 
 
+
+
+
+
 initialProducts = makeCopyOfProductsWithCustomData(
       PHOTO,
       "hats",
   
     );
 
+    console.log("initialProducts: ", initialProducts)
   // Now that we have the custom array with all the data we need
   // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
   const [products, setProducts] = useState(initialProducts);
@@ -255,13 +264,17 @@ initialProducts = makeCopyOfProductsWithCustomData(
   //}))
   
   console.log("photos", PHOTO)
-  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
+  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up////
   localStorage.setItem(`products`, JSON.stringify(null));
   let count = 0;
     //const computeStars = (options1, product, index, id, event) => {
     
+
+
+
     //omputeStars(e, product.index, newOptIndex, ID)
     const computeStars = (e, index, two, id, product) => {
+      console.log("stars")
       //PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
   
       let checked = e.target.checked
@@ -271,8 +284,25 @@ initialProducts = makeCopyOfProductsWithCustomData(
       
       console.log("id: ", id)
 
+      //move this up top of prior fucntion
+    //updatedProducts = getLatestStoredNotifications()
+
+    updatedProducts = makeCopyOfProductsWithCustomData(initialProducts, "hat")
+    //updatedProducts = [...initialProducts, ...updatedProducts]//
+
+    let a = products
+    //  with product
+    
+
+    localStorage.setItem(`products`, JSON.stringify(updatedProducts));
+    //setProducts(updatedProducts);
+
+
+
       
-      
+      PanelInfoArray = updatedProducts
+
+
       ////////
       
       //console.log("product: ", product)
@@ -281,7 +311,8 @@ initialProducts = makeCopyOfProductsWithCustomData(
         console.log("entered")
       }
 
-      index = index -1;
+    index = 0// index -1;
+    id = 1
     let amtStars = 0;
     //options1[0].checked = true
     if (index === 0) {
@@ -292,7 +323,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
       //}
       
       //PanelInfoArray[0].options1[0].checked = true
-      if (PanelInfoArray[id-1].options[0].checked == true) {
+      if (PanelInfoArray[id-1].options[1].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
@@ -354,9 +385,9 @@ initialProducts = makeCopyOfProductsWithCustomData(
 
   
 
-  
+ 
   const handleCheck = (option, product, amtStars) => {
-    
+    console.log("handle check")
     let amtString = "";
     switch (amtStars) {
       case 1:
@@ -381,17 +412,9 @@ initialProducts = makeCopyOfProductsWithCustomData(
     let amtstars = 1;
 
     
-    let updatedProducts = [];
-   
-
-    updatedProducts = getLatestStoredNotifications()
-
     
-
-    localStorage.setItem(`products`, JSON.stringify(updatedProducts));
-    setProducts(updatedProducts);
-
-
+   
+    
 
     var panelArray = JSON.parse(localStorage.getItem("panel") || "[]");
     var panel = {
@@ -437,7 +460,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
             // Use filter to keep only the products with the matching category we want
             
               //.filter((prod) => prod.category === category)
-               initialProducts.map((product) => {
+              PanelInfoArray.map((product) => {
                 {
                   indexCount = indexCount + 1;
                 }
@@ -466,6 +489,13 @@ initialProducts = makeCopyOfProductsWithCustomData(
                         let newOptIndex = optIndex + 1;
                         let productOptionValue = `option${newOptIndex}`;
                         let productOptionID = `${productID}-option-${newOptIndex}`;
+
+                        /////
+
+                        
+
+
+                        /////
                         
                         return (
                           <input
