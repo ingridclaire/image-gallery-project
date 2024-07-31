@@ -8,7 +8,7 @@ import Panel from "../../components/panel/panel-component";
 
 //let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
 
-const [intialProduct, setIntialProducts] = useState(initialProducts);
+//const [intialProduct, setIntialProducts] = useState(initialProducts);
 const PHOTO = [
  // {
     //atitle: "Hats",
@@ -145,7 +145,7 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
 //let PanelInfoArray = [0].options[0].checked = true
 //PanelInfoArray = [0].options[0].checked = true;
 let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
-  PanelInfoArray[id - 1].options[0].checked = chk0;
+  //PanelInfoArray[id - 1].options[0].checked = chk0;
   //PanelInfoArray[id - 1].options[1].checked = chk1;
   //PanelInfoArray[id - 1].options[2].checked = chk2;
   //PanelInfoArray[id - 1].options[3].checked = chk3;
@@ -292,7 +292,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
       //}
       
       //PanelInfoArray[0].options1[0].checked = true
-      if (PanelInfoArray[0].options[0].checked == true) {
+      if (PanelInfoArray[id-1].options[0].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
