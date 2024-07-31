@@ -97,7 +97,7 @@ export const getLatestStoredNotifications = () => {
   }
 };
 
-// We add category as a secondary parameter in the function/
+// We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   let index = 0;
   if (arrayOfProducts) {
@@ -106,26 +106,19 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
       return arrayOfProducts.map((prod) => {
         index++;
         
-      
-        //setIntialProducts(
-
-
-          
-          //...prod,
-          //index,
-          //category, // Adding the category as a backup property in our custom objects
-          //prod.options || [
-          //  { option: `option1`, checked: false },
-          //  { option: `option2`, checked: false },
-          //  { option: `option3`, checked: false },
-          //  { option: `option4`, checked: false },
-          //],
-        //)
-         //};
-        //moved here, is this okay?
-         return
+        return {
+          ...prod,
+          index,
+          category: prod.category || category, // Adding the category as a backup property in our custom objects
+          options: prod.options || [
+            { option: `option1`, checked: false },
+            { option: `option2`, checked: false },
+            { option: `option3`, checked: false },
+            { option: `option4`, checked: false },
+          ],
 
          
+        };
       });
     } else {
       return arrayOfProducts;
@@ -135,132 +128,11 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   }
 };
 
-
-
-//let PanelInfoArray[{
-//  options:1
-//}
-//]//
-
-//let PanelInfoArray = [{ options: `option1`, checked: false }, ]
-//let PanelInfoArray = []
-//  { options: `option2`, checked: false },
-//  { options: `option3`, checked: false },
-//  { options: `option4`, checked: false },]
-
- // PanelInfoArray[1 - 1].options[0].checked = true;
-//let PanelInfoArray = []
-//let PanelInfoArray = [0].options[0].checked = true
-//PanelInfoArray = [0].options[0].checked = true;
-let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
-  PanelInfoArray[id - 1].options[0].checked = chk0;
-  //PanelInfoArray[id - 1].options[1].checked = chk1;
-  //PanelInfoArray[id - 1].options[2].checked = chk2;
-  //PanelInfoArray[id - 1].options[3].checked = chk3;
-
-}
-
-
-
-//setCheckBoxes(false,false,false,false, PanelInfoArray, 1)//
-
-
-
-//let PanelInfoArray[0].options[0].checked = true
-let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
-
-//PanelInfoArray[1 - 1].options[0].checked = true;
-//PanelInfoArray[1 - 1].options[1].checked = true;
-//PanelInfoArray[1 - 1].options[2].checked = true;
-//PanelInfoArray[1 - 1].options[3].checked = true;
-
-
-console.log("+: ", PanelInfoArray)
-
-
-let initialProducts = []
-export default function Category() {
-  const [intialProduct, setIntialProducts] = useState({
-    id: 0,
-    name: "",
-    imageUrl: "",
-    price: 0,
-  
-   // options: [ {checked: true,checked: true,checked: true,checked: true, }]
-    
-  },);
-  
- 
-  useEffect(() => {
-    
-      
-  //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
-  
-  }, [] )
-  
-  const [stars, setStars] = useState([]);
-
-  
-  let { category } = useParams();
-
-/*
-  <DirectoryContainer>
-        {PHOTO_DATA.map((category) => (
-          <Images1 key={category.name} category={category} />
-        ))}
-  </DirectoryContainer>
-*/
-
-/*
-  const { categoriesMap } = useContext(CategoriesContext);
-  const productsForCategoryFromDB = categoriesMap[category];
-  let storedProducts = getLatestStoredNotifications();
-  // Create an array of only the IDs of products
-  let storedProductIDs = [];
-  if (storedProducts.length > 0)
-    storedProductIDs = storedProducts.map(
-      (productInStoredProducts) => productInStoredProducts.id
-    );
-  // We need to take the generated products from the database and push them into a new array
-  if (productsForCategoryFromDB && productsForCategoryFromDB.length > 0) {
-    productsForCategoryFromDB.forEach((productForCategoryFromDB) => {
-      // If the product already exists in our array, we don't want it
-      if (
-        storedProductIDs.length > 0 &&
-        storedProductIDs.includes(productForCategoryFromDB.id)
-      ) {
-        return; // So just return to do nothing
-      } else {
-        // But if the id is not in our storage, let's push it in so we can track it
-        storedProducts.push(productForCategoryFromDB);
-      }
-    });
-  }
-
-
-  storedProducts.push(PHOTO_DATA);
-
-  // We need to take the updated array and create a copy with our custom data
-  // Since we added a new parameter, let's make sure we pass that in
-  
-  */
-
-  // get length of initial products
-  // call handlecheck to set all equal to false in a for loop
-  
- 
-
-  
- 
-
-console.log("photo1: ", initialProducts)
-
-
 initialProducts = makeCopyOfProductsWithCustomData(
-      PHOTO,
-      "hats",
-  
-    );
+  PHOTO,
+  "hats",
+
+);
 
   // Now that we have the custom array with all the data we need
   // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
@@ -279,7 +151,10 @@ initialProducts = makeCopyOfProductsWithCustomData(
   let count = 0;
     //const computeStars = (options1, product, index, id, event) => {
     
-    //omputeStars(e, product.index, newOptIndex, ID)
+    
+    
+    
+      //omputeStars(e, product.index, newOptIndex, ID)
     const computeStars = (e, index, two, id, product) => {
       //PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
   
@@ -311,7 +186,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
       //}
       
       //PanelInfoArray[0].options1[0].checked = true
-      if (PanelInfoArray[0].options[0].checked == true) {
+      if (PanelInfoArray[id-1].options[1].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
@@ -329,7 +204,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
     ////////
 
 
-    /*
+    
     if (index === 1) {
       if (PanelInfoArray[id - 1].options1[2].checked == true) {
         setCheckBoxes(true,true,false,false,PanelInfoArray,id)
@@ -363,7 +238,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
         amtStars = 4;
       }
     }
-      */
+      
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
     handleCheck(true, product, amtStars);
     
@@ -372,9 +247,10 @@ initialProducts = makeCopyOfProductsWithCustomData(
   let panelArray2 = [];
 
   
+  
 
   
-  const handleCheck = (option, product, amtStars) => {
+  export const handleCheck = (option, product, amtStars) => {
     
     let amtString = "";
     switch (amtStars) {
@@ -428,7 +304,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
     localStorage.setItem("panel", JSON.stringify(panelArray2));
    
     
-  };
+
   //let star = "stars+";
   let indexCount = 0;
   const [showPanel, setShowPanel] = useState(false);
