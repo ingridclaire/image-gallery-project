@@ -6,7 +6,7 @@ import Panel from "../../components/panel/panel-component";
 
 ///
 
-//let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+let PanelInfoArray = [] // { options: [ {checked: true},{checked: true} ,{checked: true} ,{checked: true}]}]
 
 //const [intialProduct, setIntialProducts] = useState(initialProducts);
 const PHOTO = [
@@ -23,13 +23,15 @@ const PHOTO = [
         
       },
 
-      /*
+      
       {
         id: 2,
         name: "Blue Beanie",
-        imageUrl",
+        imageUrl:  require ("./brown-brim.png"),
         price: 18,
       },
+
+      /*
       {
         id: 3,
         name: "Brown Cowboy",
@@ -145,10 +147,10 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
 //let PanelInfoArray = [0].options[0].checked = true
 //PanelInfoArray = [0].options[0].checked = true;
 let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
-  //PanelInfoArray[id - 1].options[0].checked = chk0;
-  //PanelInfoArray[id - 1].options[1].checked = chk1;
-  //PanelInfoArray[id - 1].options[2].checked = chk2;
-  //PanelInfoArray[id - 1].options[3].checked = chk3;
+  PanelInfoArray[id - 1].options[0].checked = chk0;
+  PanelInfoArray[id - 1].options[1].checked = chk1;
+  PanelInfoArray[id - 1].options[2].checked = chk2;
+  PanelInfoArray[id - 1].options[3].checked = chk3;
 
 }
 
@@ -159,7 +161,7 @@ let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
 
 
 //let PanelInfoArray[0].options[0].checked = true
-let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
+//let PanelInfoArray = [ { options: [ {checked: true,checked: true,checked: true,checked: true, }]}]
 
 //PanelInfoArray[1 - 1].options[0].checked = true;
 //PanelInfoArray[1 - 1].options[1].checked = true;
@@ -237,6 +239,9 @@ export default function Category() {
 console.log("photo1: ", initialProducts)
 
 
+
+
+/////////////
 initialProducts = makeCopyOfProductsWithCustomData(
       PHOTO,
       "hats",
@@ -246,6 +251,14 @@ initialProducts = makeCopyOfProductsWithCustomData(
   // Now that we have the custom array with all the data we need
   // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
   const [products, setProducts] = useState(initialProducts);
+
+  //setinitialProducts(initialProducts)
+/////////////
+
+
+
+
+
 
 
   console.log("set: ", products)
@@ -260,6 +273,10 @@ initialProducts = makeCopyOfProductsWithCustomData(
   let count = 0;
     //const computeStars = (options1, product, index, id, event) => {
     
+
+
+
+
     //omputeStars(e, product.index, newOptIndex, ID)
     const computeStars = (e, index, two, id, product) => {
       //PanelInfoArray = JSON.parse(localStorage.getItem("products") || "[]");
@@ -281,18 +298,15 @@ initialProducts = makeCopyOfProductsWithCustomData(
         console.log("entered")
       }
 
-      index = index -1;
+    index = index -1;
     let amtStars = 0;
     //options1[0].checked = true
     if (index === 0) {
 
-      //alert("a");
-      //if (product.options[0].checked == true) {
-      //  console.log("made it here")
-      //}
+     
       
       //PanelInfoArray[0].options1[0].checked = true
-      if (PanelInfoArray[id-1].options[0].checked == true) {
+      if (PanelInfoArray[id-1].options[1].checked == true) {
         setCheckBoxes(true,false,false,false,PanelInfoArray,id)
         amtStars = 1;
       } else if (PanelInfoArray[id - 1].options[0].checked == true) {
@@ -310,12 +324,12 @@ initialProducts = makeCopyOfProductsWithCustomData(
     ////////
 
 
-    /*
+    
     if (index === 1) {
-      if (PanelInfoArray[id - 1].options1[2].checked == true) {
+      if (PanelInfoArray[id - 1].options[2].checked == true) {
         setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
-      } else if (PanelInfoArray[id - 1].options1[1].checked == false) {
+      } else if (PanelInfoArray[id - 1].options[1].checked == false) {
         setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else {
@@ -323,11 +337,12 @@ initialProducts = makeCopyOfProductsWithCustomData(
         amtStars = 0;
       }
     }
+    
     if (index === 2) {
-      if (PanelInfoArray[id - 1].options1[3].checked == true) {
+      if (PanelInfoArray[id - 1].options[3].checked == true) {
         setCheckBoxes(true,true,true,false,PanelInfoArray,id)
         amtStars = 3;
-      } else if (PanelInfoArray[id - 1].options1[2].checked == true) {
+      } else if (PanelInfoArray[id - 1].options[2].checked == true) {
         setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       } else {
@@ -336,15 +351,16 @@ initialProducts = makeCopyOfProductsWithCustomData(
       }
     }
     if (index === 3) {
-      if (PanelInfoArray[id - 1].options1[3].checked == true) {
-        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
+      if (PanelInfoArray[id - 1].options[3].checked == true) {
+        setCheckBoxes(true,true,true,true,PanelInfoArray,id)
+        
         amtStars = 0;
       } else {
-        setCheckBoxes(true,true,true,true,PanelInfoArray,id)
+        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 4;
       }
     }
-      */
+      
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
     handleCheck(true, product, amtStars);
     
@@ -380,17 +396,37 @@ initialProducts = makeCopyOfProductsWithCustomData(
 
     let amtstars = 1;
 
-    
-    let updatedProducts = [];
+
+    //////////////
+
+    //let updatedProducts = [];
    
 
-    updatedProducts = getLatestStoredNotifications()
+    //    first set of any check box for first image - works -
+    //    getLatestStoredNotifications might be needed later
+    //    X - set up setUpdateProducts as a use state
+    //    X - perhaps, replace products with updatedproducts, in render, so that options will be newest.  Replace product in render with this, so that 
+    //    X - option values will be newest.
+    //    in computestares replace panelinfoarray with its product parameter which is from onchange: products  
+    //    so, change updatedProducts with products...just prior to "hat"
 
+    //updatedProducts = getLatestStoredNotifications()
+
+    //product is set as initialproducts in global code
+    let updatedProducts = makeCopyOfProductsWithCustomData(products, "hat")
     
 
     localStorage.setItem(`products`, JSON.stringify(updatedProducts));
+    
+    //see if this is being set or not, probably isn't so make a definition 
+    //- look at mid code initialproduct...
     setProducts(updatedProducts);
 
+    //has most recent options - doess this need to be structured with a datastructure definition
+    //setUpdateProducts(updatedProducts)
+
+    
+    ////////////
 
 
     var panelArray = JSON.parse(localStorage.getItem("panel") || "[]");
@@ -437,7 +473,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
             // Use filter to keep only the products with the matching category we want
             
               //.filter((prod) => prod.category === category)
-               initialProducts.map((product) => {
+               products.map((product) => {
                 {
                   indexCount = indexCount + 1;
                 }
@@ -475,7 +511,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
                             type={`checkbox`}
                             value={productOptionValue}
                             name={newOptIndex}
-                            onChange={e => computeStars(e, product.index, newOptIndex, ID, product)
+                            onChange={e => computeStars(e,  newOptIndex, newOptIndex, ID, product)
 
                               //(options1, product, index, id)
                               //computeStars(
