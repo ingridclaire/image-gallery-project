@@ -1,3 +1,8 @@
+//Amazing that this runs, the initialproducts array is redeclared and causing the variables to be reset with the 
+//makeCopyOfProductsWithCustomData.
+//The functions are all jumbled at end, tomorrow look at github and fix
+
+
 import { CategoriesContext } from "../../contexts/categories-context";
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
@@ -6,7 +11,10 @@ import Panel from "../../components/panel/panel-component";
 
 ///
 
-let PanelInfoArray = [{ options: [ {checked: true},{checked: true} ,{checked: true} ,{checked: true}]}]
+//let PanelInfoArray = [{ options: [ {checked: true},{checked: true} ,{checked: true} ,{checked: true}]}]
+let PanelInfoArray = []//[{  options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}]
+
+
 
 //const [intialProduct, setIntialProducts] = useState(initialProducts);
 const PHOTO = [
@@ -18,20 +26,20 @@ const PHOTO = [
         name: "Brown Brim",
         imageUrl: require ("./brown-brim.png"),
         price: 25,
-        //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
   
         //options: [ {checked: true,checked: true,checked: true,checked: true, }]
         
       },
 
       
-      {
-        id: 2,
-        name: "Blue Beanie",
-        imageUrl:  require ("./brown-brim.png"),
-        price: 18,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
-      },
+      //{
+     //   id: 2,
+     //   name: "Blue Beanie",
+     //   imageUrl:  require ("./brown-brim.png"),
+     //   price: 18,
+     //   options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+     // },
 
       /*
       {
@@ -103,6 +111,7 @@ export const getLatestStoredNotifications = () => {
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   let index = 0;
+  
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
       
@@ -179,128 +188,15 @@ let initialProducts = []
 
 
 
-export default function Category() {
-
-  //options: [ {checked: true}
-  //const [products1, setProducts1] = useState([{options: [{checked: false, option1:  1}, {checked1: false, option2:  1},  {checked: false, option1:  1},  {checked: false, option1: 1}],}])
-  //  et object1 = ([{options: [{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
-  //const [products1, setProducts1] = useState([{options: [{ option: "", checked: false},]     }])//([{options: [{ option: "", checked: true}, {option: "", checked: false},  {option: "", checked: false},  {option: "" ,checked: false}],}])
-  useEffect(() => {
-    
-      
-  //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
-  
-  }, [] )
-  
-  const [stars, setStars] = useState([]);
-
-  
-  let { category } = useParams();
-
-/*
-  <DirectoryContainer>
-        {PHOTO_DATA.map((category) => (
-          <Images1 key={category.name} category={category} />
-        ))}
-  </DirectoryContainer>
-*/
-
-/*
-  const { categoriesMap } = useContext(CategoriesContext);
-  const productsForCategoryFromDB = categoriesMap[category];
-  let storedProducts = getLatestStoredNotifications();
-  // Create an array of only the IDs of products
-  let storedProductIDs = [];
-  if (storedProducts.length > 0)
-    storedProductIDs = storedProducts.map(
-      (productInStoredProducts) => productInStoredProducts.id
-    );
-  // We need to take the generated products from the database and push them into a new array
-  if (productsForCategoryFromDB && productsForCategoryFromDB.length > 0) {
-    productsForCategoryFromDB.forEach((productForCategoryFromDB) => {
-      // If the product already exists in our array, we don't want it
-      if (
-        storedProductIDs.length > 0 &&
-        storedProductIDs.includes(productForCategoryFromDB.id)
-      ) {
-        return; // So just return to do nothing
-      } else {
-        // But if the id is not in our storage, let's push it in so we can track it
-        storedProducts.push(productForCategoryFromDB);
-      }
-    });
-  }
-
-
-  storedProducts.push(PHOTO_DATA);
-
-  // We need to take the updated array and create a copy with our custom data
-  // Since we added a new parameter, let's make sure we pass that in
-  
-  */
-
-  // get length of initial products
-  /// call handlecheck to set all equal to false in a for loop
-  
- 
-
-  
- 
-
-console.log("photo1: ", initialProducts)
-
-
-
-console.log("was here...")
-/////////////
-initialProducts = makeCopyOfProductsWithCustomData(
-      PHOTO,
-      "hats",
-  
-    );
-
-  // Now that we have the custom array with all the data we need
-  // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
-
-  //does this work?
-  let [products, setProducts] = useState(initialProducts) 
-  //let [products1, setProducts1] = useState("yellow");
- 
-  
-
-  //setinitialProducts(initialProducts)
-/////////////
 
 
 
 
 
-
-
-  console.log("set: ", products)
-  
-  //setProducts(products => ({
-  //  ...PHOTO_DATA
-  //}))
-  
-  console.log("photos", PHOTO)
-  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
-  localStorage.setItem(`products`, JSON.stringify(null));
-  let count = 0;
-    //const computeStars = (options1, product, index, id, event) => {
-    
-
-
-
-
-    //omputeStars(e, product.index, newOptIndex, ID)
-    const computeStars = (e, index, two, id, product) => {
+    const computeStars = (e, index, two, id, product, products,setProducts) => {
      
       //let object1 = ([[{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],])
-      
       //setProducts1([{options: [{ option: "option1a", checked: false}],}])//,    { option: "optionb", checked: false}],}])//, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
-      
-      //let a = products1
       
       let checked = e.target.checked
       
@@ -309,21 +205,12 @@ initialProducts = makeCopyOfProductsWithCustomData(
       
       console.log("id: ", id)
 
-      
-      
-      ////////
-      
-      //console.log("product: ", product)
-
-      //if (PanelInfoArray[0].options[0].checked == true) {
-      //  console.log("entered")
-      //}
 
     index = index -1;
     let amtStars = 0;
-    //options1[0].checked = true
-
    
+    let a = products
+      let products1 = []
     if (index === 0) {
 
       //SET PRODUCTS INSTEAD OF THIS, AND HANDLE CHECKS RESETS VALUES TO FALSE
@@ -331,13 +218,15 @@ initialProducts = makeCopyOfProductsWithCustomData(
       //products[0].options[0].checked = checked
      
       if (products[product.id - 1].options[0].checked == true) {
-        products = setCheckBoxes(true,false,false,false,products,id)
+        (setCheckBoxes(true,false,false,false,products,id))
         amtStars = 1;
       } else if (products[product.id - 1].options[0].checked == true) {
-        products = setCheckBoxes(false,false,false,false,products,id)
+        (setCheckBoxes(false,false,false,false,products,id))
         amtStars = 0;
       } else {
-        products = setCheckBoxes(true,false,false,false,products,id)
+         a = (setCheckBoxes(true,false,false,false,products,id))
+         products = setProducts({a})
+         
         amtStars = 1;
       }
     }
@@ -397,6 +286,13 @@ initialProducts = makeCopyOfProductsWithCustomData(
   
 
   
+  
+  
+  
+  
+  
+  
+  
   const handleCheck = (option, product, amtStars) => {
     
     let amtString = "";
@@ -423,42 +319,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
     let amtstars = 1;
 
 
-    //////////////
-
-    //let updatedProducts = [];
-   
-
-    //    first set of any check box for first image - works -
-    //    getLatestStoredNotifications might be needed later
-    //    X - set up setUpdateProducts as a use state
-    //    X - perhaps, replace products with updatedproducts, in render, so that options will be newest.  Replace product in render with this, so that 
-    //    X - option values will be newest.
-    //    in computestares replace panelinfoarray with its product parameter which is from onchange: products  
-    //    so, change updatedProducts with products...just prior to "hat"
-
-    //updatedProducts = getLatestStoredNotifications()
-
-    //product is set as initialproducts in global code
-    //let updatedProducts = makeCopyOfProductsWithCustomData(products, "hat")
     
-
-
-    //!!!!!!!!!!!!!!!!!!
-    //localStorage.setItem(`products`, JSON.stringify(updatedProducts));
-    
-
-
-
-    //see if this is being set or not, probably isn't so make a definition 
-    //- look at mid code initialproduct...
-    //setProducts(updatedProducts);
-
-    //has most recent options - doess this need to be structured with a datastructure definition
-    //setUpdateProducts(updatedProducts)
-
-    
-    ////////////
-
 
     var panelArray = JSON.parse(localStorage.getItem("panel") || "[]");
     var panel = {
@@ -477,6 +338,65 @@ initialProducts = makeCopyOfProductsWithCustomData(
    
     
   };
+
+
+//////////////
+
+export default function Category() {
+
+
+  let [products, setProducts] = useState(initialProducts) 
+  let [products2, setProducts2] = useState(false)
+  
+  //options: [ {checked: true}
+  //const [products1, setProducts1] = useState([{options: [{checked: false, option1:  1}, {checked1: false, option2:  1},  {checked: false, option1:  1},  {checked: false, option1: 1}],}])
+  //  et object1 = ([{options: [{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
+  //const [products1, setProducts1] = useState([{options: [{ option: "", checked: false},]     }])//([{options: [{ option: "", checked: true}, {option: "", checked: false},  {option: "", checked: false},  {option: "" ,checked: false}],}])
+  useEffect(() => {
+   
+  
+  }, [] )
+  
+  const [stars, setStars] = useState([]);
+
+  
+  let { category } = useParams();
+
+
+  
+console.log("photo1: ", initialProducts)
+
+
+
+console.log("was here...")
+/////////////
+initialProducts = makeCopyOfProductsWithCustomData(
+      PHOTO,
+      "hats",
+      setProducts2
+  
+    );
+
+  
+  
+console.log("set: ", products)
+ 
+  
+  console.log("photos", PHOTO)
+  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up////
+  localStorage.setItem(`products`, JSON.stringify(null));
+  let count = 0;
+  
+  
+
+
+
+
+
+
+////////////////
+
+
 
 
 
@@ -549,7 +469,7 @@ initialProducts = makeCopyOfProductsWithCustomData(
                             type={`checkbox`}
                             value={productOptionValue}
                             name={newOptIndex}
-                            onChange={e => computeStars(e,  newOptIndex, newOptIndex, ID, product)
+                            onChange={e => computeStars(e,  newOptIndex, newOptIndex, ID, product, products, setProducts)
 
                               //(options1, product, index, id)
                               //computeStars(
