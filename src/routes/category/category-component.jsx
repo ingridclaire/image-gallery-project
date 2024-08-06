@@ -6,10 +6,10 @@ import Panel from "../../components/panel/panel-component";
 
 ///
 
-let PanelInfoArray = [{ options: [ {checked: true},{checked: true} ,{checked: true} ,{checked: true}]}]
+let PanelInfoArray = [] // [{ options: [ {checked: true},{checked: true} ,{checked: true} ,{checked: true}]}]
 
 //const [intialProduct, setIntialProducts] = useState(initialProducts);
-const PHOTO = [
+let PHOTO = [
  // {
     //atitle: "Hats",
    // items: [
@@ -18,6 +18,7 @@ const PHOTO = [
         name: "Brown Brim",
         imageUrl: require ("./brown-brim.png"),
         price: 25,
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
   
         //options: [ {checked: true,checked: true,checked: true,checked: true, }]
@@ -102,6 +103,7 @@ export const getLatestStoredNotifications = () => {
 
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
+  
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
@@ -181,16 +183,57 @@ let initialProducts = []
 
 export default function Category() {
 
+  let [products, setProducts] = useState([]) 
+
+  let object = [
+    
+         {
+           id: 1,
+           name: "Brown Brim",
+           imageUrl: require ("./brown-brim.png"),
+           price: 25,
+           options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+           //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+     
+           //options: [ {checked: true,checked: true,checked: true,checked: true, }]
+           
+         },
+        ]
+
+        
+  const [state , setState] = useState([])     
+  //const [state , setState] = useState({
+  //  id: 1,
+  //  name: "Brown Brim",
+  //  imageUrl: require ("./brown-brim.png"),
+  //  price: 25,
+  //  //options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+  /// 
+  //  
+  //})
+
+
+
   //options: [ {checked: true}
   //const [products1, setProducts1] = useState([{options: [{checked: false, option1:  1}, {checked1: false, option2:  1},  {checked: false, option1:  1},  {checked: false, option1: 1}],}])
   //  et object1 = ([{options: [{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
   //const [products1, setProducts1] = useState([{options: [{ option: "", checked: false},]     }])//([{options: [{ option: "", checked: true}, {option: "", checked: false},  {option: "", checked: false},  {option: "" ,checked: false}],}])
   useEffect(() => {
     
-      
+    products = PHOTO
   //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
   
-  }, [] )
+  }  )
+
+  useEffect(() => {
+    
+  console.log( "state: " , state.name) 
+  }, [state.name])
+
+
+
+
+ 
   
   const [stars, setStars] = useState([]);
 
@@ -252,30 +295,18 @@ console.log("photo1: ", initialProducts)
 
 
 console.log("was here...")
+
 /////////////
-initialProducts = makeCopyOfProductsWithCustomData(
+products = makeCopyOfProductsWithCustomData(
       PHOTO,
       "hats",
+    
   
     );
-
-  // Now that we have the custom array with all the data we need
-  // We can render our products on the page, but we will need to filter out the ones not matching the current category later on
-
-  //does this work?
-  let [products, setProducts] = useState(initialProducts) 
-  //let [products1, setProducts1] = useState("yellow");
- 
+  
   
 
   //setinitialProducts(initialProducts)
-/////////////
-
-
-
-
-
-
 
   console.log("set: ", products)
   
@@ -295,7 +326,53 @@ initialProducts = makeCopyOfProductsWithCustomData(
 
     //omputeStars(e, product.index, newOptIndex, ID)
     const computeStars = (e, index, two, id, product) => {
-     
+     /*
+      let object1 = [
+    
+        {
+          id: 1,
+          name: "Brown Brim2",
+          imageUrl: require ("./brown-brim.png"),
+          price: 25,
+          options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+          
+          
+        },
+       ]
+      setState([{
+        id: 1,
+        name: "Brown Brim2",
+        imageUrl: require ("./brown-brim.png"),
+        price: 25,
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+    
+        //options: [ {checked: true,checked: true,checked: true,checked: true, }]
+        
+    }],)
+
+      
+      setState({
+
+        ...state,
+        id: 2,
+        name: "Brown Brim3",
+        imageUrl: require ("./brown-brim.png"),
+        price: 25,
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+    
+        //options: [ {checked: true,checked: true,checked: true,checked: true, }]//
+        
+      })
+        */
+
+      let id1 = 0
+      let name1 = "josh"
+      setState([...state, {id: id1, name : name1}])
+
+      let a = state
+      
       //let object1 = ([[{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],])
       
       //setProducts1([{options: [{ option: "option1a", checked: false}],}])//,    { option: "optionb", checked: false}],}])//, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
@@ -322,22 +399,30 @@ initialProducts = makeCopyOfProductsWithCustomData(
     index = index -1;
     let amtStars = 0;
     //options1[0].checked = true
+    let checksArray = []
 
    
+    //is there already a product in products, filter it
+    let  productsWithProductRrmoved = products
+    productsWithProductRrmoved  = products.filter(function (prod){
+      return prod.id != id 
+    })
     if (index === 0) {
 
       //SET PRODUCTS INSTEAD OF THIS, AND HANDLE CHECKS RESETS VALUES TO FALSE
       //PANEL INFO ARRAY TURNS TO NULL
-      //products[0].options[0].checked = checked
-     
-      if (products[product.id - 1].options[0].checked == true) {
-        products = setCheckBoxes(true,false,false,false,products,id)
+      //products[0].options[0].checked = checked//
+      if (products[product.id - 1].options[1].checked == true) {
+        checksArray = setCheckBoxes(true,false,false,false,products,id)
         amtStars = 1;
+        
+
       } else if (products[product.id - 1].options[0].checked == true) {
-        products = setCheckBoxes(false,false,false,false,products,id)
+        checksArray = setCheckBoxes(false,false,false,false,products,id)
         amtStars = 0;
+      
       } else {
-        products = setCheckBoxes(true,false,false,false,products,id)
+        checksArray = setCheckBoxes(true,false,false,false,products,id)
         amtStars = 1;
       }
     }
@@ -351,16 +436,23 @@ initialProducts = makeCopyOfProductsWithCustomData(
     
     else if (index === 1) {
       if (PanelInfoArray[id - 1].options[2].checked == true) {
-        setCheckBoxes(true,true,false,false,PanelInfoArray,id)
+        checksArray = setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else if (PanelInfoArray[id - 1].options[1].checked == false) {
-        setCheckBoxes(true,true,false,false,PanelInfoArray,id)
+        checksArray = setCheckBoxes(true,true,false,false,PanelInfoArray,id)
         amtStars = 2;
       } else {
-        setCheckBoxes(false,false,false,false,PanelInfoArray,id)
+        checksArray =setCheckBoxes(false,false,false,false,PanelInfoArray,id)
         amtStars = 0;
       }
     }
+    let addThisProduct = [checksArray]
+
+    setProducts(addThisProduct)
+
+
+    let a1 = addThisProduct
+    //let a2 = products
     /*
     if (index === 2) {
       if (PanelInfoArray[id - 1].options[3].checked == true) {
