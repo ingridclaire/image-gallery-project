@@ -27,11 +27,11 @@ let PHOTO = [
 
       
       {
-        id: 2,
-        name: "Blue Beanie",
-        imageUrl:  require ("./brown-brim.png"),
-        price: 18,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        //id: 2,
+        //name: "Blue Beanie",
+        //imageUrl:  require ("./brown-brim.png"),
+        //price: 18,
+        //options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
       },
 
       /*
@@ -182,7 +182,7 @@ let initialProducts = []
 
 
 export default function Category() {
-
+  let [hasrun, setHasRun] = useState(false) 
   let [products, setProducts] = useState([]) 
 
   let object = [
@@ -220,15 +220,15 @@ export default function Category() {
   //const [products1, setProducts1] = useState([{options: [{ option: "", checked: false},]     }])//([{options: [{ option: "", checked: true}, {option: "", checked: false},  {option: "", checked: false},  {option: "" ,checked: false}],}])
   useEffect(() => {
     
-    products = PHOTO
+    //products = PHOTO
   //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
   
   }  )
 
   useEffect(() => {
     
-  console.log( "state: " , state.name) 
-  }, [state.name])
+  console.log( "state: " , products) 
+  }, [products])
 
 
 
@@ -283,8 +283,7 @@ export default function Category() {
   */
 
   // get length of initial products
-  /// call handlecheck to set all equal to false in a for loop
-  
+  /// call handlecheck to set all equal to false in a for loop////
  
 
   
@@ -297,12 +296,14 @@ console.log("photo1: ", initialProducts)
 console.log("was here...")
 
 /////////////
+//creates array instead of one product
+//for each through photo, setproducts with
 products = makeCopyOfProductsWithCustomData(
       PHOTO,
-      "hats",
-    
-  
-    );
+      "hats"
+      
+      
+      );
   
   
 
