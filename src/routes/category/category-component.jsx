@@ -1,3 +1,11 @@
+//IMAGES/COMPONENTS NOW GET RENDERED.
+//WRITE A FILTER AND REMOVE THE OLD COMPONENT SO THERE WILL ONLY BE ONE
+//ALSO, SET COMPONENT WITH VARIABLES FOR THE SETPRODUCT
+//USE A SORT ALGORITHM, BUBBLE SORT SHOULD BE FINE
+//CLEAN UP CODE
+//FIX CONTEXT
+//STUDY USESTATE WITH CONTEXT
+
 import { CategoriesContext } from "../../contexts/categories-context";
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
@@ -14,25 +22,36 @@ let PHOTO = [
     //atitle: "Hats",
    // items: [
       {
-        id: 1,
-        name: "Brown Brim",
-        imageUrl: require ("./brown-brim.png"),
+        id: 5,
+        name: "name1a",
+        imageUrl: require ("./test.png"),
         price: 25,
         options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
   
-        //options: [ {checked: true,checked: true,checked: true,checked: true, }]
+        //options: [ {checked: true,checked: true,checked: true,checked: true, }]/
         
       },
 
+
+      
+
       
       {
-        //id: 2,
-        //name: "Blue Beanie",
-        //imageUrl:  require ("./brown-brim.png"),
-        //price: 18,
-        //options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+      id: 50,
+      name: "name2",
+        imageUrl:  require ("./brown-brim.f8a895734ce2f9dc6679.png"),
+        price: 180,
+        options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
       },
+
+      {
+        id: 55,
+        name: "name3",
+          imageUrl:  require ("./brown-brim.f8a895734ce2f9dc6679.png"),
+          price: 180,
+          options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        }
 
       /*
       {
@@ -82,7 +101,7 @@ let PHOTO = [
   //},
 ];
 
-
+console.log("PHOTO!!!")
 ///
 
 
@@ -103,7 +122,8 @@ export const getLatestStoredNotifications = () => {
 
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
-  
+  console.log("was in function: ",arrayOfProducts)
+  return arrayOfProducts
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
@@ -182,24 +202,31 @@ let initialProducts = []
 
 
 export default function Category() {
-  let [hasrun, setHasRun] = useState(false) 
-  let [products, setProducts] = useState([]) 
+  let [products, setProducts] = useState(PHOTO) 
+  //let [products1, setProducts1] = useState([object]) 
 
+  let [hasrun, setHasRun] = useState(false) 
+  
   let object = [
     
-         {
-           id: 1,
-           name: "Brown Brim",
-           imageUrl: require ("./brown-brim.png"),
-           price: 25,
-           options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
-           //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
-     
-           //options: [ {checked: true,checked: true,checked: true,checked: true, }]
-           
-         },
-        ]
+    {
+      id: 1,
+      name: "zBrown Brim",
+      imageUrl: require ("./brown-brim.f8a895734ce2f9dc6679.png"),
+      price: 25,
+      options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+      //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
 
+      //options: [ {checked: true,checked: true,checked: true,checked: true, }]
+      
+    },
+   ]
+
+   
+  
+
+ 
+ 
         
   const [state , setState] = useState([])     
   //const [state , setState] = useState({
@@ -213,17 +240,19 @@ export default function Category() {
   //})
 
 
-
+let a = 1
   //options: [ {checked: true}
   //const [products1, setProducts1] = useState([{options: [{checked: false, option1:  1}, {checked1: false, option2:  1},  {checked: false, option1:  1},  {checked: false, option1: 1}],}])
   //  et object1 = ([{options: [{ option: "option1", checked: false}, {option: 'option2', checked: false},  {option: 'option3', checked: false},  {option: 'option4' ,checkedl: false}],}])
   //const [products1, setProducts1] = useState([{options: [{ option: "", checked: false},]     }])//([{options: [{ option: "", checked: true}, {option: "", checked: false},  {option: "", checked: false},  {option: "" ,checked: false}],}])
   useEffect(() => {
     
+    //handleCheck(true, product, amtStars);
     //products = PHOTO
   //setCheckBoxes(false,false,false,false, PanelInfoArray, 1)
+  a++
   
-  }  )
+  } , [products] )
 
   useEffect(() => {
     
@@ -231,15 +260,11 @@ export default function Category() {
   }, [products])
 
 
-
+console.log("just used effect")
 
  
   
-  const [stars, setStars] = useState([]);
-
   
-  let { category } = useParams();
-
 /*
   <DirectoryContainer>
         {PHOTO_DATA.map((category) => (
@@ -248,45 +273,12 @@ export default function Category() {
   </DirectoryContainer>
 */
 
-/*
-  const { categoriesMap } = useContext(CategoriesContext);
-  const productsForCategoryFromDB = categoriesMap[category];
-  let storedProducts = getLatestStoredNotifications();
-  // Create an array of only the IDs of products
-  let storedProductIDs = [];
-  if (storedProducts.length > 0)
-    storedProductIDs = storedProducts.map(
-      (productInStoredProducts) => productInStoredProducts.id
-    );
-  // We need to take the generated products from the database and push them into a new array
-  if (productsForCategoryFromDB && productsForCategoryFromDB.length > 0) {
-    productsForCategoryFromDB.forEach((productForCategoryFromDB) => {
-      // If the product already exists in our array, we don't want it
-      if (
-        storedProductIDs.length > 0 &&
-        storedProductIDs.includes(productForCategoryFromDB.id)
-      ) {
-        return; // So just return to do nothing
-      } else {
-        // But if the id is not in our storage, let's push it in so we can track it
-        storedProducts.push(productForCategoryFromDB);
-      }
-    });
-  }
 
-
-  storedProducts.push(PHOTO_DATA);
-
-  // We need to take the updated array and create a copy with our custom data
-  // Since we added a new parameter, let's make sure we pass that in
-  
-  */
-
-  // get length of initial products
-  /// call handlecheck to set all equal to false in a for loop////
- 
+const [stars, setStars] = useState([]);
 
   
+let { category } = useParams();
+
  
 
 console.log("photo1: ", initialProducts)
@@ -298,18 +290,48 @@ console.log("was here...")
 /////////////
 //creates array instead of one product
 //for each through photo, setproducts with
-products = makeCopyOfProductsWithCustomData(
-      PHOTO,
-      "hats"
+//products = makeCopyOfProductsWithCustomData(
+//      PHOTO,
       
       
-      );
+console.log("before function: ", products )
+      
+///////////////////////////////////////////////////////////////
+//EITHER OF THESE TWO WORK, I'M NOT UNDERSTANDING WHY.  I.E.  WHY KEEP CALLING PHOTO, AND HOW DO THE OPTIONS STAY SET, SEEING THAT IT SHOULD BE RESET TO THE PHOTO ARRAY?
+//THIS ONE JUST RETURNS THE ARRAY, RIGHT NOW, AND WORKS!
+
+///products = makeCopyOfProductsWithCustomData(
+//  PHOTO, category)
+
+//THIS CAUSES THE PROGRAM TO WORK TOO?
+//products = PHOTO
+
+
+
+
+////////////////////////////////////////////////////////////////
+
+
+//products1 = PHOTO
+
+     console.log("after function: ", products )
+
   
-  
+console.log("at photo")
+
+
+///products = makeCopyOfProductsWithCustomData(
+//  PHOTO, category)
+
+//products = PHOTO
+
+
+
+console.log("at photo2")
 
   //setinitialProducts(initialProducts)
 
-  console.log("set: ", products)
+  console.log("set===========: ", products)
   
   //setProducts(products => ({
   //  ...PHOTO_DATA
@@ -323,11 +345,16 @@ products = makeCopyOfProductsWithCustomData(
     
 
 
+      
 
 
     //omputeStars(e, product.index, newOptIndex, ID)
     const computeStars = (e, index, two, id, product) => {
-     /*
+
+      console.log("i am at the breakpoint");
+     console.log("in funct")
+      /*
+     
       let object1 = [
     
         {
@@ -370,7 +397,7 @@ products = makeCopyOfProductsWithCustomData(
 
       let id1 = 0
       let name1 = "josh"
-      setState([...state, {id: id1, name : name1}])
+      //setState("id:", id1)
 
       let a = state
       
@@ -403,17 +430,21 @@ products = makeCopyOfProductsWithCustomData(
     let checksArray = []
 
    
+
+
+
+    /*
     //is there already a product in products, filter it
-    let  productsWithProductRrmoved = products
-    productsWithProductRrmoved  = products.filter(function (prod){
+    let  productsWithProductRrmoved = products.filter(function (prod){
       return prod.id != id 
     })
+    
     if (index === 0) {
 
       //SET PRODUCTS INSTEAD OF THIS, AND HANDLE CHECKS RESETS VALUES TO FALSE
       //PANEL INFO ARRAY TURNS TO NULL
       //products[0].options[0].checked = checked//
-      if (products[product.id - 1].options[1].checked == true) {
+      if (products[product.id - 1].options[0].checked == true) {
         checksArray = setCheckBoxes(true,false,false,false,products,id)
         amtStars = 1;
         
@@ -423,7 +454,7 @@ products = makeCopyOfProductsWithCustomData(
         amtStars = 0;
       
       } else {
-        checksArray = setCheckBoxes(true,false,false,false,products,id)
+        setCheckBoxes(true,true,false,false,products,id)
         amtStars = 1;
       }
     }
@@ -437,22 +468,63 @@ products = makeCopyOfProductsWithCustomData(
     
     else if (index === 1) {
       if (PanelInfoArray[id - 1].options[2].checked == true) {
-        checksArray = setCheckBoxes(true,true,false,false,PanelInfoArray,id)
+        checksArray = setCheckBoxes(true,true,false,false,products,id)
         amtStars = 2;
       } else if (PanelInfoArray[id - 1].options[1].checked == false) {
-        checksArray = setCheckBoxes(true,true,false,false,PanelInfoArray,id)
+        checksArray = setCheckBoxes(true,true,false,false,products,id)
         amtStars = 2;
       } else {
-        checksArray =setCheckBoxes(false,false,false,false,PanelInfoArray,id)
+        checksArray =setCheckBoxes(false,false,false,false,products,id)
         amtStars = 0;
       }
     }
-    let addThisProduct = [checksArray]
 
-    setProducts(addThisProduct)
+    */
+    
+    
+   // let object = ([
+   //   ...products,
+   //   { id: 1, name:"name" , imageUrl: "", price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+   // ]);
+
+    
+          //!!!!!!!!!!!!!!!!!  
+          //OK, understand how one star is working, then setproducts with this, stgart with name and than try options!!!!!!!!!!!
+          //can products be set first, with photo data?
+          //!!!!!!!!!!!!!!!!
+
+            //setArtists([
+            //  ...artists,
+            //  { id: nextId++, name:"name" , imageUrl: "", price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+            //]);
 
 
-    let a1 = addThisProduct
+            /////
+
+          console.log("at set: ",)
+          
+          setProducts((products) => [...products,{ id: 7, name:"name4" ,  imageUrl: require ("./test.png"),  price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: true}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+          ]);
+          //for(let i = 0; i++; i == 100000){}
+          setProducts((products) => [...products, { id: 100, name:"name1a",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+          ]);
+          
+          
+
+   //         let aa = products1
+          //setProducts (products => ([...products, ...object]))
+          console.log("here:", products);
+    
+    //let addThisProduct = [checksArray]
+
+    //setProducts(addThisProduct)
+
+
+    //let a1 = addThisProduct
+    
+    
+    
+    
     //let a2 = products
     /*
     if (index === 2) {
@@ -597,10 +669,9 @@ products = makeCopyOfProductsWithCustomData(
       <h4>Rate an image:</h4>
       <Fragment>
         <CategoryContainer>
-          {stars.map((star) => {
-            return <div>{star.amtstars}</div>;
-          })}
-          { PHOTO &&
+         
+         
+          { products &&
             // Use filter to keep only the products with the matching category we want
             
               //.filter((prod) => prod.category === category)
@@ -621,7 +692,7 @@ products = makeCopyOfProductsWithCustomData(
                       <div className={`images`}>
                         <img
                           type="Image"
-                          src = {require('./brown-brim.png')}
+                          src = {product.imageUrl}
                           alt={product.name}
                           width={90}
                         />
