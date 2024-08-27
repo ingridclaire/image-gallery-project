@@ -12,25 +12,25 @@ const categories = [
     id: 2,
     name: "Debbie",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    route: "category/jackets",
+    route: "category/art2",
   },
   {
     id: 3,
     name: "Joe",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    route: "category/sneakers",
+    route: "category/art3",
   },
   {
     id: 4,
     name: "Kate",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    route: "category/womens",
+    route: "category/art4",
   },
   {
     id: 5,
     name: "Bill",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    route: "category/mens",
+    route: "category/art5",
   },
 ];
 
