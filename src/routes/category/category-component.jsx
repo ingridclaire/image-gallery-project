@@ -9,10 +9,10 @@
 import { CategoriesContext } from "../../contexts/categories-context";
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
-import { useParams } from "react-router-dom";
+import { useParams,  useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 
-///
+
 
 let PanelInfoArray = [] 
 let PHOTO = [
@@ -20,11 +20,12 @@ let PHOTO = [
     //atitle: "Hats",
    // items: [
       {
-        id: 5,
-        name: "name1a",
+        id: 1,
+        name: "name1",
         imageUrl: require ("./test.png"),
         price: 25,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+        category: "art1"
         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
   
         //options: [ {checked: true,checked: true,checked: true,checked: true, }]/
@@ -32,11 +33,12 @@ let PHOTO = [
       },
 
       {
-      id: 50,
+      id: 2,
       name: "name2",
         imageUrl:  require ("./brown-brim.f8a895734ce2f9dc6679.png"),
         price: 180,
-        options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
+        options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+         category: "art2"
       },
 
       
@@ -101,17 +103,54 @@ let setCheckBoxes = (chk0, chk1, chk2,chk3, PanelInfoArray, id) => {
 
 }
 let initialProducts = []
+
+
+
+  //associated with image-component
   export default function Category() {
+
+
+    const route1 = useParams()
+    console.log("cp2: ", {route1})
+    console.log("route1: ", route1)
+    
   let [products, setProducts] = useState(PHOTO) 
+  
+  
+  
   let [hasrun, setHasRun] = useState(false) 
   const [state , setState] = useState([])     
  
+  //console.log("cp1: ", categoryParam)
+  let artPiecesOfCategoryArray = []
+  artPiecesOfCategoryArray = PHOTO.filter(function (element){
+  //  console.log("cp: ", categoryParam)
+    //keeps this
+    console.log("element:" , element.category)
+    console.log("route:" , route1)
+    return element.category == route1.category
+  }) 
+
+  console.log("art:" , artPiecesOfCategoryArray)
+
+  products = [...artPiecesOfCategoryArray]
+   
+  useEffect(() => {
+  
+    //filter art pieces
+      
+  
+  }, [])
+
+  
+
   useEffect(() => {
   console.log( "state: " , products) 
   }, [products])
-const [stars, setStars] = useState([]);
-//!!!!!!!!!!
-let { category } = useParams();
+
+  
+  const [stars, setStars] = useState([]);
+  //!!!!!!!!!!
 
   // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
   localStorage.setItem(`products`, JSON.stringify(null));
@@ -131,13 +170,15 @@ let { category } = useParams();
    
 
 
-
-          
-          setProducts((products) => [...products,{ id: 7, name:"name4" ,  imageUrl: require ("./test.png"),  price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: true}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
-          ]);
+    //setProducts(artPiecesOfCategoryArray)
+    console.log("prod:", products )
+  
+          //UNCOMMENT THESE WITH A FILTER, TO CHANGEE TO NEW DATA
+          ////setProducts((products) => [...products,{ id: 7, name:"name4" ,  imageUrl: require ("./test.png"),  price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: true}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+          ////]);
          
-          setProducts((products) => [...products, { id: 100, name:"name1a",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
-          ]);
+          ////setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
+          ////]);
    
     localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
     handleCheck(true, product, amtStars);

@@ -3,16 +3,16 @@ import { DirectoryContainer } from "../directory/directory-styles";
 
 const categories = [
   {
-    id: 1,
+    id: 2,
     name: "Al",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    route: "category/hats",
+    route: "category/art2",
   },
   {
-    id: 2,
+    id: 1,
     name: "Debbie",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    route: "category/art2",
+    route: "category/art1",
   },
   {
     id: 3,
