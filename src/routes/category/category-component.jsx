@@ -14,7 +14,7 @@ import Panel from "../../components/panel/panel-component";
 
 
 
-let PanelInfoArray = [
+let infoArray = [
 
   {
     id: 1,
@@ -40,7 +40,7 @@ let PHOTO = [
         name: "name1",
         imageUrl: require ("./test.png"),
         price: 25,
-        options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
         category: "art2",
         amtstars: "none"
         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
@@ -63,40 +63,6 @@ let PHOTO = [
   //  ],
   //},
 ];
-
-
-PHOTO = [
-  // {
-     //atitle: "Hats",
-    // items: [
-       {
-         id: 1,
-         name: "name",
-         imageUrl: require ("./test.png"),
-         price: 25,
-         options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-         category: "art2",
-         amtstars: "none"
-         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
-   
-         //options: [ {checked: true,checked: true,checked: true,checked: true, }]/
-         
-       },
- 
-       {
-       id: 2,
-       name: "name2",
-       imageUrl:  require ("./test.png"),
-       price: 180,
-       options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-       category: "art2",
-       amtstars: "none"
-       },
- 
-       
-   //  ],
-   //},
- ];
 
 //used
 var star1 = "++++";
@@ -187,19 +153,19 @@ let initialProducts = []
 
   //////////////////////////////////////////////RESUME THIS: ROUTING!!!
   //console.log("cp1: ", categoryParam)
-  let artPiecesOfCategoryArray = []
-  artPiecesOfCategoryArray = PHOTO.filter(function (element){
+  //let artPiecesOfCategoryArray = []
+  //artPiecesOfCategoryArray = PHOTO.filter(function (element){
   //  console.log("cp: ", categoryParam)
-    //keeps this
-    console.log("element:" , element.category)
-    console.log("route:" , route1)
-    return element.category == "art2"//route1.category
-  }) 
+    //keeps thi s
+    //console.log("element:" , element.category)
+    //console.log("route:" , route1)
+    //return element.category == "art2"//route1.category
+  //}) 
 
-  console.log("art:" , artPiecesOfCategoryArray)
+  //console.log("art:" , artPiecesOfCategoryArray)
 
-  products = [...artPiecesOfCategoryArray]
-  console.log("p1: ", products)
+  //products = [...artPiecesOfCategoryArray]
+  //console.log("p1: ", products)
    
   /////////////////////////////////////////////////////////////
   useEffect(() => {
@@ -222,17 +188,29 @@ let initialProducts = []
   //localStorage.setItem(`products`, JSON.stringify(null));
   let count = 0;
   
-    const computeStars = (e, index, howManyChecked, id, product) => {
+  const setCheckBoxes = (check1,check2,check3,check4,infoArray,id) => {
+ 
+    infoArray[id-1].options[0].checked = check1
+    infoArray[id-1].options[1].checked = check2
+    infoArray[id-1].options[2].checked = check3
+    infoArray[id-1].options[3].checked = check4
 
-      
+    return infoArray
+
+  }
+
+ 
+  const computeStars = (e, index, howManyChecked, id, product) => {
+
+      infoArray = [...products]
       let checked = e.target.checked
       
-    index = index -1;
+    id = id -1;
     let amtStars = 0;
     //options1[0].checked = true
-    let checksArray = []
+  
 
-    checksArray = "a"
+  
    
 
 
@@ -248,6 +226,73 @@ let initialProducts = []
     //}
 
     setHasRun(!hasrun)
+
+    //////////////
+
+    //let infoArray = [...products]
+       
+
+    //three stars is giving for arrayRemove, 2 starts - check index!
+    //id = 1
+
+
+    //id = id - 1 
+    //index of four stars satring at zero
+    index = index - 1
+    id = id + 1
+
+      //PanelInfoArray[0].options1[0].checked = true
+      if (index === 0) {
+      if (infoArray[id-1].options[1].checked == true) {
+        setCheckBoxes(true,false,false,false,infoArray,id)
+        amtStars = 1;
+      } else if (infoArray[id - 1].options[0].checked == true) {
+        setCheckBoxes(false,false,false,false,infoArray,id)
+        amtStars = 0;
+      } else {
+        setCheckBoxes(true,false,false,false,infoArray,id)
+        amtStars = 1;
+      }
+    }
+
+    if (index === 1) {
+      if (infoArray[id - 1].options[2].checked == true) {
+        setCheckBoxes(true,true,false,false,infoArray,id)
+        amtStars = 2;
+      } else if (infoArray[id - 1].options[1].checked == false) {
+        setCheckBoxes(true,true,false,false,infoArray,id)
+        amtStars = 2;
+      } else {
+        setCheckBoxes(false,false,false,false,infoArray,id)
+        amtStars = 0;
+      }
+    }
+    
+    if (index === 2) {
+      if (infoArray[id - 1].options[3].checked == true) {
+        setCheckBoxes(true,true,true,false,infoArray,id)
+        amtStars = 3;
+      } else if (infoArray[id - 1].options[2].checked == true) {
+        setCheckBoxes(false,false,false,false,infoArray,id)
+        amtStars = 0;
+      } else {
+        setCheckBoxes(true,true,true,false,infoArray,id)
+        amtStars = 3;
+      }
+    }
+    if (index === 3) {
+      if (infoArray[id - 1].options[3].checked == true) {
+        setCheckBoxes(false,false,false,false,infoArray,id)
+        
+        amtStars = 0;
+      } else {
+        setCheckBoxes(true,true,true,true,infoArray,id)
+        amtStars = 4;
+      }
+    }
+
+
+    //////////////
           //UNCOMMENT THESE WITH A FILTER, TO CHANGEE TO NEW DATA
           //setProducts((products) => [...products,{ id: 7, name:"name4" ,  imageUrl: require ("./test.png"),  price: 6, options: [{option:'option1' , checked: false}, {option:'option2' , checked: true}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
           //]);
@@ -255,9 +300,9 @@ let initialProducts = []
           ////setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]   }
           ////]);
    
-    localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
-    console.log("pan: ", PanelInfoArray)
-    handleCheck(true, product, howManyChecked);
+    //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
+    //console.log("pan: ", PanelInfoArray)
+    handleCheck(true, product, howManyChecked, infoArray);
     
   };
   
@@ -271,24 +316,36 @@ let initialProducts = []
   let panelArrayWithSameIDsChanged = []
   let storedPanel = []
   
-  const handleCheck = (option, product, amtStars) => {
-    
+
+  
+  const handleCheck = (option, product, amtStars, optionsArray) => {
+    console.log("IA :", infoArray  )
     let check1 = false
     let check2 = false
+    let check3 = false
+    let check4 = false
     let amtString = "";
     switch (amtStars) {
       case 1:
+        check1 = true
         amtString = "One Star";
         break;
       case 2:
-        amtString = "Two Stars";
         check1 = true
         check2 = true
+        amtString = "Two Stars";
         break;
       case 3:
-        amtString = "Three Stars";
+        check1 = true
+        check2 = true
+        check3 = true
+         amtString = "Three Stars";
         break;
       case 4:
+        check1 = true
+        check2 = true
+        check3 = true
+        check4 = true
         amtString = "Four Stars";
         break;
       default:
@@ -297,53 +354,53 @@ let initialProducts = []
 
    
 //////////////////////////THIS ISNT WORKING - RERENDER WITH THIS PRODUCT
+//DOESN'T UPDATE OR REPLACE - WITH ARRAY OR ELEMENT
 //usestate 180
 //PHOTO at top
+//USESTATE SETS DEFAULT AS PHOTO (2 ELEMENTS)
+//setProducts :  set with array of objects!
 
 
-    var update = [
 
-      ...products,
+  var panelElement = {
 
-       {
+  id:product.id,
+  name: "name100",
+  //imageUrl: require ("./test.png"),
+  imageUrl: product.imageUrl,
+  price:  product.price,
+  options: [{option:'option1' , checked: check1}, {option:'option2' , checked: check2}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+  category: "art2",
+  amtstars: amtString
+};
 
-        id:3,
-        name: "aaa",
-        imageUrl: require ("./test.png"),
-        price:  2599,
-        options: [{option:'option1' , checked: check1}, {option:'option2' , checked: check2}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art2",
-        amtstars: amtString
-      }
 
-    ]
+///optionsarray holds correct data
+
+
+//let completeProductElement = [panelElement, optionsArray]
+
+//let oneElment = completeProductElement[0]
+//  var anotherPanel = [...products]
+//
+//  let panelArrayWithSameIDsChanged = anotherPanel.map(element => element.id !== product.id ? element : oneElment)
+//  //var update = [...products,panelElement]
+  setProducts(optionsArray)
+
 
     
-
-    var panelElement = {
-
-      id:product.id,
-      name: "aaa",
-      imageUrl: require ("./test.png"),
-      price:  2599,
-      options: [{option:'option1' , checked: check1}, {option:'option2' , checked: check2}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-      category: "art2",
-      amtstars: amtString
-    };
-
-    setProducts(...products, panelElement)
 
     /////////////////////////////////////////////////////////
-    
+    let update = []
 
     ///THIS IS FOR DISPLAYING PANEL///////////
 
-    var anotherPanel = [...products]
+    //asynchronous
+    //var anotherPanel = [...products]
+    let anotherPanel = [...update]
     //add an element to array
     panelArrayWithSameIDsChanged = anotherPanel.map(element => element.id !== product.id ? element : panelElement)
     console.log("products: ", products)
-    
-    let a = products
     localStorage.clear()
     localStorage.setItem(`panel`, JSON.stringify(panelArrayWithSameIDsChanged));
     storedPanel = localStorage.getItem("panel")
@@ -378,16 +435,17 @@ let initialProducts = []
         <CategoryContainer>
          
          
-          { products &&
+          {
             // Use filter to keep only the products with the matching category we want
             //.filter((prod) => prod.category === category)
                products.map((product) => {
-                {
-                  indexCount = indexCount + 1;
-                }
+                //{
+                //  indexCount = indexCount + 1;
+                //}
                 let ID = product.id;
                 let productID = `product-${product.id}`;
                 let productDetailsID = `${productID}-details`;
+                console.log("mapping products: ", product)
                 
                 return (
                   
