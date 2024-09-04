@@ -41,7 +41,7 @@ let PHOTO = [
         imageUrl: require ("./test.png"),
         price: 25,
         options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art2",
+        category: "art1",
         amtstars: "none"
         //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
   
@@ -207,36 +207,11 @@ let initialProducts = []
       
     id = id -1;
     let amtStars = 0;
-    //options1[0].checked = true
-  
-
-  
-   
-
-
-    //setProducts(artPiecesOfCategoryArray)
+    
     console.log("prod:", products )
   
-    //if (showPanel){
-      //setShowPanel(false)
-      //setShowPanel(false)
-      //setShowPanel(true)
-      //setShowPanel((showPanel) => false);
-      //setShowPanel((showPanel) => true);
-    //}
-
     setHasRun(!hasrun)
 
-    //////////////
-
-    //let infoArray = [...products]
-       
-
-    //three stars is giving for arrayRemove, 2 starts - check index!
-    //id = 1
-
-
-    //id = id - 1 
     //index of four stars satring at zero
     index = index - 1
     id = id + 1
@@ -302,6 +277,8 @@ let initialProducts = []
    
     //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
     //console.log("pan: ", PanelInfoArray)
+    ///////////////
+
     handleCheck(true, product, howManyChecked, infoArray);
     
   };
@@ -318,7 +295,7 @@ let initialProducts = []
   
 
   
-  const handleCheck = (option, product, amtStars, optionsArray) => {
+  const handleCheck = (option, product, amtStars, withOptionsArray) => {
     console.log("IA :", infoArray  )
     let check1 = false
     let check2 = false
@@ -327,24 +304,15 @@ let initialProducts = []
     let amtString = "";
     switch (amtStars) {
       case 1:
-        check1 = true
-        amtString = "One Star";
+       amtString = "One Star";
         break;
       case 2:
-        check1 = true
-        check2 = true
         amtString = "Two Stars";
         break;
       case 3:
-        check1 = true
-        check2 = true
-        check3 = true
-         amtString = "Three Stars";
+        amtString = "Three Stars";
         break;
       case 4:
-        check1 = true
-        check2 = true
-        check3 = true
         check4 = true
         amtString = "Four Stars";
         break;
@@ -352,17 +320,8 @@ let initialProducts = []
         amtString = "none";
     }
 
-   
-//////////////////////////THIS ISNT WORKING - RERENDER WITH THIS PRODUCT
-//DOESN'T UPDATE OR REPLACE - WITH ARRAY OR ELEMENT
-//usestate 180
-//PHOTO at top
-//USESTATE SETS DEFAULT AS PHOTO (2 ELEMENTS)
-//setProducts :  set with array of objects!
-
-
-
-  var panelElement = {
+/*  
+var panelElement = {
 
   id:product.id,
   name: "name100",
@@ -373,49 +332,32 @@ let initialProducts = []
   category: "art2",
   amtstars: amtString
 };
+*/
 
-
-///optionsarray holds correct data
-
-
-//let completeProductElement = [panelElement, optionsArray]
-
-//let oneElment = completeProductElement[0]
-//  var anotherPanel = [...products]
-//
-//  let panelArrayWithSameIDsChanged = anotherPanel.map(element => element.id !== product.id ? element : oneElment)
-//  //var update = [...products,panelElement]
-  setProducts(optionsArray)
+  setProducts(withOptionsArray)
 
 
     
 
-    /////////////////////////////////////////////////////////
-    let update = []
-
-    ///THIS IS FOR DISPLAYING PANEL///////////
-
-    //asynchronous
-    //var anotherPanel = [...products]
-    let anotherPanel = [...update]
-    //add an element to array
-    panelArrayWithSameIDsChanged = anotherPanel.map(element => element.id !== product.id ? element : panelElement)
-    console.log("products: ", products)
-    localStorage.clear()
-    localStorage.setItem(`panel`, JSON.stringify(panelArrayWithSameIDsChanged));
+    ////////////THIS IS FOR DISPLAYING PANEL///////////////////////////////////////////////////////////
+    //let update = []
+    ////asynchronous
+    //let anotherPanel = [...update]
+    ////add an element to array
+    //panelArrayWithSameIDsChanged = anotherPanel.map(element => element.id !== product.id ? element : panelElement)
+    //console.log("products: ", products)
+    //localStorage.clear()
+    
+    //localStorage.setItem(`panel`, JSON.stringify(panelArrayWithSameIDsChanged));
+    localStorage.setItem(`panel`, JSON.stringify(withOptionsArray));
+    
     storedPanel = localStorage.getItem("panel")
 
+    let breakpoint_here = 1
 
     /////////////////////////////////////////
-
-
-    console.log("sp: ", storedPanel)
-    
-  }
+}
   
-  console.log("pr*: ", products)
-
-   
   return (
     <div>
       <br></br><br></br>
