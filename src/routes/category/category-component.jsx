@@ -39,7 +39,7 @@ let PHOTO = [
         id: 1,
         name: "name1",
         imageUrl: require ("./test.png"),
-        price: 25,
+        price: 26,
         options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
         category: "art1",
         amtstars: "none"
@@ -53,7 +53,7 @@ let PHOTO = [
       id: 2,
       name: "name2",
       imageUrl:  require ("./test.png"),
-      price: 180,
+      price: 190,
       options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
       category: "art2",
       amtstars: "none"
@@ -63,6 +63,15 @@ let PHOTO = [
   //  ],
   //},
 ];
+
+
+let storedPanel = []
+
+
+
+
+
+
 
 //used
 var star1 = "++++";
@@ -138,12 +147,13 @@ let initialProducts = []
     let [hasrun, setHasRun] = useState(false) 
   
 
-    //setCheckBoxes(true,true,true,true, PanelInfoArray, 1)
+    //setCheckBoxes(true,true,true,true, PanelInfoArray, 1)//
     const route1 = useParams()
     console.log("cp2: ", {route1})
     console.log("route1: ", route1)
     
   let [products, setProducts] = useState(PHOTO) 
+  storedPanel = localStorage.getItem(`panel`)
   
   
   
@@ -185,7 +195,7 @@ let initialProducts = []
   //!!!!!!!!!!
 
   // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
-  //localStorage.setItem(`products`, JSON.stringify(null));
+  //localStorage.setItem(`products`, JSON.stringify(null));//
   let count = 0;
   
   const setCheckBoxes = (check1,check2,check3,check4,infoArray,id) => {
@@ -194,11 +204,29 @@ let initialProducts = []
     infoArray[id-1].options[1].checked = check2
     infoArray[id-1].options[2].checked = check3
     infoArray[id-1].options[3].checked = check4
+    infoArray[id-1].amtstars = "testing"
+    
 
     return infoArray
 
   }
 
+  const setAmountStars = (amtString, product) => {
+    let starArray = {amtstars: "one"}
+    let holdingArray = [...products]  
+
+    let prodArray = [product]
+    prodArray.push([{amtstars: "three"}])
+
+
+
+    //starArray.amtstars = amtString
+    prodArray = [product]
+    let newElement = [...prodArray, starArray ]
+    let array1 = [...products, newElement]
+    let breakpoint = 0
+
+  }
  
   const computeStars = (e, index, howManyChecked, id, product) => {
 
@@ -219,6 +247,7 @@ let initialProducts = []
       //PanelInfoArray[0].options1[0].checked = true
       if (index === 0) {
       if (infoArray[id-1].options[1].checked == true) {
+        
         setCheckBoxes(true,false,false,false,infoArray,id)
         amtStars = 1;
       } else if (infoArray[id - 1].options[0].checked == true) {
@@ -264,6 +293,8 @@ let initialProducts = []
         setCheckBoxes(true,true,true,true,infoArray,id)
         amtStars = 4;
       }
+
+      
     }
 
 
@@ -291,16 +322,12 @@ let initialProducts = []
   //!!!
 
   let panelArrayWithSameIDsChanged = []
-  let storedPanel = []
+ 
   
 
-  
+  //put text in element
   const handleCheck = (option, product, amtStars, withOptionsArray) => {
-    console.log("IA :", infoArray  )
-    let check1 = false
-    let check2 = false
-    let check3 = false
-    let check4 = false
+   
     let amtString = "";
     switch (amtStars) {
       case 1:
@@ -313,13 +340,18 @@ let initialProducts = []
         amtString = "Three Stars";
         break;
       case 4:
-        check4 = true
         amtString = "Four Stars";
         break;
       default:
         amtString = "none";
     }
 
+
+    //setAmountStars(amtString, product)
+
+    //let array1 = [{ amtstars: "one"}]
+    //array1[product.id - 1].amtStars = amtString
+    //let panelElement = [...withOptionsArray, ...array1 ]
 /*  
 var panelElement = {
 
@@ -351,7 +383,7 @@ var panelElement = {
     //localStorage.setItem(`panel`, JSON.stringify(panelArrayWithSameIDsChanged));
     localStorage.setItem(`panel`, JSON.stringify(withOptionsArray));
     
-    storedPanel = localStorage.getItem("panel")
+    storedPanel = localStorage.getItem(`panel`)
 
     let breakpoint_here = 1
 
