@@ -4,18 +4,21 @@ import { useState } from "react";
 let count = 0;
 
 function Panel({category}) {
+  {}
   console.log("cat: ", category)
   const id2 = 2;
   const [items, setItems] = useState([]);
-  var PanelInfoArray = JSON.parse(localStorage.getItem(`panel`));
-  console.log("PIA: ", PanelInfoArray)
+  //var PanelInfoArray = JSON.parse(localStorage.getItem(`panel`));
+  //console.log("PIA: ", PanelInfoArray)
   return (
     <div>
       <DropDown id="id1">
         <div className="images">
          
-          {PanelInfoArray &&
-            PanelInfoArray.map((item, index) => (
+          {category &&
+            category.map((item, index) => (
+
+
               <div key={index}>
                 <p>{item.name1}</p>
                 <img src={item.imageUrl} width="80" height="100" />
