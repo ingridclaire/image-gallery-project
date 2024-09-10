@@ -41,24 +41,6 @@ let infoArray = [
 ] 
 
 
-let panelInfoArray = [
-
-  {
-    id: 0,
-    name: "name3",
-    imageUrl: require ("./test.png"),
-    price: 25,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art2",
-    amtstars: "none"
-    //options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]
-
-    //options: [ {checked: true,checked: true,checked: true,checked: true, }]/
-    
-  },
-
-] 
-
 let PHOTO = [
  // {
     //atitle: "Hats",
@@ -104,27 +86,6 @@ let panelArrayWithElementRemoved = [
 
 
 ]
-
-//let storedPanel = []
-//let storedPanel1 = []
-/*
-let storedPanel = [
-
-
-
-  {
-    id: 0,
-    name: "name3",
-    imageUrl: require ("./test.png"),
-    price: 7777,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art2",
-    amtstars: "none0"
-  },
-
-] 
-  */
-
 
 //used
 var star1 = "++++";
@@ -223,12 +184,14 @@ let initialProducts = []
   
  
 
+  let IsElementSameID = false;
 
-
-  const senfo = (id, amtountOfStars, product) => {
+  //amount of stars is what was selected from that interface
+  const setPanelInfo = (id, amtountOfStars, product) => {
 
     let panelInformationListLeftElements = []
 
+    //this is the passed in data that builds the new element
     if(amtountOfStars == 1){
      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "One Star") 
     }
@@ -243,29 +206,66 @@ let initialProducts = []
     else if(amtountOfStars == 4){
       setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Four Stars") 
     }
-    //product has no stars
+    //product has no stars - remove element from panel list
+
     else{
-      
-      //delete element, becuase no stars//
-      //let PanelInformation = (storedPanel.filter((prod) =>  prod.id != product.id  ))
-      //setPanelInformation(panelInformation, PanelInformation)
+      let panelArrayWithDeletedElement = []
+      //this is not complete, check all ids of panelinformation, if that id not found than create with setpanelinformation and leave 
       console.log("1@: ", product.id)
       console.log("2@: ", panelArrayWithElementRemoved)
       console.log("sp1: ", storedPanel)
+      panelArrayWithElementRemoved.forEach(function(id, item, index){
+        insertElement(product, item, index)
+      })
+      if (IsElementSameID === true){
 
-      //let pi = panelInformation.filter(panel => panel.id != product.id)
-      panelInformationListLeftElements = (panelInformation.filter((prod) =>  prod.id === id  ))
-      setPanelInformation(panelInformationListLeftElements)
+
+        panelArrayWithDeletedElement = panelInformation.filter(panelElement => panelElement.id !== product.id)
+
+      //   //this is the element that is used in the map, it is the current element
+      //let elementToAdd = 
+      //{
+      //  id: product.id,
+      //  name: product.name ,
+      //  imageUrl: product.url,
+      //  price: product,
+      //  options: [{option:'option1' , checked: product.option1}, {option:'option2' , checked: product.option2}, {option:'option3' , checked: product.option3}, {option:'option4' , checked: product.option4}],
+      //  category: product.category,
+      //  amtstars: product.amountstars
+      }
+
+      //I think this is no longer possible, remove.
+      //let panelInformationChanged = []
+      //if(panelInformation.length === 0){
+      setPanelInformation(panelArrayWithDeletedElement)
+      return
+      //}
+      }
       }
    
    //return  panelArrayWithElementRemoved
 
+  
+
+  //change this
+  function insertElement(product, item, index){
+
+    if(index == product.id){
+      IsElementSameID = true
+      return
+
+    }
+
   }
 
+
+
   let panelInformation1 = []
-  //change the amount of stars for component
+  
+  //
   const setElement = (id, name, url, price, option1, option2, option3, option4, category, amountstars) =>{
     
+    //this is the element that is used in the map, it is the current element
     let panelInformationElementToAdd = 
     {
       id: id,
@@ -277,16 +277,19 @@ let initialProducts = []
       amtstars: amountstars
     }
 
-    let panelInformation2 = []
+    //I think this is no longer possible, remove.
+    let panelInformationChanged = []
     if(panelInformation.length === 0){
       setPanelInformation(panelInformationElementToAdd)
     }
+
     else{
 
     let index = id
-    panelInformation2 = panelInformation.map((pan, i) => {
-
-      console.log("ii: ", i)
+    //pan is element and i is index
+    panelInformationChanged = panelInformation.map((pan, i) => {
+      //change the element that shares the id, if none don't change, just return same thing
+      //map builds a new array in this way
       if (index === i){
         return panelInformationElementToAdd
       }
@@ -296,52 +299,9 @@ let initialProducts = []
 
     })
 
-    setPanelInformation(panelInformation2)
-   
+    setPanelInformation(panelInformationChanged)
   }
-
-  
-
-
-
-    
-     /* 
-      panelInformation1 = (panelInformation.filter((prod) =>  prod.id != id  ))////
-    //use two, and brackets
-      panelInformation1 =  [
-        
-      //{
-
-        ...panelInformation1
-      //storedPanel[id] = {
-      //id: 0,
-      //name: nam e ,
-      //imageUrl: url,
-      //price: price,
-      //options: [{option:'option1' , checked: option1}, {option:'option2' , checked: option2}, {option:'option3' , checked: option3}, {option:'option4' , checked: option4}],
-      //category: category,
-      //amtstars: amountstars
-      //}
-      ,{
-      id: id,
-      name: name ,
-      imageUrl: url,
-      price: price,
-      options: [{option:'option1' , checked: option1}, {option:'option2' , checked: option2}, {option:'option3' , checked: option3}, {option:'option4' , checked: option4}],
-      category: category,
-      amtstars: amountstars
-    }
-
-
-
-  ]
-
-
-  */
-    //setPanelInformation(panelInformation2)
-              
     console.log("here!")
-
   }
   
   const setCheckboxes = (check1,check2,check3,check4,infoArray,id) => {
@@ -366,92 +326,128 @@ let initialProducts = []
   const computeStars = (e, index, howManyChecked, id, product) => {
 
       let infoArray = [...products]
-      let panelInfoArray = [...products]
       let checked = e.target.checked
-      
     //id = id -1;
     let amtStars = 0;
     
     console.log("prod:", products )
   
+    //old, to force a render
     setHasRun(!hasrun)
 
     //index of four stars satring at zero
     index = index - 1
     id = id + 1
-
-      //PanelInfoArray[0].options1[0].checked = true
-      //index is which component element in aray
-      //infoarray was set to products above, in this function
-      if (index === 0) {
-      if (infoArray[id-1].options[1].checked == true) {
-        amtStars = 1;
-        setCheckboxes(true,false,false,false,infoArray,id)
-        } else if (infoArray[id - 1].options[0].checked == true) {
-        amtStars = 0;
-        setCheckboxes(false,false,false,false,infoArray,id)
-        } else {
-        amtStars = 1;
-        setCheckboxes(true,false,false,false,infoArray,id)  
-        } 
+    //index is which star, zero through three
+    //infoarray was set to products above, in this function
+    //HOW THE CHECK BOXES WORK:
+    //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
+    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THe RIGHT TO BE UNCHECKED.
+    
+      
+    //CHECK BOXES START ALL FALSE
+    //APPPLY TO FIRST BOX
+    if (index === 0) {
+    //IF THERE IS a CHECK ON SECOND BOX AND THAN BOX ONE IS CHECKED, THE CHECK WILL RESULT IN BOX ONE BEING CHECKED
+    if (infoArray[id-1].options[1].checked == true) {
+    amtStars = 1;
+    setCheckboxes(true,false,false,false,infoArray,id)
     }
+    //APPLY CHECK TO SECOND BOX
+    //CHECK BOX ONE IS CHECKED AND THAN INDEX CHECKS ONE.  SO, RESULTS IN NO CHECKS
+    else if (infoArray[id - 1].options[0].checked == true) {
+    amtStars = 0;
+    setCheckboxes(false,false,false,false,infoArray,id)
+    } 
+    else {
+    amtStars = 1;
+    //APPLY CHECK TO SECOND BOX
+    //NOTHING IS CHECKED SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
+    setCheckboxes(true,false,false,false,infoArray,id)  
+    } 
+}
+
+    //CHECK BOXES START ALL FALSE
+    //APPLY CHECK TO SECOND BOX
     if (index === 1) {
-      if (infoArray[id - 1].options[2].checked == true) {
-         amtStars = 2;
+   
+    if (infoArray[id - 1].options[2].checked == true) {
+        amtStars = 2;
+      //ALL CHECK BOXES START AS FALSE
+      //IF THIRD BOX IS TRUE AND BOX TWO IS THAN CHECKED THERE WILL BE TWO STARS 
         setCheckboxes(true,true,false,false,infoArray,id)
-       } else if (infoArray[id - 1].options[1].checked == false) {
-         amtStars = 2;
-        setCheckboxes(true,true,false,false,infoArray,id)
-       } else {
-        amtStars = 0;
-        setCheckboxes(false,false,false,false,infoArray,id)
-         }
-       }
+      } 
+      //ALL CHECK BOXES START AS FALSE
+      //IF SECOND BOX IS FALSE AND BOX TWO IS THAN STARRED, THERE WILL BE TWO STARS
+      else if (infoArray[id - 1].options[1].checked == false) {
+        amtStars = 2;
+      setCheckboxes(true,true,false,false,infoArray,id)
+      } 
+      //ALL CHECK BOXES START AS FALSE
+      //ISN'T CHECKED ON THIRD BOX AND IS CHECKED ON SECOND BOX (USING ELSE)
+      //BOX TWO IS THAN CHANGED WITH INDEX THAT REVERTS BOX TWO TO FALSE
+      else {
+      amtStars = 0;
+      setCheckboxes(false,false,false,false,infoArray,id)
+        }
+      }
+
+
+    //ALL CHECK BOXES START AS FALSE
+    //APPLY CHECK TO THIRD BOX   
     if (index === 2) {
+      //ALL CHECK BOXES START AS FALSE  
+      //IF BOX FOUR IS CHECKED, AND THREE IS CHECKED WITH INDEX, THERE WILL BE THREE CHECKS 
       if (infoArray[id - 1].options[3].checked == true) {
-            amtStars = 3;
+        amtStars = 3;
         setCheckboxes(true,true,true,false,infoArray,id)
-        } else if (infoArray[id - 1].options[2].checked == true) {
+        } 
+       //ALL CHECK BOXES START AS FALSE  
+       //IF BOX THREE IS CHECKED AND INDEX IS APPLIED WITH THIRD BOX, ALL FALSE
+       else if (infoArray[id - 1].options[2].checked == true) {
        amtStars = 0;
         setCheckboxes(false,false,false,false,infoArray,id)
-       } else {
+       } 
+        else {  
+      //ALL CHECK BOXES START AS FALSE 
+      //NEGATE:  IF BOX IS CHECKED ON 4 AND IS CHECKED ON THREE RESULTS IN ALL FOR CHECKS
+      //BY NEGATION USING ELSE, FOURTH STAR IS FALSE, AND AND THIRD CHECK IS FALSE
+      //INDEX APPLIED, THREE TRUES AND A FALSE 
       amtStars = 3;
       setCheckboxes(true,true,true,false,infoArray,id)
       }
     }
 
+
+    //ALL CHECK BOXES START AS FALSE
+    //APPLY CHECK TO FOURTH BOX 
     if (index === 3) {
+      //ALL CHECK BOXES START AS FALSE
+      //INDEX IS THREE SO WILL BE ALL STARS, ALL STARS WITH LAST ELEMENT CHECKED WITH INDEX WILL BE ALL FALSE
       if (infoArray[id - 1].options[3].checked == true) {
         amtStars = 0;
         setCheckboxes(false,false,false,false,infoArray,id)
-        } else {
+        }
+         //ALL CHECK BOXES START AS FALSE
+        //THERE IS NO STAR ON LAST BOX (DIFFERENT THAN FIRST CLAUSE), SO INDEX REVERTS TO ALL IS TRUE. 
+        else {
         amtStars = 4;
         setCheckboxes(true,true,true,true,infoArray,id)
         }
       }
+
+
       //working - keeps track of both, correctly//
       setProducts(infoArray)
 
       setPanelInfo(id, amtStars, product)
 
-      //localStorage.setItem(`panel`, JSON.stringify(panelArrayWithElementRemoved));
-      //localStorage.setItem(`panel`, JSON.stringify(storedPanel));
-
-      //setProducts(panelInfoArray)
-      let stayHere = true
-     
-     
-    
+    //localStorage.setItem(`panel`, JSON.stringify(panelArrayWithElementRemoved));
+    let stayHere = true
     //setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}
     //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
    };
-
-
-   
-   
-
-   //let panelI = [...panelInformation]
-
+  
    console.log("pi: ", panelInformation)
   return (
 
@@ -526,7 +522,7 @@ let initialProducts = []
                       })}
 
                       {
-                        showPanel  && <Panel
+                        showPanel  &&  panelInformation && <Panel
                         
                         key={panelInformation.id} category={ panelInformation} />
                           //stars={panelArrayWithSameIDsChanged.amtstars}
