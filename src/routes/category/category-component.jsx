@@ -1,22 +1,11 @@
-//const [artists, setArtists] = useState(intialArtistsreact arrayu works without usestate)
-//setartists(artists.filter(a => a.id !== atrtist.id)
-
-//IMAGES/COMPONENTS NOW GET RENDERED.
-//WRITE A FILTER AND REMOVE THE OLD COMPONENT SO THERE WILL ONLY BE ONE
-//ALSO, SET COMPONENT WITH VARIABLES FOR THE SETPRODUCT
-//USE A SORT ALGORITHM, BUBBLE SORT SHOULD BE FINE
 //CLEAN UP CODE
 //FIX CONTEXT
 //STUDY USESTATE WITH CONTEXT
 
-//9/7/24 :  CHANGING STARS TO ANOTHER AMOUNT OR ZERO WORKING!
-//NEXT:  IF CATEGORY IS EQUAL TO I.E. ART1, THAN DISPLAY ONLY THOSE IMAGES.
-//USE USENAVIGATE, GETPARAMS
-//CHECK ORDER WHEN MOR THAN TWO COMPONENTS DISPLAYED
+//9/7/24 
+//NEXT:  IF CATEGORY IS EQUAL TO I.E. ART1, THAN DISPLAY ONLY THOSE IMAGES, USE USENAVIGATE, GETPARAMS
 //LOCAL STORAGE, PANEL AND PRODUCTS
 //UNDERSTAND ROUTING
-
-//9/8/24 :  DONT DRAW TO PANEL WHEN NO CHECK MARKS
 import { CategoriesContext } from "../../contexts/categories-context";
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
@@ -41,10 +30,8 @@ let infoArray = [
 ] 
 
 
-let PHOTO = [
- // {
-    //atitle: "Hats",
-   // items: [
+let ART = [
+
       {
         id: 0,
         name: "name1",
@@ -59,7 +46,7 @@ let PHOTO = [
 
       {
       id: 1,
-      name: "name2_start",
+      name: "name2",
       imageUrl:  require ("./test.png"),
       price: 200,
       options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
@@ -67,25 +54,18 @@ let PHOTO = [
       amtstars: "none"
       },
 
+      {
+        id: 2,
+        name: "name3",
+        imageUrl:  require ("./test.png"),
+        price: 300,
+        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+        category: "art2",
+        amtstars: "none"
+        },
+
 ];
 
-
-let panelArrayWithElementRemoved = [
-
-  {
-    id: 0,
-    name: "nameX",
-    imageUrl: require ("./test.png"),
-    price: 100,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art1",
-    amtstars: "none"
-   
-    
-  },
-
-
-]
 
 //used
 var star1 = "++++";
@@ -145,19 +125,21 @@ let initialProducts = []
     console.log("cp2: ", {route1})
     console.log("route1: ", route1)
     
-  let [products, setProducts] = useState(PHOTO) 
+  let [products, setProducts] = useState(ART) 
   //storedPanel = localStorage.getItem(`panel`)
   const [state , setState] = useState([])   
   
   //Keeps record of starred components, in order
   //sets all products to photo (every product) and set stars and amtstars to use
-  let [panelInformation, setPanelInformation] = useState(PHOTO)
+  let [panelInformation, setPanelInformation] = useState([])
+
+  console.log("PE2: " , panelInformation)
  
 
   //////////////////////////////////////////////RESUME THIS: ROUTING!!!//
   //console.log("cp1: ", categoryParam)
   //let artPiecesOfCategoryArray = []
-  //artPiecesOfCategoryArray = PHOTO.filter(function (element){
+  //artPiecesOfCategoryArray = ART.filter(function (element){
   //  console.log("cp: ", categoryParam)
     //keeps thi s
     //console.log("element:" , element.category)
@@ -170,7 +152,7 @@ let initialProducts = []
   //products = [...artPiecesOfCategoryArray]
   //console.log("p1: ", products)
    
-  /////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////
   useEffect(() => {
   
     
@@ -187,84 +169,48 @@ let initialProducts = []
   let IsElementSameID = false;
 
   //amount of stars is what was selected from that interface
-  const setPanelInfo = (id, amtountOfStars, product) => {
+  const setPanelInfo = (amtountOfChecks, product) => {
 
     let panelInformationListLeftElements = []
-
+    let panelArrayWithDeletedElement = []
     //this is the passed in data that builds the new element
-    if(amtountOfStars == 1){
-     setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "One Star") 
+    if(amtountOfChecks == 1){
+     setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "One Check") 
     }
-    else if(amtountOfStars == 2){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Two Stars") 
+    else if(amtountOfChecks == 2){
+      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Two Checks") 
     }
      
-    else if(amtountOfStars == 3){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Three Stars") 
+    else if(amtountOfChecks == 3){
+      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Three Checks") 
     }
       
-    else if(amtountOfStars == 4){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Four Stars") 
+    else if(amtountOfChecks == 4){
+      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Four Checks") 
     }
-    //product has no stars - remove element from panel list
-
     else{
-      let panelArrayWithDeletedElement = []
-      //this is not complete, check all ids of panelinformation, if that id not found than create with setpanelinformation and leave 
-      console.log("1@: ", product.id)
-      console.log("2@: ", panelArrayWithElementRemoved)
-      console.log("sp1: ", storedPanel)
-      panelArrayWithElementRemoved.forEach(function(id, item, index){
-        insertElement(product, item, index)
-      })
-      if (IsElementSameID === true){
 
-
-        panelArrayWithDeletedElement = panelInformation.filter(panelElement => panelElement.id !== product.id)
-
-      //   //this is the element that is used in the map, it is the current element
-      //let elementToAdd = 
-      //{
-      //  id: product.id,
-      //  name: product.name ,
-      //  imageUrl: product.url,
-      //  price: product,
-      //  options: [{option:'option1' , checked: product.option1}, {option:'option2' , checked: product.option2}, {option:'option3' , checked: product.option3}, {option:'option4' , checked: product.option4}],
-      //  category: product.category,
-      //  amtstars: product.amountstars
-      }
-
-      //I think this is no longer possible, remove.
-      //let panelInformationChanged = []
-      //if(panelInformation.length === 0){
-      setPanelInformation(panelArrayWithDeletedElement)
-      return
-      //}
-      }
-      }
-   
-   //return  panelArrayWithElementRemoved
-
-  
-
-  //change this
-  function insertElement(product, item, index){
-
-    if(index == product.id){
-      IsElementSameID = true
-      return
+      let arrayWithoutElement = (panelInformation.filter((panelElement) => panelElement.id != product.id))
+      setPanelInformation(arrayWithoutElement)
+      //setElement(product.id, product.name, product.imageUrl, product.price, false, false, false, false, product.category, "none1") //
 
     }
-
   }
+ 
+  function redistributeTheIds(id, panelInformation){
+   
+    let currentid = -1
+    let missingIDIndex = -1
+    let arrayOfIDS = []
+    for(let i = 0 ; i < panelInformation.length; i++){
+    let IDVariable = panelInformation[i].id 
+      arrayOfIDS[i] = IDVariable
+    }
+    return arrayOfIDS
+    }
 
-
-
-  let panelInformation1 = []
-  
-  //
   const setElement = (id, name, url, price, option1, option2, option3, option4, category, amountstars) =>{
-    
+  
     //this is the element that is used in the map, it is the current element
     let panelInformationElementToAdd = 
     {
@@ -277,20 +223,22 @@ let initialProducts = []
       amtstars: amountstars
     }
 
-    //I think this is no longer possible, remove.
-    let panelInformationChanged = []
-    if(panelInformation.length === 0){
-      setPanelInformation(panelInformationElementToAdd)
-    }
-
-    else{
-
-    let index = id
-    //pan is element and i is index
-    panelInformationChanged = panelInformation.map((pan, i) => {
-      //change the element that shares the id, if none don't change, just return same thing
-      //map builds a new array in this way
-      if (index === i){
+    let panelInformation2 = panelInformation.filter(panelElement => panelElement.id === id)
+    //THERE ARE NO ELEMENTS IN ARRAY FOR PANEL WITH THIS NEW INFO
+    if(panelInformation2.length == 0){
+    let arrayFOrPanel = [...panelInformation, panelInformationElementToAdd]
+    setPanelInformation(arrayFOrPanel)
+    }else{
+    ///THERE IS AN ELEMENT WITH THIS CHECK, and STARS HAVE CHANGED
+    let arrayOfIDs = []
+    const panelInformationChanged = panelInformation.map((pan, index) => {
+      
+      //put 
+      arrayOfIDs = redistributeTheIds(id, panelInformation)
+      let indexOfElement = arrayOfIDs[index]
+      
+      if (indexOfElement === id){
+        
         return panelInformationElementToAdd
       }
       else {
@@ -313,16 +261,6 @@ let initialProducts = []
     return infoArray
   }
 
-
-  //9/4/24 : 10:33 pm
-  //MESSING AROUND WITH PANELINFOARRAY FOR PANEL LOCAL STORAGE : SETPANELINFO, SET FROM PRODUCTS, SET LOCAL STORAGE//
-  //PERHAPS MAKE A PRODUCTS-LIKE PANEL USESTATE
-
-
-
-  //ON STAR PRESS PRODUCTS GETS RERENDERED AND ALL NULL STARS GET PRINTED
-  ///FILTER THROUGH PRODUCTS, REMOVE ANY WITH NO STARS FROM PANEL AS VARIABLE
-  //?PANEL
   const computeStars = (e, index, howManyChecked, id, product) => {
 
       let infoArray = [...products]
@@ -340,9 +278,10 @@ let initialProducts = []
     id = id + 1
     //index is which star, zero through three
     //infoarray was set to products above, in this function
+    
     //HOW THE CHECK BOXES WORK:
     //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
-    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THe RIGHT TO BE UNCHECKED.
+    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.
     
       
     //CHECK BOXES START ALL FALSE
@@ -436,19 +375,14 @@ let initialProducts = []
         }
       }
 
-
-      //working - keeps track of both, correctly//
       setProducts(infoArray)
+      setPanelInfo(amtStars, product)
 
-      setPanelInfo(id, amtStars, product)
-
-    //localStorage.setItem(`panel`, JSON.stringify(panelArrayWithElementRemoved));
-    let stayHere = true
     //setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}
     //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
    };
   
-   console.log("pi: ", panelInformation)
+   //console.log("pi: ", panelInformation)
   return (
 
     
@@ -515,21 +449,17 @@ let initialProducts = []
                             value={productOptionValue}
                             name={newOptIndex}
                             onChange={e => computeStars(e,  newOptIndex, newOptIndex, ID, product)
-                           //(options1, product, index, id)
+                          
                              }
                           />
                         );
                       })}
 
                       {
-                        showPanel  &&  panelInformation && <Panel
+                        showPanel  &&  <Panel
                         
                         key={panelInformation.id} category={ panelInformation} />
-                          //stars={panelArrayWithSameIDsChanged.amtstars}
-                          //key={product.id}
-                          //category={product}
-                          //productID={productID}
-                        ///>
+                         
                       }
                     </div>
                   </div>
