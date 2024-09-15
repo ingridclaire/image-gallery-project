@@ -6,12 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { CategoriesProvider } from "./contexts/categories-context";
 import { PanelProvider } from "./contexts/panel-context";
-import { ExampleProvider } from "./contexts/stars-context";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ExampleProvider>
+     
         <PanelProvider>
           <CategoriesProvider>
            
@@ -19,7 +19,7 @@ root.render(
            
           </CategoriesProvider>
         </PanelProvider>
-      </ExampleProvider>
+      
     </BrowserRouter>
   </React.StrictMode>
 );
