@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { CategoriesProvider } from "./contexts/categories-context";
-import { CartContextProvider } from "./contexts/cart-context";
 import { PanelProvider } from "./contexts/panel-context";
 import { ExampleProvider } from "./contexts/stars-context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -15,9 +14,9 @@ root.render(
       <ExampleProvider>
         <PanelProvider>
           <CategoriesProvider>
-            <CartContextProvider>
+           
               <App />
-            </CartContextProvider>
+           
           </CategoriesProvider>
         </PanelProvider>
       </ExampleProvider>
