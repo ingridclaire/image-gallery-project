@@ -6,13 +6,13 @@ const categories = [
     id: 2,
     name: "Al",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    route: "category/art2",
+    route: "category/art1",
   },
   {
     id: 1,
     name: "Debbie",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    route: "category/art1",
+    route: "category/art2",
   },
   {
     id: 3,

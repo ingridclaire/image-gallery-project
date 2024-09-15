@@ -11,6 +11,8 @@ import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
 import { useParams,  useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
+import {after} from "underscore"
+//import {ART}  from "../../assets/IMAGE_DATA"
 
 
 let storedPanel = []
@@ -19,52 +21,278 @@ let infoArray = [
 
   {
     id: 0,
-    name: "name3",
-    imageUrl: require ("./test.png"),
+    name: "name",
+    imageUrl: require ("../../assets/1.png"),
     price: 25,
     options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art2",
+    category: "art1",
     amtstars: "none"
   },
 
 ] 
 
 
+
 let ART = [
 
-      {
-        id: 0,
-        name: "name1",
-        imageUrl: require ("./test.png"),
-        price: 100,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art1",
-        amtstars: "none"
-       
-        
-      },
+  {
+    id: 0,
+    name: "Title",
+    imageUrl: require ("../../assets/1.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art1",
+    amtstars: "none"
+   
+    
+  },
 
-      {
-      id: 1,
-      name: "name2",
-      imageUrl:  require ("./test.png"),
-      price: 200,
-      options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-      category: "art2",
-      amtstars: "none"
-      },
 
-      {
-        id: 2,
-        name: "name3",
-        imageUrl:  require ("./test.png"),
-        price: 300,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art2",
-        amtstars: "none"
-        },
+
+  {
+    id: 1,
+    name: "Title",
+    imageUrl: require ("../../assets/3.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art1",
+    amtstars: "none"
+   
+    
+  },
+ 
+ 
+ {
+    id: 2,
+    name: "Title",
+    imageUrl: require ("../../assets/4.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art1",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 3,
+    name: "Title",
+    imageUrl: require ("../../assets/5.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art1",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 4,
+    name: "Title",
+    imageUrl: require ("../../assets/6.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art1",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 5,
+    name: "Title",
+    imageUrl: require ("../../assets/7.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art2",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 6,
+    name: "Title",
+    imageUrl: require ("../../assets/8.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art2",
+    amtstars: "none"
+   
+    
+  }, 
+  
+  
+  {
+    id: 7,
+    name: "Title",
+    imageUrl: require ("../../assets/9.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art2",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 8,
+    name: "Title",
+    imageUrl: require ("../../assets/10.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art2",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 9,
+    name: "Title",
+    imageUrl: require ("../../assets/11.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art2",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 10,
+    name: "Title",
+    imageUrl: require ("../../assets/12.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 11,
+    name: "Title",
+    imageUrl: require ("../../assets/13.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 12,
+    name: "Title",
+    imageUrl: require ("../../assets/14.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 13,
+    name: "Title",
+    imageUrl: require ("../../assets/15.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 14,
+    name: "Title",
+    imageUrl: require ("../../assets/16.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 15,
+    name: "Title",
+    imageUrl: require ("../../assets/17.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art3",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 16,
+    name: "Title",
+    imageUrl: require ("../../assets/18.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art4",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 17,
+    name: "Title",
+    imageUrl: require ("../../assets/19.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art4",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 18,
+    name: "Title",
+    imageUrl: require ("../../assets/20.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art4",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 19,
+    name: "Title",
+    imageUrl: require ("../../assets/21.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art5",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 20,
+    name: "Title",
+    imageUrl: require ("../../assets/22.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art5",
+    amtstars: "none"
+   
+    
+  }, {
+    id: 21,
+    name: "Title",
+    imageUrl: require ("../../assets/23.png"),
+    price:10,
+    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    category: "art5",
+    amtstars: "none"
+   
+    
+  }
+
 
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //used
@@ -117,15 +345,42 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
 
 let initialProducts = []
   
+
+
   //associated with image-component
   export default function Category() {
+    
+    const [loading, setLoading] = useState(true)
+
     let [hasrun, setHasRun] = useState(false) 
     //setCheckBoxes(true,true,true,true, PanelInfoArray)//
-    const route1 = useParams()
-    console.log("cp2: ", {route1})
-    console.log("route1: ", route1)
-    
-  let [products, setProducts] = useState(ART) 
+    const route = useParams()
+    console.log("cp2: ", {route})
+    //console.log("route: ", route)
+    let imageCategoryToShow = route.category;
+    //console.log("zzz: ", a)
+
+  let artPiecesOfCategoryArray = []
+
+  artPiecesOfCategoryArray  = ART.filter((element) => element.category === imageCategoryToShow)
+ //let art2 = ART
+  
+
+  console.log("route: ", artPiecesOfCategoryArray)
+  let [products, setProducts] = useState( artPiecesOfCategoryArray) 
+
+  const onComplete = after(products.length, () => {
+    setLoading(false)
+    console.log("loaded")
+  })
+  
+
+
+
+
+
+
+
   //storedPanel = localStorage.getItem(`panel`)
   const [state , setState] = useState([])   
   
@@ -399,7 +654,7 @@ let initialProducts = []
           Show Panel
         </button>
 
-      <h4>Rate an image:</h4>
+      <h4>Rate a Work:</h4>
       <Fragment>
         <CategoryContainer>
          
@@ -418,18 +673,22 @@ let initialProducts = []
                 
                 return (
                   
-                 <div id={productID} className={`product`} key={product.name}>
-                    <div id={`drop`}>{product.id}</div>
+                 <div id={productID} className={`product`} key={product.imageUrl}>
+                    <div id={`drop`}>{product.id+1}</div>
                     <div id={productDetailsID}>
                       <h2>{product.name}</h2>
                       <h3>${product.price}.00</h3>
                       <div className={`images`}>
+                        
                         <img
                           type="Image"
                           src = {product.imageUrl}
+                          onLoad={onComplete}
+                          onError={onComplete}
                           alt={product.name}
                           width={90}
                         />
+                      
                       </div>
                       
                     </div>
