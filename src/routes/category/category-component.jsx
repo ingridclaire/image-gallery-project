@@ -357,7 +357,7 @@ let initialProducts = []
     const route = useParams()
     console.log("cp2: ", {route})
     //console.log("route: ", route)
-    let imageCategoryToShow = route.category;
+    let imageCategoryToShow = route.category1;
     //console.log("zzz: ", a)
 
   let artPiecesOfCategoryArray = []
