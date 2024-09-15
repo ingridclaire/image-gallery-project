@@ -5,22 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { CategoriesProvider } from "./contexts/categories-context";
-import { PanelProvider } from "./contexts/panel-context";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-     
-        <PanelProvider>
-          <CategoriesProvider>
+        <CategoriesProvider>
            
               <App />
-           
-          </CategoriesProvider>
-        </PanelProvider>
-      
-    </BrowserRouter>
+        </CategoriesProvider>
+     </BrowserRouter>
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function
