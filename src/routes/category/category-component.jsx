@@ -11,6 +11,7 @@ import { CategoryContainer } from "./category-styles";
 import { useParams,  useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 import {after} from "underscore"
+import  {NavLink} from "../navigation/navigation-styles";
 //import {ART}  from "../../assets/IMAGE_DATA"
 
 
@@ -297,17 +298,6 @@ let ART = [
 //used
 var star1 = "++++";
 
-export const getLatestStoredNotifications = () => {
-  if (localStorage.getItem(`products`)) {
-    let storedProducts = makeCopyOfProductsWithCustomData(
-      JSON.parse(localStorage.getItem(`products`))
-    );
-    return storedProducts;
-  } else {
-    return [];
-  }
-};
-
 // We add category as a secondary parameter in the function
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   console.log("was in function: ",arrayOfProducts)
@@ -365,9 +355,41 @@ let initialProducts = []
  //let art2 = ART
   
 
+ let locallyStoredProduct = []
   console.log("route: ", artPiecesOfCategoryArray)
   let [products, setProducts] = useState( artPiecesOfCategoryArray) 
 
+  //locallyStoredProduct  = (localStorage.getItem("products"))
+  
+  useEffect(() => {
+    const productsArrayStored = JSON.parse(localStorage.getItem('products'))
+    const panelsArrayStored = JSON.parse(localStorage.getItem('panel'))
+    if  (productsArrayStored){
+      setProducts( productsArrayStored)
+    }
+    if(panelsArrayStored){
+      setPanelInformation(panelsArrayStored)
+    }
+  }, [])
+
+
+
+
+  //!!!!!!!!!!!!!!!!!!setPanelInfo()
+
+
+
+  /*
+  //there is no stored values, so make default elements, with no checks
+  if(locallyStoredProduct.length == 0){
+    localStorage.setItem(`products`, JSON.stringify(artPiecesOfCategoryArray));
+    setProducts(locallyStoredProduct)
+  }else{
+    //there is a stored array
+    //localStorage.setItem(`products`, JSON.stringify(locallyStoredProduct));
+    usetProducts(locallyStoredProduct)
+  }
+    */
   const onComplete = after(products.length, () => {
     setLoading(false)
     console.log("loaded")
@@ -415,7 +437,7 @@ let initialProducts = []
   let [showPanel, setShowPanel] = useState(false);
   //!!!!!!!!!!
   // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
-  //localStorage.setItem(`products`, JSON.stringify(null));//
+  //setItem(`products`, JSON.stringify(null));//
   let count = 0;
   
  
@@ -446,6 +468,7 @@ let initialProducts = []
 
       let arrayWithoutElement = (panelInformation.filter((panelElement) => panelElement.id != product.id))
       setPanelInformation(arrayWithoutElement)
+      localStorage.setItem(`panel`, JSON.stringify(arrayWithoutElement));
       //setElement(product.id, product.name, product.imageUrl, product.price, false, false, false, false, product.category, "none1") //
 
     }
@@ -482,6 +505,7 @@ let initialProducts = []
     if(panelInformation2.length == 0){
     let arrayFOrPanel = [...panelInformation, panelInformationElementToAdd]
     setPanelInformation(arrayFOrPanel)
+    localStorage.setItem(`panel`, JSON.stringify(arrayFOrPanel));
     }else{
     ///THERE IS AN ELEMENT WITH THIS CHECK, and STARS HAVE CHANGED
     let arrayOfIDs = []
@@ -502,6 +526,8 @@ let initialProducts = []
     })
 
     setPanelInformation(panelInformationChanged)
+    localStorage.setItem(`panel`, JSON.stringify(panelInformationChanged));
+    
   }
     console.log("here!")
   }
@@ -630,6 +656,8 @@ let initialProducts = []
       }
 
       setProducts(infoArray)
+      localStorage.setItem(`products`, JSON.stringify(infoArray));
+      
       setPanelInfo(amtStars, product)
 
     //setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}
@@ -654,7 +682,9 @@ let initialProducts = []
         </button>
 
       <h4>Rate a Work:</h4>
-      <br></br><br></br><br></br><br></br>
+      <br></br>
+      <NavLink to="/">Home Page</NavLink>
+      <br></br><br></br><br></br>
       
       <Fragment>
         <CategoryContainer>

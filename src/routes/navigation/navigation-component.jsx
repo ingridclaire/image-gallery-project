@@ -13,9 +13,6 @@ const Navigation = () => {
     <NavigationContainer>
       <div className="photo">
         <h2>Meet The Artists:</h2>
-        
-        
-       
         <Outlet />
       </div>
       {showPanel && <Panel/>}

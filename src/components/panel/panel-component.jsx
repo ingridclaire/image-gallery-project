@@ -8,8 +8,6 @@ function Panel({category}) {
   console.log("cat: ", category)
   const id2 = 2;
   const [items, setItems] = useState([]);
-  //var PanelInfoArray = JSON.parse(localStorage.getItem(`panel`));
-  //console.log("PIA: ", PanelInfoArray)
   return (
     <div>
       <DropDown id="id1">
