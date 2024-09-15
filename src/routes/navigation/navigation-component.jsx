@@ -12,11 +12,9 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <div className="photo">
-        <h2>Veiw these Art Pieces:</h2>
+        <h2>Meet The Artists:</h2>
         
-        <div className="visited">
-          <NavLink to="/">Home Page</NavLink>
-        </div>
+        
        
         <Outlet />
       </div>
