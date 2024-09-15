@@ -655,6 +655,8 @@ let initialProducts = []
         </button>
 
       <h4>Rate a Work:</h4>
+      <br></br><br></br><br></br><br></br>
+      
       <Fragment>
         <CategoryContainer>
          
