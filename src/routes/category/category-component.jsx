@@ -6,7 +6,6 @@
 //NEXT:  IF CATEGORY IS EQUAL TO I.E. ART1, THAN DISPLAY ONLY THOSE IMAGES, USE USENAVIGATE, GETPARAMS
 //LOCAL STORAGE, PANEL AND PRODUCTS
 //UNDERSTAND ROUTING
-import { CategoriesContext } from "../../contexts/categories-context";
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
 import { useParams,  useNavigate } from "react-router-dom";
