@@ -360,59 +360,13 @@ let artPiecesOfCategoryArray = []
 
 let locallyStoredProducts = []
 let [products, setProducts] = useState( ART) 
-//locallyStoredProducts = setProducts (localStorage.getItem("products"))
-if(locallyStoredProducts){
-  //setProducts(...locallyStoredProducts)
-  let a = 1;
-  a++
-}
 
-
-//a =  JSON.parse(localStorage.getItem('products'))
-
-//setProducts(...)
 
 
 artPiecesOfCategoryArray  = products.filter((element) => element.category === imageCategoryToShow)
-  
-
- 
-
-if( /*oldArray.length > 0 && */ JSON.stringify(oldArray) != JSON.stringify(products)){
-  
-  //setProducts(locallyStoredProducts)
-  console.log("made it in here")
-  //setProducts(artPiecesOfCategoryArray)//
-  //setOldArray(products)
-  }else{
-    
-  }
-
-  useEffect(() => {
-
-  })
-
-  
- //let art2 = ART
  
 
   console.log("route: ", artPiecesOfCategoryArray)
-  
-
-  //locallyStoredProduct  = (localStorage.getItem("products"))
-  useEffect(() => {
-    console.log("AAAz+")
-    //put thisd elsewhere
-    //let var1 =  JSON.parse(localStorage.getItem('products'))
-    //setProducts(var1)
-    //console.log("var1: ", var1)
-    //setProducts(var1)
-
-  // setProducts(artPiecesOfCategoryArray)
-
-  }, [])
-
-//loads a single image, look at set, why not check:true
   
   useEffect(() => {
     console.log("here!")
