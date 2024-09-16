@@ -599,8 +599,8 @@ if( /*oldArray.length > 0 && */ JSON.stringify(oldArray) != JSON.stringify(produ
 
   const computeStars = (e, index, howManyChecked, id, product) => {
 
-      let infoArray = [...products]
-      localStorage.setItem(`products`, JSON.stringify(infoArray));
+      let infoArray = [...products] 
+     //localStorage.setItem(`products`, JSON.stringify(infoArray));
       console.log("1oldarray: ", oldArray)
       let checked = e.target.checked
     //id = id -1;
@@ -635,19 +635,19 @@ if( /*oldArray.length > 0 && */ JSON.stringify(oldArray) != JSON.stringify(produ
     //IF THERE IS a CHECK ON SECOND BOX AND THAN BOX ONE IS CHECKED, THE CHECK WILL RESULT IN BOX ONE BEING CHECKED
     if (infoArray[id-1].options[1].checked == true) {
     amtStars = 1;
-    setCheckboxes(true,false,false,false,infoArray,((id-1)%5)+1)
+    setCheckboxes(true,false,false,false,infoArray,(id))
     }
     //APPLY CHECK TO SECOND BOX
     //CHECK BOX ONE IS CHECKED AND THAN INDEX CHECKS ONE.  SO, RESULTS IN NO CHECKS
     else if (infoArray[id - 1].options[0].checked == true) {
     amtStars = 0;
-    setCheckboxes(false,false,false,false,infoArray,((id-1)%5)+1)
+    setCheckboxes(false,false,false,false,infoArray,(id))
     } 
     else {
     amtStars = 1;
     //APPLY CHECK TO SECOND BOX
     //NOTHING IS CHECKED SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
-    setCheckboxes(true,false,false,false,infoArray,((id-1)%5)+1)  
+    setCheckboxes(true,false,false,false,infoArray,(id))  
     } 
 }
 
@@ -732,6 +732,8 @@ if( /*oldArray.length > 0 && */ JSON.stringify(oldArray) != JSON.stringify(produ
      
       
       setPanelInfo(amtStars, product)
+      localStorage.setItem(`products`, JSON.stringify(infoArray));
+      
 
     //setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}
     //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
