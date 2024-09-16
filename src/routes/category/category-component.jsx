@@ -11,7 +11,8 @@ import { CategoryContainer } from "./category-styles";
 import { useParams,  useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 import {after} from "underscore"
-import  {NavLink} from "../navigation/navigation-styles";
+import  {NavLink}
+ from "../navigation/navigation-styles";
 //import {ART}  from "../../assets/IMAGE_DATA"
 
 
@@ -333,43 +334,96 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
 
 
 let initialProducts = []
-  
-
-
+let artPiecesOfCategoryArray = []
+ 
+ 
   //associated with image-component
   export default function Category() {
     
     const [loading, setLoading] = useState(true)
-
+    let [oldArray, setOldArray] = useState(ART);
     let [hasrun, setHasRun] = useState(false) 
     //setCheckBoxes(true,true,true,true, PanelInfoArray)//
     const route = useParams()
     console.log("cp2: ", {route})
     //console.log("route: ", route)
-    let imageCategoryToShow = route.category1;
+    let imageCategoryToShow = route.category;
     //console.log("zzz: ", a)
 
-  let artPiecesOfCategoryArray = []
 
-  artPiecesOfCategoryArray  = ART.filter((element) => element.category === imageCategoryToShow)
- //let art2 = ART
+    
+//CHECK BOX NOT DISPALYING TRUE IN FIRST BOX, LOOK AT SETCHECKBOXES, BELOW!
+//OLDARRAY IS NOT USESTATE YET
+//LOCALSTORAGE HOLDS VALUES OF ALL PRODUCTS THAT SHOULD BE USED IN FILE, SOME HOW
+//PRODUCT SHUOL HOLD ALL VALUES, EVEN AT START AND ONLY DISPLAY THOSE WITH CATEGORY////
+
+
+let locallyStoredProducts = []
+let [products, setProducts] = useState( ART) 
+//locallyStoredProducts = setProducts (localStorage.getItem("products"))
+if(locallyStoredProducts){
+  //setProducts(...locallyStoredProducts)
+  let a = 1;
+  a++
+}
+
+
+//a =  JSON.parse(localStorage.getItem('products'))
+
+//setProducts(...)
+
+
+artPiecesOfCategoryArray  = products.filter((element) => element.category === imageCategoryToShow)
   
 
- let locallyStoredProduct = []
+ 
+
+if( /*oldArray.length > 0 && */ JSON.stringify(oldArray) != JSON.stringify(products)){
+  
+  //setProducts(locallyStoredProducts)
+  console.log("made it in here")
+  //setProducts(artPiecesOfCategoryArray)//
+  //setOldArray(products)
+  }else{
+    
+  }
+
+  useEffect(() => {
+
+  })
+
+  
+ //let art2 = ART
+ 
+
   console.log("route: ", artPiecesOfCategoryArray)
-  let [products, setProducts] = useState( artPiecesOfCategoryArray) 
+  
 
   //locallyStoredProduct  = (localStorage.getItem("products"))
+  useEffect(() => {
+    console.log("AAAz+")
+    //put thisd elsewhere
+    //let var1 =  JSON.parse(localStorage.getItem('products'))
+    //setProducts(var1)
+    //console.log("var1: ", var1)
+    //setProducts(var1)
+
+  // setProducts(artPiecesOfCategoryArray)
+
+  }, [])
+
+//loads a single image, look at set, why not check:true
   
   useEffect(() => {
+    console.log("here!")
     const productsArrayStored = JSON.parse(localStorage.getItem('products'))
-    const panelsArrayStored = JSON.parse(localStorage.getItem('panel'))
+    //const panelsArrayStored = JSON.parse(localStorage.getItem('panel'))
     if  (productsArrayStored){
       setProducts( productsArrayStored)
     }
-    if(panelsArrayStored){
-      setPanelInformation(panelsArrayStored)
-    }
+    //if(panelsArrayStored){
+    //  setPanelInformation(panelsArrayStored)
+    //}
   }, [])
 
 
@@ -403,7 +457,7 @@ let initialProducts = []
 
 
   //storedPanel = localStorage.getItem(`panel`)
-  const [state , setState] = useState([])   
+  //const [state , setState] = useState([])   
   
   //Keeps record of starred components, in order
   //sets all products to photo (every product) and set stars and amtstars to use
@@ -530,6 +584,7 @@ let initialProducts = []
     
   }
     console.log("here!")
+    
   }
   
   const setCheckboxes = (check1,check2,check3,check4,infoArray,id) => {
@@ -538,12 +593,15 @@ let initialProducts = []
     infoArray[id-1].options[1].checked = check2
     infoArray[id-1].options[2].checked = check3
     infoArray[id-1].options[3].checked = check4
+    
     return infoArray
   }
 
   const computeStars = (e, index, howManyChecked, id, product) => {
 
       let infoArray = [...products]
+      localStorage.setItem(`products`, JSON.stringify(infoArray));
+      console.log("1oldarray: ", oldArray)
       let checked = e.target.checked
     //id = id -1;
     let amtStars = 0;
@@ -561,28 +619,35 @@ let initialProducts = []
     
     //HOW THE CHECK BOXES WORK:
     //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
-    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.
+    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.//
     
       
+
+  //THESE ON FIRST CONDITION ARE MAKING IT RIGHT FOR SETCHECKBOXES, USED MOD
+  //MOD HERE MIGHT BE NECESSARY TO BYPASSED ERRORS - CHECK WITHOUT MOD, FIORST
+  //FIRST SCREEN WORKING, NOW SECOND SCREEN IS DISPLaYING (WASN'T BEFORE)
+  //SEEMS TO LOOK ALRIGHT, NOW FIX AROUND 358
+
+
     //CHECK BOXES START ALL FALSE
     //APPPLY TO FIRST BOX
     if (index === 0) {
     //IF THERE IS a CHECK ON SECOND BOX AND THAN BOX ONE IS CHECKED, THE CHECK WILL RESULT IN BOX ONE BEING CHECKED
     if (infoArray[id-1].options[1].checked == true) {
     amtStars = 1;
-    setCheckboxes(true,false,false,false,infoArray,id)
+    setCheckboxes(true,false,false,false,infoArray,((id-1)%5)+1)
     }
     //APPLY CHECK TO SECOND BOX
     //CHECK BOX ONE IS CHECKED AND THAN INDEX CHECKS ONE.  SO, RESULTS IN NO CHECKS
     else if (infoArray[id - 1].options[0].checked == true) {
     amtStars = 0;
-    setCheckboxes(false,false,false,false,infoArray,id)
+    setCheckboxes(false,false,false,false,infoArray,((id-1)%5)+1)
     } 
     else {
     amtStars = 1;
     //APPLY CHECK TO SECOND BOX
     //NOTHING IS CHECKED SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
-    setCheckboxes(true,false,false,false,infoArray,id)  
+    setCheckboxes(true,false,false,false,infoArray,((id-1)%5)+1)  
     } 
 }
 
@@ -656,7 +721,15 @@ let initialProducts = []
       }
 
       setProducts(infoArray)
-      localStorage.setItem(`products`, JSON.stringify(infoArray));
+      
+
+      let var1 =  JSON.parse(localStorage.getItem('products'))
+      //setProducts(var1)
+      //console.log("var1: ", var1)
+      //setOldArray(infoArray)
+      //console.log("2oldarray:", oldArray)
+      //console.log("1products:", products)
+     
       
       setPanelInfo(amtStars, product)
 
@@ -693,7 +766,7 @@ let initialProducts = []
           {
             // Use filter to keep only the products with the matching category we want
             //.filter((prod) => prod.category === category)
-               products.map((product) => {
+            artPiecesOfCategoryArray.map((product) => {
                 //{
                 //  indexCount = indexCount + 1;
                 //}
