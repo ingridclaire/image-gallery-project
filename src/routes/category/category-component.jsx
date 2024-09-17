@@ -1,11 +1,5 @@
-//CLEAN UP CODE
-//FIX CONTEXT
+//9/16/24
 //STUDY USESTATE WITH CONTEXT
-
-//9/7/24 
-//NEXT:  IF CATEGORY IS EQUAL TO I.E. ART1, THAN DISPLAY ONLY THOSE IMAGES, USE USENAVIGATE, GETPARAMS
-//LOCAL STORAGE, PANEL AND PRODUCTS
-//UNDERSTAND ROUTING
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
 import { useParams,  useNavigate } from "react-router-dom";
@@ -272,30 +266,6 @@ let ART = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //used
 var star1 = "++++";
 
@@ -348,15 +318,7 @@ let artPiecesOfCategoryArray = []
     console.log("cp2: ", {route})
     //console.log("route: ", route)
     let imageCategoryToShow = route.category;
-    //console.log("zzz: ", a)
-
-
-    
-//CHECK BOX NOT DISPALYING TRUE IN FIRST BOX, LOOK AT SETCHECKBOXES, BELOW!
-//OLDARRAY IS NOT USESTATE YET
-//LOCALSTORAGE HOLDS VALUES OF ALL PRODUCTS THAT SHOULD BE USED IN FILE, SOME HOW
-//PRODUCT SHUOL HOLD ALL VALUES, EVEN AT START AND ONLY DISPLAY THOSE WITH CATEGORY////
-
+   
 
 let locallyStoredProducts = []
 let [products, setProducts] = useState( ART) 
@@ -380,72 +342,22 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
     }
   }, [])
 
-
-
-
-  //!!!!!!!!!!!!!!!!!!setPanelInfo()
-
-
-
-  /*
-  //there is no stored values, so make default elements, with no checks
-  if(locallyStoredProduct.length == 0){
-    localStorage.setItem(`products`, JSON.stringify(artPiecesOfCategoryArray));
-    setProducts(locallyStoredProduct)
-  }else{
-    //there is a stored array
-    //localStorage.setItem(`products`, JSON.stringify(locallyStoredProduct));
-    usetProducts(locallyStoredProduct)
-  }
-    */
   const onComplete = after(products.length, () => {
     setLoading(false)
     console.log("loaded")
   })
-  
-
-
-
-
-
-
-
-  //storedPanel = localStorage.getItem(`panel`)
-  //const [state , setState] = useState([])   
-  
-  //Keeps record of starred components, in order
-  //sets all products to photo (every product) and set stars and amtstars to use
+ 
   let [panelInformation, setPanelInformation] = useState([])
 
   console.log("PE2: " , panelInformation)
  
-
-  //////////////////////////////////////////////RESUME THIS: ROUTING!!!//
-  //console.log("cp1: ", categoryParam)
-  //let artPiecesOfCategoryArray = []
-  //artPiecesOfCategoryArray = ART.filter(function (element){
-  //  console.log("cp: ", categoryParam)
-    //keeps thi s
-    //console.log("element:" , element.category)
-    //console.log("route:" , route1)
-    //return element.category == "art2"//route1.category
-  //}) 
-
-  //console.log("art:" , artPiecesOfCategoryArray)
-
-  //products = [...artPiecesOfCategoryArray]
-  //console.log("p1: ", products)
-   
-  ///////////////////////////////////////////////////////////////
   useEffect(() => {
   
     
   }, [])
   const [stars, setStars] = useState([]);
   let [showPanel, setShowPanel] = useState(false);
-  //!!!!!!!!!!
-  // And lets store the final generated array of products with everything we need back into our localstorage to sync it up//
-  //setItem(`products`, JSON.stringify(null));//
+ 
   let count = 0;
   
  
@@ -571,11 +483,11 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
     //index is which star, zero through three
     //infoarray was set to products above, in this function
     
-    //HOW THE CHECK BOXES WORK:
-    //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
-    //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.//
+  //HOW THE CHECK BOXES WORK:
+  //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
+  //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.//
+  
     
-      
 
   //THESE ON FIRST CONDITION ARE MAKING IT RIGHT FOR SETCHECKBOXES, USED MOD
   //MOD HERE MIGHT BE NECESSARY TO BYPASSED ERRORS - CHECK WITHOUT MOD, FIORST
@@ -586,11 +498,13 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
     //CHECK BOXES START ALL FALSE
     //APPPLY TO FIRST BOX
     if (index === 0) {
+    //ALL CHECK BOXES START AS FALSE
     //IF THERE IS a CHECK ON SECOND BOX AND THAN BOX ONE IS CHECKED, THE CHECK WILL RESULT IN BOX ONE BEING CHECKED
     if (infoArray[id-1].options[1].checked == true) {
     amtStars = 1;
     setCheckboxes(true,false,false,false,infoArray,(id))
     }
+    //ALL CHECK BOXES START AS FALSE
     //APPLY CHECK TO SECOND BOX
     //CHECK BOX ONE IS CHECKED AND THAN INDEX CHECKS ONE.  SO, RESULTS IN NO CHECKS
     else if (infoArray[id - 1].options[0].checked == true) {
@@ -599,8 +513,9 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
     } 
     else {
     amtStars = 1;
+    //ALL CHECK BOXES START AS FALSE
     //APPLY CHECK TO SECOND BOX
-    //NOTHING IS CHECKED SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
+    //THREE FALSES,  SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
     setCheckboxes(true,false,false,false,infoArray,(id))  
     } 
 }
@@ -648,8 +563,7 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
        } 
         else {  
       //ALL CHECK BOXES START AS FALSE 
-      //NEGATE:  IF BOX IS CHECKED ON 4 AND IS CHECKED ON THREE RESULTS IN ALL FOR CHECKS
-      //BY NEGATION USING ELSE, FOURTH STAR IS FALSE, AND AND THIRD CHECK IS FALSE
+      //BY NEGATION OF ABOVE, FOURTH STAR IS FALSE, AND AND THIRD CHECK IS FALSE
       //INDEX APPLIED, THREE TRUES AND A FALSE 
       amtStars = 3;
       setCheckboxes(true,true,true,false,infoArray,id)
@@ -667,7 +581,7 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
         setCheckboxes(false,false,false,false,infoArray,id)
         }
          //ALL CHECK BOXES START AS FALSE
-        //THERE IS NO STAR ON LAST BOX (DIFFERENT THAN FIRST CLAUSE), SO INDEX REVERTS TO ALL IS TRUE. 
+        //THERE IS A CHECK ON FOURTH BOX, SO IS ALL TRUE. 
         else {
         amtStars = 4;
         setCheckboxes(true,true,true,true,infoArray,id)
@@ -678,22 +592,12 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
       
 
       let var1 =  JSON.parse(localStorage.getItem('products'))
-      //setProducts(var1)
-      //console.log("var1: ", var1)
-      //setOldArray(infoArray)
-      //console.log("2oldarray:", oldArray)
-      //console.log("1products:", products)
      
-      
       setPanelInfo(amtStars, product)
       localStorage.setItem(`products`, JSON.stringify(infoArray));
-      
-
-    //setProducts((products) => [...products, { id: 100, name:"name1b",   imageUrl: require ("./test.png") , price: 6, options: [{option:'option1' , checked: true}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}]}
-    //localStorage.setItem(`products`, JSON.stringify(PanelInfoArray));
-   };
+        };
   
-   //console.log("pi: ", panelInformation)
+ 
   return (
 
     
@@ -720,12 +624,8 @@ artPiecesOfCategoryArray  = products.filter((element) => element.category === im
          
          
           {
-            // Use filter to keep only the products with the matching category we want
-            //.filter((prod) => prod.category === category)
+            
             artPiecesOfCategoryArray.map((product) => {
-                //{
-                //  indexCount = indexCount + 1;
-                //}
                 let ID = product.id;
                 let productID = `product-${product.id}`;
                 let productDetailsID = `${productID}-details`;
