@@ -14,7 +14,7 @@ const Images1 = ({ category }) => {
     <DirectoryItemContainer onClick={onNavigateHandler}>
       <Body>
         <div className="images">
-          <img src={imageUrl} alt={``} width={60} />
+          <img src={imageUrl} alt={``} width={150} />
         </div>
       </Body>
     </DirectoryItemContainer>

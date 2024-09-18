@@ -8,11 +8,10 @@ const Navigation = () => {
    
   }
   const [showPanel, setShowPanel] = useState(false);
-  
   return (
     <NavigationContainer>
       <div className="photo">
-        <h2>Meet The Artists:</h2>
+       
         <Outlet />
       </div>
       {showPanel && <Panel/>}

@@ -237,4 +237,4 @@ const ARTforTestingImageImport = [
 ];
 
 */
-export default ARTforTestingImageImport;
+export default {ARTforTestingImageImport,};

@@ -9,7 +9,6 @@ export const Body = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   background-color: white;
   opacity: 0.7;
   margin-top: 1rem;

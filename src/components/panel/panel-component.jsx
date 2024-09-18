@@ -19,7 +19,8 @@ function Panel({category}) {
 
               <div key={index}>
                 <p>{item.name1}</p>
-                <img src={item.imageUrl} width="100" height="100" />
+                <br></br>
+                <img src={item.imageUrl} width="100" height="106" />
                 <p>${item.price}.00</p>
                 <p>{item.amtstars}</p>
                 <p>----</p>

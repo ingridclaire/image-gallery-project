@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavLink = styled(Link)`
-  font-size: .4rem;
+  font-size: .6rem;
   color:gray;
   cursor: pointer;
   &link{

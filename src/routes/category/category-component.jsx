@@ -1,285 +1,371 @@
-//9/16/24
-//STUDY USESTATE WITH CONTEXT
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer } from "./category-styles";
-import { useParams,  useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
-import {after} from "underscore"
-import  {NavLink}
- from "../navigation/navigation-styles";
-//import {ART}  from "../../assets/IMAGE_DATA"
+import { after } from "underscore";
+import { NavLink } from "../navigation/navigation-styles";
+import {ARTforTestingImageImport}  from "../../assets/IMAGE_DATA"
 
 
-let storedPanel = []
 
+/////////////////////////commented code with help needed
+/*
+
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
+  ({
+    [BUTTON_TYPE_CLASSES.base]: BaseButton,
+    [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,
+    [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
+  }[buttonType]);   // what is this?
+
+*/
+///////////////////////////////////////////////
+
+let storedPanel = [];
 let infoArray = [
-
   {
     id: 0,
     name: "name",
-    imageUrl: require ("../../assets/1.png"),
+    imageUrl: require("../../assets/1.png"),
     price: 25,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art1",
-    amtstars: "none"
+    amtstars: "none",
   },
-
-] 
-
-
-
+];
 let ART = [
-
+  
+  /*
   {
     id: 0,
     name: "Title",
-    imageUrl: require ("../../assets/1.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/1.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art1",
-    amtstars: "none"
-   
-    
+    amtstars: "none",
   },
 
-
-
+  
   {
     id: 1,
     name: "Title",
-    imageUrl: require ("../../assets/3.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/3.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art1",
-    amtstars: "none"
-   
-    
+    amtstars: "none",
   },
- 
- 
- {
+  */
+  {
     id: 2,
     name: "Title",
-    imageUrl: require ("../../assets/4.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/4.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art1",
-    amtstars: "none"
-   
-    
-  }, {
-    id: 3,
-    name: "Title",
-    imageUrl: require ("../../assets/5.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art1",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+
+
+  {
     id: 4,
     name: "Title",
-    imageUrl: require ("../../assets/6.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/6.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art1",
-    amtstars: "none"
-   
-    
-  }, {
-    id: 5,
+    amtstars: "none",
+  },
+  
+
+
+
+
+
+  {
+    id: 3,
     name: "Title",
-    imageUrl: require ("../../assets/7.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-    category: "art2",
-    amtstars: "none"
-   
+    imageUrl: require("../../assets/5.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
+    category: "art1",
+    amtstars: "none",
+  },
+  
+  
+  /*
+  {
     
-  }, {
     id: 6,
     name: "Title",
-    imageUrl: require ("../../assets/8.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/8.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art2",
-    amtstars: "none"
-   
-    
-  }, 
-  
-  
+    amtstars: "none",
+  },
+
+  */
   {
     id: 7,
     name: "Title",
-    imageUrl: require ("../../assets/9.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/9.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art2",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 8,
     name: "Title",
-    imageUrl: require ("../../assets/10.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/10.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art2",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 9,
     name: "Title",
-    imageUrl: require ("../../assets/11.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/11.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art2",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 10,
     name: "Title",
-    imageUrl: require ("../../assets/12.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/12.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 11,
     name: "Title",
-    imageUrl: require ("../../assets/13.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/13.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 12,
     name: "Title",
-    imageUrl: require ("../../assets/14.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/14.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 13,
     name: "Title",
-    imageUrl: require ("../../assets/15.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/15.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 14,
     name: "Title",
-    imageUrl: require ("../../assets/16.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/16.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 15,
     name: "Title",
-    imageUrl: require ("../../assets/17.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/17.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art3",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 16,
     name: "Title",
-    imageUrl: require ("../../assets/18.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/18.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art4",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 17,
     name: "Title",
-    imageUrl: require ("../../assets/19.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/19.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art4",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 18,
     name: "Title",
-    imageUrl: require ("../../assets/20.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/20.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art4",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 19,
     name: "Title",
-    imageUrl: require ("../../assets/21.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/21.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art5",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 20,
     name: "Title",
-    imageUrl: require ("../../assets/22.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/22.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art5",
-    amtstars: "none"
-   
-    
-  }, {
+    amtstars: "none",
+  },
+  {
     id: 21,
     name: "Title",
-    imageUrl: require ("../../assets/23.png"),
-    price:10,
-    options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
+    imageUrl: require("../../assets/23.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
     category: "art5",
-    amtstars: "none"
-   
-    
-  }
-
-
+    amtstars: "none",
+  },
 ];
-
-
 //used
 var star1 = "++++";
+// Kept, because it is interesting.
 
-// We add category as a secondary parameter in the function
+
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
-  console.log("was in function: ",arrayOfProducts)
-  return arrayOfProducts
+  console.log("was in function: ", arrayOfProducts);
+  return arrayOfProducts;
   let index = 0;
   if (arrayOfProducts) {
     if (arrayOfProducts.length > 0) {
-      
       return arrayOfProducts.map((prod) => {
         index++;
-        
         return {
           ...prod,
           index,
@@ -290,8 +376,6 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
             { option: `option3`, checked: false },
             { option: `option4`, checked: false },
           ],
-
-         
         };
       });
     } else {
@@ -301,388 +385,364 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
     return arrayOfProducts;
   }
 };
-
-
-let initialProducts = []
-let artPiecesOfCategoryArray = []
- 
- 
-  //associated with image-component
-  export default function Category() {
-    
-    const [loading, setLoading] = useState(true)
-    let [oldArray, setOldArray] = useState(ART);
-    let [hasrun, setHasRun] = useState(false) 
-    //setCheckBoxes(true,true,true,true, PanelInfoArray)//
-    const route = useParams()
-    console.log("cp2: ", {route})
-    //console.log("route: ", route)
-    let imageCategoryToShow = route.category;
-   
-
-let locallyStoredProducts = []
-let [products, setProducts] = useState( ART) 
+let initialProducts = [];
+let artPiecesOfCategoryArray = [];
 
 
 
-artPiecesOfCategoryArray  = products.filter((element) => element.category === imageCategoryToShow)
- 
+export default function Category() {
+  artPiecesOfCategoryArray = ARTforTestingImageImport.filter(element => element.category === "art2");
 
-  console.log("route: ", artPiecesOfCategoryArray)
-  
+  const [loading, setLoading] = useState(true);
+  let [oldArray, setOldArray] = useState(ART);
+  let [hasrun, setHasRun] = useState(false);
+  //setCheckBoxes(true,true,true,true, PanelInfoArray)//
+  const route = useParams();
+  console.log("cp2: ", { route });
+  //console.log("route: ", route)
+  let imageCategoryToShow = route.category;
+  let locallyStoredProducts = [];
+  let [products, setProducts] = useState(ART);
+  artPiecesOfCategoryArray = products.filter(
+    (element) => element.category === imageCategoryToShow
+  );
+  console.log("route: ", artPiecesOfCategoryArray);
   useEffect(() => {
-    console.log("here!")
-    const productsArrayStored = JSON.parse(localStorage.getItem('products'))
-    const panelsArrayStored = JSON.parse(localStorage.getItem('panel'))
-    if  (productsArrayStored){
-      setProducts( productsArrayStored)
+    console.log("here!");
+    const productsArrayStored = JSON.parse(localStorage.getItem("products"));
+    const panelsArrayStored = JSON.parse(localStorage.getItem("panel"));
+    if (productsArrayStored) {
+      setProducts(productsArrayStored);
     }
-    if(panelsArrayStored){
-      setPanelInformation(panelsArrayStored)
+    if (panelsArrayStored) {
+      setPanelInformation(panelsArrayStored);
     }
-  }, [])
-
+  }, []);
   const onComplete = after(products.length, () => {
-    setLoading(false)
-    console.log("loaded")
-  })
- 
-  let [panelInformation, setPanelInformation] = useState([])
-
-  console.log("PE2: " , panelInformation)
- 
-  useEffect(() => {
-  
-    
-  }, [])
+    setLoading(false);
+    console.log("loaded");
+  });
+  let [panelInformation, setPanelInformation] = useState([]);
+  console.log("PE2: ", panelInformation);
+  useEffect(() => {}, []);
   const [stars, setStars] = useState([]);
   let [showPanel, setShowPanel] = useState(false);
- 
   let count = 0;
-  
- 
-
   let IsElementSameID = false;
-
   //amount of stars is what was selected from that interface
-  const setPanelInfo = (amtountOfChecks, product) => {
-
-    let panelInformationListLeftElements = []
-    let panelArrayWithDeletedElement = []
-    //this is the passed in data that builds the new element
-    if(amtountOfChecks == 1){
-     setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "One Check") 
-    }
-    else if(amtountOfChecks == 2){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Two Checks") 
-    }
-     
-    else if(amtountOfChecks == 3){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Three Checks") 
-    }
-      
-    else if(amtountOfChecks == 4){
-      setElement(product.id, product.name, product.imageUrl, product.price, true, false, false, false, product.category, "Four Checks") 
-    }
-    else{
-
-      let arrayWithoutElement = (panelInformation.filter((panelElement) => panelElement.id != product.id))
-      setPanelInformation(arrayWithoutElement)
-      localStorage.setItem(`panel`, JSON.stringify(arrayWithoutElement));
-      //setElement(product.id, product.name, product.imageUrl, product.price, false, false, false, false, product.category, "none1") //
-
-    }
-  }
- 
-  function redistributeTheIds(id, panelInformation){
-   
-    let currentid = -1
-    let missingIDIndex = -1
-    let arrayOfIDS = []
-    for(let i = 0 ; i < panelInformation.length; i++){
-    let IDVariable = panelInformation[i].id 
-      arrayOfIDS[i] = IDVariable
-    }
-    return arrayOfIDS
-    }
-
-  const setElement = (id, name, url, price, option1, option2, option3, option4, category, amountstars) =>{
   
-    //this is the element that is used in the map, it is the current element
-    let panelInformationElementToAdd = 
-    {
+  
+  const setPanelInfo = (amtountOfChecks, product) => {
+    let panelInformationListLeftElements = [];
+    let panelArrayWithDeletedElement = [];
+    if (amtountOfChecks == 1) {
+      setElement(
+        product.id,
+        product.name,
+        product.imageUrl,
+        product.price,
+        true,
+        false,
+        false,
+        false,
+        product.category,
+        "One Check"
+      );
+    } else if (amtountOfChecks == 2) {
+      setElement(
+        product.id,
+        product.name,
+        product.imageUrl,
+        product.price,
+        true,
+        false,
+        false,
+        false,
+        product.category,
+        "Two Checks"
+      );
+    } else if (amtountOfChecks == 3) {
+      setElement(
+        product.id,
+        product.name,
+        product.imageUrl,
+        product.price,
+        true,
+        false,
+        false,
+        false,
+        product.category,
+        "Three Checks"
+      );
+    } else if (amtountOfChecks == 4) {
+      setElement(
+        product.id,
+        product.name,
+        product.imageUrl,
+        product.price,
+        true,
+        false,
+        false,
+        false,
+        product.category,
+        "Four Checks"
+      );
+    } else {
+      let arrayWithoutElement = panelInformation.filter(
+        (panelElement) => panelElement.id != product.id
+      );
+      setPanelInformation(arrayWithoutElement);
+      localStorage.setItem(`panel`, JSON.stringify(arrayWithoutElement));
+    }
+  };
+
+
+  function redistributeTheIds(id, panelInformation) {
+    let currentid = -1;
+    let missingIDIndex = -1;
+    let arrayOfIDS = [];
+    for (let i = 0; i < panelInformation.length; i++) {
+      let IDVariable = panelInformation[i].id;
+      arrayOfIDS[i] = IDVariable;
+    }
+    return arrayOfIDS;
+  }
+  const setElement = (
+    id,
+    name,
+    url,
+    price,
+    option1,
+    option2,
+    option3,
+    option4,
+    category,
+    amountstars
+  ) => {
+    let panelInformationElementToAdd = {
       id: id,
-      name: name ,
+      name: name,
       imageUrl: url,
       price: price,
-      options: [{option:'option1' , checked: option1}, {option:'option2' , checked: option2}, {option:'option3' , checked: option3}, {option:'option4' , checked: option4}],
+      options: [
+        { option: "option1", checked: option1 },
+        { option: "option2", checked: option2 },
+        { option: "option3", checked: option3 },
+        { option: "option4", checked: option4 },
+      ],
       category: category,
-      amtstars: amountstars
+      amtstars: amountstars,
+    };
+    let panelInformation2 = panelInformation.filter(
+      (panelElement) => panelElement.id === id
+    );
+    //there are no elements in array for panel with this new info
+    if (panelInformation2.length == 0) {
+      let arrayFOrPanel = [...panelInformation, panelInformationElementToAdd];
+      setPanelInformation(arrayFOrPanel);
+      localStorage.setItem(`panel`, JSON.stringify(arrayFOrPanel));
+    } else {
+      ///there is an element with this check, and stars have changed
+      let arrayOfIDs = [];
+      const panelInformationChanged = panelInformation.map((pan, index) => {
+        arrayOfIDs = redistributeTheIds(id, panelInformation);
+        let indexOfElement = arrayOfIDs[index];
+        if (indexOfElement === id) {
+          return panelInformationElementToAdd;
+        } else {
+          return pan;
+        }
+      });
+      setPanelInformation(panelInformationChanged);
+      localStorage.setItem(`panel`, JSON.stringify(panelInformationChanged));
     }
+    console.log("here!");
+  };
 
-    let panelInformation2 = panelInformation.filter(panelElement => panelElement.id === id)
-    //THERE ARE NO ELEMENTS IN ARRAY FOR PANEL WITH THIS NEW INFO
-    if(panelInformation2.length == 0){
-    let arrayFOrPanel = [...panelInformation, panelInformationElementToAdd]
-    setPanelInformation(arrayFOrPanel)
-    localStorage.setItem(`panel`, JSON.stringify(arrayFOrPanel));
-    }else{
-    ///THERE IS AN ELEMENT WITH THIS CHECK, and STARS HAVE CHANGED
-    let arrayOfIDs = []
-    const panelInformationChanged = panelInformation.map((pan, index) => {
-      
-      //put 
-      arrayOfIDs = redistributeTheIds(id, panelInformation)
-      let indexOfElement = arrayOfIDs[index]
-      
-      if (indexOfElement === id){
-        
-        return panelInformationElementToAdd
-      }
-      else {
-        return pan
-      }
 
-    })
+  const setCheckboxes = (check1, check2, check3, check4, infoArray, id) => {
+    infoArray[id - 1].options[0].checked = check1;
+    infoArray[id - 1].options[1].checked = check2;
+    infoArray[id - 1].options[2].checked = check3;
+    infoArray[id - 1].options[3].checked = check4;
+    return infoArray;
+  };
 
-    setPanelInformation(panelInformationChanged)
-    localStorage.setItem(`panel`, JSON.stringify(panelInformationChanged));
-    
-  }
-    console.log("here!")
-    
-  }
-  
-  const setCheckboxes = (check1,check2,check3,check4,infoArray,id) => {
- 
-    infoArray[id-1].options[0].checked = check1
-    infoArray[id-1].options[1].checked = check2
-    infoArray[id-1].options[2].checked = check3
-    infoArray[id-1].options[3].checked = check4
-    
-    return infoArray
-  }
 
   const computeStars = (e, index, howManyChecked, id, product) => {
-
-      let infoArray = [...products] 
-     //localStorage.setItem(`products`, JSON.stringify(infoArray));
-      console.log("1oldarray: ", oldArray)
-      let checked = e.target.checked
-    //id = id -1;
+    let infoArray = [...products];
+    console.log("1oldarray: ", oldArray);
+    let checked = e.target.checked;
     let amtStars = 0;
-    
-    console.log("prod:", products )
-  
-    //old, to force a render
-    setHasRun(!hasrun)
-
+    console.log("prod:", products);
     //index of four stars satring at zero
-    index = index - 1
-    id = id + 1
+    index = index - 1;
+    id = id + 1;
     //index is which star, zero through three
     //infoarray was set to products above, in this function
-    
-  //HOW THE CHECK BOXES WORK:
-  //FOR ANY CHECKED BOX, ALL BOXES BEFORE THIS BOX WILL BE CHECKED
-  //RECLICKING ON A CHECKED BOX WILL RESULT IN THAT BOX AND ALL BOXES TO THE RIGHT TO BE UNCHECKED AND THE LEFT TO BE CHECKED.//
-  
-    
-
-  //THESE ON FIRST CONDITION ARE MAKING IT RIGHT FOR SETCHECKBOXES, USED MOD
-  //MOD HERE MIGHT BE NECESSARY TO BYPASSED ERRORS - CHECK WITHOUT MOD, FIORST
-  //FIRST SCREEN WORKING, NOW SECOND SCREEN IS DISPLaYING (WASN'T BEFORE)
-  //SEEMS TO LOOK ALRIGHT, NOW FIX AROUND 358
-
-
-    //CHECK BOXES START ALL FALSE
-    //APPPLY TO FIRST BOX
+    //how the check boxes work:
+    //for any checked box, all boxes before this box will be checked
+    //reclicking on a checked box will result in that box and all boxes to the right to be unchecked and the left to be checked.
+    //check boxes start all false
+    //appply to first box
     if (index === 0) {
-    //ALL CHECK BOXES START AS FALSE
-    //IF THERE IS a CHECK ON SECOND BOX AND THAN BOX ONE IS CHECKED, THE CHECK WILL RESULT IN BOX ONE BEING CHECKED
-    if (infoArray[id-1].options[1].checked == true) {
-    amtStars = 1;
-    setCheckboxes(true,false,false,false,infoArray,(id))
+      //all check boxes start as false
+      //if there is a check on second box and than box one is checked, the check will result in box one being checked
+      if (infoArray[id - 1].options[1].checked == true) {
+        amtStars = 1;
+        setCheckboxes(true, false, false, false, infoArray, id);
+      }
+      //all check boxes start as false
+      //apply check to second box
+      //check box one is checked and than index checks one.  so, results in no checks
+      else if (infoArray[id - 1].options[0].checked == true) {
+        amtStars = 0;
+        setCheckboxes(false, false, false, false, infoArray, id);
+      } else {
+        amtStars = 1;
+        //all check boxes start as false
+        //apply check to second box
+        //three falses,  so it will be a simple check on first box
+        setCheckboxes(true, false, false, false, infoArray, id);
+      }
     }
-    //ALL CHECK BOXES START AS FALSE
-    //APPLY CHECK TO SECOND BOX
-    //CHECK BOX ONE IS CHECKED AND THAN INDEX CHECKS ONE.  SO, RESULTS IN NO CHECKS
-    else if (infoArray[id - 1].options[0].checked == true) {
-    amtStars = 0;
-    setCheckboxes(false,false,false,false,infoArray,(id))
-    } 
-    else {
-    amtStars = 1;
-    //ALL CHECK BOXES START AS FALSE
-    //APPLY CHECK TO SECOND BOX
-    //THREE FALSES,  SO IT WILL BE A SIMPLE CHECK ON FIRST BOX
-    setCheckboxes(true,false,false,false,infoArray,(id))  
-    } 
-}
-
-    //CHECK BOXES START ALL FALSE
-    //APPLY CHECK TO SECOND BOX
+    //check boxes start all false
+    //apply check to second box
     if (index === 1) {
-   
-    if (infoArray[id - 1].options[2].checked == true) {
+      if (infoArray[id - 1].options[2].checked == true) {
         amtStars = 2;
-      //ALL CHECK BOXES START AS FALSE
-      //IF THIRD BOX IS TRUE AND BOX TWO IS THAN CHECKED THERE WILL BE TWO STARS 
-        setCheckboxes(true,true,false,false,infoArray,id)
-      } 
-      //ALL CHECK BOXES START AS FALSE
-      //IF SECOND BOX IS FALSE AND BOX TWO IS THAN STARRED, THERE WILL BE TWO STARS
+        //all check boxes start as false
+        //if third box is true and box two is than checked there will be two stars
+        setCheckboxes(true, true, false, false, infoArray, id);
+      }
+      //all check boxes start as false
+      //if second box is false and box two is than starred, there will be two stars
       else if (infoArray[id - 1].options[1].checked == false) {
         amtStars = 2;
-      setCheckboxes(true,true,false,false,infoArray,id)
-      } 
-      //ALL CHECK BOXES START AS FALSE
-      //ISN'T CHECKED ON THIRD BOX AND IS CHECKED ON SECOND BOX (USING ELSE)
-      //BOX TWO IS THAN CHANGED WITH INDEX THAT REVERTS BOX TWO TO FALSE
-      else {
-      amtStars = 0;
-      setCheckboxes(false,false,false,false,infoArray,id)
-        }
+        setCheckboxes(true, true, false, false, infoArray, id);
       }
-
-
-    //ALL CHECK BOXES START AS FALSE
-    //APPLY CHECK TO THIRD BOX   
-    if (index === 2) {
-      //ALL CHECK BOXES START AS FALSE  
-      //IF BOX FOUR IS CHECKED, AND THREE IS CHECKED WITH INDEX, THERE WILL BE THREE CHECKS 
-      if (infoArray[id - 1].options[3].checked == true) {
-        amtStars = 3;
-        setCheckboxes(true,true,true,false,infoArray,id)
-        } 
-       //ALL CHECK BOXES START AS FALSE  
-       //IF BOX THREE IS CHECKED AND INDEX IS APPLIED WITH THIRD BOX, ALL FALSE
-       else if (infoArray[id - 1].options[2].checked == true) {
-       amtStars = 0;
-        setCheckboxes(false,false,false,false,infoArray,id)
-       } 
-        else {  
-      //ALL CHECK BOXES START AS FALSE 
-      //BY NEGATION OF ABOVE, FOURTH STAR IS FALSE, AND AND THIRD CHECK IS FALSE
-      //INDEX APPLIED, THREE TRUES AND A FALSE 
-      amtStars = 3;
-      setCheckboxes(true,true,true,false,infoArray,id)
+      //all check boxes start as false
+      //isn't checked on third box and is checked on second box (using else)
+      //box two is than changed with index that reverts box two to false
+      else {
+        amtStars = 0;
+        setCheckboxes(false, false, false, false, infoArray, id);
       }
     }
-
-
-    //ALL CHECK BOXES START AS FALSE
-    //APPLY CHECK TO FOURTH BOX 
+    //all check boxes start as false
+    //apply check to third box
+    if (index === 2) {
+      //all check boxes start as false
+      //if box four is checked, and three is checked with index, there will be three checks
+      if (infoArray[id - 1].options[3].checked == true) {
+        amtStars = 3;
+        setCheckboxes(true, true, true, false, infoArray, id);
+      }
+      //all check boxes start as false
+      //if box three is checked and index is applied with third box, all false
+      else if (infoArray[id - 1].options[2].checked == true) {
+        amtStars = 0;
+        setCheckboxes(false, false, false, false, infoArray, id);
+      } else {
+        //all check boxes start as false
+        //by negation of above, fourth star is false, and and third check is false
+        //index applied, three trues and a false
+        amtStars = 3;
+        setCheckboxes(true, true, true, false, infoArray, id);
+      }
+    }
+    //all check boxes start as false
+    //apply check to fourth box
     if (index === 3) {
-      //ALL CHECK BOXES START AS FALSE
-      //INDEX IS THREE SO WILL BE ALL STARS, ALL STARS WITH LAST ELEMENT CHECKED WITH INDEX WILL BE ALL FALSE
+      //all check boxes start as false
+      //index is three so will be all stars, all stars with last element checked with index will be all false
       if (infoArray[id - 1].options[3].checked == true) {
         amtStars = 0;
-        setCheckboxes(false,false,false,false,infoArray,id)
-        }
-         //ALL CHECK BOXES START AS FALSE
-        //THERE IS A CHECK ON FOURTH BOX, SO IS ALL TRUE. 
-        else {
-        amtStars = 4;
-        setCheckboxes(true,true,true,true,infoArray,id)
-        }
+        setCheckboxes(false, false, false, false, infoArray, id);
       }
+      //all check boxes start as false
+      //there is a check on fourth box, so is all true.
+      else {
+        amtStars = 4;
+        setCheckboxes(true, true, true, true, infoArray, id);
+      }
+    }
+    setProducts(infoArray);
+    let var1 = JSON.parse(localStorage.getItem("products"));
+    setPanelInfo(amtStars, product);
+    localStorage.setItem(`products`, JSON.stringify(infoArray));
+  };
 
-      setProducts(infoArray)
-      
 
-      let var1 =  JSON.parse(localStorage.getItem('products'))
-     
-      setPanelInfo(amtStars, product)
-      localStorage.setItem(`products`, JSON.stringify(infoArray));
-        };
-  
- 
   return (
-
-    
     <div>
-      <br></br><br></br>
-
-        <button
-          className="buttonShow"
-          onClick={() => {
-        //
-            setShowPanel((showPanel) => !showPanel);
-          }}
-        >
-          Show Panel
-        </button>
-
-      <h4>Rate a Work:</h4>
+      <br></br>
+      <br></br>
+      <h1>Would you like to rate these works?</h1>
+      <br></br>
+      <button
+        className="buttonShow"
+        onClick={() => {
+          //
+          setShowPanel((showPanel) => !showPanel);
+        }}
+      >
+        Show Panel
+      </button>
+      <br></br>
+      <br></br>
       <br></br>
       <NavLink to="/">Home Page</NavLink>
-      <br></br><br></br><br></br>
-      
+      <br></br>
+      <br></br>
+      <br></br>
       <Fragment>
         <CategoryContainer>
-         
-         
-          {
-            
-            artPiecesOfCategoryArray.map((product) => {
-              let ID = product.id;
-                return (
-                    <div key={product.imageUrl}>
-                    <div>{product.id+1}</div>
-                    <div>
-                      <h2>{product.name}</h2>
-                      <h3>${product.price}.00</h3>
-                      <div>
-                        
-                        <img
-                          type="Image"
-                          src = {product.imageUrl}
-                          onLoad={onComplete}
-                          onError={onComplete}
-                          alt={product.name}
-                          width={90}
-                        />
-                      
-                      </div>
-                      
-                    </div>
-                     <div>
-                      
-                     {product.options.map((opt, optIndex) => {
-                        let newOptIndex = optIndex + 1;
-                        
-                       
-                        
-                        return (
-                          <input
-                            key={optIndex}
-                           
-                            checked={opt.checked}
-                            type={`checkbox`}
-                           
-                            name={newOptIndex}
-                            onChange={e => computeStars(e,  newOptIndex, newOptIndex, ID, product)
-                          
-                             }
-                          />
-                        );
-                      })}
-
-                      {
-                        showPanel  &&  <Panel
-                        
-                        key={panelInformation.id} category={ panelInformation} />
-                         
-                      }
-                    </div>
+          {artPiecesOfCategoryArray.map((product) => {
+            let ID = product.id;
+            return (
+              <div key={product.imageUrl}>
+                <div>
+                  <h2>{product.name}</h2>
+                  <h3>${product.price}.00</h3>
+                  <div>
+                    <img
+                      type="Image"
+                      src={product.imageUrl}
+                      onLoad={onComplete}
+                      onError={onComplete}
+                      alt={product.name}
+                      width={220}
+                    />
                   </div>
-                );
-              })}
+                </div>
+                <div>
+                  {product.options.map((opt, optIndex) => {
+                    let newOptIndex = optIndex + 1;
+                    return (
+                      <input
+                        key={optIndex}
+                        checked={opt.checked}
+                        type={`checkbox`}
+                        name={newOptIndex}
+                        onChange={(e) =>
+                          computeStars(e, newOptIndex, newOptIndex, ID, product)
+                        }
+                      />
+                    );
+                  })}
+                  {showPanel && (
+                    <Panel
+                      key={panelInformation.id}
+                      category={panelInformation}
+                    />
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </CategoryContainer>
       </Fragment>
     </div>
   );
 }
-  
-
