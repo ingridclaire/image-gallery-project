@@ -18,7 +18,7 @@ const ARTforTestingImageImport = [
       {
         id: 1,
         name: "Title",
-        imageUrl: require ("../../assets/3.png"),
+        imageUrl: require ("./3.png"),
         price:10,
         options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
         category: "art1",
@@ -237,4 +237,4 @@ const ARTforTestingImageImport = [
 ];
 
 */
-export default {ARTforTestingImageImport,};
+export {ARTforTestingImageImport};
