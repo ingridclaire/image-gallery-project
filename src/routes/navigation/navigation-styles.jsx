@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+//ICC: colon missing on line 9, I added it
 export const NavLink = styled(Link)`
-  font-size: .6rem;
-  color:gray;
+  font-size: 0.6rem;
+  color: gray;
   cursor: pointer;
-  &link{
-    color gray;
+  &link {
+    color: gray;
   }
-  &:visited{
-    color:blue;
+  &:visited {
+    color: blue;
   }
-  &:hover{
+  &:hover {
     color: red;
   }
-  &:active{
-    color:yellow;
+  &:active {
+    color: yellow;
   }
 `;
 
@@ -27,15 +27,17 @@ export const NavigationContainer = styled.div`
 `;
 
 export const DropDown = styled.div`
-  font-size:10px;
-  width:7rem;
+  font-size: 10px;
+  width: 7rem;
   height: 7rem;
-  background-color:grey;
+  background-color: grey;
   display: flex;
-  right:10px;
-  top:0px;
+  right: 10px;
+  top: 0px;
   position: absolute;
   z-index: 2;
   border-radius: 1rem;
-  overflow-y:scroll;
-}`;
+  overflow-y: scroll;
+`;
+
+//ICC: unnecessary } on line 41, I removed it

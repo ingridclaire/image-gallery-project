@@ -4,9 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 import { after } from "underscore";
 import { NavLink } from "../navigation/navigation-styles";
-import {ARTforTestingImageImport}  from "../../assets/IMAGE_DATA"
-
-
+// ICC FIX IT: update below import to use .js extension
+import { ARTforTestingImageImport } from "../../assets/IMAGE_DATA.js";
 
 /////////////////////////commented code with help needed
 /*
@@ -18,9 +17,32 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
     [BUTTON_TYPE_CLASSES.inverted]: InvertedButton,
   }[buttonType]);   // what is this line?
 
+  ICC explanation:
+  It looks like getButton is a function that accepts a buttonType (string) as a parameter and returns a component based on the buttonType. The component that is returned is determined by the buttonType and is selected from an object that maps buttonType strings to component types. The object is defined inline and is immediately invoked with the buttonType parameter to return the appropriate component.
+
+  Here's an example of what this object looks like:
+  buttonTypes = {
+    base: BaseButton,
+    google: GoogleSignInButton,
+    inverted: InvertedButton,
+  };
+  Then, the line in question about that you asked about is accessing ONE of these properties in the object - either "base", "google" or "inverted" with the bracket notation:
+  buttonTypes[buttonType]
+  This would be the same as using dot notation with the specific key name:
+  buttonTypes.base OR buttonTypes.google OR buttonTypes.inverted
+
+  When using a variable for the key you want to access in an object, you use bracket notation instead of dot notation
+
+  The result is that you have a function that will return the desired component based on the passed in buttonType string.
+
 */
 ///////////////////////////////////////////////
 
+// ICC: I see that you have a lot of commented code in this file. It's a good idea to remove commented code that is no longer needed. It can make your code harder to read and maintain. If you need to keep the code for reference, consider using version control or a code snippet manager.
+
+// ICC: I also see a lot of console.log statements remaining. These should definitely be removed before showcasing your code. If you need to keep them for debugging purposes, at least comment them out so they don't all run when your code runs.
+
+// ICC: Not good practice to declare variables like storedPanel and infoArray outside of the component function. This can lead to unexpected behavior and bugs. It's better to declare them inside the component function, or beter yet, store them in another file and import them as needed. These kind of variables should only be used for constants, not for data that will change, which should be stored in state variables within the component.
 let storedPanel = [];
 let infoArray = [
   {
@@ -39,7 +61,6 @@ let infoArray = [
   },
 ];
 let ART = [
-  
   /*
   {
     id: 0,
@@ -87,7 +108,6 @@ let ART = [
     amtstars: "none",
   },
 
-
   {
     id: 4,
     name: "Title",
@@ -102,11 +122,6 @@ let ART = [
     category: "art1",
     amtstars: "none",
   },
-  
-
-
-
-
 
   {
     id: 3,
@@ -122,8 +137,7 @@ let ART = [
     category: "art1",
     amtstars: "none",
   },
-  
-  
+
   /*
   {
     
@@ -354,12 +368,13 @@ let ART = [
   },
 ];
 //used
+// ICC: another variable (star1) that should not be declared here outside component function. Should be declared within the component that needs it, or in another file if it is a constant unchanging value that other components may need to use.
 var star1 = "++++";
 // Kept, because it is interesting.
-
-
+// ICC: do you mean you kept the following function bc it's interesting? That's fine, but it should not stay here in this file. You can move it to another "utils" file or something similar, and import it as needed.
 export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
   console.log("was in function: ", arrayOfProducts);
+  // ICC: this function returns on the next line, which means all the code after the return statement will not be executed. So the console.log statement above will be the only thing that runs in this function. In JS, once you use the return statement, the function will exit and return the value specified in the return statement.
   return arrayOfProducts;
   let index = 0;
   if (arrayOfProducts) {
@@ -385,15 +400,17 @@ export const makeCopyOfProductsWithCustomData = (arrayOfProducts, category) => {
     return arrayOfProducts;
   }
 };
+// ICC: again, the two following variables should not be declared here outside component scope. They should be declared within the component function or in another file. It looks like these are arrays that probably change, so they should be stored in state variables within the component.Actually, it looks like initialProducts is never used, so it can be removed.
 let initialProducts = [];
 let artPiecesOfCategoryArray = [];
 
-
-
 export default function Category() {
-  artPiecesOfCategoryArray = ARTforTestingImageImport.filter(element => element.category === "art2");
+  artPiecesOfCategoryArray = ARTforTestingImageImport.filter(
+    (element) => element.category === "art2"
+  );
 
   const [loading, setLoading] = useState(true);
+  //ICC looks like oldArray and hasrun is never used, so lines 415 & 416 should be removed.
   let [oldArray, setOldArray] = useState(ART);
   let [hasrun, setHasRun] = useState(false);
   //setCheckBoxes(true,true,true,true, PanelInfoArray)//
@@ -401,6 +418,7 @@ export default function Category() {
   console.log("cp2: ", { route });
   //console.log("route: ", route)
   let imageCategoryToShow = route.category;
+  // locallyStoredProducts never used, should be removed
   let locallyStoredProducts = [];
   let [products, setProducts] = useState(ART);
   artPiecesOfCategoryArray = products.filter(
@@ -430,8 +448,7 @@ export default function Category() {
   let count = 0;
   let IsElementSameID = false;
   //amount of stars is what was selected from that interface
-  
-  
+
   const setPanelInfo = (amtountOfChecks, product) => {
     let panelInformationListLeftElements = [];
     let panelArrayWithDeletedElement = [];
@@ -496,7 +513,6 @@ export default function Category() {
     }
   };
 
-
   function redistributeTheIds(id, panelInformation) {
     let currentid = -1;
     let missingIDIndex = -1;
@@ -559,7 +575,6 @@ export default function Category() {
     console.log("here!");
   };
 
-
   const setCheckboxes = (check1, check2, check3, check4, infoArray, id) => {
     infoArray[id - 1].options[0].checked = check1;
     infoArray[id - 1].options[1].checked = check2;
@@ -567,7 +582,6 @@ export default function Category() {
     infoArray[id - 1].options[3].checked = check4;
     return infoArray;
   };
-
 
   const computeStars = (e, index, howManyChecked, id, product) => {
     let infoArray = [...products];
@@ -673,7 +687,6 @@ export default function Category() {
     localStorage.setItem(`products`, JSON.stringify(infoArray));
   };
 
-
   return (
     <div>
       <br></br>
@@ -689,6 +702,7 @@ export default function Category() {
       >
         Show Panel
       </button>
+      {/* ICC: not best practice to use all these br tags, instead use CSS to add margin or padding as necessary */}
       <br></br>
       <br></br>
       <br></br>
@@ -698,8 +712,12 @@ export default function Category() {
       <br></br>
       <Fragment>
         <CategoryContainer>
+          {/* ICC: artPiecesOfCategoryArray is not a state variable - is this a list that ever changes or is it static? if it will change, you should be using a state variable here */}
           {artPiecesOfCategoryArray.map((product) => {
+            // ICC: unnecessary to create the ID variable, just use product.id when needed
             let ID = product.id;
+            //ICC: best practice would be to create a component for the following returned JSX code and import it here. This will make your code more modular and easier to read and maintain. You could create a component called ArtPiece or something similar that takes the product as a prop and renders the JSX code below. It would look something like this:
+            // <ArtPiece key={product.imageUrl} product={product} onComplete={onComplete} computeStars={computeStars} showPanel={showPanel} panelInformation={panelInformation} />
             return (
               <div key={product.imageUrl}>
                 <div>

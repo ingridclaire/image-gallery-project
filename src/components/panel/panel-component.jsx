@@ -1,22 +1,25 @@
 import { DropDown } from "./panel-styles";
 import { useState } from "react";
 
+//ICC: remove count variable as it's not used
 let count = 0;
 
-function Panel({category}) {
-  {}
-  console.log("cat: ", category)
+function Panel({ category }) {
+  //ICC: remove this curly braces block on line 8 as it's not used
+  {
+  }
+  console.log("cat: ", category);
+  //ICC: remove id2 variable as it's not used
   const id2 = 2;
+  //ICC: remove items and setItems as they are not used, or utilize them if needed
   const [items, setItems] = useState([]);
   return (
     <div>
       <DropDown id="id1">
         <div className="images">
-         
+          {/* if category is an array, you don't need the conditional check (category &&) */}
           {category &&
             category.map((item, index) => (
-
-
               <div key={index}>
                 <p>{item.name1}</p>
                 <br></br>

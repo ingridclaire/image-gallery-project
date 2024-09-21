@@ -6,11 +6,12 @@ import Home from "./routes/home/home-component";
 import Category from "./routes/category/category-component";
 
 const App = () => {
- 
   return (
     //< Directory />
     <div className="App">
+      {/* ICC: header tag is not meant to wrap your entire application, so I'd use a main tag or div tag instead if you need an element to wrap everything */}
       <header className="App-header">
+        ``
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />

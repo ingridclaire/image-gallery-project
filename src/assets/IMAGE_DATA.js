@@ -1,34 +1,38 @@
-
 const ARTforTestingImageImport = [
+  {
+    id: 0,
+    name: "Title",
+    imageUrl: require("./1.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
+    category: "art1",
+    amtstars: "none",
+  },
 
-      {
-        id: 0,
-        name: "Title",
-        imageUrl: require ("./1.png"),
-        price:10,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art1",
-        amtstars: "none"
-       
-        
-      },
-    
-    
+  {
+    id: 1,
+    name: "Title",
+    //ICC: incorrect file path for image, i modified
+    imageUrl: require("./3.png"),
+    price: 10,
+    options: [
+      { option: "option1", checked: false },
+      { option: "option2", checked: false },
+      { option: "option3", checked: false },
+      { option: "option4", checked: false },
+    ],
+    category: "art1",
+    amtstars: "none",
+  },
+];
 
-      {
-        id: 1,
-        name: "Title",
-        imageUrl: require ("../../assets/3.png"),
-        price:10,
-        options: [{option:'option1' , checked: false}, {option:'option2' , checked: false}, {option:'option3' , checked: false}, {option:'option4' , checked: false}],
-        category: "art1",
-        amtstars: "none"
-       
-        
-      },
-     ]
-     
-     /*{
+// ICC: you should remove commented "graveyard" code before showcasing it
+/*{
         id: 2,
         name: "Title",
         imageUrl: require ("../../assets/4.png"),
@@ -237,4 +241,5 @@ const ARTforTestingImageImport = [
 ];
 
 */
-export default {ARTforTestingImageImport,};
+// ICC: when you export things in {} DO NOT use default, i modified this
+export { ARTforTestingImageImport };
