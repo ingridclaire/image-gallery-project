@@ -14,12 +14,12 @@ export default function Category() {
 //!!!!!!!!!!!!!!!!!!!!
 //WHY WOULD THIS USE USESTATE BECAUSE, IT IS SET TO PRODUCTS AND CHANGES NOT DEPENDING ON THE LAST VALUE
 //SET TO PRODUCTS
-//let infoArray = [];
+let infoArray = [];
 //DIDN'T UEE USESTATE BECAUSE IT ACTS INTERNALLY ONLY IN THIS FUNCTION
 //ISN'T USED BETWEEN RENDERING
 let artPiecesOfCategoryArray = [];
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  let [infoArray, setInfoArray] = useState
+  //let [infoArray, setInfoArray] = useState
   const route = useParams();
   let imageCategoryToShow = route.category;
   let locallyStoredProducts = [];
@@ -45,6 +45,8 @@ let artPiecesOfCategoryArray = [];
   let [showPanel, setShowPanel] = useState(false);
   let count = 0;
   let IsElementSameID = false;
+  
+  
   //amount of stars is what was selected from that interface
   const setPanelInfo = (amtountOfChecks, product) => {
     let panelInformationListLeftElements = [];
