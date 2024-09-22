@@ -6,3 +6,10 @@ export const CategoryContainer = styled.div`
   row-gap: 20px;
   column-gap: 10px;
 `;
+
+export const Title = styled.div`
+color:blue;
+font-size: 20rem;
+margin-top:90 rem
+margin-bottom: 15 rem;
+`;

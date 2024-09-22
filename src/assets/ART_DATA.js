@@ -84,25 +84,6 @@ const ART = [
       amtstars: "none",
     },
     
-    
-    /*
-    {
-      
-      id: 6,
-      name: "Title",
-      imageUrl: require("../../assets/8.png"),
-      price: 10,
-      options: [
-        { option: "option1", checked: false },
-        { option: "option2", checked: false },
-        { option: "option3", checked: false },
-        { option: "option4", checked: false },
-      ],
-      category: "art2",
-      amtstars: "none",
-    },
-  
-    */
     {
       id: 7,
       name: "Title",
