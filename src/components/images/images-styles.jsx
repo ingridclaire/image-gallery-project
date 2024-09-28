@@ -15,3 +15,7 @@ export const Body = styled.div`
 `;
 
 export const DirectoryItemContainer = styled.div``;
+
+export const ImagesComponent = styled.div`
+width: 150px;
+`;

@@ -1,8 +1,6 @@
 
 const ART = [
-  
-    
-    {
+   {
       id: 0,
       name: "Title",
       imageUrl: require("./1.png"),
@@ -17,9 +15,8 @@ const ART = [
       amtstars: "none",
     },
   
-    
-    {
-      id: 1,
+{
+      id: 5,
       name: "Title",
       imageUrl: require("./3.png"),
       price: 10,
@@ -64,11 +61,6 @@ const ART = [
       amtstars: "none",
     },
     
-  
-  
-  
-  
-  
     {
       id: 3,
       name: "Title",

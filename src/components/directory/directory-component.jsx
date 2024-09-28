@@ -1,5 +1,6 @@
-import Images1 from "../images/images-component";
+import Images from "../images/images-component";
 import { DirectoryContainer } from "../directory/directory-styles";
+import './directory-styles.css'
 
 const categories = [
   {
@@ -36,12 +37,13 @@ const categories = [
 const Directory = () => {
   return (
     <div>
-       <br></br> <br></br> <br></br> <br></br> 
-       <h1>Select an Artist</h1>
-       <br></br> <br></br> <br></br> <br></br>
+      
+      <div className = "ArtistTitle" >
+        Select an Artist
+      </div> 
       <DirectoryContainer>
         {categories.map((category) => (
-          <Images1 key={category.imageUrl} category={category} />
+          <Images key={category.imageUrl} category={category} />
         ))}
       </DirectoryContainer>
     </div>

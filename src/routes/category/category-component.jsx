@@ -6,20 +6,14 @@ import Panel from "../../components/panel/panel-component";
 import { after } from "underscore";
 import { NavLink } from "../navigation/navigation-styles";
 import {ART}  from "../../assets/ART_DATA.js"
-import './category-styles2.css';
+import ArtPiece from "../../components/art-piece/art-piece-component.jsx";
+import './category-styles.css';
 
 
 export default function Category() {
-
-//!!!!!!!!!!!!!!!!!!!!
-//WHY WOULD THIS USE USESTATE BECAUSE, IT IS SET TO PRODUCTS AND CHANGES NOT DEPENDING ON THE LAST VALUE
-//SET TO PRODUCTS
-let infoArray = [];
-//DIDN'T UEE USESTATE BECAUSE IT ACTS INTERNALLY ONLY IN THIS FUNCTION
-//ISN'T USED BETWEEN RENDERING
-let artPiecesOfCategoryArray = [];
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //let [infoArray, setInfoArray] = useState
+//gets set to products
+  let infoArray = [];
+  let artPiecesOfCategoryArray = [];
   const route = useParams();
   let imageCategoryToShow = route.category;
   let locallyStoredProducts = [];
@@ -176,108 +170,132 @@ let artPiecesOfCategoryArray = [];
 
 
   const setCheckboxes = (check1, check2, check3, check4, infoArray, id) => {
-    infoArray[id - 1].options[0].checked = check1;
-    infoArray[id - 1].options[1].checked = check2;
-    infoArray[id - 1].options[2].checked = check3;
-    infoArray[id - 1].options[3].checked = check4;
+    infoArray[id].options[0].checked = check1;
+    infoArray[id].options[1].checked = check2;
+    infoArray[id].options[2].checked = check3;
+    infoArray[id].options[3].checked = check4;
     return infoArray;
   };
 
 
-  const computeStars = (e, index, howManyChecked, id, product) => {
+  const advanceToNextID = (productIDToAdvance) => {
+    let index = 0
+   
+    let j = 1
+    while (productIDToAdvance != products[index].id ){
+    index++
+    }
+    return index
+  }
+
+  const retreatToNextID = (productIDToRetreat) => {
+    let index = products.length
+    
+    let j = 1
+    while (productIDToRetreat != products[index].id ){
+    index--
+    }
+    return index
+  }
+
+  const computeStars = (e, indexOfCheckBoxes, howManyChecked, product) => {
+    let productIndex = advanceToNextID(product.id)
     let infoArray = [...products];
     let checked = e.target.checked;
     let amtStars = 0;
     //index of four stars satring at zero
-    index = index - 1;
-    id = id + 1;
+    indexOfCheckBoxes = indexOfCheckBoxes - 1;
+    ///product.id = product.id - 1;
     //index is which star, zero through three
     //infoarray was set to products above, in this function
     //how the check boxes work:
     //for any checked box, all boxes before this box will be checked
-    //reclicking on a checked box will result in that box and all boxes to the right to be unchecked and the left to be checked.
+    //reclicking on a checked box will result in that box and all boxes to the right to be unchecked and the left to be checked.////////
     //check boxes start all false
     //appply to first box
-    if (index === 0) {
+    if (indexOfCheckBoxes === 0) {
       //all check boxes start as false
       //if there is a check on second box and than box one is checked, the check will result in box one being checked
-      if (infoArray[id - 1].options[1].checked == true) {
+      if (infoArray[productIndex].options[1].checked == true) {
         amtStars = 1;
-        setCheckboxes(true, false, false, false, infoArray, id);
+        setCheckboxes(true, false, false, false, infoArray, productIndex);
       }
       //all check boxes start as false
       //apply check to second box
       //check box one is checked and than index checks one.  so, results in no checks
-      else if (infoArray[id - 1].options[0].checked == true) {
+      else if (infoArray[productIndex].options[0].checked == true) {
         amtStars = 0;
-        setCheckboxes(false, false, false, false, infoArray, id);
+        setCheckboxes(false, false, false, false, infoArray, productIndex);
       } else {
         amtStars = 1;
         //all check boxes start as false
         //apply check to second box
         //three falses,  so it will be a simple check on first box
-        setCheckboxes(true, false, false, false, infoArray, id);
+        setCheckboxes(true, false, false, false, infoArray, productIndex);
       }
     }
     //check boxes start all false
     //apply check to second box
-    if (index === 1) {
-      if (infoArray[id - 1].options[2].checked == true) {
+    if (indexOfCheckBoxes === 1) {
+      if (infoArray[productIndex].options[2].checked == true) {
+       // product.id = product.id - 1;
         amtStars = 2;
         //all check boxes start as false
         //if third box is true and box two is than checked there will be two stars
-        setCheckboxes(true, true, false, false, infoArray, id);
+        setCheckboxes(true, true, false, false, infoArray, productIndex);
       }
       //all check boxes start as false
       //if second box is false and box two is than starred, there will be two stars
-      else if (infoArray[id - 1].options[1].checked == false) {
+      else if (infoArray[productIndex].options[1].checked == false) {
         amtStars = 2;
-        setCheckboxes(true, true, false, false, infoArray, id);
+        setCheckboxes(true, true, false, false, infoArray, productIndex);
       }
       //all check boxes start as false
       //isn't checked on third box and is checked on second box (using else)
       //box two is than changed with index that reverts box two to false
       else {
         amtStars = 0;
-        setCheckboxes(false, false, false, false, infoArray, id);
+        setCheckboxes(false, false, false, false, infoArray, productIndex);
       }
     }
     //all check boxes start as false
     //apply check to third box
-    if (index === 2) {
+    if (indexOfCheckBoxes === 2) {
       //all check boxes start as false
       //if box four is checked, and three is checked with index, there will be three checks
-      if (infoArray[id - 1].options[3].checked == true) {
+      if (infoArray[productIndex]
+        
+        .options[3].checked == true) {
         amtStars = 3;
-        setCheckboxes(true, true, true, false, infoArray, id);
+        setCheckboxes(true, true, true, false, infoArray, productIndex);
       }
       //all check boxes start as false
       //if box three is checked and index is applied with third box, all false
-      else if (infoArray[id - 1].options[2].checked == true) {
+      else if (infoArray[productIndex].options[2].checked == true) {
         amtStars = 0;
-        setCheckboxes(false, false, false, false, infoArray, id);
+        setCheckboxes(false, false, false, false, infoArray, productIndex);
       } else {
         //all check boxes start as false
         //by negation of above, fourth star is false, and and third check is false
         //index applied, three trues and a false
         amtStars = 3;
-        setCheckboxes(true, true, true, false, infoArray, id);
+        setCheckboxes(true, true, true, false, infoArray, productIndex);
       }
     }
     //all check boxes start as false
     //apply check to fourth box
-    if (index === 3) {
+    if (indexOfCheckBoxes === 3) {
       //all check boxes start as false
       //index is three so will be all stars, all stars with last element checked with index will be all false
-      if (infoArray[id - 1].options[3].checked == true) {
+      if (infoArray[productIndex].options[3].checked == true) {
         amtStars = 0;
-        setCheckboxes(false, false, false, false, infoArray, id);
+        setCheckboxes(false, false, false, false, infoArray, productIndex);
       }
       //all check boxes start as false
       //there is a check on fourth box, so is all true.
       else {
         amtStars = 4;
-        setCheckboxes(true, true, true, true, infoArray, id);
+        setCheckboxes(true, true, true, true, infoArray, productIndex);
       }
     }
     setProducts(infoArray);
@@ -285,17 +303,12 @@ let artPiecesOfCategoryArray = [];
     setPanelInfo(amtStars, product);
     localStorage.setItem(`products`, JSON.stringify(infoArray));
   };
-
-
-
- 
-
-return (
+  return(
   <div>
-    <div className = "title">
+    <div className = "artwork-title">
     Would you like to rate these works?
     </div>
-    
+
     <button
       className="buttonShow"
       onClick={() => {
@@ -305,60 +318,18 @@ return (
     >
       Show Panel
     </button>
-    <br></br>
-    <br></br>
-    <br></br>
+    <div className = "artwork-link">
     <NavLink to="/">Home Page</NavLink>
-    <br></br>
-    <br></br>
-    <br></br>
-    <Fragment>
-      <CategoryContainer>
-        {artPiecesOfCategoryArray.map((product) => {
-          let ID = product.id;
-          return (
-            <div key={product.imageUrl}>
-              <div>
-                <h2>{product.name}</h2>
-                <h3>${product.price}.00</h3>
-                <div>
-                  <img
-                    type="Image"
-                    src={product.imageUrl}
-                    onLoad={onComplete}
-                    onError={onComplete}
-                    alt={product.name}
-                    width={220}
-                  />
-                </div>
-              </div>
-              <div>
-                {product.options.map((opt, optIndex) => {
-                  let newOptIndex = optIndex + 1;
-                  return (
-                    <input
-                      key={optIndex}
-                      checked={opt.checked}
-                      type={`checkbox`}
-                      name={newOptIndex}
-                      onChange={(e) =>
-                        computeStars(e, newOptIndex, newOptIndex, ID, product)
-                      }
-                    />
-                  );
-                })}
-                {showPanel && (
-                  <Panel
-                    key={panelInformation.id}
-                    category={panelInformation}
-                  />
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </CategoryContainer>
-    </Fragment>
-  </div>
-);
+    </div>
+
+
+  <CategoryContainer>
+  {artPiecesOfCategoryArray.map((product) => (
+  <ArtPiece key = {product.imageUrl} product = {product} onComplete={onComplete} computeStars={computeStars} showPanel={showPanel} panelInformation={panelInformation} setShowPanel = {setShowPanel}   />
+  ))}
+  </CategoryContainer>
+</div>
+
+  )
 }
+ 

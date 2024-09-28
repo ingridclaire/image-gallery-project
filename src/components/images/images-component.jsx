@@ -1,7 +1,7 @@
-import { useNavigate, Link } from "react-router-dom";
-import { Body, DirectoryItemContainer } from "./images-styles";
+import { useNavigate, NavLink } from "react-router-dom";
+import { Body, DirectoryItemContainer, ImagesComponent } from "./images-styles";
 
-const Images1 = ({ category }) => {
+const Images = ({ category }) => {
   
   let { imageUrl, route } = category;
 
@@ -11,14 +11,16 @@ const Images1 = ({ category }) => {
  
   console.log("routez: ", route)
   return (
+    <NavLink to={route}>
     <DirectoryItemContainer onClick={onNavigateHandler}>
       <Body>
-        <div className="images">
-          <img src={imageUrl} alt={``} width={150} />
-        </div>
+        <ImagesComponent>
+          <img src={imageUrl} alt={``} />
+        </ImagesComponent>
       </Body>
     </DirectoryItemContainer>
+    </NavLink>
   );
 };
 
-export default Images1;
+export default Images;
