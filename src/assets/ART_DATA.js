@@ -1,34 +1,6 @@
 
 const ART = [
-   {
-      id: 0,
-      name: "Title",
-      imageUrl: require("./1.png"),
-      price: 10,
-      options: [
-        { option: "option1", checked: false },
-        { option: "option2", checked: false },
-        { option: "option3", checked: false },
-        { option: "option4", checked: false },
-      ],
-      category: "art1",
-      amtstars: "none",
-    },
-  
-{
-      id: 5,
-      name: "Title",
-      imageUrl: require("./3.png"),
-      price: 10,
-      options: [
-        { option: "option1", checked: false },
-        { option: "option2", checked: false },
-        { option: "option3", checked: false },
-        { option: "option4", checked: false },
-      ],
-      category: "art1",
-      amtstars: "none",
-    },
+   
     
     {
       id: 2,

@@ -1,7 +1,7 @@
         import React from 'react';
         import Panel from "../panel/panel-component";
         
-       const ArtPiece = ({product,onComplete,computeStars,showPanel,panelInformation, setShowPanel}) => {
+       const ArtPiece = ({product,onComplete,computeChecks,showPanel,panelInformation, setShowPanel}) => {
         return (
             <div>
               <>
@@ -30,7 +30,7 @@
                                 type={`checkbox`}
                                 name={newOptIndex}
                                 onChange={(e) =>
-                                  computeStars(e, newOptIndex, newOptIndex, product)
+                                  computeChecks(e, newOptIndex, newOptIndex, product)
                                 }
                               />
                             );

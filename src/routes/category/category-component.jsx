@@ -300,8 +300,9 @@ export default function Category() {
     <div className = "artwork-title">
     Would you like to rate these works?
     </div>
+    <div  className="buttonShow">
     <button
-      className="buttonShow"
+      
       onClick={() => {
         //
         setShowPanel((showPanel) => !showPanel);
@@ -309,6 +310,7 @@ export default function Category() {
     >
       Show Panel
     </button>
+    </div>
     <div className = "artwork-link">
     <NavLink to="/">Home Page</NavLink>
     </div>

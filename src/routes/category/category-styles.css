@@ -4,6 +4,7 @@
     font-size:large;
     margin-top:4rem;
     margin-bottom:3rem;
+    text-align: center;
     
 }
 
@@ -11,6 +12,8 @@
     font-size:large;
     margin-top:2rem;
     margin-bottom:2rem;
+    text-align: center;
+    
     
 }
 
@@ -18,5 +21,12 @@
 .artwork-link-spacing {
     margin-top:3rem;
     margin-bottom:3rem;
+    text-align: center;
+    
 
+}
+
+.buttonShow{
+    text-align: center;
+   
 }
