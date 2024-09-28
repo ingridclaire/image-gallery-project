@@ -1,7 +1,6 @@
-import { useContext, useState, useEffect, Fragment } from "react";
-import { CategoryContainer, Title } from "./category-styles";
-import { useParams, useNavigate } from "react-router-dom";
-import Panel from "../../components/panel/panel-component";
+import { useState, useEffect } from "react";
+import { CategoryContainer } from "./category-styles";
+import { useParams } from "react-router-dom";
 import { after } from "underscore";
 import { NavLink } from "../navigation/navigation-styles";
 import {ART}  from "../../assets/ART_DATA.js"
@@ -12,11 +11,9 @@ import './category-styles.css';
 //Two questions:  how would I change directory-component.jsx page to static and how would I change art-piece-component to responsive?
 
 export default function Category() {
-  let infoArray = [];
   let artPiecesOfCategoryArray = [];
   const route = useParams();
   let imageCategoryToShow = route.category;
-  let locallyStoredProducts = [];
   let [products, setProducts] = useState(ART);
   artPiecesOfCategoryArray = products.filter(
     (element) => element.category === imageCategoryToShow
@@ -35,12 +32,7 @@ export default function Category() {
   });
   let [panelInformation, setPanelInformation] = useState([]);
   useEffect(() => {}, []);
-  const [stars, setStars] = useState([]);
   let [showPanel, setShowPanel] = useState(false);
-  let count = 0;
-  let IsElementSameID = false;
-  
-  
   //amount of cjecks is what was selected from that interface
   const setPanelInfo = (amtountOfChecks, product) => {
     let panelInformationListLeftElements = [];
