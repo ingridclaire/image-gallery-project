@@ -9,7 +9,7 @@ import ArtPiece from "../../components/art-piece/art-piece-component.jsx";
 import './category-styles.css';
 
 
-//Two questions:  how would I change directory-component.jsx page to static and how would I change art-piece-component to static?
+//Two questions:  how would I change directory-component.jsx page to static and how would I change art-piece-component to responsive?
 
 export default function Category() {
   let infoArray = [];
