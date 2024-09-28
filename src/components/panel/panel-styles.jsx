@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const DropDown = styled.div`
-.drop{
-    background-color:blue;
-}
 font-size:10px;
 width:10rem;
 height: 10rem;

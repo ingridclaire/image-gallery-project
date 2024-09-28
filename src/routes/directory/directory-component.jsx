@@ -1,5 +1,5 @@
-import Images from "../images/images-component";
-import { DirectoryContainer } from "../directory/directory-styles";
+import Images from "../../components/images/images-component";
+import { DirectoryContainer } from "./directory-styles";
 import './directory-styles.css'
 
 const categories = [
@@ -37,7 +37,6 @@ const categories = [
 const Directory = () => {
   return (
     <div>
-      
       <div className = "ArtistTitle" >
         Select an Artist
       </div> 

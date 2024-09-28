@@ -1,12 +1,7 @@
-
-//<ArtPiece key={product.imageUrl} product={product} onComplete={onComplete} computeStars={computeStars} showPanel={showPanel} panelInformation={panelInformation} />
-           
         import React from 'react';
         import Panel from "../panel/panel-component";
-        import { CategoryContainer1, Title, NavLink } from "./art-piece-styles";
-       
-
-        const ArtPiece = ({product,onComplete,computeStars,showPanel,panelInformation, setShowPanel}) => {
+        
+       const ArtPiece = ({product,onComplete,computeStars,showPanel,panelInformation, setShowPanel}) => {
         return (
             <div>
               <>
@@ -21,7 +16,7 @@
                               onLoad={onComplete}
                               onError={onComplete}
                               alt={product.name}
-                              width={220}
+                              width={200}
                             />
                           </div>
                         </div>

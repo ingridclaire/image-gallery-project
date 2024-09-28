@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoryContainer, Title } from "./category-styles";
-//import { title } from "./category-styles2";
 import { useParams, useNavigate } from "react-router-dom";
 import Panel from "../../components/panel/panel-component";
 import { after } from "underscore";
@@ -10,8 +9,9 @@ import ArtPiece from "../../components/art-piece/art-piece-component.jsx";
 import './category-styles.css';
 
 
+//Two questions:  how would I change directory-component.jsx page to static and how would I change art-piece-component to static?
+
 export default function Category() {
-//gets set to products
   let infoArray = [];
   let artPiecesOfCategoryArray = [];
   const route = useParams();
@@ -41,12 +41,12 @@ export default function Category() {
   let IsElementSameID = false;
   
   
-  //amount of stars is what was selected from that interface
+  //amount of cjecks is what was selected from that interface
   const setPanelInfo = (amtountOfChecks, product) => {
     let panelInformationListLeftElements = [];
     let panelArrayWithDeletedElement = [];
     if (amtountOfChecks == 1) {
-      setElement(
+      setPanelElement(
         product.id,
         product.name,
         product.imageUrl,
@@ -59,7 +59,7 @@ export default function Category() {
         "One Check"
       );
     } else if (amtountOfChecks == 2) {
-      setElement(
+      setPanelElement(
         product.id,
         product.name,
         product.imageUrl,
@@ -72,7 +72,7 @@ export default function Category() {
         "Two Checks"
       );
     } else if (amtountOfChecks == 3) {
-      setElement(
+      setPanelElement(
         product.id,
         product.name,
         product.imageUrl,
@@ -85,7 +85,7 @@ export default function Category() {
         "Three Checks"
       );
     } else if (amtountOfChecks == 4) {
-      setElement(
+      setPanelElement(
         product.id,
         product.name,
         product.imageUrl,
@@ -106,7 +106,8 @@ export default function Category() {
     }
   };
 
-  //keep art pieces organized using there id
+  
+  //keep art pieces organized using there id for panel
   function redistributeTheIds(id, panelInformation) {
     let currentid = -1;
     let missingIDIndex = -1;
@@ -117,7 +118,9 @@ export default function Category() {
     }
     return arrayOfIDS;
   }
-  const setElement = (
+
+
+  const setPanelElement = (
     id,
     name,
     url,
@@ -168,7 +171,7 @@ export default function Category() {
     }
   };
 
-
+  //Sets one element of another array with checks
   const setCheckboxes = (check1, check2, check3, check4, infoArray, id) => {
     infoArray[id].options[0].checked = check1;
     infoArray[id].options[1].checked = check2;
@@ -177,10 +180,9 @@ export default function Category() {
     return infoArray;
   };
 
-
+  //makes display ordered by index using elements id
   const advanceToNextID = (productIDToAdvance) => {
     let index = 0
-   
     let j = 1
     while (productIDToAdvance != products[index].id ){
     index++
@@ -188,17 +190,7 @@ export default function Category() {
     return index
   }
 
-  const retreatToNextID = (productIDToRetreat) => {
-    let index = products.length
-    
-    let j = 1
-    while (productIDToRetreat != products[index].id ){
-    index--
-    }
-    return index
-  }
-
-  const computeStars = (e, indexOfCheckBoxes, howManyChecked, product) => {
+  const computeChecks = (e, indexOfCheckBoxes, howManyChecked, product) => {
     let productIndex = advanceToNextID(product.id)
     let infoArray = [...products];
     let checked = e.target.checked;
@@ -308,7 +300,6 @@ export default function Category() {
     <div className = "artwork-title">
     Would you like to rate these works?
     </div>
-
     <button
       className="buttonShow"
       onClick={() => {
@@ -321,11 +312,10 @@ export default function Category() {
     <div className = "artwork-link">
     <NavLink to="/">Home Page</NavLink>
     </div>
-
-
   <CategoryContainer>
   {artPiecesOfCategoryArray.map((product) => (
-  <ArtPiece key = {product.imageUrl} product = {product} onComplete={onComplete} computeStars={computeStars} showPanel={showPanel} panelInformation={panelInformation} setShowPanel = {setShowPanel}   />
+  // Display artwork in this mapped component
+  <ArtPiece key = {product.imageUrl} product = {product} onComplete={onComplete} computeChecks={computeChecks} showPanel={showPanel} panelInformation={panelInformation} setShowPanel = {setShowPanel}   />
   ))}
   </CategoryContainer>
 </div>

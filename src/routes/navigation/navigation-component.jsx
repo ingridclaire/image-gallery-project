@@ -1,22 +1,11 @@
-import { Outlet, Link } from "react-router-dom";
-import { NavigationContainer, DropDown, NavLink } from "./navigation-styles";
+import { Outlet} from "react-router-dom";
+import { NavigationContainer} from "./navigation-styles";
 import { useState } from "react";
-import Panel from "../../components/panel/panel-component";
-
 const Navigation = () => {
-  function func() {
-   
-  }
-  const [showPanel, setShowPanel] = useState(false);
-  return (
+ return (
     <NavigationContainer>
-      <div className="photo">
-       
-        <Outlet />
-      </div>
-      {showPanel && <Panel/>}
+       <Outlet />
     </NavigationContainer>
   );
 };
-
 export default Navigation;
